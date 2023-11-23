@@ -1,4 +1,7 @@
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Scanner;
 
 // systemet
@@ -10,12 +13,12 @@ public class Userinterface {
 
     public void menu() {
         System.out.println("""
-        Velkommen til Delfinen-klubbens systemet.
-        Hvilke rolle har du i klubben?
-        1: Træner 
-        2: Formand
-        3: Kassere
-        """);
+                Velkommen til Delfinen-klubbens systemet.
+                Hvilke rolle har du i klubben?
+                1: Træner 
+                2: Formand
+                3: Kassere
+                """);
         /*System.out.println("""
 
 
@@ -36,11 +39,10 @@ public class Userinterface {
     }
 
 
-
-
     public void start() {
+        menu();
         while (true) {
-            menu();
+
 
             switch (keyboard.nextInt()) {
                 case 1:
@@ -58,10 +60,7 @@ public class Userinterface {
     }
 
 
-
-
-
-    public void formandMenu(){
+    public void formandMenu() {
         System.out.println("1: Vis alle medlemmer" + "\n" + "2: registrer medlem");
         switch (keyboard.nextInt()) {
 
@@ -82,68 +81,108 @@ public class Userinterface {
     }
 
 
-    public void medlemmerStamoplysninger(){
+    public void medlemmerStamoplysninger() {
 
 
         controller.printMedlemmerStamoplysninger();
 
 
-
     }
 
 
-    public void registrerMedlem(){
+    public void registrerMedlem() {
         keyboard.nextLine();
 
-        System.out.println("Navn: ");
+        System.out.print("Navn: ");
         String name = keyboard.nextLine();
 
 
-        int dateOfBirth = getValidIntegerInput("Fødselsdagsdato: ");
+        String dateOfBirth = getValidStringInputFødselsdato("Fødselsdato i format (dd-mm-yyyy): ");
 
-        System.out.println("Køn: ");
+        System.out.print("Køn: ");
         String gender = keyboard.nextLine();
-        keyboard.nextLine();
 
+        int phonenumber = getValidIntegerInputTelefonnummer("Telefonnummer: ");
 
-        int phonenumber = getValidIntegerInput("Telefonnummer: ");
-
-        System.out.println("Adresse: ");
+        System.out.print("Adresse: ");
         String adress = keyboard.nextLine();
-        keyboard.nextLine();
 
-        int memberNumber = getValidIntegerInput("Medlemnummer: ");
+        int memberNumber = getValidIntegerInputMedlemsnummer("Medlemnummer: ");
 
-        System.out.println("Passivt eller aktivt medlemskab: ");
+        System.out.print("Passivt eller aktivt medlemskab: ");
         String passiveOrActive = keyboard.nextLine();
 
-        System.out.println("Motionist: ");
+        System.out.print("Motionist: ");
         String motionist = keyboard.nextLine();
 
-        System.out.println("Konkurrence: ");
+        System.out.print("Konkurrence: ");
         String competitive = keyboard.nextLine();
 
 
-        controller.registrerMedlem(name, dateOfBirth,  gender,  phonenumber,  adress,  memberNumber,  passiveOrActive,  motionist,  competitive);
+        controller.registrerMedlem(name, dateOfBirth, gender, phonenumber, adress, memberNumber, passiveOrActive, motionist, competitive);
 
 
     }
 
-    private int getValidIntegerInput(String prompt) {
+    // metode for at sørger for man indtaster fødselsdato rigtigt ind
+    private String getValidStringInputFødselsdato(String prompt) {
+        while (true) {
+            try {
+                System.out.print(prompt);
+                String input = keyboard.nextLine();
+
+                SimpleDateFormat dateFormat = new SimpleDateFormat("dd-mm-yyyy");
+
+                dateFormat.parse(input);
+
+                return input;
+            } catch (ParseException e) {
+                System.out.println("Ugyldig input. Indtast venligst en fødselsdato i formatet (dd-mm-yyyy).");
+
+            }
+        }
+    }
+
+    // metode for at sørger for man indtaster telefonnummer rigtigt ind
+    private int getValidIntegerInputTelefonnummer(String prompt) {
         while (true) {
             try {
                 System.out.print(prompt);
                 int input = keyboard.nextInt();
                 keyboard.nextLine();
-                return input;
+
+                if (String.valueOf(input).length() == 8)
+                    return input;
+                else {
+                    System.out.println("Ugyldig input. Indtast venligst et telefonnummer på 8 cifre.");
+                }
             } catch (java.util.InputMismatchException e) {
-                System.out.println("Ugyldig input. Indtast venligst et heltal.");
+                // eksempel på error besked (kan laves om)
+                System.out.println("Ugyldig input. Indtast venligst et telefonnummer på 8 cifre.");
                 keyboard.nextLine();
             }
         }
     }
 
+    private int getValidIntegerInputMedlemsnummer(String prompt) {
+        while (true) {
+            try {
+                System.out.print(prompt);
+                int input = keyboard.nextInt();
+                keyboard.nextLine();
+                if (String.valueOf(input).length() == 6)
+                    return input;
+                else {
+                    System.out.println("Ugyldig input. Indtast venligst et medlemsnummer på 6 cifre.");
 
+                }
+            } catch (java.util.InputMismatchException e) {
+                //vi skal spørger hvor mange cifre medlemsnummer har!!
+                System.out.println("Ugyldig input. Indtast venligst et medlemsnummer på 6 cifre.");
+                keyboard.nextLine();
+            }
+        }
+    }
 
 }
 
