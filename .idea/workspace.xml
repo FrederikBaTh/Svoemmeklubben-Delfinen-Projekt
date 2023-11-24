@@ -4,11 +4,27 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c8e94393-bee2-45ff-a00f-fe84b417e598" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="c8e94393-bee2-45ff-a00f-fe84b417e598" name="Changes" comment="Version 2.2">
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_24_11_2023_08_43_[Changes]/shelved.patch" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_24_11_2023_08_43__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MedlemsListe.csv" beforeDir="false" afterPath="$PROJECT_DIR$/MedlemsListe.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Database.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/FileHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/FileHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Member.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Member.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Userinterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Userinterface.java" afterDir="false" />
+    </list>
+    <list id="fb177936-fb46-4acb-949a-0f3451925b84" name="Changes by marcusmortensen" comment="">
       <change beforePath="$PROJECT_DIR$/src/main/java/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Database.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/FileHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/FileHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Member.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Member.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Userinterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Userinterface.java" afterDir="false" />
+    </list>
+    <list id="94e2b45a-2e0d-411e-b7d4-5750d824dc2d" name="Changes by paulsebastiankrus" comment="">
+      <change beforePath="$PROJECT_DIR$/src/main/java/Userinterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Userinterface.java" afterDir="false" />
+    </list>
+    <list id="67793032-fb6c-4540-abf8-3a33fa1e9568" name="Changes by Severius" comment="">
       <change beforePath="$PROJECT_DIR$/src/main/java/FileHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/FileHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Member.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Member.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Userinterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Userinterface.java" afterDir="false" />
@@ -32,6 +48,63 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
+  </component>
+  <component name="LineStatusTrackerManager">
+    <file path="$PROJECT_DIR$/src/main/java/FileHandler.java">
+      <ranges>
+        <range start1="3" end1="3" start2="3" end2="6" changelist="fb177936-fb46-4acb-949a-0f3451925b84" />
+        <range start1="8" end1="9" start2="11" end2="11" changelist="67793032-fb6c-4540-abf8-3a33fa1e9568" />
+        <range start1="16" end1="17" start2="18" end2="19" changelist="fb177936-fb46-4acb-949a-0f3451925b84" />
+        <range start1="42" end1="42" start2="44" end2="45" changelist="c8e94393-bee2-45ff-a00f-fe84b417e598" />
+        <range start1="60" end1="60" start2="63" end2="76" changelist="fb177936-fb46-4acb-949a-0f3451925b84" />
+      </ranges>
+    </file>
+    <file path="$PROJECT_DIR$/src/main/java/Userinterface.java">
+      <ranges>
+        <range start1="2" end1="2" start2="2" end2="4" changelist="fb177936-fb46-4acb-949a-0f3451925b84" />
+        <range start1="8" end1="9" start2="10" end2="11" changelist="94e2b45a-2e0d-411e-b7d4-5750d824dc2d" />
+        <range start1="17" end1="18" start2="19" end2="20" changelist="67793032-fb6c-4540-abf8-3a33fa1e9568" />
+        <range start1="112" end1="113" start2="114" end2="115" changelist="c8e94393-bee2-45ff-a00f-fe84b417e598" />
+        <range start1="121" end1="122" start2="123" end2="124" changelist="c8e94393-bee2-45ff-a00f-fe84b417e598" />
+        <range start1="133" end1="134" start2="135" end2="136" changelist="67793032-fb6c-4540-abf8-3a33fa1e9568" />
+        <range start1="185" end1="185" start2="187" end2="231" changelist="c8e94393-bee2-45ff-a00f-fe84b417e598" />
+      </ranges>
+    </file>
+    <file path="$PROJECT_DIR$/src/main/java/Database.java">
+      <ranges>
+        <range start1="1" end1="1" start2="1" end2="3" changelist="fb177936-fb46-4acb-949a-0f3451925b84" />
+        <range start1="6" end1="7" start2="8" end2="9" changelist="c8e94393-bee2-45ff-a00f-fe84b417e598" />
+        <range start1="9" end1="11" start2="11" end2="16" changelist="c8e94393-bee2-45ff-a00f-fe84b417e598" />
+        <range start1="13" end1="14" start2="18" end2="20" changelist="fb177936-fb46-4acb-949a-0f3451925b84" />
+        <range start1="15" end1="15" start2="21" end2="22" changelist="fb177936-fb46-4acb-949a-0f3451925b84" />
+        <range start1="19" end1="22" start2="26" end2="26" changelist="c8e94393-bee2-45ff-a00f-fe84b417e598" />
+        <range start1="33" end1="34" start2="37" end2="37" changelist="c8e94393-bee2-45ff-a00f-fe84b417e598" />
+        <range start1="37" end1="37" start2="40" end2="51" changelist="c8e94393-bee2-45ff-a00f-fe84b417e598" />
+      </ranges>
+    </file>
+    <file path="$PROJECT_DIR$/src/main/java/Member.java">
+      <ranges>
+        <range start1="0" end1="0" start2="0" end2="5" changelist="fb177936-fb46-4acb-949a-0f3451925b84" />
+        <range start1="3" end1="4" start2="8" end2="9" changelist="c8e94393-bee2-45ff-a00f-fe84b417e598" />
+        <range start1="14" end1="15" start2="19" end2="20" changelist="fb177936-fb46-4acb-949a-0f3451925b84" />
+        <range start1="16" end1="17" start2="21" end2="22" changelist="67793032-fb6c-4540-abf8-3a33fa1e9568" />
+        <range start1="25" end1="25" start2="30" end2="36" changelist="fb177936-fb46-4acb-949a-0f3451925b84" />
+        <range start1="26" end1="27" start2="37" end2="38" changelist="fb177936-fb46-4acb-949a-0f3451925b84" />
+        <range start1="28" end1="58" start2="39" end2="66" changelist="67793032-fb6c-4540-abf8-3a33fa1e9568" />
+        <range start1="59" end1="60" start2="67" end2="68" changelist="fb177936-fb46-4acb-949a-0f3451925b84" />
+        <range start1="61" end1="64" start2="69" end2="72" changelist="67793032-fb6c-4540-abf8-3a33fa1e9568" />
+        <range start1="65" end1="68" start2="73" end2="76" changelist="fb177936-fb46-4acb-949a-0f3451925b84" />
+        <range start1="69" end1="72" start2="77" end2="80" changelist="fb177936-fb46-4acb-949a-0f3451925b84" />
+        <range start1="73" end1="76" start2="81" end2="84" changelist="fb177936-fb46-4acb-949a-0f3451925b84" />
+        <range start1="77" end1="80" start2="85" end2="88" changelist="fb177936-fb46-4acb-949a-0f3451925b84" />
+        <range start1="81" end1="84" start2="89" end2="92" changelist="fb177936-fb46-4acb-949a-0f3451925b84" />
+        <range start1="85" end1="88" start2="93" end2="96" changelist="fb177936-fb46-4acb-949a-0f3451925b84" />
+        <range start1="89" end1="95" start2="97" end2="104" changelist="67793032-fb6c-4540-abf8-3a33fa1e9568" />
+        <range start1="96" end1="108" start2="105" end2="118" changelist="fb177936-fb46-4acb-949a-0f3451925b84" />
+        <range start1="109" end1="110" start2="119" end2="120" changelist="fb177936-fb46-4acb-949a-0f3451925b84" />
+      </ranges>
+    </file>
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 4
@@ -48,7 +121,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
     "codeWithMe.voiceChat.enabledByDefault": "false",
-    "git-widget-placeholder": "paul-leger",
+    "git-widget-placeholder": "master",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -88,10 +161,16 @@
       <updated>1700733382632</updated>
       <workItem from="1700733383725" duration="2934000" />
       <workItem from="1700758495923" duration="6085000" />
+      <workItem from="1700811268115" duration="275000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Version 2.1" />
+    <MESSAGE value="Version 2.2" />
+    <option name="LAST_COMMIT_MESSAGE" value="Version 2.2" />
   </component>
 </project>

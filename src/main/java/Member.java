@@ -1,7 +1,7 @@
 public class Member {
 
     private String name;
-    private String dateOfBirth;
+    private LocalDate dateOfBirth;
     private String gender;
     private int phonenumber;
     private String adress;

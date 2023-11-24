@@ -4,11 +4,14 @@ import java.util.Scanner;
 
 public class Database {
 
-    public ArrayList<Member> meembers = new ArrayList<>(150);
+    public ArrayList<Member> meembers = new ArrayList<>();
     private Scanner keyboard =new Scanner(System.in);
     public Database() {
-        meembers = FileHandler.loadedMembers("MedlemsListe.csv");
+        if (meembers.isEmpty()) {
+            meembers = FileHandler.loadedMembers("MedlemsListe.csv");
+        }
     }
+
 
     public void registrerMedlem(String name, String dateOfBirth, String gender, int phonenumber, String adress, int memberNumber, String passiveOrActive, String motionist, String competitive) {
         meembers = FileHandler.loadedMembers("MedlemsListe.csv");
@@ -16,9 +19,6 @@ public class Database {
         meembers.add(member);
         FileHandler.saveListOfMembersToFile("MedlemsListe.csv", meembers);
     }
-
-
-
 
 
     public void printMedlemmerStamoplysninger(){
@@ -31,8 +31,18 @@ public class Database {
 
     }
 
-
     public ArrayList<Member> getMeembers() {
         return meembers;
     }
+
+    public void updateMembership(){
+        LocalDate today = LocalDate.now();
+        //Period ageDifference
+
+    }
+
+
+
+
+
 }

@@ -40,6 +40,7 @@ public class FileHandler {
 
     public static void saveListOfMembersToFile(String fileName, ArrayList<Member> members) {
         try (PrintStream output = new PrintStream(fileName)) {
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
             for (Member member : members) {
                 output.println(member.getName());
                 output.println(member.getDateOfBirth());
