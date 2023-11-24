@@ -19,7 +19,7 @@ public class Member {
 
     public Member(String name, String dateOfBirth, String gender, int phonenumber, String adress, int memberNumber, String passiveOrActive, String motionist, String competitive) {
         this.name = name;
-        this.dateOfBirth = dateOfBirth;
+        this.dateOfBirth = LocalDate.parse(dateOfBirth, DateTimeFormatter.ofPattern("dd-MM-yyyy"));
         this.gender = gender;
         this.phonenumber = phonenumber;
         this.adress = adress;
@@ -37,42 +37,39 @@ public class Member {
 
         // getters
 
-    public String getName(){
-        return name;
-    }
-    public String getDateOfBirth(){
-
-        return dateOfBirth;
-    }
-    public String getGender(){
-
-        return gender;
-    }
-    public int getPhonenumber(){
-
-        return phonenumber;
-    }
-    public String getAdress(){
-        return adress;
-    }
-    public int getMemberNumber(){
-        return memberNumber;
-    }
-    public String getPassiveOrActive(){
-        return passiveOrActive;
-    }
-    public String getMotionist(){
-        return motionist;
-    }
-    public String getCompetitive(){
-        return competitive;
-    }
+        public String getName () {
+            return name;
+        }
+        public LocalDate getDateOfBirth () {
+            return dateOfBirth;
+        }
+        public String getGender () {
+            return gender;
+        }
+        public int getPhonenumber () {
+            return phonenumber;
+        }
+        public String getAdress () {
+            return adress;
+        }
+        public int getMemberNumber () {
+            return memberNumber;
+        }
+        public String getPassiveOrActive () {
+            return passiveOrActive;
+        }
+        public String getMotionist () {
+            return motionist;
+        }
+        public String getCompetitive () {
+            return competitive;
+        }
 
         //setters
 
-    public void setName(String name){
-        this.name = name;
-    }
+        public void setName (String name){
+            this.name = name;
+        }
 
         public void setDateOfBirth (LocalDate dateOfBirth){
             this.dateOfBirth = dateOfBirth;
@@ -98,12 +95,13 @@ public class Member {
             this.passiveOrActive = passiveOrActive;
         }
 
-    public void setMotionist(String motionist) {
-        this.motionist = motionist;
-    }
-    public void setCompetitive(String competitive){
-        this.competitive = competitive;
-    }
+        public void setMotionist (String motionist){
+            this.motionist = motionist;
+        }
+
+        public void setCompetitive (String competitive){
+            this.competitive = competitive;
+        }
 
         @Override
         public String toString () {

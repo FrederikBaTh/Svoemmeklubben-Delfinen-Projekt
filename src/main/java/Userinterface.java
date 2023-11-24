@@ -17,7 +17,7 @@ public class Userinterface {
         System.out.println("""
                 Velkommen til Delfinen-klubbens systemet.
                 Hvilke rolle har du i klubben?
-                1: Træner 
+                1: Træner
                 2: Formand
                 3: Kassere
                 """);
@@ -133,7 +133,7 @@ public class Userinterface {
                 System.out.print(prompt);
                 String input = keyboard.nextLine();
 
-                SimpleDateFormat dateFormat = new SimpleDateFormat("dd-mm-yyyy");
+                SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
 
                 dateFormat.parse(input);
 

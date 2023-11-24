@@ -10,7 +10,6 @@ import java.util.Scanner;
 public class FileHandler {
 
 
-
     public static ArrayList<Member> loadedMembers(String fileName) {
         ArrayList<Member> loadedMembers = new ArrayList<>();
 
