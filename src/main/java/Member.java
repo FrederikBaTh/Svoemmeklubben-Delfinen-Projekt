@@ -1,3 +1,8 @@
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
 public class Member {
 
     private String name;
@@ -12,7 +17,7 @@ public class Member {
 
     //constructor
 
-    public Member(String name, String dateOfBirth, String gender, int phonenumber, String adress, int memberNumber, String passiveOrActive, String motionist, String competitive){
+    public Member(String name, String dateOfBirth, String gender, int phonenumber, String adress, int memberNumber, String passiveOrActive, String motionist, String competitive) {
         this.name = name;
         this.dateOfBirth = dateOfBirth;
         this.gender = gender;
@@ -24,7 +29,13 @@ public class Member {
         this.competitive = competitive;
     }
 
-    // getters
+    public String getFormattedDateOfBirth() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        return dateOfBirth.format(formatter);
+        //LocalDate birthdate = new LocalDate();
+    }
+
+        // getters
 
     public String getName(){
         return name;
@@ -57,35 +68,35 @@ public class Member {
         return competitive;
     }
 
-    //setters
+        //setters
 
     public void setName(String name){
         this.name = name;
     }
 
-    public void setDateOfBirth(String dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
-    }
+        public void setDateOfBirth (LocalDate dateOfBirth){
+            this.dateOfBirth = dateOfBirth;
+        }
 
-    public void setGender(String gender) {
-        this.gender = gender;
-    }
+        public void setGender (String gender){
+            this.gender = gender;
+        }
 
-    public void setPhonenumber(int phonenumber) {
-        this.phonenumber = phonenumber;
-    }
+        public void setPhonenumber ( int phonenumber){
+            this.phonenumber = phonenumber;
+        }
 
-    public void setAdress(String adress) {
-        this.adress = adress;
-    }
+        public void setAdress (String adress){
+            this.adress = adress;
+        }
 
-    public void setMemberNumber(int memberNumber) {
-        this.memberNumber = memberNumber;
-    }
+        public void setMemberNumber ( int memberNumber){
+            this.memberNumber = memberNumber;
+        }
 
-    public void setPassiveOrActive(String passiveOrActive) {
-        this.passiveOrActive = passiveOrActive;
-    }
+        public void setPassiveOrActive (String passiveOrActive){
+            this.passiveOrActive = passiveOrActive;
+        }
 
     public void setMotionist(String motionist) {
         this.motionist = motionist;
@@ -94,17 +105,18 @@ public class Member {
         this.competitive = competitive;
     }
 
-    @Override
-    public String toString() {
-        return "\n" +
-                "navn:" + " " + name + "\n" +
-                "Fødselsår:" + " " + dateOfBirth + "\n" +
-                "køn:" + " " + gender + "\n" +
-                "telefon:" + " " + phonenumber + "\n" +
-                "Adresse:" + " " + adress + "\n" +
-                "Medlemsnummer:" + " " + memberNumber + "\n" +
-                "Medlemsstatus:" + " " + passiveOrActive + "\n" +
-                "Motionist:" + " " + motionist + "\n" +
-                "konkurrencesvømmer:" + " " + competitive;
+        @Override
+        public String toString () {
+            return "\n" +
+                    "navn:" + " " + name + "\n" +
+                    "Fødselsår:" + " " + dateOfBirth + "\n" +
+                    "køn:" + " " + gender + "\n" +
+                    "telefon:" + " " + phonenumber + "\n" +
+                    "Adresse:" + " " + adress + "\n" +
+                    "Medlemsnummer:" + " " + memberNumber + "\n" +
+                    "Medlemsstatus:" + " " + passiveOrActive + "\n" +
+                    "Motionist:" + " " + motionist + "\n" +
+                    "konkurrencesvømmer:" + " " + competitive;
+        }
     }
-}
+

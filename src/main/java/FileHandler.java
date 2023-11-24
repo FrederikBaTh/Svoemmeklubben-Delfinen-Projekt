@@ -1,6 +1,9 @@
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintStream;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -14,7 +17,7 @@ public class FileHandler {
         try (Scanner fileScanner = new Scanner(new File(fileName))) {
             while (fileScanner.hasNext()) {
                 String name = fileScanner.nextLine();
-                String dateOfBirth = fileScanner.nextLine();
+                String dateOfBirth = String.valueOf(LocalDate.parse(fileScanner.nextLine()));
                 String gender = fileScanner.nextLine();
                 int phonenumber = Integer.parseInt(fileScanner.nextLine());
                 String adress = fileScanner.nextLine();
@@ -59,4 +62,17 @@ public class FileHandler {
         }
 
     }
+    //     public void toFile() {
+    //        try {
+    //            PrintStream writeToFile = new PrintStream(new File("MedlemsListe.csv"));
+    //            for (int i = 0; i < this.members.toArray().length; i++) {
+    //                writeToFile.println(this.members.get(i).toCsvString());
+    //                System.out.println("toFileMethod " + this.members.get(i).toCsvString());
+    //            }
+    //        }
+    //        catch (FileNotFoundException e) {
+    //            System.out.println(e);
+    //        }
+    //    }
+    //}
 }
