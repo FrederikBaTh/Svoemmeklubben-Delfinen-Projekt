@@ -1,7 +1,7 @@
 public class Member {
 
     private String name;
-    private int dateOfBirth;
+    private String dateOfBirth;
     private String gender;
     private int phonenumber;
     private String adress;
@@ -12,7 +12,7 @@ public class Member {
 
     //constructor
 
-    public Member(String name, int dateOfBirth, String gender, int phonenumber, String adress, int memberNumber, String passiveOrActive, String motionist, String competitive){
+    public Member(String name, String dateOfBirth, String gender, int phonenumber, String adress, int memberNumber, String passiveOrActive, String motionist, String competitive){
         this.name = name;
         this.dateOfBirth = dateOfBirth;
         this.gender = gender;
@@ -29,7 +29,7 @@ public class Member {
     public String getName(){
         return name;
     }
-    public int getDateOfBirth(){
+    public String getDateOfBirth(){
 
         return dateOfBirth;
     }
@@ -63,7 +63,7 @@ public class Member {
         this.name = name;
     }
 
-    public void setDateOfBirth(int dateOfBirth) {
+    public void setDateOfBirth(String dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
 

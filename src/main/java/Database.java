@@ -10,7 +10,7 @@ public class Database {
         meembers = FileHandler.loadedMembers("MedlemsListe.csv");
     }
 
-    public void registrerMedlem(String name, int dateOfBirth, String gender, int phonenumber, String adress, int memberNumber, String passiveOrActive, String motionist, String competitive) {
+    public void registrerMedlem(String name, String dateOfBirth, String gender, int phonenumber, String adress, int memberNumber, String passiveOrActive, String motionist, String competitive) {
         meembers = FileHandler.loadedMembers("MedlemsListe.csv");
         Member member = new Member(name, dateOfBirth, gender, phonenumber, adress, memberNumber, passiveOrActive, motionist, competitive);
         meembers.add(member);
@@ -23,9 +23,10 @@ public class Database {
 
     public void printMedlemmerStamoplysninger(){
         meembers = FileHandler.loadedMembers("MedlemsListe.csv");
-        if (meembers.isEmpty()){
-            return;
 
+        for (Member member : meembers) {
+            System.out.println(member);
+            System.out.println();
         }
 
     }

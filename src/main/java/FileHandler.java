@@ -14,7 +14,7 @@ public class FileHandler {
         try (Scanner fileScanner = new Scanner(new File(fileName))) {
             while (fileScanner.hasNext()) {
                 String name = fileScanner.nextLine();
-                int dateOfBirth = Integer.parseInt(fileScanner.nextLine());
+                String dateOfBirth = fileScanner.nextLine();
                 String gender = fileScanner.nextLine();
                 int phonenumber = Integer.parseInt(fileScanner.nextLine());
                 String adress = fileScanner.nextLine();
