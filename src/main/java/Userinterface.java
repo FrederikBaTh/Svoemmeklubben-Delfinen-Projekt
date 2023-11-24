@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 // systemet
 public class Userinterface {
-    private Controller controller;
+    private Controller controller = new Controller();
 
     private Scanner keyboard = new Scanner(System.in);
 
