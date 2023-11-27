@@ -1,7 +1,5 @@
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -125,8 +123,41 @@ public class Userinterface {
 
 
 
-
     public void registrerMedlem() {
+        keyboard.nextLine();
+
+        System.out.print("Navn: ");
+        String name = keyboard.nextLine();
+
+        String dateOfBirth = getValidStringInputFødselsdato("Fødselsdato i format (dd-mm-yyyy): ");
+
+        System.out.print("Køn: ");
+        String gender = keyboard.nextLine();
+
+        int phonenumber = getValidIntegerInputTelefonnummer("Telefonnummer: ");
+
+        System.out.print("Adresse: ");
+        String adress = keyboard.nextLine();
+
+        int memberNumber = getValidIntegerInputMedlemsnummer("Medlemsnummer: ");
+
+        System.out.print("Passivt eller aktivt medlemskab: ");
+        String passiveOrActive = keyboard.nextLine();
+
+        System.out.print("Motionist: ");
+        String motionist = keyboard.nextLine();
+
+        System.out.print("Konkurrence: ");
+        String competitive = keyboard.nextLine();
+
+
+        controller.registrerMedlem(name, dateOfBirth, gender, phonenumber, adress, memberNumber, passiveOrActive, motionist, competitive);
+
+        System.out.println("Exiting registrerMedlem method...");
+
+
+    }
+    /*public void registrerMedlem() {
         keyboard.nextLine();
 
         System.out.print("Navn: ");

@@ -61,6 +61,25 @@ public class FileHandler {
         }
 
     }
+
+    public static void saveMembersToCSV(String fileName, ArrayList<Member> members) {
+        try (PrintStream output = new PrintStream(fileName)) {
+            for (Member member : members) {
+                output.println(member.getName() + "," +
+                        member.getFormattedDateOfBirth() + "," +
+                        member.getGender() + "," +
+                        member.getPhonenumber() + "," +
+                        member.getAdress() + "," +
+                        member.getMemberNumber() + "," +
+                        member.getPassiveOrActive() + "," +
+                        member.getMotionist() + "," +
+                        member.getCompetitive());
+            }
+        } catch (FileNotFoundException e) {
+            System.err.println("Fejl: " + e.getMessage());
+        }
+    }
+
     //     public void toFile() {
     //        try {
     //            PrintStream writeToFile = new PrintStream(new File("MedlemsListe.csv"));
