@@ -29,92 +29,106 @@ public class Member {
         this.competitive = competitive;
     }
 
+    public int calculateAge() {
+        LocalDate today = LocalDate.now();
+        return today.getYear() - dateOfBirth.getYear();
+    }
+
+
     public String getFormattedDateOfBirth() {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
         return dateOfBirth.format(formatter);
         //LocalDate birthdate = new LocalDate();
     }
 
-        // getters
+    // getters
 
-        public String getName () {
-            return name;
-        }
-        public LocalDate getDateOfBirth () {
-            return dateOfBirth;
-        }
-        public String getGender () {
-            return gender;
-        }
-        public int getPhonenumber () {
-            return phonenumber;
-        }
-        public String getAdress () {
-            return adress;
-        }
-        public int getMemberNumber () {
-            return memberNumber;
-        }
-        public String getPassiveOrActive () {
-            return passiveOrActive;
-        }
-        public String getMotionist () {
-            return motionist;
-        }
-        public String getCompetitive () {
-            return competitive;
-        }
-
-        //setters
-
-        public void setName (String name){
-            this.name = name;
-        }
-
-        public void setDateOfBirth (LocalDate dateOfBirth){
-            this.dateOfBirth = dateOfBirth;
-        }
-
-        public void setGender (String gender){
-            this.gender = gender;
-        }
-
-        public void setPhonenumber ( int phonenumber){
-            this.phonenumber = phonenumber;
-        }
-
-        public void setAdress (String adress){
-            this.adress = adress;
-        }
-
-        public void setMemberNumber ( int memberNumber){
-            this.memberNumber = memberNumber;
-        }
-
-        public void setPassiveOrActive (String passiveOrActive){
-            this.passiveOrActive = passiveOrActive;
-        }
-
-        public void setMotionist (String motionist){
-            this.motionist = motionist;
-        }
-
-        public void setCompetitive (String competitive){
-            this.competitive = competitive;
-        }
-
-        @Override
-        public String toString () {
-            return "\n" +
-                    "navn:" + " " + name + "\n" +
-                    "Fødselsår:" + " " + dateOfBirth + "\n" +
-                    "køn:" + " " + gender + "\n" +
-                    "telefon:" + " " + phonenumber + "\n" +
-                    "Adresse:" + " " + adress + "\n" +
-                    "Medlemsnummer:" + " " + memberNumber + "\n" +
-                    "Medlemsstatus:" + " " + passiveOrActive + "\n" +
-                    "Motionist:" + " " + motionist + "\n" +
-                    "konkurrencesvømmer:" + " " + competitive;
-        }
+    public String getName() {
+        return name;
     }
+
+    public LocalDate getDateOfBirth() {
+        return dateOfBirth;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public int getPhonenumber() {
+        return phonenumber;
+    }
+
+    public String getAdress() {
+        return adress;
+    }
+
+    public int getMemberNumber() {
+        return memberNumber;
+    }
+
+    public String getPassiveOrActive() {
+        return passiveOrActive;
+    }
+
+    public String getMotionist() {
+        return motionist;
+    }
+
+    public String getCompetitive() {
+        return competitive;
+    }
+
+    //setters
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setDateOfBirth(LocalDate dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public void setPhonenumber(int phonenumber) {
+        this.phonenumber = phonenumber;
+    }
+
+    public void setAdress(String adress) {
+        this.adress = adress;
+    }
+
+    public void setMemberNumber(int memberNumber) {
+        this.memberNumber = memberNumber;
+    }
+
+    public void setPassiveOrActive(String passiveOrActive) {
+        this.passiveOrActive = passiveOrActive;
+    }
+
+    public void setMotionist(String motionist) {
+        this.motionist = motionist;
+    }
+
+    public void setCompetitive(String competitive) {
+        this.competitive = competitive;
+    }
+
+    @Override
+    public String toString() {
+        return "\n" +
+                "navn:" + " " + name + "\n" +
+                "Fødselsår:" + " " + dateOfBirth + "\n" +
+                "køn:" + " " + gender + "\n" +
+                "telefon:" + " " + phonenumber + "\n" +
+                "Adresse:" + " " + adress + "\n" +
+                "Medlemsnummer:" + " " + memberNumber + "\n" +
+                "Medlemsstatus:" + " " + passiveOrActive + "\n" +
+                "Motionist:" + " " + motionist + "\n" +
+                "konkurrencesvømmer:" + " " + competitive;
+    }
+}
 

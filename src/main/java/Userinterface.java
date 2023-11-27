@@ -8,16 +8,22 @@ import java.util.Scanner;
 
 // systemet
 public class Userinterface {
-    private Controller controller = new Controller();
+    private final Controller controller;
 
     private Scanner keyboard = new Scanner(System.in);
+
+    public Userinterface(Controller controller) {
+        this.controller = controller;
+
+
+    }
 
 
     public void menu() {
         System.out.println("""
                 Velkommen til Delfinen-klubbens systemet.
                 Hvilke rolle har du i klubben?
-                1: Træner
+                1: Træner 
                 2: Formand
                 3: Kassere
                 """);
@@ -42,9 +48,9 @@ public class Userinterface {
 
 
     public void start() {
-        menu();
-        while (true) {
 
+        while (true) {
+            menu();
 
             switch (keyboard.nextInt()) {
                 case 1:
@@ -56,6 +62,10 @@ public class Userinterface {
                 case 3:
                     //kassereMenu();
                     break;
+                case 9:
+                    exitProgram();
+                    break;
+
 
             }
         }
@@ -78,18 +88,34 @@ public class Userinterface {
                 System.out.println("Ugyldigt valg prøv igen");
                 break;
 
-        }
+
+            }
 
     }
 
 
     public void medlemmerStamoplysninger() {
+        List<Member> members = controller.getMembers();
 
+        // Debugging: Print number of members before sorting
+        System.out.println("Number of members before sorting: " + members.size());
 
-        controller.printMedlemmerStamoplysninger();
+        // Debugging: Print ages of members before sorting
+        System.out.println("Ages of members before sorting:");
+        for (Member member : members) {
+            int age = member.calculateAge();
+            System.out.println(member.getName() + ": " + age + " years old");
+        }
 
+        // Sorting members by age
+        controller.sortMembersByAge(members);
+
+        // Rest of the method...
 
     }
+
+
+
 
 
     public void registrerMedlem() {
@@ -112,7 +138,7 @@ public class Userinterface {
         int memberNumber = getValidIntegerInputMedlemsnummer("Medlemnummer: ");
 
         System.out.print("Passivt eller aktivt medlemskab: ");
-        String passiveOrActive = getValidInputForAktivPassiv();
+        String passiveOrActive = keyboard.nextLine();
 
         System.out.print("Motionist: ");
         String motionist = keyboard.nextLine();
@@ -121,7 +147,7 @@ public class Userinterface {
         String competitive = keyboard.nextLine();
 
 
-        controller.registrerMedlem(name, String.valueOf(dateOfBirth), gender, phonenumber, adress, memberNumber, passiveOrActive, motionist, competitive);
+        controller.registrerMedlem(name, dateOfBirth, gender, phonenumber, adress, memberNumber, passiveOrActive, motionist, competitive);
 
 
     }
@@ -133,7 +159,7 @@ public class Userinterface {
                 System.out.print(prompt);
                 String input = keyboard.nextLine();
 
-                SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+                SimpleDateFormat dateFormat = new SimpleDateFormat("dd-mm-yyyy");
 
                 dateFormat.parse(input);
 
@@ -143,7 +169,23 @@ public class Userinterface {
 
             }
         }
+    }*/
+    private String getValidStringInputFødselsdato(String prompt) {
+        while (true) {
+            try {
+                System.out.print(prompt);
+                String input = keyboard.nextLine();
+
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+                LocalDate.parse(input, formatter);
+
+                return input;
+            } catch (DateTimeParseException e) {
+                System.out.println("Ugyldig input. Indtast venligst en fødselsdato i formatet (dd-mm-yyyy).");
+            }
+        }
     }
+
 
     // metode for at sørger for man indtaster telefonnummer rigtigt ind
     private int getValidIntegerInputTelefonnummer(String prompt) {
@@ -186,49 +228,11 @@ public class Userinterface {
         }
     }
 
-    private String getValidInputForAktivPassiv() {
-        while (true) {
-            try {
-                String input = keyboard.nextLine();
-
-                if ("Aktivt".equals(input)){
-                    getValidInputForAktivMedlem();
-                    return input;
-                } else if ("Passivt".equals(input)) {
-                    System.out.println("Medlemmer med et passivt medlemskab skal betale 600kr i årligt kontingent");
-                    return input;
-                }
-            } catch (java.util.InputMismatchException e) {
-                System.out.println("Ugyldigt input. Indtast venligst en korrekt medlemstype");
-            }
-        }
+    private void exitProgram() {
+        System.out.println("Afslutter programmet.");
+        System.exit(0);
     }
 
-
-    private String getValidInputForAktivMedlem() {
-        while (true) {
-            try {
-                String input = keyboard.nextLine();
-                System.out.println("Hvilken medlemstyper hører personen til?");
-                System.out.println("Ungdomssvømmer u18" + "\n" + "Ungdomssvømmer o18" + "\n" + "Seniorsvømmer");
-
-
-                if ("Ungdomssvømmer u18".equals(input)) {
-                    System.out.println("Ungdomssvømmere under 18 år betaler 1000kr i årligt kontingent");
-                    return input;
-                } else if ("Ungdomssvømmer o18".equals(input)) {
-                    System.out.println("Ungdomssvømmere over 18 år betaler 1600kr i årligt kontingent");
-                    return input;
-                } else if ("Seniorsvømmer".equals(input)) {
-                    System.out.println("Seniorsvømmere over 60 betaler 1200kr i årligt kontingent");
-                    return input;
-                }
-
-                } catch (java.util.InputMismatchException e) {
-                System.out.println("Ugyldigt input. Indtast venligst en korrekt medlemstype");
-            }
-        }
-    }
 
 }
 
