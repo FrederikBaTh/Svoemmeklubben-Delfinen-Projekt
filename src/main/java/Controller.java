@@ -22,8 +22,9 @@ public class Controller {
     }
 
     public void sortMembersByAge(List<Member> members) {
-        database.sortMembersByAge((List<Member>) member);
+        database.sortMembersByAge(members);
     }
+
 
 
     public List<Member> getMembers() {

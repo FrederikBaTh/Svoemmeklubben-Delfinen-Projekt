@@ -103,24 +103,14 @@ public class Userinterface {
     public void medlemmerStamoplysninger() {
         List<Member> members = controller.getMembers();
 
-        // Debugging: Print number of members before sorting
-        System.out.println("Number of members before sorting: " + members.size());
+        controller.sortMembersByAge(members);
 
-        // Debugging: Print ages of members before sorting
-        System.out.println("Ages of members before sorting:");
         for (Member member : members) {
             int age = member.calculateAge();
             System.out.println(member.getName() + ": " + age + " years old");
         }
 
-        // Sorting members by age
-        controller.sortMembersByAge(members);
-
-        // Rest of the method...
-
     }
-
-
 
 
     public void registrerMedlem() {
@@ -142,7 +132,7 @@ public class Userinterface {
         int memberNumber = getValidIntegerInputMedlemsnummer("Medlemsnummer: ");
 
         System.out.print("Passivt eller aktivt medlemskab: ");
-        String passiveOrActive = keyboard.nextLine();
+        String passiveOrActive = getValidInputForAktivPassiv();
 
         System.out.print("Motionist: ");
         String motionist = keyboard.nextLine();
@@ -263,6 +253,49 @@ public class Userinterface {
                 //vi skal spørger hvor mange cifre medlemsnummer har!!
                 System.out.println("Ugyldig input. Indtast venligst et medlemsnummer på 6 cifre.");
                 keyboard.nextLine();
+            }
+        }
+    }
+    private String getValidInputForAktivPassiv() {
+        while (true) {
+            try {
+                String input = keyboard.nextLine();
+
+                if ("Aktivt".equals(input)){
+                    getValidInputForAktivMedlem();
+                    return input;
+                } else if ("Passivt".equals(input)) {
+                    System.out.println("Medlemmer med et passivt medlemskab skal betale 600kr i årligt kontingent");
+                    return input;
+                }
+            } catch (java.util.InputMismatchException e) {
+                System.out.println("Ugyldigt input. Indtast venligst en korrekt medlemstype");
+            }
+        }
+    }
+
+
+    private String getValidInputForAktivMedlem() {
+        while (true) {
+            try {
+                String input = keyboard.nextLine();
+                System.out.println("Hvilken medlemstyper hører personen til?");
+                System.out.println("Ungdomssvømmer u18" + "\n" + "Ungdomssvømmer o18" + "\n" + "Seniorsvømmer");
+
+
+                if ("Ungdomssvømmer u18".equals(input)) {
+                    System.out.println("Ungdomssvømmere under 18 år betaler 1000kr i årligt kontingent");
+                    return input;
+                } else if ("Ungdomssvømmer o18".equals(input)) {
+                    System.out.println("Ungdomssvømmere over 18 år betaler 1600kr i årligt kontingent");
+                    return input;
+                } else if ("Seniorsvømmer".equals(input)) {
+                    System.out.println("Seniorsvømmere over 60 betaler 1200kr i årligt kontingent");
+                    return input;
+                }
+
+            } catch (java.util.InputMismatchException e) {
+                System.out.println("Ugyldigt input. Indtast venligst en korrekt medlemstype");
             }
         }
     }
