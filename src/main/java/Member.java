@@ -29,6 +29,10 @@ public class Member {
         this.competitive = competitive;
     }
 
+    public Member() {
+
+    }
+
     public int calculateAge() {
         LocalDate today = LocalDate.now();
         return today.getYear() - dateOfBirth.getYear();

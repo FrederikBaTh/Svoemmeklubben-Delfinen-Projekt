@@ -3,6 +3,9 @@ import java.util.List;
 //
 public class Controller {
 
+
+    Member member = new Member();
+
     Database database = new Database();
 
 
@@ -12,6 +15,10 @@ public class Controller {
 
     public void registrerMedlem(String name, String dateOfBirth, String gender, int phonenumber, String adress, int memberNumber, String passiveOrActive, String motionist, String competitive) {
         database.registrerMedlem(name, dateOfBirth, gender, phonenumber, adress, memberNumber, passiveOrActive, motionist, competitive);
+    }
+
+    public void exit() {
+        database.scannerExit();
     }
 
     public void sortMembersByAge(List<Member> members) {

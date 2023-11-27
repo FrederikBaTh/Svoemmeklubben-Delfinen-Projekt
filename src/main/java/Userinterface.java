@@ -4,7 +4,11 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Scanner;
+import java.time.format.DateTimeParseException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 // systemet
 public class Userinterface {
@@ -73,24 +77,28 @@ public class Userinterface {
 
 
     public void formandMenu() {
-        System.out.println("1: Vis alle medlemmer" + "\n" + "2: registrer medlem");
-        switch (keyboard.nextInt()) {
+        boolean exit = false;
+        while (!exit) {
+            System.out.println("1: Vis alle medlemmer" + "\n" + "2: registrer medlem" + "\n" + "3: afslut programmet");
+            switch (keyboard.nextInt()) {
 
-            case 1:
-                medlemmerStamoplysninger();
-                break;
-            case 2:
-                registrerMedlem();
-                break;
-            case 3:
-                break;
-            default:
-                System.out.println("Ugyldigt valg prøv igen");
-                break;
+                case 1:
+                    medlemmerStamoplysninger();
+                    break;
+                case 2:
+                    registrerMedlem();
+                    break;
+                case 3:
+                    exit = true;
+                    break;
+                default:
+                    System.out.println("Ugyldigt valg prøv igen");
+                    break;
 
 
             }
 
+        }
     }
 
 
@@ -150,10 +158,10 @@ public class Userinterface {
         controller.registrerMedlem(name, dateOfBirth, gender, phonenumber, adress, memberNumber, passiveOrActive, motionist, competitive);
 
 
-    }
+    } */
 
     // metode for at sørger for man indtaster fødselsdato rigtigt ind
-    private String getValidStringInputFødselsdato(String prompt) {
+    /*private String getValidStringInputFødselsdato(String prompt) {
         while (true) {
             try {
                 System.out.print(prompt);

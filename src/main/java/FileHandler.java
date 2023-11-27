@@ -16,7 +16,7 @@ public class FileHandler {
         try (Scanner fileScanner = new Scanner(new File(fileName))) {
             while (fileScanner.hasNext()) {
                 String name = fileScanner.nextLine();
-                String dateOfBirth = String.valueOf(LocalDate.parse(fileScanner.nextLine()));
+                String dateOfBirth = fileScanner.nextLine();
                 String gender = fileScanner.nextLine();
                 int phonenumber = Integer.parseInt(fileScanner.nextLine());
                 String adress = fileScanner.nextLine();
@@ -45,7 +45,7 @@ public class FileHandler {
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
             for (Member member : members) {
                 output.println(member.getName());
-                output.println(member.getDateOfBirth());
+                output.println(member.getDateOfBirth().format(formatter));
                 output.println(member.getGender());
                 output.println(member.getPhonenumber());
                 output.println(member.getAdress());

@@ -53,8 +53,12 @@ public class Database {
 
     /*public  updateMembership() {
         LocalDate today = LocalDate.now();
+        return today.getYear();*/
         //Period ageDifference
 
+
+    public void scannerExit(){
+        keyboard.close();
     }
 
 
