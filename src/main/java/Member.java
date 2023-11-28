@@ -1,5 +1,3 @@
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
@@ -33,16 +31,21 @@ public class Member {
 
     }
 
-    public int calculateAge() {
+    public int calculateAge(LocalDate date) {
+        this.dateOfBirth = date;
+        LocalDate today = LocalDate.now();
+        //System.out.println(today.getYear() - dateOfBirth.getYear());
+        return today.getYear() - dateOfBirth.getYear();
+    }
+    public int calculateAgeList() {
         LocalDate today = LocalDate.now();
         return today.getYear() - dateOfBirth.getYear();
     }
 
-
     public String getFormattedDateOfBirth() {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
         return dateOfBirth.format(formatter);
-        //LocalDate birthdate = new LocalDate();
+
     }
 
     // getters

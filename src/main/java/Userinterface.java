@@ -1,7 +1,3 @@
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 import java.time.format.DateTimeParseException;
@@ -28,6 +24,7 @@ public class Userinterface {
                 1: Træner 
                 2: Formand
                 3: Kassere
+                9: Afslut program
                 """);
         /*System.out.println("""
 
@@ -56,13 +53,13 @@ public class Userinterface {
 
             switch (keyboard.nextInt()) {
                 case 1:
-                    //trænerMenu();
+                    trænerMenu();
                     break;
                 case 2:
                     formandMenu();
                     break;
                 case 3:
-                    //kassereMenu();
+                    kassereMenu();
                     break;
                 case 9:
                     exitProgram();
@@ -73,6 +70,31 @@ public class Userinterface {
         }
     }
 
+    public void trænerMenu(){
+        boolean exit = false;
+        while(!exit){
+            System.out.println("""
+                            1: Vis alle medlemmers resultaterne
+                            2: registrer resultat af en medlem
+                            3: afslut programmet
+                            """);
+            switch(keyboard.nextInt()){
+
+                case 1:
+                    //resultater();
+                    break;
+                case 2:
+                    //indtastResultater;
+                    break;
+                case 3:
+                    exit = true;
+                    break;
+                default:
+                    System.out.println("Ugyldigt valg prøv igen");
+                    break;
+            }
+        }
+    }
 
     public void formandMenu() {
         boolean exit = false;
@@ -100,15 +122,57 @@ public class Userinterface {
     }
 
 
+    public void kassereMenu(){
+        boolean exit = false;
+        while(!exit){
+            System.out.println("""
+                            1:
+                            2:
+                            3: afslut programmet
+                            """);
+            switch (keyboard.nextInt()){
+                case 1:
+
+                case 2:
+
+                case 3:
+                    exit = true;
+                    break;
+                default:
+                    System.out.println("Ugyldigt valg prøv igen");
+                    break;
+            }
+        }
+    }
+
     public void medlemmerStamoplysninger() {
         List<Member> members = controller.getMembers();
 
         controller.sortMembersByAge(members);
 
+        boolean adskillelseLinjeOU18 = false;
+
+
+        System.out.println("Listen af medlemmer : \n Under 18 årige: \n-------------------");
         for (Member member : members) {
-            int age = member.calculateAge();
-            System.out.println(member.getName() + ": " + age + " years old");
+            if (controller.calculateAge(member.getDateOfBirth())>= 18 && !adskillelseLinjeOU18){
+                System.out.println("Over 18 år: \n-------------------");
+                adskillelseLinjeOU18 = true;
+            }
+            System.out.println("navn: " + member.getName());
+            System.out.println("Fødselsår: " + member.getDateOfBirth());
+            System.out.println("køn: " + member.getGender());
+            System.out.println("telefon: " + member.getPhonenumber());
+            System.out.println("Adresse: " + member.getAdress());
+            System.out.println("Medlemsnummer: " + member.getMemberNumber());
+            System.out.println("Medlemsstatus: " + member.getMemberType());
+            System.out.println("Motionist: " + member.getMotionist());
+            System.out.println("konkurrencesvømmer: " + member.getCompetitive());
+            System.out.println();
         }
+
+
+
 
     }
 
@@ -141,9 +205,12 @@ public class Userinterface {
         String competitive = keyboard.nextLine();
 
 
-        controller.registrerMedlem(name, dateOfBirth, gender, phonenumber, adress, memberNumber, passiveOrActive, motionist, competitive);
+            controller.registrerMedlem(name, dateOfBirth, gender, phonenumber, adress, memberNumber, passiveOrActive, memberType, motionist, competitive);
+        } else {
+            controller.registrerMedlem(name, dateOfBirth, gender, phonenumber, adress, memberNumber, passiveOrActive, null, "", "");
+        }
 
-        System.out.println("Exiting registrerMedlem method...");
+        System.out.println("Går ud af registrermedlem metoden");
 
 
     }
@@ -256,6 +323,7 @@ public class Userinterface {
             }
         }
     }
+
     private String getValidInputForAktivPassiv() {
         while (true) {
             try {
@@ -263,10 +331,12 @@ public class Userinterface {
 
                 if ("Aktivt".equals(input)){
                     getValidInputForAktivMedlem();
-                    return input;
-                } else if ("Passivt".equals(input)) {
+                    return "Aktivt";
+                } else if ("Passivt".equalsIgnoreCase(input)) {
                     System.out.println("Medlemmer med et passivt medlemskab skal betale 600kr i årligt kontingent");
-                    return input;
+                    return "Passivt";
+                } else {
+                    System.out.println("Ugyldigt input. Indtast venligst 'Aktivt' eller 'Passivt'.");
                 }
             } catch (java.util.InputMismatchException e) {
                 System.out.println("Ugyldigt input. Indtast venligst en korrekt medlemstype");

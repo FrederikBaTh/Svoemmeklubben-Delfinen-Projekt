@@ -1,3 +1,4 @@
+import java.time.LocalDate;
 import java.util.List;
 
 //
@@ -25,7 +26,9 @@ public class Controller {
         database.sortMembersByAge(members);
     }
 
-
+    public int calculateAge(LocalDate date){
+        return member.calculateAge(date);
+    }
 
     public List<Member> getMembers() {
         return database.getMeembers();

@@ -26,7 +26,7 @@ public class Database {
             System.out.println("Member successfully registered.");
         } catch (Exception e) {
             System.out.println("Error registering member: " + e.getMessage());
-            e.printStackTrace();  // Print the stack trace for debugging
+            e.printStackTrace();
         }
     }
 
@@ -48,7 +48,7 @@ public class Database {
         return meembers;
     }
     public void sortMembersByAge(List<Member> meembers) {
-        meembers.sort(Comparator.comparingInt(Member::calculateAge));
+        meembers.sort(Comparator.comparingInt(Member::calculateAgeList));
     }
 
     /*public  updateMembership() {
