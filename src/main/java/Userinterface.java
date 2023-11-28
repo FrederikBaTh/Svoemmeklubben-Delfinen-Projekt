@@ -21,7 +21,7 @@ public class Userinterface {
         System.out.println("""
                 Velkommen til Delfinen-klubbens systemet.
                 Hvilke rolle har du i klubben?
-                1: Træner 
+                1: Træner
                 2: Formand
                 3: Kassere
                 9: Afslut program
@@ -64,8 +64,6 @@ public class Userinterface {
                 case 9:
                     exitProgram();
                     break;
-
-
             }
         }
     }
@@ -99,7 +97,11 @@ public class Userinterface {
     public void formandMenu() {
         boolean exit = false;
         while (!exit) {
-            System.out.println("1: Vis alle medlemmer" + "\n" + "2: registrer medlem" + "\n" + "3: afslut programmet");
+            System.out.println("""
+                            1: Vis alle medlemmer
+                            2: registrer medlem
+                            3: afslut programmet
+                            """);
             switch (keyboard.nextInt()) {
 
                 case 1:
@@ -114,10 +116,7 @@ public class Userinterface {
                 default:
                     System.out.println("Ugyldigt valg prøv igen");
                     break;
-
-
             }
-
         }
     }
 
@@ -331,9 +330,9 @@ public class Userinterface {
     private String getValidInputForAktivPassiv() {
         while (true) {
             try {
-                String input = keyboard.nextLine();
+                String input = keyboard.nextLine().toLowerCase();
 
-                if ("Aktivt".equals(input)){
+                if ("Aktivt".equalsIgnoreCase(input)) {
                     getValidInputForAktivMedlem();
                     return "Aktivt";
                 } else if ("Passivt".equalsIgnoreCase(input)) {
@@ -357,13 +356,13 @@ public class Userinterface {
                 System.out.println("Ungdomssvømmer u18" + "\n" + "Ungdomssvømmer o18" + "\n" + "Seniorsvømmer");
 
 
-                if ("Ungdomssvømmer u18".equals(input)) {
+                if ("Ungdomssvømmer u18".equalsIgnoreCase(input)) {
                     System.out.println("Ungdomssvømmere under 18 år betaler 1000kr i årligt kontingent");
                     return input;
-                } else if ("Ungdomssvømmer o18".equals(input)) {
+                } else if ("Ungdomssvømmer o18".equalsIgnoreCase(input)) {
                     System.out.println("Ungdomssvømmere over 18 år betaler 1600kr i årligt kontingent");
                     return input;
-                } else if ("Seniorsvømmer".equals(input)) {
+                } else if ("Seniorsvømmer".equalsIgnoreCase(input)) {
                     System.out.println("Seniorsvømmere over 60 betaler 1200kr i årligt kontingent");
                     return input;
                 }
