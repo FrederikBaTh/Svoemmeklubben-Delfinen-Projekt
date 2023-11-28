@@ -10,12 +10,13 @@ public class Member {
     private String adress;
     private int memberNumber;
     private String passiveOrActive;
+    private String memberType;
     private String motionist;
     private String competitive;
 
     //constructor
 
-    public Member(String name, String dateOfBirth, String gender, int phonenumber, String adress, int memberNumber, String passiveOrActive, String motionist, String competitive) {
+    public Member(String name, String dateOfBirth, String gender, int phonenumber, String adress, int memberNumber, String passiveOrActive, String memberType, String motionist, String competitive) {
         this.name = name;
         this.dateOfBirth = LocalDate.parse(dateOfBirth, DateTimeFormatter.ofPattern("dd-MM-yyyy"));
         this.gender = gender;
@@ -23,6 +24,7 @@ public class Member {
         this.adress = adress;
         this.memberNumber = memberNumber;
         this.passiveOrActive = passiveOrActive;
+        this.memberType = memberType;
         this.motionist = motionist;
         this.competitive = competitive;
     }
@@ -78,6 +80,10 @@ public class Member {
         return passiveOrActive;
     }
 
+    public String getMemberType() {
+        return memberType;
+    }
+
     public String getMotionist() {
         return motionist;
     }
@@ -116,6 +122,10 @@ public class Member {
         this.passiveOrActive = passiveOrActive;
     }
 
+    public void setMemberType(String Membertype) {
+        this.memberType = Membertype;
+    }
+
     public void setMotionist(String motionist) {
         this.motionist = motionist;
     }
@@ -134,6 +144,7 @@ public class Member {
                 "Adresse:" + " " + adress + "\n" +
                 "Medlemsnummer:" + " " + memberNumber + "\n" +
                 "Medlemsstatus:" + " " + passiveOrActive + "\n" +
+                "Medlemstype:" + " " + memberType + "\n" +
                 "Motionist:" + " " + motionist + "\n" +
                 "konkurrencesvømmer:" + " " + competitive;
     }

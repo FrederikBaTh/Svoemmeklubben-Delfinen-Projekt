@@ -1,5 +1,3 @@
-import java.io.File;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -17,10 +15,10 @@ public class Database {
     }
 
 
-    public void registrerMedlem(String name, String dateOfBirth, String gender, int phonenumber, String address, int memberNumber, String passiveOrActive, String motionist, String competitive) {
+    public void registrerMedlem(String name, String dateOfBirth, String gender, int phonenumber, String address, int memberNumber, String passiveOrActive, String memberType,String motionist, String competitive) {
         try {
             meembers = FileHandler.loadedMembers("MedlemsListe.csv");
-            Member member = new Member(name, dateOfBirth, gender, phonenumber, address, memberNumber, passiveOrActive, motionist, competitive);
+            Member member = new Member(name, dateOfBirth, gender, phonenumber, address, memberNumber, passiveOrActive, memberType, motionist, competitive);
             meembers.add(member);
             FileHandler.saveListOfMembersToFile("MedlemsListe.csv", meembers);
             System.out.println("Member successfully registered.");
@@ -60,6 +58,9 @@ public class Database {
     public void scannerExit(){
         keyboard.close();
     }
+
+
+
 
 
 }

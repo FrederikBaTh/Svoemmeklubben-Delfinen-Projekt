@@ -197,12 +197,16 @@ public class Userinterface {
 
         System.out.print("Passivt eller aktivt medlemskab: ");
         String passiveOrActive = getValidInputForAktivPassiv();
+        if (!"Passivt".equalsIgnoreCase(getValidInputForAktivMedlem())) {
 
-        System.out.print("Motionist: ");
-        String motionist = keyboard.nextLine();
+            System.out.println("Member type: ");
+            String memberType = getValidInputForAktivMedlem();
 
-        System.out.print("Konkurrence: ");
-        String competitive = keyboard.nextLine();
+            System.out.print("Motionist: ");
+            String motionist = keyboard.nextLine();
+
+            System.out.print("Konkurrence: ");
+            String competitive = keyboard.nextLine();
 
 
             controller.registrerMedlem(name, dateOfBirth, gender, phonenumber, adress, memberNumber, passiveOrActive, memberType, motionist, competitive);

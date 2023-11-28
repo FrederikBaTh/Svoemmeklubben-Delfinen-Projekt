@@ -1,8 +1,6 @@
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintStream;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -22,12 +20,13 @@ public class FileHandler {
                 String adress = fileScanner.nextLine();
                 int memberNumber = Integer.parseInt(fileScanner.nextLine());
                 String passiveOrActive = fileScanner.nextLine();
+                String memberType = fileScanner.nextLine();
                 String motionist = fileScanner.nextLine();
                 String competitive = fileScanner.nextLine();
 
 
 
-                Member members = new Member(name, dateOfBirth, gender, phonenumber, adress, memberNumber, passiveOrActive, motionist, competitive);
+                Member members = new Member(name, dateOfBirth, gender, phonenumber, adress, memberNumber, passiveOrActive, memberType, motionist, competitive);
                 loadedMembers.add(members);
 
                 if (fileScanner.hasNext()) {
@@ -51,6 +50,7 @@ public class FileHandler {
                 output.println(member.getAdress());
                 output.println(member.getMemberNumber());
                 output.println(member.getPassiveOrActive());
+                output.println(member.getMemberType());
                 output.println(member.getMotionist());
                 output.println(member.getCompetitive());
                 output.println();
@@ -72,6 +72,7 @@ public class FileHandler {
                         member.getAdress() + "," +
                         member.getMemberNumber() + "," +
                         member.getPassiveOrActive() + "," +
+                        member.getMemberType() + "," +
                         member.getMotionist() + "," +
                         member.getCompetitive());
             }
