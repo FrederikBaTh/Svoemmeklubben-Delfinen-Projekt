@@ -12,8 +12,6 @@ public class Userinterface {
 
     public Userinterface(Controller controller) {
         this.controller = controller;
-
-
     }
 
 
@@ -44,7 +42,6 @@ public class Userinterface {
 
          */
     }
-
 
     public void start() {
 
@@ -196,10 +193,11 @@ public class Userinterface {
 
         System.out.print("Passivt eller aktivt medlemskab: ");
         String passiveOrActive = getValidInputForAktivPassiv();
-        if (!"Passivt".equalsIgnoreCase(getValidInputForAktivMedlem())) {
+        String memberType = "";
 
-            System.out.println("Member type: ");
-            String memberType = getValidInputForAktivMedlem();
+        if ("aktivt".equalsIgnoreCase(passiveOrActive)) {
+            memberType = getValidInputForAktivMedlem();
+        }
 
             System.out.print("Motionist: ");
             String motionist = keyboard.nextLine();
@@ -209,9 +207,7 @@ public class Userinterface {
 
 
             controller.registrerMedlem(name, dateOfBirth, gender, phonenumber, adress, memberNumber, passiveOrActive, memberType, motionist, competitive);
-        } else {
-            controller.registrerMedlem(name, dateOfBirth, gender, phonenumber, adress, memberNumber, passiveOrActive, null, "", "");
-        }
+         
 
         System.out.println("Går ud af registrermedlem metoden");
 
@@ -327,51 +323,49 @@ public class Userinterface {
         }
     }
 
+
     private String getValidInputForAktivPassiv() {
         while (true) {
             try {
+                System.out.print("Passivt eller aktivt medlemskab: ");
                 String input = keyboard.nextLine().toLowerCase();
 
-                if ("Aktivt".equalsIgnoreCase(input)) {
-                    getValidInputForAktivMedlem();
-                    return "Aktivt";
-                } else if ("Passivt".equalsIgnoreCase(input)) {
+                if ("passivt".equalsIgnoreCase(input)) {
                     System.out.println("Medlemmer med et passivt medlemskab skal betale 600kr i årligt kontingent");
                     return "Passivt";
+                } else if ("aktivt".equalsIgnoreCase(input)) {
+                    return "Aktivt";
                 } else {
-                    System.out.println("Ugyldigt input. Indtast venligst 'Aktivt' eller 'Passivt'.");
+                    System.out.println("Ugyldigt input. Indtast venligst 'aktivt' eller 'passivt'.");
                 }
             } catch (java.util.InputMismatchException e) {
-                System.out.println("Ugyldigt input. Indtast venligst en korrekt medlemstype");
+                System.out.println("Ugyldigt input. Indtast venligst 'aktivt' eller 'passivt'.");
             }
         }
     }
-
 
     private String getValidInputForAktivMedlem() {
         while (true) {
             try {
-                String input = keyboard.nextLine();
-                System.out.println("Hvilken medlemstyper hører personen til?");
+                System.out.println("Hvilken medlemstype hører personen til?");
                 System.out.println("Ungdomssvømmer u18" + "\n" + "Ungdomssvømmer o18" + "\n" + "Seniorsvømmer");
+                String memberType = keyboard.nextLine();
 
-
-                if ("Ungdomssvømmer u18".equalsIgnoreCase(input)) {
-                    System.out.println("Ungdomssvømmere under 18 år betaler 1000kr i årligt kontingent");
-                    return input;
-                } else if ("Ungdomssvømmer o18".equalsIgnoreCase(input)) {
-                    System.out.println("Ungdomssvømmere over 18 år betaler 1600kr i årligt kontingent");
-                    return input;
-                } else if ("Seniorsvømmer".equalsIgnoreCase(input)) {
-                    System.out.println("Seniorsvømmere over 60 betaler 1200kr i årligt kontingent");
-                    return input;
+                if ("ungdomssvømmer u18".equalsIgnoreCase(memberType) ||
+                        "ungdomssvømmer o18".equalsIgnoreCase(memberType) ||
+                        "seniorsvømmer".equalsIgnoreCase(memberType)) {
+                    return memberType;
+                } else {
+                    System.out.println("Ugyldig medlemstype. Indtast venligst en korrekt medlemstype.");
                 }
-
             } catch (java.util.InputMismatchException e) {
                 System.out.println("Ugyldigt input. Indtast venligst en korrekt medlemstype");
             }
         }
     }
+
+
+
 
     private void exitProgram() {
         System.out.println("Afslutter programmet.");

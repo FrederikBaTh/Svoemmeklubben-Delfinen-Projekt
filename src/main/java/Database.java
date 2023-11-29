@@ -17,7 +17,7 @@ public class Database {
 
     public void registrerMedlem(String name, String dateOfBirth, String gender, int phonenumber, String address, int memberNumber, String passiveOrActive, String memberType,String motionist, String competitive) {
         try {
-            meembers = FileHandler.loadedMembers("MedlemsListe.csv");
+           // meembers = FileHandler.loadedMembers("MedlemsListe.csv");
             Member member = new Member(name, dateOfBirth, gender, phonenumber, address, memberNumber, passiveOrActive, memberType, motionist, competitive);
             meembers.add(member);
             FileHandler.saveListOfMembersToFile("MedlemsListe.csv", meembers);
@@ -29,18 +29,6 @@ public class Database {
     }
 
 
-    public void printMedlemmerStamoplysninger() {
-        meembers = FileHandler.loadedMembers("MedlemsListe.csv");
-        if (meembers.isEmpty()){
-            System.out.println("Ingen medlemmer oprettet");
-        }
-
-        for (Member member : meembers) {
-            System.out.println(member);
-            System.out.println();
-        }
-
-    }
 
     public ArrayList<Member> getMeembers() {
         return meembers;

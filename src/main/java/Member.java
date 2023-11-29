@@ -9,7 +9,7 @@ public class Member {
     private int phonenumber;
     private String adress;
     private int memberNumber;
-    private String passiveOrActive;
+    private String passiveOrActive; // TODO Overvej at ændre til boolean
     private String memberType;
     private String motionist;
     private String competitive;

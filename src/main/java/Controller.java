@@ -1,4 +1,5 @@
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 //
@@ -10,8 +11,8 @@ public class Controller {
     Database database = new Database();
 
 
-    public void printMedlemmerStamoplysninger() {
-        database.printMedlemmerStamoplysninger();
+    public ArrayList<Member> printMedlemmerStamoplysninger() {
+       return database.getMeembers();
     }
 
     public void registrerMedlem(String name, String dateOfBirth, String gender, int phonenumber, String adress, int memberNumber, String passiveOrActive, String memberType, String motionist, String competitive) {
