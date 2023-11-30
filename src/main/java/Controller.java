@@ -33,6 +33,11 @@ public class Controller {
 
     }
 
+    public int calculateYearlyIncome(){
+        return database.calculateYearlyIncome();
+    }
+
+
     //TODO brug til noget?
     public void someMethod() {
         List<Member> members = getMembers();

@@ -107,13 +107,14 @@ public class Userinterface {
         boolean exit = false;
         while (!exit) {
             System.out.println("""
-                    1:
+                    1: se årligindkomst
                     2:
                     3: afslut programmet
                     """);
             switch (keyboard.nextInt()) {
                 case 1:
-
+                    displayYearlyIncome();
+                    break;
                 case 2:
 
                 case 3:
@@ -257,7 +258,10 @@ public class Userinterface {
 
 
     }
-
+    public void displayYearlyIncome() {
+        int yearlyIncome = controller.calculateYearlyIncome();
+        System.out.println("Expected Yearly Income: " + yearlyIncome + " kr.");
+    }
 
     //TODO top 5 til at træneren kan se på de bedste 5 i hver disciple.
     public void top5Svimmers() {

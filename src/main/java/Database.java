@@ -29,6 +29,16 @@ public class Database {
     }
 
 
+    public int calculateYearlyIncome() {
+        int yearlyIncome = 0;
+
+        for (Member member : meembers) {
+            yearlyIncome += member.calculateYearlySubscriptionFee();
+        }
+
+        return yearlyIncome;
+    }
+
 
     public ArrayList<Member> getMeembers() {
         return meembers;

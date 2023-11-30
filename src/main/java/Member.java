@@ -55,6 +55,27 @@ public class Member {
 
     }
 
+    public int calculateYearlySubscriptionFee() {
+        int baseFee = 0;
+
+        if ("aktivt".equalsIgnoreCase(passiveOrActive)) {
+            if ("ungdomssvømmer u18".equalsIgnoreCase(memberType)) {
+                baseFee = 1000;
+            } else if ("seniorsvømmer".equalsIgnoreCase(memberType)) {
+                baseFee = 1600;
+                if (calculateAgeList() > 60) {
+                    // Apply 25% discount for seniors over 60
+                    baseFee = (int) (baseFee * 0.75);
+                }
+            }
+        } else if ("passivt".equalsIgnoreCase(passiveOrActive)) {
+            baseFee = 500;
+        }
+
+        return baseFee;
+    }
+
+
     // getters
 
     public String getName() {
