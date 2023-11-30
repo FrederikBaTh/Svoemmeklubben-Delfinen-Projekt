@@ -4,20 +4,23 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c8e94393-bee2-45ff-a00f-fe84b417e598" name="Changes" comment="Version 2.2">
-      <change afterPath="$PROJECT_DIR$/src/main/java/CompetitiveMember.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_24_11_2023_08_43__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_24_11_2023_08_43__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_27_11_2023__12_33__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_27_11_2023__12_33__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_27_11_2023__12_33__Changes_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_27_11_2023__12_33__Changes_1.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_28_11_2023__12_35__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_28_11_2023__12_35__Changes_.xml" afterDir="false" />
+    <list default="true" id="c8e94393-bee2-45ff-a00f-fe84b417e598" name="Changes" comment="Version 2.2 gjort 2 userstories færdig">
+      <change afterPath="$PROJECT_DIR$/src/main/java/SvimmingDisiplin.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MedlemsListe.csv" beforeDir="false" afterPath="$PROJECT_DIR$/MedlemsListe.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Database.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/CompetitiveMember.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/CompetitiveMember.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Member.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Member.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Userinterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Userinterface.java" afterDir="false" />
     </list>
     <list id="2a237768-9de4-4a09-b015-05cf8b104204" name="Changes by frede" comment="" />
+    <list id="94e2b45a-2e0d-411e-b7d4-5750d824dc2d" name="Changes by paulsebastiankrus" comment="" />
+    <list id="67793032-fb6c-4540-abf8-3a33fa1e9568" name="Changes by Severius" comment="">
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Database.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/FileHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/FileHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Userinterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Userinterface.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -27,6 +30,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="Enum" />
       </list>
     </option>
   </component>
@@ -37,10 +41,37 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="jar:///Library/Java/JavaVirtualMachines/jdk-20.jdk/Contents/Home/lib/src.zip!/java.base/java/lang/Integer.java" root0="SKIP_INSPECTION" />
+  </component>
+  <component name="LineStatusTrackerManager">
+    <file path="$PROJECT_DIR$/src/main/java/Userinterface.java">
+      <ranges>
+        <range start1="0" end1="0" start2="0" end2="2" changelist="c8e94393-bee2-45ff-a00f-fe84b417e598" />
+        <range start1="26" end1="43" start2="28" end2="28" changelist="67793032-fb6c-4540-abf8-3a33fa1e9568" />
+        <range start1="67" end1="68" start2="52" end2="53" changelist="c8e94393-bee2-45ff-a00f-fe84b417e598" />
+        <range start1="69" end1="70" start2="54" end2="55" changelist="c8e94393-bee2-45ff-a00f-fe84b417e598" />
+        <range start1="71" end1="76" start2="56" end2="61" changelist="c8e94393-bee2-45ff-a00f-fe84b417e598" />
+        <range start1="81" end1="82" start2="66" end2="67" changelist="c8e94393-bee2-45ff-a00f-fe84b417e598" />
+        <range start1="97" end1="101" start2="82" end2="86" changelist="c8e94393-bee2-45ff-a00f-fe84b417e598" />
+        <range start1="120" end1="121" start2="105" end2="106" changelist="c8e94393-bee2-45ff-a00f-fe84b417e598" />
+        <range start1="122" end1="123" start2="107" end2="108" changelist="c8e94393-bee2-45ff-a00f-fe84b417e598" />
+        <range start1="124" end1="129" start2="109" end2="114" changelist="c8e94393-bee2-45ff-a00f-fe84b417e598" />
+        <range start1="153" end1="154" start2="138" end2="139" changelist="c8e94393-bee2-45ff-a00f-fe84b417e598" />
+        <range start1="168" end1="172" start2="153" end2="153" changelist="67793032-fb6c-4540-abf8-3a33fa1e9568" />
+        <range start1="201" end1="203" start2="182" end2="184" changelist="c8e94393-bee2-45ff-a00f-fe84b417e598" />
+        <range start1="204" end1="206" start2="185" end2="187" changelist="c8e94393-bee2-45ff-a00f-fe84b417e598" />
+        <range start1="208" end1="210" start2="189" end2="191" changelist="c8e94393-bee2-45ff-a00f-fe84b417e598" />
+        <range start1="215" end1="215" start2="196" end2="309" changelist="c8e94393-bee2-45ff-a00f-fe84b417e598" />
+        <range start1="267" end1="267" start2="361" end2="381" changelist="c8e94393-bee2-45ff-a00f-fe84b417e598" />
+        <range start1="282" end1="283" start2="396" end2="396" changelist="67793032-fb6c-4540-abf8-3a33fa1e9568" />
+        <range start1="324" end1="325" start2="437" end2="437" changelist="67793032-fb6c-4540-abf8-3a33fa1e9568" />
+        <range start1="365" end1="368" start2="477" end2="477" changelist="67793032-fb6c-4540-abf8-3a33fa1e9568" />
+        <range start1="373" end1="375" start2="482" end2="482" changelist="67793032-fb6c-4540-abf8-3a33fa1e9568" />
+        <range start1="377" end1="527" start2="484" end2="484" changelist="67793032-fb6c-4540-abf8-3a33fa1e9568" />
+      </ranges>
+    </file>
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 4
@@ -51,24 +82,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "codeWithMe.voiceChat.enabledByDefault": "false",
-    "git-widget-placeholder": "master",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "preferences.keymap",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\pauls\Desktop\INTELLIJ PROJECTER\Svoemmeklubben-Delfinen-Projekt\src" />
@@ -100,47 +130,8 @@
       <workItem from="1700758495923" duration="6085000" />
       <workItem from="1700811268115" duration="275000" />
       <workItem from="1701093255413" duration="2776000" />
-      <workItem from="1700826683546" duration="396000" />
-      <workItem from="1701118664800" duration="2011000" />
-      <workItem from="1701171387000" duration="1329000" />
-      <workItem from="1701179245718" duration="521000" />
+      <workItem from="1701337496163" duration="2700000" />
     </task>
-    <task id="LOCAL-00001" summary="Version 2.2">
-      <option name="closed" value="true" />
-      <created>1700826989352</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1700826989352</updated>
-    </task>
-    <task id="LOCAL-00002" summary="Changes by marcusmortensen">
-      <option name="closed" value="true" />
-      <created>1700826997317</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1700826997317</updated>
-    </task>
-    <task id="LOCAL-00003" summary="Changes by paulsebastiankrus">
-      <option name="closed" value="true" />
-      <created>1700827007106</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1700827007106</updated>
-    </task>
-    <task id="LOCAL-00004" summary="Changes by Severius">
-      <option name="closed" value="true" />
-      <created>1700827009635</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1700827009635</updated>
-      <workItem from="1700758495923" duration="6085000" />
-      <workItem from="1700811268115" duration="275000" />
-      <workItem from="1701093255413" duration="2776000" />
-    </task>
-    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -159,10 +150,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Version 2.1" />
-    <MESSAGE value="Changes by marcusmortensen" />
-    <MESSAGE value="Changes by paulsebastiankrus" />
     <MESSAGE value="Version 2.2" />
-    <MESSAGE value="Changes by Severius" />
     <MESSAGE value="Version 2.2 mandag yes" />
     <MESSAGE value="Changes by marcusmortensen" />
     <option name="LAST_COMMIT_MESSAGE" value="Changes by marcusmortensen" />
@@ -173,6 +161,10 @@
         <breakpoint enabled="true" type="java-exception">
           <properties class="java.util.NoSuchElementException" package="java.util" />
           <option name="timeStamp" value="2" />
+        </breakpoint>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.NumberFormatException" package="java.lang" />
+          <option name="timeStamp" value="3" />
         </breakpoint>
       </breakpoints>
     </breakpoint-manager>

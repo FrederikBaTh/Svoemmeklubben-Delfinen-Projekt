@@ -1,3 +1,5 @@
+import java.time.Duration;
+import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 import java.time.format.DateTimeParseException;
@@ -65,21 +67,21 @@ public class Userinterface {
         }
     }
 
-    public void trænerMenu(){
+    public void trænerMenu() {
         boolean exit = false;
-        while(!exit){
+        while (!exit) {
             System.out.println("""
-                            1: Vis alle medlemmers resultaterne
-                            2: registrer resultat af en medlem
-                            3: afslut programmet
-                            """);
-            switch(keyboard.nextInt()){
+                    1: Vis alle medlemmers resultaterne
+                    2: registrer resultat af en medlem
+                    3: afslut programmet
+                    """);
+            switch (keyboard.nextInt()) {
 
                 case 1:
                     //resultater();
                     break;
                 case 2:
-                    //indtastResultater;
+                    indtastResultater();
                     break;
                 case 3:
                     exit = true;
@@ -95,10 +97,10 @@ public class Userinterface {
         boolean exit = false;
         while (!exit) {
             System.out.println("""
-                            1: Vis alle medlemmer
-                            2: registrer medlem
-                            3: afslut programmet
-                            """);
+                    1: Vis alle medlemmer
+                    2: registrer medlem
+                    3: afslut programmet
+                    """);
             switch (keyboard.nextInt()) {
 
                 case 1:
@@ -118,15 +120,15 @@ public class Userinterface {
     }
 
 
-    public void kassereMenu(){
+    public void kassereMenu() {
         boolean exit = false;
-        while(!exit){
+        while (!exit) {
             System.out.println("""
-                            1:
-                            2:
-                            3: afslut programmet
-                            """);
-            switch (keyboard.nextInt()){
+                    1:
+                    2:
+                    3: afslut programmet
+                    """);
+            switch (keyboard.nextInt()) {
                 case 1:
 
                 case 2:
@@ -151,7 +153,7 @@ public class Userinterface {
 
         System.out.println("Listen af medlemmer : \n Under 18 årige: \n-------------------");
         for (Member member : members) {
-            if (controller.calculateAge(member.getDateOfBirth())>= 18 && !adskillelseLinjeOU18){
+            if (controller.calculateAge(member.getDateOfBirth()) >= 18 && !adskillelseLinjeOU18) {
                 System.out.println("Over 18 år: \n-------------------");
                 adskillelseLinjeOU18 = true;
             }
@@ -199,20 +201,133 @@ public class Userinterface {
             memberType = getValidInputForAktivMedlem();
         }
 
-            System.out.print("Motionist: ");
-            String motionist = keyboard.nextLine();
+        System.out.print("Motionist: ");
+        String motionist = keyboard.nextLine();
 
-            System.out.print("Konkurrence: ");
-            String competitive = keyboard.nextLine();
+        System.out.print("Konkurrence: ");
+        String competitive = keyboard.nextLine();
 
 
-            controller.registrerMedlem(name, dateOfBirth, gender, phonenumber, adress, memberNumber, passiveOrActive, memberType, motionist, competitive);
-         
+        controller.registrerMedlem(name, dateOfBirth, gender, phonenumber, adress, memberNumber, passiveOrActive, memberType, motionist, competitive);
+
 
         System.out.println("Går ud af registrermedlem metoden");
 
 
     }
+
+    //TODO resultater af alle træningens tiderne, så træneren kan sætte de bedste ind i konkurrence.
+    public void resultater() {
+        System.out.println();
+    }
+
+    public void indtastResultater() {
+        boolean exit = false;
+        while (!exit) {
+            System.out.println("""
+                    1: registrer resultater af en træning
+                    2: registrer resulater af en konkurrence 
+                    3: afslut programmet
+                    """);
+            switch (keyboard.nextInt()) {
+
+                case 1:
+                    indtastresultaterTræning();
+                    break;
+                case 2:
+                    resultaterKonkurrence();
+                    break;
+                case 3:
+                    exit = true;
+                    break;
+                default:
+                    System.out.println("ugyldigt valg ");
+
+            }
+        }
+    }
+
+    public void indtastresultaterTræning() {
+        keyboard.nextLine();
+
+        System.out.print("Svømmetid (hh:mm:ss): ");
+        String svømmeTidInput = keyboard.nextLine();
+
+        Duration svømmeTid = parseDuration(svømmeTidInput);
+
+        String svømmeDato = getValidStringInputSvømmeDato("Svømmedato: ");
+
+        System.out.println("Svømmedisciplin: )");
+        SwimmingDiscipline svømmeDiciplin = getValidSwimmingDiscipline();
+
+    }
+
+    public void resultaterKonkurrence() {
+        keyboard.nextLine();
+
+        System.out.println("Svømmetid (hh:mm:ss): ");
+        String svømmeTidInputKonkurrence = keyboard.nextLine();
+
+        Duration svømmetid = parseDuration(svømmeTidInputKonkurrence);
+
+        String svømmeDatoKonkurrence = getValidStringInputSvømmeDato("Konkurrence dato: ");
+
+        System.out.println("Svømmedisciplin: ");
+        SwimmingDiscipline svømmeDiciplinKonkurrence = getValidSwimmingDiscipline();
+
+
+
+    }
+
+
+    //TODO top 5 til at træneren kan se på de bedste 5 i hver disciple.
+    public void top5Svimmers() {
+        System.out.println();
+    }
+
+    public SwimmingDiscipline getValidSwimmingDiscipline() {
+        while (true) {
+            try {
+                System.out.print("Vælg svømmedisciplin (BUTTERFLY, FRONT_CRAWL, BACKSTROKE, BREASTSTROKE): ");
+                String input = keyboard.nextLine().toUpperCase();
+
+                for (SwimmingDiscipline discipline : SwimmingDiscipline.values()) {
+                    if (discipline.name().equalsIgnoreCase(input)) {
+                        return discipline;
+                    }
+                }
+
+                throw new IllegalArgumentException();
+            } catch (IllegalArgumentException e) {
+                System.out.println("Ugyldig indtastning. Vælg venligst en gyldig svømmedisciplin.");
+            }
+        }
+    }
+
+
+    private Duration parseDuration(String input) {
+        String[] timeComponents = input.split(":");
+        if (timeComponents.length == 3) {
+            try {
+                long hours = Long.parseLong(timeComponents[0]);
+                long minutes = Long.parseLong(timeComponents[1]);
+                long seconds = Long.parseLong(timeComponents[2]);
+
+                return Duration.ofHours(hours).plusMinutes(minutes).plusSeconds(seconds);
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid input for svømmetid. Please enter time in hh:mm:ss format.");
+            }
+        } else {
+            System.out.println("Invalid input for svømmetid. Please enter time in hh:mm:ss format.");
+        }
+
+        return Duration.ZERO;
+    }
+
+
+
+
+
     /*public void registrerMedlem() {
         keyboard.nextLine();
 
@@ -265,6 +380,26 @@ public class Userinterface {
             }
         }
     }*/
+    private String getValidStringInputSvømmeDato(String prompt) {
+
+        while (true)
+            try {
+
+                System.out.println(prompt);
+                String input = keyboard.nextLine();
+
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+                LocalDate.parse(input, formatter);
+
+                return input;
+
+            } catch (DateTimeParseException e) {
+                System.out.println("Ugyldig input. Indtast venligst en svømmedato i formatet (dd-mm-yyyy).");
+            }
+
+
+    }
+
     private String getValidStringInputFødselsdato(String prompt) {
         while (true) {
             try {

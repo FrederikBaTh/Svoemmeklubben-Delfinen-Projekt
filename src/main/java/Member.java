@@ -1,3 +1,4 @@
+import java.time.Duration;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
@@ -32,6 +33,10 @@ public class Member {
     public Member() {
 
     }
+
+    public Member(String name, LocalDate dateOfBirth, String gender, int phonenumber, String adress, int memberNumber, String passiveOrActive, String memberType, String motionist, String competitive, Duration swimTime, LocalDate dateOfSwim, String swimmingDiscipline) {
+    }
+
 
     public int calculateAge(LocalDate date) {
         this.dateOfBirth = date;
