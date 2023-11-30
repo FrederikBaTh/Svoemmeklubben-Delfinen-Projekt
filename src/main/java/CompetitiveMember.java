@@ -1,28 +1,24 @@
 import java.time.Duration;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
 public class CompetitiveMember extends Member {
 
-    private Duration swimTime;
+    private LocalTime swimTime;
     private LocalDate dateOfSwim;
-    private String swimmingDiscipline;
+    private SwimmingDiscipline swimmingDiscipline;
 
     private String eventName;
     private String eventPlacement;
     //private Duration eventSwimTime;
 
     //no event
-    public CompetitiveMember(String name, LocalDate dateOfBirth, String gender, int phonenumber, String adress, int memberNumber, String passiveOrActive, String memberType, String motionist, String competitive, Duration swimTime, LocalDate dateOfSwim, String swimmingDiscipline){
-    super(name, dateOfBirth, gender, phonenumber, adress, memberNumber, passiveOrActive, memberType, motionist, competitive,swimTime,dateOfSwim,swimmingDiscipline);
-
+    // no event
+    public CompetitiveMember(String name, String dateOfBirth, String gender, int phonenumber, String adress, int memberNumber, String passiveOrActive, String memberType, String motionist, String competitive, LocalTime swimTime, String dateOfSwim, SwimmingDiscipline swimmingDiscipline){
         initializeEventDetails(swimTime, dateOfSwim, swimmingDiscipline);
-        //this.swimTime = swimTime;
-       // this.dateOfSwim = dateOfSwim;
-       // this.swimmingDiscipline = swimmingDiscipline;
-
-
     }
+
 
     //with event
     public CompetitiveMember(
@@ -36,9 +32,9 @@ public class CompetitiveMember extends Member {
             String memberType,
             String motionist,
             String competitive,
-            Duration swimTime,
-            LocalDate dateOfSwim,
-            String swimmingDiscipline,
+            LocalTime swimTime,
+            String dateOfSwim,
+            SwimmingDiscipline swimmingDiscipline,
             String eventName,
             String eventPlacement) {
         super(
@@ -59,20 +55,36 @@ public class CompetitiveMember extends Member {
         //this.eventPlacement = eventPlacement;
 
     }
-    private void initializeEventDetails(Duration swimTime, LocalDate dateOfSwim, String swimmingDiscipline) {
+
+    public CompetitiveMember(LocalTime svimTime, LocalDate dateOfSwim, SwimmingDiscipline swimmingDiscipline) {
+    }
+
+    public LocalTime getSwimTime() {
+        return swimTime;
+    }
+    public LocalDate getDateOfSwim() {
+        return dateOfSwim;
+    }
+    public SwimmingDiscipline getSwimmingDiscipline() {
+        return swimmingDiscipline;
+    }
+
+
+    private void initializeEventDetails(LocalTime swimTime, String dateOfSwim, SwimmingDiscipline swimmingDiscipline) {
         this.swimTime = swimTime;
-        this.dateOfSwim = dateOfSwim;
+        this.dateOfSwim = LocalDate.parse(dateOfSwim, DateTimeFormatter.ofPattern("dd-MM-yyyy"));;
         this.swimmingDiscipline = swimmingDiscipline;
     }
 
 
-
-
-
-
-
-
-
-
-
+    @Override
+    public String toString() {
+        return "CompetitiveMember{" +
+                "swimTime=" + swimTime +
+                ", dateOfSwim=" + dateOfSwim +
+                ", swimmingDiscipline=" + swimmingDiscipline +
+                ", eventName='" + eventName + '\'' +
+                ", eventPlacement='" + eventPlacement + '\'' +
+                '}';
+    }
 }

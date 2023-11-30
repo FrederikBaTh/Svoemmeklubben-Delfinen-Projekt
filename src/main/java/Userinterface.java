@@ -1,5 +1,5 @@
 import java.time.Duration;
-import java.util.Date;
+import java.time.LocalTime;
 import java.util.List;
 import java.util.Scanner;
 import java.time.format.DateTimeParseException;
@@ -61,7 +61,7 @@ public class Userinterface {
             switch (keyboard.nextInt()) {
 
                 case 1:
-                    //resultater();
+                    //printResultater();
                     break;
                 case 2:
                     indtastResultater();
@@ -211,10 +211,10 @@ public class Userinterface {
             switch (keyboard.nextInt()) {
 
                 case 1:
-                    indtastresultaterTræning();
+                    //registrerTræningTid();
                     break;
                 case 2:
-                    resultaterKonkurrence();
+                    registrerKonkurrenceTid();
                     break;
                 case 3:
                     exit = true;
@@ -226,28 +226,34 @@ public class Userinterface {
         }
     }
 
-    public void indtastresultaterTræning() {
+    /*public void registrerTræningTid() {
         keyboard.nextLine();
 
         System.out.print("Svømmetid (hh:mm:ss): ");
         String svømmeTidInput = keyboard.nextLine();
 
-        Duration svømmeTid = parseDuration(svømmeTidInput);
+        LocalTime swimTime = LocalTime.parse(svømmeTidInput, DateTimeFormatter.ofPattern("HH:mm:ss"));
 
-        String svømmeDato = getValidStringInputSvømmeDato("Svømmedato: ");
+
+        String svømmeDatoInput = getValidStringInputSvømmeDato("Svømmedato (dd-MM-yyyy): ");
+        System.out.println("Indtastet dato: " + svømmeDatoInput);
+
+        LocalDate dateOfSwim = LocalDate.parse(svømmeDatoInput, DateTimeFormatter.ofPattern("dd-MM-yyyy"));
 
         System.out.println("Svømmedisciplin: vælg en af disse: ");
-        SwimmingDiscipline svømmeDiciplin = getValidSwimmingDiscipline();
+        SwimmingDiscipline swimmingDiscipline = getValidSwimmingDiscipline();
 
+        controller.registrerTræningTid(swimTime, dateOfSwim, swimmingDiscipline);
     }
+*/
 
-    public void resultaterKonkurrence() {
+    public void registrerKonkurrenceTid() {
         keyboard.nextLine();
 
         System.out.println("Svømmetid (hh:mm:ss): ");
         String svømmeTidInputKonkurrence = keyboard.nextLine();
 
-        Duration svømmetid = parseDuration(svømmeTidInputKonkurrence);
+        LocalTime swimTime = LocalTime.parse(svømmeTidInputKonkurrence, DateTimeFormatter.ofPattern("HH:mm:ss"));
 
         String svømmeDatoKonkurrence = getValidStringInputSvømmeDato("Konkurrence dato: ");
 
@@ -286,99 +292,29 @@ public class Userinterface {
     }
 
 
-    private Duration parseDuration(String input) {
-        String[] timeComponents = input.split(":");
-        if (timeComponents.length == 3) {
-            try {
-                long hours = Long.parseLong(timeComponents[0]);
-                long minutes = Long.parseLong(timeComponents[1]);
-                long seconds = Long.parseLong(timeComponents[2]);
-
-                return Duration.ofHours(hours).plusMinutes(minutes).plusSeconds(seconds);
-            } catch (NumberFormatException e) {
-                System.out.println("Invalid input for svømmetid. Please enter time in hh:mm:ss format.");
-            }
-        } else {
-            System.out.println("Invalid input for svømmetid. Please enter time in hh:mm:ss format.");
+    private LocalDate parseLocalDate(String input) {
+        try {
+            return LocalDate.parse(input, DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+        } catch (DateTimeParseException e) {
+            System.out.println("Invalid date input: " + input);
+            System.out.println("Error details: " + e.getMessage());
+            return LocalDate.MIN;
         }
-
-        return Duration.ZERO;
     }
-
-
-
-
-
-    /*public void registrerMedlem() {
-        keyboard.nextLine();
-
-        System.out.print("Navn: ");
-        String name = keyboard.nextLine();
-
-
-        String dateOfBirth = getValidStringInputFødselsdato("Fødselsdato i format (dd-mm-yyyy): ");
-
-        System.out.print("Køn: ");
-        String gender = keyboard.nextLine();
-
-        int phonenumber = getValidIntegerInputTelefonnummer("Telefonnummer: ");
-
-        System.out.print("Adresse: ");
-        String adress = keyboard.nextLine();
-
-        int memberNumber = getValidIntegerInputMedlemsnummer("Medlemnummer: ");
-
-        System.out.print("Passivt eller aktivt medlemskab: ");
-        String passiveOrActive = keyboard.nextLine();
-
-        System.out.print("Motionist: ");
-        String motionist = keyboard.nextLine();
-
-        System.out.print("Konkurrence: ");
-        String competitive = keyboard.nextLine();
-
-
-        controller.registrerMedlem(name, dateOfBirth, gender, phonenumber, adress, memberNumber, passiveOrActive, motionist, competitive);
-
-
-    } */
-
-    // metode for at sørger for man indtaster fødselsdato rigtigt ind
-    /*private String getValidStringInputFødselsdato(String prompt) {
+    private String getValidStringInputSvømmeDato(String prompt) {
         while (true) {
             try {
-                System.out.print(prompt);
-                String input = keyboard.nextLine();
-
-                SimpleDateFormat dateFormat = new SimpleDateFormat("dd-mm-yyyy");
-
-                dateFormat.parse(input);
-
-                return input;
-            } catch (ParseException e) {
-                System.out.println("Ugyldig input. Indtast venligst en fødselsdato i formatet (dd-mm-yyyy).");
-
-            }
-        }
-    }*/
-    private String getValidStringInputSvømmeDato(String prompt) {
-
-        while (true)
-            try {
-
                 System.out.println(prompt);
                 String input = keyboard.nextLine();
 
-                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-                LocalDate.parse(input, formatter);
-
-                return input;
-
+                LocalDate parsedDate = parseLocalDate(input);
+                if (!parsedDate.equals(LocalDate.MIN)) {
+                    return input;
+                }
             } catch (DateTimeParseException e) {
-                System.out.println("Ugyldig input. Indtast venligst en svømmedato i formatet (dd-mm-yyyy).");
+                System.out.println("Ugyldig input. Indtast venligst en svømmedato i formatet (dd-MM-yyyy).");
             }
-
-
+        }
     }
 
     private String getValidStringInputFødselsdato(String prompt) {
@@ -483,3 +419,12 @@ public class Userinterface {
         System.exit(0);
     }
 }
+/*private LocalTime parseLocalTime(String input) {
+        try {
+            return LocalTime.parse(input, DateTimeFormatter.ofPattern("HH:mm:ss"));
+        } catch (java.time.format.DateTimeParseException e) {
+            System.out.println("Invalid input for svømmetid. Please enter time in hh:mm:ss format.");
+            return LocalTime.MIN; // or throw an exception, or handle it accordingly
+        }
+    }
+*/

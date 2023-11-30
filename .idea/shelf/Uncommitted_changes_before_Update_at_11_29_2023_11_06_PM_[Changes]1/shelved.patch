@@ -1,0 +1,32 @@
+Index: src/main/java/Controller.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import java.util.List;\r\n\r\n//\r\npublic class Controller {\r\n\r\n\r\n    Member member = new Member();\r\n\r\n    Database database = new Database();\r\n\r\n\r\n    public void printMedlemmerStamoplysninger() {\r\n        database.printMedlemmerStamoplysninger();\r\n    }\r\n\r\n    public void registrerMedlem(String name, String dateOfBirth, String gender, int phonenumber, String adress, int memberNumber, String passiveOrActive, String motionist, String competitive) {\r\n        database.registrerMedlem(name, dateOfBirth, gender, phonenumber, adress, memberNumber, passiveOrActive, motionist, competitive);\r\n    }\r\n\r\n    public void exit() {\r\n        database.scannerExit();\r\n    }\r\n\r\n    public void sortMembersByAge(List<Member> members) {\r\n        database.sortMembersByAge(members);\r\n    }\r\n\r\n\r\n\r\n    public List<Member> getMembers() {\r\n        return database.getMeembers();\r\n\r\n    }\r\n\r\n    public void someMethod() {\r\n        List<Member> members = getMembers();\r\n\r\n\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/Controller.java b/src/main/java/Controller.java
+--- a/src/main/java/Controller.java	
++++ b/src/main/java/Controller.java	
+@@ -1,3 +1,4 @@
++import java.time.LocalDate;
+ import java.util.List;
+ 
+ //
+@@ -35,6 +36,13 @@
+     public void someMethod() {
+         List<Member> members = getMembers();
+ 
++    }
++    public LocalDate getDateOfBirth() {
++        return member.getDateOfBirth();
++    }
++
++
++
++
+ 
+-    }
+-}
+\ No newline at end of file
++}

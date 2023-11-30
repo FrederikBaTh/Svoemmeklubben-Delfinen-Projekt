@@ -1,5 +1,8 @@
+import java.time.Duration;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
+import java.time.LocalDate;
 import java.util.List;
 
 //
@@ -37,6 +40,18 @@ public class Controller {
     public void someMethod() {
         List<Member> members = getMembers();
 
-
     }
+    public LocalDate getDateOfBirth() {
+        return member.getDateOfBirth();
+    }
+
+
+    /*public void registrerTræningTid(LocalTime svimTime, LocalDate dateOfSwim, SwimmingDiscipline swimmingDiscipline){
+        database.registrerTræningTid(svimTime,dateOfSwim,swimmingDiscipline);
+    }
+*/
+
+
+
+
 }

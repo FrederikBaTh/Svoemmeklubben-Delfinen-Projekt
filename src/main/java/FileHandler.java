@@ -1,6 +1,9 @@
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintStream;
+import java.time.Duration;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -65,38 +68,59 @@ public class FileHandler {
         }
 
     }
+}
+    /*public ArrayList<CompetitiveMember> loadedCompetitiveMember(){
+        ArrayList<CompetitiveMember> loadedCompetitiveMember = new ArrayList<>();
 
-    //TODO Slet? ubrugeligt da vi har allerede en save funktion ovenstående op.
-    public void saveMembersToCSV(String fileName, ArrayList<Member> members) {
-        try (PrintStream output = new PrintStream(fileName)) {
-            for (Member member : members) {
-                output.println(member.getName() + "," +
-                        member.getFormattedDateOfBirth() + "," +
-                        member.getGender() + "," +
-                        member.getPhonenumber() + "," +
-                        member.getAdress() + "," +
-                        member.getMemberNumber() + "," +
-                        member.getPassiveOrActive() + "," +
-                        member.getMemberType() + "," +
-                        member.getMotionist() + "," +
-                        member.getCompetitive());
+        try (Scanner fileScanner = new Scanner(new File(fileName))){
+            while(fileScanner.hasNext()){
+                String swimTimeString = fileScanner.nextLine();
+                String dateOfSwimString =  fileScanner.nextLine();
+                String  swimmingDisciplineString = fileScanner.nextLine();
+
+                //Duration swimTime = Duration.parse(swimTimeString);
+                LocalTime swimTime = LocalTime.parse(swimTimeString, DateTimeFormatter.ofPattern("HH:mm:ss"));
+
+
+
+                LocalDate dateOfSwim = LocalDate.parse(dateOfSwimString, DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+                SwimmingDiscipline swimmingDiscipline = SwimmingDiscipline.valueOf(swimmingDisciplineString);
+
+
+                CompetitiveMember træningMember = new CompetitiveMember(swimTime, dateOfSwim, swimmingDiscipline);
+                loadedCompetitiveMember.add(træningMember);
+
             }
+
         } catch (FileNotFoundException e) {
             System.err.println("Fejl: " + e.getMessage());
         }
+
+
+        return loadedCompetitiveMember;
     }
 
-        /*
-        public void toFile() {
-            try {
-                PrintStream writeToFile = new PrintStream(new File("MedlemsListe.csv"));
-                for (int i = 0; i < this.members.toArray().length; i++) {
-                    writeToFile.println(this.members.get(i).toCsvString());
-                    System.out.println("toFileMethod " + this.members.get(i).toCsvString());
-                }
-           }
-            catch (FileNotFoundException e) {
-                System.out.println(e);
+    public void saveListOfTræningsTidToFile(String fileName, ArrayList<CompetitiveMember> compMember) {
+        try (PrintStream output = new PrintStream(fileName)) {
+
+            for (CompetitiveMember CompMember : compMember) {
+
+                output.println(CompMember.getSwimTime());
+                output.println(CompMember.getDateOfSwim());
+                output.println(CompMember.getSwimmingDiscipline());
+                output.println();
             }
-        } */
+        }
+        catch (FileNotFoundException e) {
+            System.err.println("Fejl: " + e.getMessage());
+        }
+
+    }
+
+
+
+
 }
+/*
+
+     */
