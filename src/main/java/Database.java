@@ -5,11 +5,12 @@ import java.util.Scanner;
 
 public class Database {
 
-    public ArrayList<Member> meembers = new ArrayList<>();
+    private ArrayList<Member> meembers = new ArrayList<>();
+    private FileHandler fileHandler = new FileHandler("MedlemsListe.csv");
 
     public Database() {
         if (meembers.isEmpty()) {
-            meembers = FileHandler.loadedMembers("MedlemsListe.csv");
+            meembers = fileHandler.loadedMembers();
         }
     }
 
@@ -19,7 +20,7 @@ public class Database {
            // meembers = FileHandler.loadedMembers("MedlemsListe.csv");
             Member member = new Member(name, dateOfBirth, gender, phonenumber, address, memberNumber, passiveOrActive, memberType, motionist, competitive);
             meembers.add(member);
-            FileHandler.saveListOfMembersToFile("MedlemsListe.csv", meembers);
+            fileHandler.saveListOfMembersToFile("MedlemsListe.csv", meembers);
             System.out.println("Member successfully registered.");
         } catch (Exception e) {
             System.out.println("Error registering member: " + e.getMessage());

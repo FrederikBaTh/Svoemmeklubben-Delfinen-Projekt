@@ -267,9 +267,11 @@ public class Userinterface {
     public SwimmingDiscipline getValidSwimmingDiscipline() {
         while (true) {
             try {
+                //TODO menu med 1-4 ?
                 System.out.print("Vælg svømmedisciplin (BUTTERFLY, FRONT_CRAWL, BACKSTROKE, BREASTSTROKE): ");
                 String input = keyboard.nextLine().toUpperCase();
 
+                //TODO skifter til switch case?? Så man kan vælge fra 1. til 4. ud af de disciplerne.
                 for (SwimmingDiscipline discipline : SwimmingDiscipline.values()) {
                     if (discipline.name().equalsIgnoreCase(input)) {
                         return discipline;

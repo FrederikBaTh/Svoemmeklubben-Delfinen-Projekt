@@ -6,9 +6,13 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class FileHandler {
+    private String fileName;
 
 
-    public static ArrayList<Member> loadedMembers(String fileName) {
+    public FileHandler(String fileName) {
+        this.fileName = fileName;
+    }
+    public ArrayList<Member> loadedMembers() {
         ArrayList<Member> loadedMembers = new ArrayList<>();
 
         try (Scanner fileScanner = new Scanner(new File(fileName))) {
@@ -39,7 +43,7 @@ public class FileHandler {
         return loadedMembers;
     }
 
-    public static void saveListOfMembersToFile(String fileName, ArrayList<Member> members) {
+    public void saveListOfMembersToFile(String fileName, ArrayList<Member> members) {
         try (PrintStream output = new PrintStream(fileName)) {
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
             for (Member member : members) {
@@ -62,8 +66,8 @@ public class FileHandler {
 
     }
 
-    //TODO få det her til virke at man kan gemme medlemmerne ind i en CSV fil.
-    public static void saveMembersToCSV(String fileName, ArrayList<Member> members) {
+    //TODO Slet? ubrugeligt da vi har allerede en save funktion ovenstående op.
+    public void saveMembersToCSV(String fileName, ArrayList<Member> members) {
         try (PrintStream output = new PrintStream(fileName)) {
             for (Member member : members) {
                 output.println(member.getName() + "," +
