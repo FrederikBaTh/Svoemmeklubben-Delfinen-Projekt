@@ -205,7 +205,7 @@ public class Userinterface {
         while (!exit) {
             System.out.println("""
                     1: registrer resultater af en træning
-                    2: registrer resulater af en konkurrence 
+                    2: registrer resultater af en konkurrence
                     3: afslut programmet
                     """);
             switch (keyboard.nextInt()) {
@@ -236,7 +236,7 @@ public class Userinterface {
 
         String svømmeDato = getValidStringInputSvømmeDato("Svømmedato: ");
 
-        System.out.println("Svømmedisciplin: )");
+        System.out.println("Svømmedisciplin: vælg en af disse: ");
         SwimmingDiscipline svømmeDiciplin = getValidSwimmingDiscipline();
 
     }
