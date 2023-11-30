@@ -3,7 +3,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
-public class CompetitiveMember extends Member {
+public class CompetitiveMember {
 
     private LocalTime swimTime;
     private LocalDate dateOfSwim;
@@ -37,17 +37,6 @@ public class CompetitiveMember extends Member {
             SwimmingDiscipline swimmingDiscipline,
             String eventName,
             String eventPlacement) {
-        super(
-                name,
-                dateOfBirth.format(DateTimeFormatter.ofPattern("dd-MM-yyyy")),
-                gender,
-                phonenumber,
-                adress,
-                memberNumber,
-                passiveOrActive,
-                memberType,
-                motionist,
-                competitive);
 
         initializeEventDetails(swimTime, dateOfSwim, swimmingDiscipline);
         //this(name, dateOfBirth, gender, phonenumber, adress, memberNumber, passiveOrActive, memberType, motionist, competitive, swimTime, dateOfSwim, swimmingDiscipline);

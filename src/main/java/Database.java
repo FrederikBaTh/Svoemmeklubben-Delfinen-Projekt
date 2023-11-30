@@ -31,9 +31,7 @@ public class Database {
             Member member = new Member(name, dateOfBirth, gender, phonenumber, address, memberNumber, passiveOrActive, memberType, motionist, competitive);
             meembers.add(member);
             fileHandler.saveListOfMembersToFile("MedlemsListe.csv", meembers);
-            System.out.println("Member successfully registered.");
         } catch (Exception e) {
-            System.out.println("Error registering member: " + e.getMessage());
             e.printStackTrace();
         }
     }
