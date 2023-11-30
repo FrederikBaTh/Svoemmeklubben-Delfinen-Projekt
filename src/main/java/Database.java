@@ -6,7 +6,6 @@ import java.util.Scanner;
 public class Database {
 
     public ArrayList<Member> meembers = new ArrayList<>();
-    private Scanner keyboard = new Scanner(System.in);
 
     public Database() {
         if (meembers.isEmpty()) {
@@ -42,10 +41,6 @@ public class Database {
         return today.getYear();*/
         //Period ageDifference
 
-
-    public void scannerExit(){
-        keyboard.close();
-    }
 
 
 

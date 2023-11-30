@@ -10,7 +10,7 @@ public class Controller {
 
     Database database = new Database();
 
-
+    //TODO brug til noget?
     public ArrayList<Member> printMedlemmerStamoplysninger() {
        return database.getMeembers();
     }
@@ -19,9 +19,6 @@ public class Controller {
         database.registrerMedlem(name, dateOfBirth, gender, phonenumber, adress, memberNumber, passiveOrActive, memberType, motionist, competitive);
     }
 
-    public void exit() {
-        database.scannerExit();
-    }
 
     public void sortMembersByAge(List<Member> members) {
         database.sortMembersByAge(members);
@@ -36,6 +33,7 @@ public class Controller {
 
     }
 
+    //TODO brug til noget?
     public void someMethod() {
         List<Member> members = getMembers();
 

@@ -62,6 +62,7 @@ public class FileHandler {
 
     }
 
+    //TODO få det her til virke at man kan gemme medlemmerne ind i en CSV fil.
     public static void saveMembersToCSV(String fileName, ArrayList<Member> members) {
         try (PrintStream output = new PrintStream(fileName)) {
             for (Member member : members) {
@@ -81,17 +82,17 @@ public class FileHandler {
         }
     }
 
-    //     public void toFile() {
-    //        try {
-    //            PrintStream writeToFile = new PrintStream(new File("MedlemsListe.csv"));
-    //            for (int i = 0; i < this.members.toArray().length; i++) {
-    //                writeToFile.println(this.members.get(i).toCsvString());
-    //                System.out.println("toFileMethod " + this.members.get(i).toCsvString());
-    //            }
-    //        }
-    //        catch (FileNotFoundException e) {
-    //            System.out.println(e);
-    //        }
-    //    }
-    //}
+        /*
+        public void toFile() {
+            try {
+                PrintStream writeToFile = new PrintStream(new File("MedlemsListe.csv"));
+                for (int i = 0; i < this.members.toArray().length; i++) {
+                    writeToFile.println(this.members.get(i).toCsvString());
+                    System.out.println("toFileMethod " + this.members.get(i).toCsvString());
+                }
+           }
+            catch (FileNotFoundException e) {
+                System.out.println(e);
+            }
+        } */
 }
