@@ -47,24 +47,24 @@ public class FileHandler {
         try (PrintStream output = new PrintStream(fileName)) {
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
             for (Member member : members) {
-                output.println(member.getName());
-                output.println(member.getDateOfBirth().format(formatter));
-                output.println(member.getGender());
-                output.println(member.getPhonenumber());
-                output.println(member.getAdress());
-                output.println(member.getMemberNumber());
-                output.println(member.getPassiveOrActive());
-                output.println(member.getMemberType());
-                output.println(member.getMotionist());
-                output.println(member.getCompetitive());
-                output.println();
+                String memberInfo = member.getName() + ":" +
+                        member.getDateOfBirth().format(formatter) + ":" +
+                        member.getGender() + ":" +
+                        member.getPhonenumber() + ":" +
+                        member.getAdress() + ":" +
+                        member.getMemberNumber() + ":" +
+                        member.getPassiveOrActive() + ":" +
+                        member.getMemberType() + ":" +
+                        member.getMotionist() + ":" +
+                        member.getCompetitive();
+
+                output.println(memberInfo);
             }
-        }
-        catch (FileNotFoundException e) {
+        } catch (FileNotFoundException e) {
             System.err.println("Fejl: " + e.getMessage());
         }
-
     }
+
 
     //TODO Slet? ubrugeligt da vi har allerede en save funktion ovenstående op.
     public void saveMembersToCSV(String fileName, ArrayList<Member> members) {

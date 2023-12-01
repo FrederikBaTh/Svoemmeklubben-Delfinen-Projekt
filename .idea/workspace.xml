@@ -4,14 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c8e94393-bee2-45ff-a00f-fe84b417e598" name="Changes" comment="lavet årlig indkomst">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_24_11_2023_08_43_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_24_11_2023_08_43__Changes_.xml" beforeDir="false" />
+    <list default="true" id="c8e94393-bee2-45ff-a00f-fe84b417e598" name="Changes" comment="autogenereret medlemsnummer og fjernet en sout print for meget på aktiv passiv">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MedlemsListe.csv" beforeDir="false" afterPath="$PROJECT_DIR$/MedlemsListe.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Member.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Member.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Userinterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Userinterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/FileHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/FileHandler.java" afterDir="false" />
     </list>
     <list id="2a237768-9de4-4a09-b015-05cf8b104204" name="Changes by frede" comment="" />
     <list id="94e2b45a-2e0d-411e-b7d4-5750d824dc2d" name="Changes by paulsebastiankrus" comment="" />
@@ -99,7 +95,7 @@
       <workItem from="1700811268115" duration="275000" />
       <workItem from="1701093255413" duration="2776000" />
       <workItem from="1701337496163" duration="2700000" />
-      <workItem from="1701429245559" duration="1481000" />
+      <workItem from="1701429245559" duration="2352000" />
     </task>
     <task id="LOCAL-00001" summary="Version 2.3 ændret lidt nogle steder som er typefejl.">
       <option name="closed" value="true" />
@@ -133,7 +129,15 @@
       <option name="project" value="LOCAL" />
       <updated>1701389804027</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="autogenereret medlemsnummer og fjernet en sout print for meget på aktiv passiv">
+      <option name="closed" value="true" />
+      <created>1701430822536</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1701430822536</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -157,7 +161,8 @@
     <MESSAGE value="Changes by marcusmortensen" />
     <MESSAGE value="Version 2.3 ændret lidt nogle steder som er typefejl." />
     <MESSAGE value="lavet årlig indkomst" />
-    <option name="LAST_COMMIT_MESSAGE" value="lavet årlig indkomst" />
+    <MESSAGE value="autogenereret medlemsnummer og fjernet en sout print for meget på aktiv passiv" />
+    <option name="LAST_COMMIT_MESSAGE" value="autogenereret medlemsnummer og fjernet en sout print for meget på aktiv passiv" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
