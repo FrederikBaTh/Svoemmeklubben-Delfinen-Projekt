@@ -261,23 +261,23 @@ public class Userinterface {
     }
     public void displayYearlyIncome() {
         int yearlyIncome = controller.calculateYearlyIncome();
-        System.out.println("Expected Yearly Income: " + yearlyIncome + " kr.");
+        System.out.println("Forventet Årlig Indtægt: " + yearlyIncome + " kr.");
     }
 
     public void displayMembershipStatusAndFees() {
         List<Member> members = controller.getMembers();
 
-        System.out.println("Membership Status and Subscription Fees:");
+        System.out.println("Medlemsstatus og kontingentgebyr:");
         for (Member member : members) {
-            System.out.println("Member: " + member.getName());
-            System.out.println("Membership Status: " + member.getPassiveOrActive());
+            System.out.println("Medlem: " + member.getName());
+            System.out.println("medlemsstatus: " + member.getPassiveOrActive());
 
             if ("aktivt".equalsIgnoreCase(member.getPassiveOrActive())) {
                 int subscriptionFee = member.calculateYearlySubscriptionFee();
-                System.out.println("Subscription Fee: " + subscriptionFee + " kr. annually");
+                System.out.println("Kontingentgebyr: " + subscriptionFee + " kr. årligt");
             }if("passivt".equalsIgnoreCase(member.getPassiveOrActive())){
                 int subscriptionFee = member.calculateYearlySubscriptionFee();
-                System.out.println("Subscription Fee: " + subscriptionFee + " kr. annually");
+                System.out.println("Kontingentgebyr: " + subscriptionFee + " kr. årligt");
 
             }
             System.out.println();
