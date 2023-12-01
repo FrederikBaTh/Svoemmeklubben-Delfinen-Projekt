@@ -4,7 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c8e94393-bee2-45ff-a00f-fe84b417e598" name="Changes" comment="lavet årlig indkomst" />
+    <list default="true" id="c8e94393-bee2-45ff-a00f-fe84b417e598" name="Changes" comment="lavet årlig indkomst">
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_24_11_2023_08_43_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_24_11_2023_08_43__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MedlemsListe.csv" beforeDir="false" afterPath="$PROJECT_DIR$/MedlemsListe.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Member.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Member.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Userinterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Userinterface.java" afterDir="false" />
+    </list>
     <list id="2a237768-9de4-4a09-b015-05cf8b104204" name="Changes by frede" comment="" />
     <list id="94e2b45a-2e0d-411e-b7d4-5750d824dc2d" name="Changes by paulsebastiankrus" comment="" />
     <list id="67793032-fb6c-4540-abf8-3a33fa1e9568" name="Changes by Severius" comment="" />
@@ -28,7 +36,6 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="jar:///Library/Java/JavaVirtualMachines/jdk-20.jdk/Contents/Home/lib/src.zip!/java.base/java/lang/Integer.java" root0="SKIP_INSPECTION" />
@@ -92,6 +99,7 @@
       <workItem from="1700811268115" duration="275000" />
       <workItem from="1701093255413" duration="2776000" />
       <workItem from="1701337496163" duration="2700000" />
+      <workItem from="1701429245559" duration="1481000" />
     </task>
     <task id="LOCAL-00001" summary="Version 2.3 ændret lidt nogle steder som er typefejl.">
       <option name="closed" value="true" />
@@ -117,7 +125,15 @@
       <option name="project" value="LOCAL" />
       <updated>1701389516510</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="lavet årlig indkomst">
+      <option name="closed" value="true" />
+      <created>1701389804027</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1701389804027</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

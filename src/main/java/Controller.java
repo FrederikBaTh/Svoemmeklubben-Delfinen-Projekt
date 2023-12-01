@@ -38,6 +38,12 @@ public class Controller {
     }
 
 
+    public int generateMemberNumber(){
+
+        return member.generateMemberNumber();
+    }
+
+
     //TODO brug til noget?
     public void someMethod() {
         List<Member> members = getMembers();

@@ -172,7 +172,9 @@ public class Userinterface {
         System.out.print("Adresse: ");
         String adress = keyboard.nextLine();
 
-        int memberNumber = getValidIntegerInputMedlemsnummer("Medlemsnummer: ");
+
+        int memberNumber = controller.generateMemberNumber();
+        System.out.println("Autogenereret medlemsnummer: " + memberNumber);
 
         System.out.print("Passivt eller aktivt medlemskab: ");
         String passiveOrActive = getValidInputForAktivPassiv();
@@ -257,8 +259,8 @@ public class Userinterface {
         SwimmingDiscipline svømmeDiciplinKonkurrence = getValidSwimmingDiscipline();
 
 
-
     }
+
     public void displayYearlyIncome() {
         int yearlyIncome = controller.calculateYearlyIncome();
         System.out.println("Forventet Årlig Indtægt: " + yearlyIncome + " kr.");
@@ -275,7 +277,8 @@ public class Userinterface {
             if ("aktivt".equalsIgnoreCase(member.getPassiveOrActive())) {
                 int subscriptionFee = member.calculateYearlySubscriptionFee();
                 System.out.println("Kontingentgebyr: " + subscriptionFee + " kr. årligt");
-            }if("passivt".equalsIgnoreCase(member.getPassiveOrActive())){
+            }
+            if ("passivt".equalsIgnoreCase(member.getPassiveOrActive())) {
                 int subscriptionFee = member.calculateYearlySubscriptionFee();
                 System.out.println("Kontingentgebyr: " + subscriptionFee + " kr. årligt");
 
@@ -283,9 +286,6 @@ public class Userinterface {
             System.out.println();
         }
     }
-
-
-
 
 
     //TODO top 5 til at træneren kan se på de bedste 5 i hver disciple.
@@ -447,7 +447,7 @@ public class Userinterface {
         }
     }
 
-    private int getValidIntegerInputMedlemsnummer(String prompt) {
+    /*private int getValidIntegerInputMedlemsnummer(String prompt) {
         while (true) {
             try {
                 System.out.print(prompt);
@@ -466,11 +466,11 @@ public class Userinterface {
             }
         }
     }
-
+*/
     private String getValidInputForAktivPassiv() {
         while (true) {
             try {
-                System.out.print("Passivt eller aktivt medlemskab: ");
+
                 String input = keyboard.nextLine().toLowerCase();
 
                 if ("passivt".equalsIgnoreCase(input)) {
