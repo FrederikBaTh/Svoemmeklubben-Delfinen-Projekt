@@ -108,7 +108,7 @@ public class Userinterface {
         while (!exit) {
             System.out.println("""
                     1: se årligindkomst
-                    2:
+                    2: se medlemsstatus og gebyr 
                     3: afslut programmet
                     """);
             switch (keyboard.nextInt()) {
@@ -116,7 +116,8 @@ public class Userinterface {
                     displayYearlyIncome();
                     break;
                 case 2:
-
+                    displayMembershipStatusAndFees();
+                    break;
                 case 3:
                     exit = true;
                     break;
@@ -262,6 +263,30 @@ public class Userinterface {
         int yearlyIncome = controller.calculateYearlyIncome();
         System.out.println("Expected Yearly Income: " + yearlyIncome + " kr.");
     }
+
+    public void displayMembershipStatusAndFees() {
+        List<Member> members = controller.getMembers();
+
+        System.out.println("Membership Status and Subscription Fees:");
+        for (Member member : members) {
+            System.out.println("Member: " + member.getName());
+            System.out.println("Membership Status: " + member.getPassiveOrActive());
+
+            if ("aktivt".equalsIgnoreCase(member.getPassiveOrActive())) {
+                int subscriptionFee = member.calculateYearlySubscriptionFee();
+                System.out.println("Subscription Fee: " + subscriptionFee + " kr. annually");
+            }if("passivt".equalsIgnoreCase(member.getPassiveOrActive())){
+                int subscriptionFee = member.calculateYearlySubscriptionFee();
+                System.out.println("Subscription Fee: " + subscriptionFee + " kr. annually");
+
+            }
+            System.out.println();
+        }
+    }
+
+
+
+
 
     //TODO top 5 til at træneren kan se på de bedste 5 i hver disciple.
     public void top5Svimmers() {
@@ -467,7 +492,7 @@ public class Userinterface {
             try {
                 System.out.println("Hvilken medlemstype hører personen til?");
                 System.out.println("Ungdomssvømmer u18" + "\n" + "Ungdomssvømmer o18" + "\n" + "Seniorsvømmer");
-                String memberType = keyboard.nextLine();
+                String memberType = keyboard.nextLine().toLowerCase();
 
                 if ("ungdomssvømmer u18".equalsIgnoreCase(memberType) ||
                         "ungdomssvømmer o18".equalsIgnoreCase(memberType) ||

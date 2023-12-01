@@ -4,8 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c8e94393-bee2-45ff-a00f-fe84b417e598" name="Changes" comment="Version 2.3 ændret lidt nogle steder som er typefejl.">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+    <list default="true" id="c8e94393-bee2-45ff-a00f-fe84b417e598" name="Changes" comment="lavet årlig indkomst">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MedlemsListe.csv" beforeDir="false" afterPath="$PROJECT_DIR$/MedlemsListe.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Database.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Member.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Member.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Userinterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Userinterface.java" afterDir="false" />
     </list>
     <list id="2a237768-9de4-4a09-b015-05cf8b104204" name="Changes by frede" comment="" />
     <list id="94e2b45a-2e0d-411e-b7d4-5750d824dc2d" name="Changes by paulsebastiankrus" comment="" />
@@ -103,7 +107,15 @@
       <option name="project" value="LOCAL" />
       <updated>1701343545483</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="lavet årlig indkomst">
+      <option name="closed" value="true" />
+      <created>1701388083086</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1701388083086</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -126,7 +138,8 @@
     <MESSAGE value="Version 2.2 mandag yes" />
     <MESSAGE value="Changes by marcusmortensen" />
     <MESSAGE value="Version 2.3 ændret lidt nogle steder som er typefejl." />
-    <option name="LAST_COMMIT_MESSAGE" value="Version 2.3 ændret lidt nogle steder som er typefejl." />
+    <MESSAGE value="lavet årlig indkomst" />
+    <option name="LAST_COMMIT_MESSAGE" value="lavet årlig indkomst" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

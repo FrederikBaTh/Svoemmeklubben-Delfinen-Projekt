@@ -29,6 +29,7 @@ public class Database {
     }
 
 
+
     public int calculateYearlyIncome() {
         int yearlyIncome = 0;
 
