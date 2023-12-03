@@ -3,8 +3,11 @@ import java.io.FileNotFoundException;
 import java.io.PrintStream;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 
+import java.io.FileOutputStream;
+import java.io.IOException;
 public class FileHandler {
     private String fileName;
 
@@ -16,7 +19,7 @@ public class FileHandler {
         ArrayList<Member> loadedMembers = new ArrayList<>();
 
         try (Scanner fileScanner = new Scanner(new File(fileName))) {
-            while (fileScanner.hasNext()) {
+            while (fileScanner.hasNextLine()) {
                 String name = fileScanner.nextLine();
                 String dateOfBirth = fileScanner.nextLine();
                 String gender = fileScanner.nextLine();
@@ -28,10 +31,8 @@ public class FileHandler {
                 String motionist = fileScanner.nextLine();
                 String competitive = fileScanner.nextLine();
 
-
-
-                Member members = new Member(name, dateOfBirth, gender, phonenumber, adress, memberNumber, passiveOrActive, memberType, motionist, competitive);
-                loadedMembers.add(members);
+                Member member = new Member(name, dateOfBirth, gender, phonenumber, adress, memberNumber, passiveOrActive, memberType, motionist);
+                loadedMembers.add(member);
 
                 if (fileScanner.hasNext()) {
                     fileScanner.nextLine();
@@ -39,11 +40,13 @@ public class FileHandler {
             }
         } catch (FileNotFoundException e) {
             System.err.println("Fejl: " + e.getMessage());
+        } catch (NumberFormatException | NoSuchElementException e) {
         }
         return loadedMembers;
     }
 
-    public void saveListOfMembersToFile(String fileName, ArrayList<Member> members) {
+
+    /*public void saveListOfMembersToFile(String fileName, ArrayList<Member> members) {
         try (PrintStream output = new PrintStream(fileName)) {
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
             for (Member member : members) {
@@ -56,35 +59,41 @@ public class FileHandler {
                         member.getPassiveOrActive() + ":" +
                         member.getMemberType() + ":" +
                         member.getMotionist() + ":" +
-                        member.getCompetitive();
 
                 output.println(memberInfo);
+                output.println();
             }
         } catch (FileNotFoundException e) {
             System.err.println("Fejl: " + e.getMessage());
         }
-    }
+        catch (NumberFormatException | NoSuchElementException e) {
+        System.err.println("Fejl ved indlæsning af medlemmer: " + e.getMessage());
+        }
+    }*/
 
-
-    //TODO Slet? ubrugeligt da vi har allerede en save funktion ovenstående op.
-    public void saveMembersToCSV(String fileName, ArrayList<Member> members) {
-        try (PrintStream output = new PrintStream(fileName)) {
+    public void saveListOfMembersToFile(String fileName, ArrayList<Member> members) {
+        try (FileOutputStream fileOutputStream = new FileOutputStream(fileName, true)) {
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
             for (Member member : members) {
-                output.println(member.getName() + "," +
-                        member.getFormattedDateOfBirth() + "," +
-                        member.getGender() + "," +
-                        member.getPhonenumber() + "," +
-                        member.getAdress() + "," +
-                        member.getMemberNumber() + "," +
-                        member.getPassiveOrActive() + "," +
-                        member.getMemberType() + "," +
-                        member.getMotionist() + "," +
-                        member.getCompetitive());
+                String memberInfo = member.getName() + ":" +
+                        member.getDateOfBirth().format(formatter) + ":" +
+                        member.getGender() + ":" +
+                        member.getPhonenumber() + ":" +
+                        member.getAdress() + ":" +
+                        member.getMemberNumber() + ":" +
+                        member.getPassiveOrActive() + ":" +
+                        member.getMemberType() + ":" +
+                        member.getMotionist();
+
+                // Append a newline character after each member's information
+                memberInfo += System.lineSeparator();
+                fileOutputStream.write(memberInfo.getBytes());
             }
-        } catch (FileNotFoundException e) {
+        } catch (IOException e) {
             System.err.println("Fejl: " + e.getMessage());
         }
     }
+
 
         /*
         public void toFile() {

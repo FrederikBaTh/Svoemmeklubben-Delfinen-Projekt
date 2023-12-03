@@ -15,10 +15,9 @@ public class Database {
     }
 
 
-    public void registrerMedlem(String name, String dateOfBirth, String gender, int phonenumber, String address, int memberNumber, String passiveOrActive, String memberType,String motionist, String competitive) {
+    public void registrerMedlem(String name, String dateOfBirth, String gender, int phonenumber, String address, int memberNumber, String passiveOrActive, String memberType,String motionist ) {
         try {
-           // meembers = FileHandler.loadedMembers("MedlemsListe.csv");
-            Member member = new Member(name, dateOfBirth, gender, phonenumber, address, memberNumber, passiveOrActive, memberType, motionist, competitive);
+            Member member = new Member(name, dateOfBirth, gender, phonenumber, address, memberNumber, passiveOrActive, memberType, motionist);
             meembers.add(member);
             fileHandler.saveListOfMembersToFile("MedlemsListe.csv", meembers);
             System.out.println("Member successfully registered.");

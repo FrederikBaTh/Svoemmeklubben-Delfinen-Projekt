@@ -20,8 +20,6 @@ public class Userinterface {
     }
 
 
-
-
     public void menu() {
         System.out.println("""
                 Velkommen til Delfinen-klubbens systemet.
@@ -154,8 +152,7 @@ public class Userinterface {
             System.out.println("Adresse: " + member.getAdress());
             System.out.println("Medlemsnummer: " + member.getMemberNumber());
             System.out.println("Medlemsstatus: " + member.getMemberType());
-            System.out.println("Motionist: " + member.getMotionist());
-            System.out.println("konkurrencesvømmer: " + member.getCompetitive());
+            System.out.println("Motionist eller Konkurrence: " + member.getMotionist());
             System.out.println();
         }
     }
@@ -191,14 +188,12 @@ public class Userinterface {
             memberType = checkIfMemberIsOverOrUnder18(dateOfBirth);
         }
 
-        System.out.print("Motionist: ");
-        String motionist = keyboard.nextLine();
-
-        System.out.print("Konkurrence: ");
-        String competitive = keyboard.nextLine();
+        System.out.print("Motionist eller Konkurrencesvømmer: ");
+        String motionist = checkIfMotionistOrCompetitive();
 
 
-        controller.registrerMedlem(name, dateOfBirth, gender, phonenumber, adress, memberNumber, passiveOrActive, memberType, motionist, competitive);
+
+        controller.registrerMedlem(name, dateOfBirth, gender, phonenumber, adress, memberNumber, passiveOrActive, memberType, motionist);
 
 
         System.out.println("Går ud af registrermedlem metoden");
@@ -206,212 +201,15 @@ public class Userinterface {
 
     }
 
-    //TODO resultater af alle træningens tiderne, så træneren kan sætte de bedste ind i konkurrence.
-    public void resultater() {
-        System.out.println();
-    }
-
-    public void indtastResultater() {
-        boolean exit = false;
-        while (!exit) {
-            System.out.println("""
-                    1: registrer resultater af en træning
-                    2: registrer resultater af en konkurrence
-                    3: afslut programmet
-                    """);
-            switch (keyboard.nextInt()) {
-
-                case 1:
-                    indtastresultaterTræning();
-                    break;
-                case 2:
-                    resultaterKonkurrence();
-                    break;
-                case 3:
-                    exit = true;
-                    break;
-                default:
-                    System.out.println("ugyldigt valg ");
-
-            }
-        }
-    }
-
-    public void indtastresultaterTræning() {
-        keyboard.nextLine();
-
-        System.out.print("Svømmetid (hh:mm:ss): ");
-        String svømmeTidInput = keyboard.nextLine();
-
-        Duration svømmeTid = parseDuration(svømmeTidInput);
-
-        String svømmeDato = getValidStringInputSvømmeDato("Svømmedato: ");
-
-        System.out.println("Svømmedisciplin: vælg en af disse: ");
-        SwimmingDiscipline svømmeDiciplin = getValidSwimmingDiscipline();
-
-    }
-
-    public void resultaterKonkurrence() {
-        keyboard.nextLine();
-
-        System.out.println("Svømmetid (hh:mm:ss): ");
-        String svømmeTidInputKonkurrence = keyboard.nextLine();
-
-        Duration svømmetid = parseDuration(svømmeTidInputKonkurrence);
-
-        String svømmeDatoKonkurrence = getValidStringInputSvømmeDato("Konkurrence dato: ");
-
-        System.out.println("Svømmedisciplin: ");
-        SwimmingDiscipline svømmeDiciplinKonkurrence = getValidSwimmingDiscipline();
-
-
-    }
-
-    public void displayYearlyIncome() {
-        int yearlyIncome = controller.calculateYearlyIncome();
-        System.out.println("Forventet Årlig Indtægt: " + yearlyIncome + " kr.");
-    }
-
-    public void displayMembershipStatusAndFees() {
-        List<Member> members = controller.getMembers();
-
-        System.out.println("Medlemsstatus og kontingentgebyr:");
-        for (Member member : members) {
-            System.out.println("Medlem: " + member.getName());
-            System.out.println("medlemsstatus: " + member.getPassiveOrActive());
-
-            if ("aktivt".equalsIgnoreCase(member.getPassiveOrActive())) {
-                int subscriptionFee = member.calculateYearlySubscriptionFee();
-                System.out.println("Kontingentgebyr: " + subscriptionFee + " kr. årligt");
-            }
-            if ("passivt".equalsIgnoreCase(member.getPassiveOrActive())) {
-                int subscriptionFee = member.calculateYearlySubscriptionFee();
-                System.out.println("Kontingentgebyr: " + subscriptionFee + " kr. årligt");
-
-            }
-            System.out.println();
-        }
-    }
-
-
-    //TODO top 5 til at træneren kan se på de bedste 5 i hver disciple.
-    public void top5Svimmers() {
-        System.out.println();
-    }
-
-    public SwimmingDiscipline getValidSwimmingDiscipline() {
+    private String checkIfMotionistOrCompetitive() {
         while (true) {
             try {
-                //TODO menu med 1-4 ?
-                System.out.print("Vælg svømmedisciplin (BUTTERFLY, FRONT_CRAWL, BACKSTROKE, BREASTSTROKE): ");
-                String input = keyboard.nextLine().toUpperCase();
-
-                //TODO skifter til switch case?? Så man kan vælge fra 1. til 4. ud af de disciplerne.
-                for (SwimmingDiscipline discipline : SwimmingDiscipline.values()) {
-                    if (discipline.name().equalsIgnoreCase(input)) {
-                        return discipline;
-                    }
-                }
-
-                throw new IllegalArgumentException();
-            } catch (IllegalArgumentException e) {
-                System.out.println("Ugyldig indtastning. Vælg venligst en gyldig svømmedisciplin.");
-            }
-        }
-    }
-
-
-    private Duration parseDuration(String input) {
-        String[] timeComponents = input.split(":");
-        if (timeComponents.length == 3) {
-            try {
-                long hours = Long.parseLong(timeComponents[0]);
-                long minutes = Long.parseLong(timeComponents[1]);
-                long seconds = Long.parseLong(timeComponents[2]);
-
-                return Duration.ofHours(hours).plusMinutes(minutes).plusSeconds(seconds);
-            } catch (NumberFormatException e) {
-                System.out.println("Invalid input for svømmetid. Please enter time in hh:mm:ss format.");
-            }
-        } else {
-            System.out.println("Invalid input for svømmetid. Please enter time in hh:mm:ss format.");
-        }
-
-        return Duration.ZERO;
-    }
-
-
-
-    private String getValidStringInputSvømmeDato(String prompt) {
-
-        while (true)
-            try {
-
-                System.out.println(prompt);
-                String input = keyboard.nextLine();
-
-                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-                LocalDate.parse(input, formatter);
-
-                return input;
-
-            } catch (DateTimeParseException e) {
-                System.out.println("Ugyldig input. Indtast venligst en svømmedato i formatet (dd-mm-yyyy).");
-            }
-
-
-    }
-
-    private String getValidStringInputFødselsdato() {
-        while (true) {
-            try {
-                //System.out.print(prompt);
-                String input = keyboard.nextLine();
-
-                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-                LocalDate.parse(input, formatter);
-
-                return input;
-            } catch (DateTimeParseException e) {
-                System.out.println("Ugyldig input. Indtast venligst en fødselsdato i formatet (dd-mm-yyyy).");
-            }
-        }
-    }
-
-    // metode for at sørger for man indtaster telefonnummer rigtigt ind
-    private int getValidIntegerInputTelefonnummer(String prompt) {
-        while (true) {
-            try {
-                System.out.print(prompt);
-                int input = keyboard.nextInt();
-                keyboard.nextLine();
-
-                if (String.valueOf(input).length() == 8)
-                    return input;
-                else {
-                    System.out.println("Ugyldig input. Indtast venligst et telefonnummer på 8 cifre.");
-                }
-            } catch (java.util.InputMismatchException e) {
-                // eksempel på error besked (kan laves om)
-                System.out.println("Ugyldig input. Indtast venligst et telefonnummer på 8 cifre.");
-                keyboard.nextLine();
-            }
-        }
-    }
-
-
-    private String getValidInputForAktivPassiv() {
-        while (true) {
-            try {
-
                 String input = keyboard.nextLine().toLowerCase();
 
                 if ("Nej".equalsIgnoreCase(input)) {
-                    System.out.println("Medlemmer med et passivt medlemskab skal betale 600kr i årligt kontingent");
-                    return "Passivt";
+                    return "Konkurrence";
                 } else if ("Ja".equalsIgnoreCase(input)) {
-                    return "Aktivt";
+                    return "Motionist";
                 } else {
                     System.out.println("Ugyldigt input. Indtast venligst 'Ja' eller 'Nej'.");
                 }
@@ -421,36 +219,243 @@ public class Userinterface {
         }
     }
 
-    private String checkIfMemberIsOverOrUnder18(String dateOfBirth) {
 
-        LocalDate birthdate = LocalDate.parse(dateOfBirth, DateTimeFormatter.ofPattern("dd-MM-yyyy"));
-        LocalDate currentDate = LocalDate.now();
 
-        long age = ChronoUnit.YEARS.between(birthdate, currentDate);
 
-        if (age <= 18) {
-            return "Ungdomssvømmer u18";
-        } else if (age > 18 && age <= 60) {
-            return "Ungdomssvømmer o18";
-        } else {
-            return "Senior";
+        //TODO resultater af alle træningens tiderne, så træneren kan sætte de bedste ind i konkurrence.
+        public void resultater () {
+            System.out.println();
+        }
+
+        public void indtastResultater () {
+            boolean exit = false;
+            while (!exit) {
+                System.out.println("""
+                        1: registrer resultater af en træning
+                        2: registrer resultater af en konkurrence
+                        3: afslut programmet
+                        """);
+                switch (keyboard.nextInt()) {
+
+                    case 1:
+                        indtastresultaterTræning();
+                        break;
+                    case 2:
+                        resultaterKonkurrence();
+                        break;
+                    case 3:
+                        exit = true;
+                        break;
+                    default:
+                        System.out.println("ugyldigt valg ");
+
+                }
+            }
+        }
+
+
+        public void indtastresultaterTræning () {
+            keyboard.nextLine();
+
+            System.out.print("Svømmetid (hh:mm:ss): ");
+            String svømmeTidInput = keyboard.nextLine();
+
+            Duration svømmeTid = parseDuration(svømmeTidInput);
+
+            String svømmeDato = getValidStringInputSvømmeDato("Svømmedato: ");
+
+            System.out.println("Svømmedisciplin: vælg en af disse: ");
+            SwimmingDiscipline svømmeDiciplin = getValidSwimmingDiscipline();
+
+        }
+
+        public void resultaterKonkurrence () {
+            keyboard.nextLine();
+
+            System.out.println("Svømmetid (hh:mm:ss): ");
+            String svømmeTidInputKonkurrence = keyboard.nextLine();
+
+            Duration svømmetid = parseDuration(svømmeTidInputKonkurrence);
+
+            String svømmeDatoKonkurrence = getValidStringInputSvømmeDato("Konkurrence dato: ");
+
+            System.out.println("Svømmedisciplin: ");
+            SwimmingDiscipline svømmeDiciplinKonkurrence = getValidSwimmingDiscipline();
+
+
+        }
+
+        public void displayYearlyIncome () {
+            int yearlyIncome = controller.calculateYearlyIncome();
+            System.out.println("Forventet Årlig Indtægt: " + yearlyIncome + " kr.");
+        }
+
+        public void displayMembershipStatusAndFees () {
+            List<Member> members = controller.getMembers();
+
+            System.out.println("Medlemsstatus og kontingentgebyr:");
+            for (Member member : members) {
+                System.out.println("Medlem: " + member.getName());
+                System.out.println("medlemsstatus: " + member.getPassiveOrActive());
+
+                if ("aktivt".equalsIgnoreCase(member.getPassiveOrActive())) {
+                    int subscriptionFee = member.calculateYearlySubscriptionFee();
+                    System.out.println("Kontingentgebyr: " + subscriptionFee + " kr. årligt");
+                }
+                if ("passivt".equalsIgnoreCase(member.getPassiveOrActive())) {
+                    int subscriptionFee = member.calculateYearlySubscriptionFee();
+                    System.out.println("Kontingentgebyr: " + subscriptionFee + " kr. årligt");
+
+                }
+                System.out.println();
+            }
+        }
+
+
+        //TODO top 5 til at træneren kan se på de bedste 5 i hver disciple.
+        public void top5Svimmers () {
+            System.out.println();
+        }
+
+        public SwimmingDiscipline getValidSwimmingDiscipline () {
+            while (true) {
+                try {
+                    //TODO menu med 1-4 ?
+                    System.out.print("Vælg svømmedisciplin (BUTTERFLY, FRONT_CRAWL, BACKSTROKE, BREASTSTROKE): ");
+                    String input = keyboard.nextLine().toUpperCase();
+
+                    //TODO skifter til switch case?? Så man kan vælge fra 1. til 4. ud af de disciplerne.
+                    for (SwimmingDiscipline discipline : SwimmingDiscipline.values()) {
+                        if (discipline.name().equalsIgnoreCase(input)) {
+                            return discipline;
+                        }
+                    }
+
+                    throw new IllegalArgumentException();
+                } catch (IllegalArgumentException e) {
+                    System.out.println("Ugyldig indtastning. Vælg venligst en gyldig svømmedisciplin.");
+                }
+            }
+        }
+
+
+        private Duration parseDuration (String input){
+            String[] timeComponents = input.split(":");
+            if (timeComponents.length == 3) {
+                try {
+                    long hours = Long.parseLong(timeComponents[0]);
+                    long minutes = Long.parseLong(timeComponents[1]);
+                    long seconds = Long.parseLong(timeComponents[2]);
+
+                    return Duration.ofHours(hours).plusMinutes(minutes).plusSeconds(seconds);
+                } catch (NumberFormatException e) {
+                    System.out.println("Invalid input for svømmetid. Please enter time in hh:mm:ss format.");
+                }
+            } else {
+                System.out.println("Invalid input for svømmetid. Please enter time in hh:mm:ss format.");
+            }
+
+            return Duration.ZERO;
+        }
+
+
+        private String getValidStringInputSvømmeDato (String prompt){
+
+            while (true)
+                try {
+
+                    System.out.println(prompt);
+                    String input = keyboard.nextLine();
+
+                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+                    LocalDate.parse(input, formatter);
+
+                    return input;
+
+                } catch (DateTimeParseException e) {
+                    System.out.println("Ugyldig input. Indtast venligst en svømmedato i formatet (dd-mm-yyyy).");
+                }
+
+
+        }
+
+        private String getValidStringInputFødselsdato () {
+            while (true) {
+                try {
+                    //System.out.print(prompt);
+                    String input = keyboard.nextLine();
+
+                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+                    LocalDate.parse(input, formatter);
+
+                    return input;
+                } catch (DateTimeParseException e) {
+                    System.out.println("Ugyldig input. Indtast venligst en fødselsdato i formatet (dd-mm-yyyy).");
+                }
+            }
+        }
+
+        // metode for at sørger for man indtaster telefonnummer rigtigt ind
+        private int getValidIntegerInputTelefonnummer (String prompt){
+            while (true) {
+                try {
+                    System.out.print(prompt);
+                    int input = keyboard.nextInt();
+                    keyboard.nextLine();
+
+                    if (String.valueOf(input).length() == 8)
+                        return input;
+                    else {
+                        System.out.println("Ugyldig input. Indtast venligst et telefonnummer på 8 cifre.");
+                    }
+                } catch (java.util.InputMismatchException e) {
+                    // eksempel på error besked (kan laves om)
+                    System.out.println("Ugyldig input. Indtast venligst et telefonnummer på 8 cifre.");
+                    keyboard.nextLine();
+                }
+            }
+        }
+
+
+        private String getValidInputForAktivPassiv () {
+            while (true) {
+                try {
+
+                    String input = keyboard.nextLine().toLowerCase();
+
+                    if ("Nej".equalsIgnoreCase(input)) {
+                        System.out.println("Medlemmer med et passivt medlemskab skal betale 600kr i årligt kontingent");
+                        return "Passivt";
+                    } else if ("Ja".equalsIgnoreCase(input)) {
+                        return "Aktivt";
+                    } else {
+                        System.out.println("Ugyldigt input. Indtast venligst 'Ja' eller 'Nej'.");
+                    }
+                } catch (java.util.InputMismatchException e) {
+                    System.out.println("Ugyldigt input. Indtast venligst 'Ja' eller 'Nej'.");
+                }
+            }
+        }
+
+        private String checkIfMemberIsOverOrUnder18 (String dateOfBirth){
+
+            LocalDate birthdate = LocalDate.parse(dateOfBirth, DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+            LocalDate currentDate = LocalDate.now();
+
+            long age = ChronoUnit.YEARS.between(birthdate, currentDate);
+
+            if (age <= 18) {
+                return "Ungdomssvømmer u18";
+            } else if (age > 18 && age <= 60) {
+                return "Ungdomssvømmer o18";
+            } else {
+                return "Senior";
+            }
+        }
+
+        private void exitProgram () {
+            System.out.println("Afslutter programmet.");
+            System.exit(0);
         }
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-    private void exitProgram() {
-        System.out.println("Afslutter programmet.");
-        System.exit(0);
-    }
-}

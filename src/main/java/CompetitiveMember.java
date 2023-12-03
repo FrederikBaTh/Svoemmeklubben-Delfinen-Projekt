@@ -13,8 +13,8 @@ public class CompetitiveMember extends Member {
     //private Duration eventSwimTime;
 
     //no event
-    public CompetitiveMember(String name, LocalDate dateOfBirth, String gender, int phonenumber, String adress, int memberNumber, String passiveOrActive, String memberType, String motionist, String competitive, Duration swimTime, LocalDate dateOfSwim, String swimmingDiscipline){
-    super(name, dateOfBirth, gender, phonenumber, adress, memberNumber, passiveOrActive, memberType, motionist, competitive,swimTime,dateOfSwim,swimmingDiscipline);
+    public CompetitiveMember(String name, LocalDate dateOfBirth, String gender, int phonenumber, String adress, int memberNumber, String passiveOrActive, String memberType, String motionist, Duration swimTime, LocalDate dateOfSwim, String swimmingDiscipline){
+    super(name, dateOfBirth, gender, phonenumber, adress, memberNumber, passiveOrActive, memberType, motionist,swimTime,dateOfSwim,swimmingDiscipline);
 
         initializeEventDetails(swimTime, dateOfSwim, swimmingDiscipline);
         //this.swimTime = swimTime;
@@ -50,8 +50,7 @@ public class CompetitiveMember extends Member {
                 memberNumber,
                 passiveOrActive,
                 memberType,
-                motionist,
-                competitive);
+                motionist);
 
         initializeEventDetails(swimTime, dateOfSwim, swimmingDiscipline);
         //this(name, dateOfBirth, gender, phonenumber, adress, memberNumber, passiveOrActive, memberType, motionist, competitive, swimTime, dateOfSwim, swimmingDiscipline);

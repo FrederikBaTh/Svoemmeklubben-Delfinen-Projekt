@@ -14,11 +14,10 @@ public class Member {
     private String passiveOrActive; // TODO Overvej at ændre til boolean
     private String memberType;
     private String motionist;
-    private String competitive;
 
     //constructor
 
-    public Member(String name, String dateOfBirth, String gender, int phonenumber, String adress, int memberNumber, String passiveOrActive, String memberType, String motionist, String competitive) {
+    public Member(String name, String dateOfBirth, String gender, int phonenumber, String adress, int memberNumber, String passiveOrActive, String memberType, String motionist ) {
         this.name = name;
         this.dateOfBirth = LocalDate.parse(dateOfBirth, DateTimeFormatter.ofPattern("dd-MM-yyyy"));
         this.gender = gender;
@@ -28,14 +27,13 @@ public class Member {
         this.passiveOrActive = passiveOrActive;
         this.memberType = memberType;
         this.motionist = motionist;
-        this.competitive = competitive;
     }
 
     public Member() {
 
     }
 
-    public Member(String name, LocalDate dateOfBirth, String gender, int phonenumber, String adress, int memberNumber, String passiveOrActive, String memberType, String motionist, String competitive, Duration swimTime, LocalDate dateOfSwim, String swimmingDiscipline) {
+    public Member(String name, LocalDate dateOfBirth, String gender, int phonenumber, String adress, int memberNumber, String passiveOrActive, String memberType, String motionist, Duration swimTime, LocalDate dateOfSwim, String swimmingDiscipline) {
     }
 
     public int generateMemberNumber() {
@@ -128,9 +126,6 @@ public class Member {
         return motionist;
     }
 
-    public String getCompetitive() {
-        return competitive;
-    }
 
     //setters
 
@@ -170,9 +165,6 @@ public class Member {
         this.motionist = motionist;
     }
 
-    public void setCompetitive(String competitive) {
-        this.competitive = competitive;
-    }
 
     @Override
     public String toString() {
@@ -185,8 +177,7 @@ public class Member {
                 "Medlemsnummer:" + " " + memberNumber + "\n" +
                 "Medlemsstatus:" + " " + passiveOrActive + "\n" +
                 "Medlemstype:" + " " + memberType + "\n" +
-                "Motionist:" + " " + motionist + "\n" +
-                "konkurrencesvømmer:" + " " + competitive;
+                "Motionist:" + " " + motionist + "\n";
     }
 }
 
