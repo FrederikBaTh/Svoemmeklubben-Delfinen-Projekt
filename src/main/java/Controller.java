@@ -8,7 +8,8 @@ import java.util.List;
 public class Controller {
 
 
-    Member member = new Member(name, dateOfBirth, phonenumber, memberNumber, memberType, swimTime, dateOfSwim, swimmingDiscipline, eventName, eventPlacement, eventSwimTime);
+    Member member = new Member();
+    CompetitiveMember competitiveMember = new CompetitiveMember();
 
     Database database = new Database();
 
@@ -16,6 +17,8 @@ public class Controller {
     public ArrayList<Member> printMedlemmerStamoplysninger() {
        return database.getMeembers();
     }
+
+
 
     public void registrerMedlem(String name, String dateOfBirth, String gender, int phonenumber, String adress, int memberNumber, String passiveOrActive, String memberType, String motionist) {
         database.registrerMedlem(name, dateOfBirth, gender, phonenumber, adress, memberNumber, passiveOrActive, memberType, motionist);
