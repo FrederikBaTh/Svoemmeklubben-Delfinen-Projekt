@@ -1,5 +1,6 @@
 import java.time.Duration;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Random;
 import java.util.ArrayList;
@@ -33,15 +34,10 @@ public class Member {
         this.motionist = motionist;
     }
 
-    public Member() {
+    public Member(String name, LocalDate dateOfBirth, int phonenumber, int memberNumber, String memberType, Duration swimTime, LocalDate dateOfSwim, SwimmingDiscipline swimmingDiscipline, String eventName, String eventPlacement, Duration eventSwimTime) {
     }
 
-    public Member(String name, LocalDate dateOfBirth, String gender, int phonenumber, String adress, int memberNumber, String passiveOrActive, String memberType, String motionist, Duration swimTime, LocalDate dateOfSwim, String swimmingDiscipline) {
-    }
 
-    public Member(String name, LocalDate dateOfBirth, int phonenumber, int memberNumber, String memberType, Duration swimTime, LocalDate dateOfSwim, String swimmingDiscipline) {
-
-    }
 
     public int generateMemberNumber() {
         Random random = new Random();

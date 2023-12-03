@@ -1,3 +1,5 @@
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -14,7 +16,9 @@ public class Database {
         }
     }
 
-    private ArrayList<CompetitiveMember> compMeembers = new ArrayList<>();
+    private ArrayList<CompetitiveMember> compMeembersEvent = new ArrayList<>();
+
+    private ArrayList<CompetitiveMember> compMeembersTræning = new ArrayList<>();
 
     public void registrerMedlem(String name, String dateOfBirth, String gender, int phonenumber, String address, int memberNumber, String passiveOrActive, String memberType, String motionist) {
         try {
@@ -55,6 +59,19 @@ public class Database {
 
 
     public ArrayList<CompetitiveMember> getCompMeembers() {
-        return compMeembers;
+        return compMeembersEvent;
     }
+
+    public void registrerTræningTid(LocalTime svimTime, LocalDate dateOfSwim, SwimmingDiscipline swimmingDiscipline) {
+        try {
+            CompetitiveMember træning = new CompetitiveMember(svimTime, dateOfSwim, swimmingDiscipline);
+            compMeembersTræning.add(træning);
+            fileHandler.saveListOfTræningsTidToFile("TræningsTid.csv", compMeembersTræning);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
 }

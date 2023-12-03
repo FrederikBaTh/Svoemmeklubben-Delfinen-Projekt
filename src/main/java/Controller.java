@@ -6,7 +6,7 @@ import java.util.List;
 public class Controller {
 
 
-    Member member = new Member();
+    Member member = new Member(name, dateOfBirth, phonenumber, memberNumber, memberType, swimTime, dateOfSwim, swimmingDiscipline, eventName, eventPlacement, eventSwimTime);
 
     Database database = new Database();
 

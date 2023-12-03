@@ -1,6 +1,8 @@
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintStream;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.NoSuchElementException;
@@ -93,8 +95,8 @@ public class FileHandler {
     }
 
 
-        /*
-        public void toFile() {
+
+       /* public void toFile() {
             try {
                 PrintStream writeToFile = new PrintStream(new File("MedlemsListe.csv"));
                 for (int i = 0; i < this.members.toArray().length; i++) {
@@ -106,4 +108,54 @@ public class FileHandler {
                 System.out.println(e);
             }
         } */
+
+    public ArrayList<CompetitiveMember> loadedCompetitiveMember(){
+        ArrayList<CompetitiveMember> loadedCompetitiveMember = new ArrayList<>();
+
+        try (Scanner fileScanner = new Scanner(new File(fileName))){
+            while(fileScanner.hasNext()){
+                String swimTimeString = fileScanner.nextLine();
+                String dateOfSwimString =  fileScanner.nextLine();
+                String  swimmingDisciplineString = fileScanner.nextLine();
+
+                //Duration swimTime = Duration.parse(swimTimeString);
+                LocalTime swimTime = LocalTime.parse(swimTimeString, DateTimeFormatter.ofPattern("HH:mm:ss"));
+
+
+
+                LocalDate dateOfSwim = LocalDate.parse(dateOfSwimString, DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+                SwimmingDiscipline swimmingDiscipline = SwimmingDiscipline.valueOf(swimmingDisciplineString);
+
+
+                CompetitiveMember træningMember = new CompetitiveMember(swimTime, dateOfSwim, swimmingDiscipline);
+                loadedCompetitiveMember.add(træningMember);
+
+            }
+
+        } catch (FileNotFoundException e) {
+            System.err.println("Fejl: " + e.getMessage());
+        }
+
+
+        return loadedCompetitiveMember;
+    }
+
+    public void saveListOfTræningsTidToFile(String fileName, ArrayList<CompetitiveMember> compMember) {
+        try (PrintStream output = new PrintStream(fileName)) {
+
+            for (CompetitiveMember CompMember : compMember) {
+
+                output.println(CompMember.getSwimTime());
+                output.println(CompMember.getDateOfSwim());
+                output.println(CompMember.getSwimmingDiscipline());
+                output.println();
+            }
+        }
+        catch (FileNotFoundException e) {
+            System.err.println("Fejl: " + e.getMessage());
+        }
+
+    }
+
+
 }

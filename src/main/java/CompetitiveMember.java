@@ -1,11 +1,12 @@
 import java.time.Duration;
 import java.time.LocalDate;
+import java.time.LocalTime;
 
 public class CompetitiveMember extends Member {
 
     private Duration swimTime;
     private LocalDate dateOfSwim;
-    private String swimmingDiscipline;
+    private SwimmingDiscipline swimmingDiscipline;
 
     private String eventName;
     private String eventPlacement;
@@ -22,13 +23,15 @@ public class CompetitiveMember extends Member {
     }
 
     // Event
-    public CompetitiveMember(String name, LocalDate dateOfBirth, int phonenumber, int memberNumber, String memberType, Duration swimTime, LocalDate dateOfSwim, String swimmingDiscipline, String eventName, String eventPlacement, Duration eventSwimTime) {
-        super(name, dateOfBirth, phonenumber, memberNumber, memberType, swimTime, dateOfSwim, swimmingDiscipline);
+    public CompetitiveMember(String name, LocalDate dateOfBirth, int phonenumber, int memberNumber, String memberType, Duration swimTime, LocalDate dateOfSwim, SwimmingDiscipline swimmingDiscipline, String eventName, String eventPlacement, Duration eventSwimTime) {
+        super(name, dateOfBirth, phonenumber, memberNumber, memberType, swimTime, dateOfSwim, swimmingDiscipline, eventName, eventPlacement, eventSwimTime);
 
         initializeEventDetailsEvent(swimTime, dateOfSwim, swimmingDiscipline, eventName, eventPlacement, eventSwimTime);
     }
 
-    private void initializeEventDetailsEvent(Duration swimTime, LocalDate dateOfSwim, String swimmingDiscipline, String eventName, String eventPlacement, Duration eventSwimTime) {
+
+
+    private void initializeEventDetailsEvent(Duration swimTime, LocalDate dateOfSwim, SwimmingDiscipline swimmingDiscipline, String eventName, String eventPlacement, Duration eventSwimTime) {
         this.swimTime = swimTime;
         this.dateOfSwim = dateOfSwim;
         this.swimmingDiscipline = swimmingDiscipline;
