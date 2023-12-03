@@ -4,10 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c8e94393-bee2-45ff-a00f-fe84b417e598" name="Changes" comment="autogenereret medlemsnummer og fjernet en sout print for meget på aktiv passiv">
+    <list default="true" id="c8e94393-bee2-45ff-a00f-fe84b417e598" name="Changes" comment="Version 2.3">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_28-11-2023_15_04__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_28-11-2023_15_04__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_30-11-2023_12_07__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_30-11-2023_12_07__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_30_11_2023__09_10__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_30_11_2023__09_10__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MedlemsListe.csv" beforeDir="false" afterPath="$PROJECT_DIR$/MedlemsListe.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/FileHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/FileHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Member.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Member.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Userinterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Userinterface.java" afterDir="false" />
     </list>
     <list id="2a237768-9de4-4a09-b015-05cf8b104204" name="Changes by frede" comment="" />
     <list id="94e2b45a-2e0d-411e-b7d4-5750d824dc2d" name="Changes by paulsebastiankrus" comment="" />
@@ -59,6 +65,7 @@
     &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -96,6 +103,13 @@
       <workItem from="1701093255413" duration="2776000" />
       <workItem from="1701337496163" duration="2700000" />
       <workItem from="1701429245559" duration="2352000" />
+      <workItem from="1700826683546" duration="396000" />
+      <workItem from="1701118664800" duration="2011000" />
+      <workItem from="1701171387000" duration="1329000" />
+      <workItem from="1701179245718" duration="521000" />
+      <workItem from="1701295369375" duration="732000" />
+      <workItem from="1701540863878" duration="25000" />
+      <workItem from="1701606526601" duration="1647000" />
     </task>
     <task id="LOCAL-00001" summary="Version 2.3 ændret lidt nogle steder som er typefejl.">
       <option name="closed" value="true" />
@@ -104,22 +118,6 @@
       <option name="presentableId" value="LOCAL-00001" />
       <option name="project" value="LOCAL" />
       <updated>1701343545483</updated>
-    </task>
-    <task id="LOCAL-00002" summary="lavet årlig indkomst">
-      <option name="closed" value="true" />
-      <created>1701388083086</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1701388083086</updated>
-    </task>
-    <task id="LOCAL-00003" summary="lavet årlig indkomst">
-      <option name="closed" value="true" />
-      <created>1701389516510</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1701389516510</updated>
     </task>
     <task id="LOCAL-00004" summary="lavet årlig indkomst">
       <option name="closed" value="true" />
@@ -136,6 +134,22 @@
       <option name="presentableId" value="LOCAL-00005" />
       <option name="project" value="LOCAL" />
       <updated>1701430822536</updated>
+    </task>
+    <task id="LOCAL-00002" summary="lavet årlig indkomst">
+      <option name="closed" value="true" />
+      <created>1701388083086</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1701388083086</updated>
+    </task>
+    <task id="LOCAL-00003" summary="lavet årlig indkomst">
+      <option name="closed" value="true" />
+      <created>1701389516510</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1701389516510</updated>
     </task>
     <option name="localTasksCounter" value="6" />
     <servers />
@@ -159,6 +173,7 @@
     <MESSAGE value="Version 2.2" />
     <MESSAGE value="Version 2.2 mandag yes" />
     <MESSAGE value="Changes by marcusmortensen" />
+    <MESSAGE value="Version 2.3" />
     <MESSAGE value="Version 2.3 ændret lidt nogle steder som er typefejl." />
     <MESSAGE value="lavet årlig indkomst" />
     <MESSAGE value="autogenereret medlemsnummer og fjernet en sout print for meget på aktiv passiv" />

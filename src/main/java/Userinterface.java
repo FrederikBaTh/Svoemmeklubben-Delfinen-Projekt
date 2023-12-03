@@ -1,4 +1,7 @@
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.time.Duration;
+import java.time.temporal.ChronoUnit;
 import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
@@ -15,6 +18,8 @@ public class Userinterface {
     public Userinterface(Controller controller) {
         this.controller = controller;
     }
+
+
 
 
     public void menu() {
@@ -162,7 +167,8 @@ public class Userinterface {
         System.out.print("Navn: ");
         String name = keyboard.nextLine();
 
-        String dateOfBirth = getValidStringInputFødselsdato("Fødselsdato i format (dd-mm-yyyy): ");
+        System.out.print("Fødselsdato i format (dd-mm-yyyy): ");
+        String dateOfBirth = getValidStringInputFødselsdato();
 
         System.out.print("Køn: ");
         String gender = keyboard.nextLine();
@@ -176,12 +182,13 @@ public class Userinterface {
         int memberNumber = controller.generateMemberNumber();
         System.out.println("Autogenereret medlemsnummer: " + memberNumber);
 
-        System.out.print("Passivt eller aktivt medlemskab: ");
+        System.out.print("Er det et aktivt medlemskab?");
         String passiveOrActive = getValidInputForAktivPassiv();
-        String memberType = "";
+        String memberType = checkIfMemberIsOverOrUnder18(dateOfBirth);
+
 
         if ("aktivt".equalsIgnoreCase(passiveOrActive)) {
-            memberType = getValidInputForAktivMedlem();
+            memberType = checkIfMemberIsOverOrUnder18(dateOfBirth);
         }
 
         System.out.print("Motionist: ");
@@ -336,60 +343,6 @@ public class Userinterface {
 
 
 
-
-
-    /*public void registrerMedlem() {
-        keyboard.nextLine();
-
-        System.out.print("Navn: ");
-        String name = keyboard.nextLine();
-
-
-        String dateOfBirth = getValidStringInputFødselsdato("Fødselsdato i format (dd-mm-yyyy): ");
-
-        System.out.print("Køn: ");
-        String gender = keyboard.nextLine();
-
-        int phonenumber = getValidIntegerInputTelefonnummer("Telefonnummer: ");
-
-        System.out.print("Adresse: ");
-        String adress = keyboard.nextLine();
-
-        int memberNumber = getValidIntegerInputMedlemsnummer("Medlemnummer: ");
-
-        System.out.print("Passivt eller aktivt medlemskab: ");
-        String passiveOrActive = keyboard.nextLine();
-
-        System.out.print("Motionist: ");
-        String motionist = keyboard.nextLine();
-
-        System.out.print("Konkurrence: ");
-        String competitive = keyboard.nextLine();
-
-
-        controller.registrerMedlem(name, dateOfBirth, gender, phonenumber, adress, memberNumber, passiveOrActive, motionist, competitive);
-
-
-    } */
-
-    // metode for at sørger for man indtaster fødselsdato rigtigt ind
-    /*private String getValidStringInputFødselsdato(String prompt) {
-        while (true) {
-            try {
-                System.out.print(prompt);
-                String input = keyboard.nextLine();
-
-                SimpleDateFormat dateFormat = new SimpleDateFormat("dd-mm-yyyy");
-
-                dateFormat.parse(input);
-
-                return input;
-            } catch (ParseException e) {
-                System.out.println("Ugyldig input. Indtast venligst en fødselsdato i formatet (dd-mm-yyyy).");
-
-            }
-        }
-    }*/
     private String getValidStringInputSvømmeDato(String prompt) {
 
         while (true)
@@ -410,10 +363,10 @@ public class Userinterface {
 
     }
 
-    private String getValidStringInputFødselsdato(String prompt) {
+    private String getValidStringInputFødselsdato() {
         while (true) {
             try {
-                System.out.print(prompt);
+                //System.out.print(prompt);
                 String input = keyboard.nextLine();
 
                 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
@@ -447,65 +400,54 @@ public class Userinterface {
         }
     }
 
-    /*private int getValidIntegerInputMedlemsnummer(String prompt) {
-        while (true) {
-            try {
-                System.out.print(prompt);
-                int input = keyboard.nextInt();
-                keyboard.nextLine();
-                if (String.valueOf(input).length() == 6)
-                    return input;
-                else {
-                    System.out.println("Ugyldig input. Indtast venligst et medlemsnummer på 6 cifre.");
 
-                }
-            } catch (java.util.InputMismatchException e) {
-                //vi skal spørger hvor mange cifre medlemsnummer har!!
-                System.out.println("Ugyldig input. Indtast venligst et medlemsnummer på 6 cifre.");
-                keyboard.nextLine();
-            }
-        }
-    }
-*/
     private String getValidInputForAktivPassiv() {
         while (true) {
             try {
 
                 String input = keyboard.nextLine().toLowerCase();
 
-                if ("passivt".equalsIgnoreCase(input)) {
+                if ("Nej".equalsIgnoreCase(input)) {
                     System.out.println("Medlemmer med et passivt medlemskab skal betale 600kr i årligt kontingent");
                     return "Passivt";
-                } else if ("aktivt".equalsIgnoreCase(input)) {
+                } else if ("Ja".equalsIgnoreCase(input)) {
                     return "Aktivt";
                 } else {
-                    System.out.println("Ugyldigt input. Indtast venligst 'aktivt' eller 'passivt'.");
+                    System.out.println("Ugyldigt input. Indtast venligst 'Ja' eller 'Nej'.");
                 }
             } catch (java.util.InputMismatchException e) {
-                System.out.println("Ugyldigt input. Indtast venligst 'aktivt' eller 'passivt'.");
+                System.out.println("Ugyldigt input. Indtast venligst 'Ja' eller 'Nej'.");
             }
         }
     }
 
-    private String getValidInputForAktivMedlem() {
-        while (true) {
-            try {
-                System.out.println("Hvilken medlemstype hører personen til?");
-                System.out.println("Ungdomssvømmer u18" + "\n" + "Ungdomssvømmer o18" + "\n" + "Seniorsvømmer");
-                String memberType = keyboard.nextLine().toLowerCase();
+    private String checkIfMemberIsOverOrUnder18(String dateOfBirth) {
 
-                if ("ungdomssvømmer u18".equalsIgnoreCase(memberType) ||
-                        "ungdomssvømmer o18".equalsIgnoreCase(memberType) ||
-                        "seniorsvømmer".equalsIgnoreCase(memberType)) {
-                    return memberType;
-                } else {
-                    System.out.println("Ugyldig medlemstype. Indtast venligst en korrekt medlemstype.");
-                }
-            } catch (java.util.InputMismatchException e) {
-                System.out.println("Ugyldigt input. Indtast venligst en korrekt medlemstype");
-            }
+        LocalDate birthdate = LocalDate.parse(dateOfBirth, DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+        LocalDate currentDate = LocalDate.now();
+
+        long age = ChronoUnit.YEARS.between(birthdate, currentDate);
+
+        if (age <= 18) {
+            return "Ungdomssvømmer u18";
+        } else if (age > 18 && age <= 60) {
+            return "Ungdomssvømmer o18";
+        } else {
+            return "Senior";
         }
     }
+
+
+
+
+
+
+
+
+
+
+
+
 
     private void exitProgram() {
         System.out.println("Afslutter programmet.");

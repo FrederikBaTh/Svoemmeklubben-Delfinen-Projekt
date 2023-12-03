@@ -39,6 +39,7 @@ public class Member {
     }
 
     public int generateMemberNumber() {
+
         Random random = new Random();
         return random.nextInt(999999);
     }
