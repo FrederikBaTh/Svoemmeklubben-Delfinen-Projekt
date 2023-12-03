@@ -2,6 +2,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
@@ -64,7 +65,7 @@ public class Userinterface {
             switch (keyboard.nextInt()) {
 
                 case 1:
-                    //resultater();
+                    resultater();
                     break;
                 case 2:
                     indtastResultater();
@@ -132,7 +133,7 @@ public class Userinterface {
     }
 
     public void medlemmerStamoplysninger() {
-        List<Member> members = controller.getMembers();
+        ArrayList<Member> members = controller.getMembers();
 
         controller.sortMembersByAge(members);
 
@@ -200,26 +201,6 @@ public class Userinterface {
 
 
     }
-
-    private String checkIfMotionistOrCompetitive() {
-        while (true) {
-            try {
-                String input = keyboard.nextLine().toLowerCase();
-
-                if ("Nej".equalsIgnoreCase(input)) {
-                    return "Konkurrence";
-                } else if ("Ja".equalsIgnoreCase(input)) {
-                    return "Motionist";
-                } else {
-                    System.out.println("Ugyldigt input. Indtast venligst 'Ja' eller 'Nej'.");
-                }
-            } catch (java.util.InputMismatchException e) {
-                System.out.println("Ugyldigt input. Indtast venligst 'Ja' eller 'Nej'.");
-            }
-        }
-    }
-
-
 
 
         //TODO resultater af alle træningens tiderne, så træneren kan sætte de bedste ind i konkurrence.
@@ -291,7 +272,7 @@ public class Userinterface {
         }
 
         public void displayMembershipStatusAndFees () {
-            List<Member> members = controller.getMembers();
+            ArrayList<Member> members = controller.getMembers();
 
             System.out.println("Medlemsstatus og kontingentgebyr:");
             for (Member member : members) {
@@ -452,7 +433,23 @@ public class Userinterface {
                 return "Senior";
             }
         }
+    private String checkIfMotionistOrCompetitive() {
+        while (true) {
+            try {
+                String input = keyboard.nextLine().toLowerCase();
 
+                if ("Nej".equalsIgnoreCase(input)) {
+                    return "Konkurrence";
+                } else if ("Ja".equalsIgnoreCase(input)) {
+                    return "Motionist";
+                } else {
+                    System.out.println("Ugyldigt input. Indtast venligst 'Ja' eller 'Nej'.");
+                }
+            } catch (java.util.InputMismatchException e) {
+                System.out.println("Ugyldigt input. Indtast venligst 'Ja' eller 'Nej'.");
+            }
+        }
+    }
         private void exitProgram () {
             System.out.println("Afslutter programmet.");
             System.exit(0);

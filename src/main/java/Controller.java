@@ -20,7 +20,7 @@ public class Controller {
     }
 
 
-    public void sortMembersByAge(List<Member> members) {
+    public void sortMembersByAge(ArrayList<Member> members) {
         database.sortMembersByAge(members);
     }
 
@@ -28,7 +28,7 @@ public class Controller {
         return member.calculateAge(date);
     }
 
-    public List<Member> getMembers() {
+    public ArrayList<Member> getMembers() {
         return database.getMeembers();
 
     }

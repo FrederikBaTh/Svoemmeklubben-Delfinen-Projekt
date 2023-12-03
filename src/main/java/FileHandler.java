@@ -20,28 +20,27 @@ public class FileHandler {
 
         try (Scanner fileScanner = new Scanner(new File(fileName))) {
             while (fileScanner.hasNextLine()) {
-                String name = fileScanner.nextLine();
-                String dateOfBirth = fileScanner.nextLine();
-                String gender = fileScanner.nextLine();
-                int phonenumber = Integer.parseInt(fileScanner.nextLine());
-                String adress = fileScanner.nextLine();
-                int memberNumber = Integer.parseInt(fileScanner.nextLine());
-                String passiveOrActive = fileScanner.nextLine();
-                String memberType = fileScanner.nextLine();
-                String motionist = fileScanner.nextLine();
-                String competitive = fileScanner.nextLine();
+                String line = fileScanner.nextLine();
+                String[] memberInfo = line.split(":");
 
-                Member member = new Member(name, dateOfBirth, gender, phonenumber, adress, memberNumber, passiveOrActive, memberType, motionist);
+                String name = memberInfo[0];
+                String dateOfBirth = memberInfo[1];
+                String gender = memberInfo[2];
+                int phonenumber = Integer.parseInt(memberInfo[3]);
+                String address = memberInfo[4];
+                int memberNumber = Integer.parseInt(memberInfo[5]);
+                String passiveOrActive = memberInfo[6];
+                String memberType = memberInfo[7];
+                String motionist = memberInfo[8];
+
+
+                Member member = new Member(name, dateOfBirth, gender, phonenumber, address, memberNumber, passiveOrActive, memberType, motionist);
                 loadedMembers.add(member);
-
-                if (fileScanner.hasNext()) {
-                    fileScanner.nextLine();
-                }
             }
-        } catch (FileNotFoundException e) {
+        } catch (FileNotFoundException | NumberFormatException | NoSuchElementException e) {
             System.err.println("Fejl: " + e.getMessage());
-        } catch (NumberFormatException | NoSuchElementException e) {
         }
+
         return loadedMembers;
     }
 
@@ -85,7 +84,6 @@ public class FileHandler {
                         member.getMemberType() + ":" +
                         member.getMotionist();
 
-                // Append a newline character after each member's information
                 memberInfo += System.lineSeparator();
                 fileOutputStream.write(memberInfo.getBytes());
             }

@@ -1,6 +1,5 @@
 import java.time.Duration;
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 
 public class CompetitiveMember extends Member {
 
@@ -10,68 +9,44 @@ public class CompetitiveMember extends Member {
 
     private String eventName;
     private String eventPlacement;
-    //private Duration eventSwimTime;
+    private Duration eventSwimTime;
 
-    //no event
-    public CompetitiveMember(String name, LocalDate dateOfBirth, String gender, int phonenumber, String adress, int memberNumber, String passiveOrActive, String memberType, String motionist, Duration swimTime, LocalDate dateOfSwim, String swimmingDiscipline){
-    super(name, dateOfBirth, gender, phonenumber, adress, memberNumber, passiveOrActive, memberType, motionist,swimTime,dateOfSwim,swimmingDiscipline);
+    // Training
+    public CompetitiveMember(String name, LocalDate dateOfBirth, int phonenumber, int memberNumber, String memberType, Duration swimTime, LocalDate dateOfSwim, String swimmingDiscipline) {
+        super(name, dateOfBirth, phonenumber, memberNumber, memberType, swimTime, dateOfSwim, swimmingDiscipline);
 
-        initializeEventDetails(swimTime, dateOfSwim, swimmingDiscipline);
-        //this.swimTime = swimTime;
-       // this.dateOfSwim = dateOfSwim;
-       // this.swimmingDiscipline = swimmingDiscipline;
-
-
+        initializeEventDetailsTræning(swimTime, dateOfSwim, swimmingDiscipline);
     }
 
-    //with event
-    public CompetitiveMember(
-            String name,
-            LocalDate dateOfBirth,
-            String gender,
-            int phonenumber,
-            String adress,
-            int memberNumber,
-            String passiveOrActive,
-            String memberType,
-            String motionist,
-            String competitive,
-            Duration swimTime,
-            LocalDate dateOfSwim,
-            String swimmingDiscipline,
-            String eventName,
-            String eventPlacement) {
-        super(
-                name,
-                dateOfBirth.format(DateTimeFormatter.ofPattern("dd-MM-yyyy")),
-                gender,
-                phonenumber,
-                adress,
-                memberNumber,
-                passiveOrActive,
-                memberType,
-                motionist);
+    // Event
+    public CompetitiveMember(String name, LocalDate dateOfBirth, int phonenumber, int memberNumber, String memberType, Duration swimTime, LocalDate dateOfSwim, String swimmingDiscipline, String eventName, String eventPlacement, Duration eventSwimTime) {
+        super(name, dateOfBirth, phonenumber, memberNumber, memberType, swimTime, dateOfSwim, swimmingDiscipline);
 
-        initializeEventDetails(swimTime, dateOfSwim, swimmingDiscipline);
-        //this(name, dateOfBirth, gender, phonenumber, adress, memberNumber, passiveOrActive, memberType, motionist, competitive, swimTime, dateOfSwim, swimmingDiscipline);
-        //this.eventName = eventName;
-        //this.eventPlacement = eventPlacement;
-
+        initializeEventDetailsEvent(swimTime, dateOfSwim, swimmingDiscipline, eventName, eventPlacement, eventSwimTime);
     }
-    private void initializeEventDetails(Duration swimTime, LocalDate dateOfSwim, String swimmingDiscipline) {
+
+    private void initializeEventDetailsEvent(Duration swimTime, LocalDate dateOfSwim, String swimmingDiscipline, String eventName, String eventPlacement, Duration eventSwimTime) {
+        this.swimTime = swimTime;
+        this.dateOfSwim = dateOfSwim;
+        this.swimmingDiscipline = swimmingDiscipline;
+        this.eventName = eventName;
+        this.eventPlacement = eventPlacement;
+        this.eventSwimTime = eventSwimTime;
+    }
+    private void initializeEventDetailsTræning(Duration swimTime, LocalDate dateOfSwim, String swimmingDiscipline) {
         this.swimTime = swimTime;
         this.dateOfSwim = dateOfSwim;
         this.swimmingDiscipline = swimmingDiscipline;
     }
 
-
-
-
-
-
-
-
-
-
-
+    @Override
+    public String toString() {
+        return "CompetitiveMember{" +
+                "swimTime=" + swimTime +
+                ", dateOfSwim=" + dateOfSwim +
+                ", swimmingDiscipline=" + swimmingDiscipline +
+                ", eventName='" + eventName + '\'' +
+                ", eventPlacement='" + eventPlacement + '\'' +
+                '}';
+    }
 }

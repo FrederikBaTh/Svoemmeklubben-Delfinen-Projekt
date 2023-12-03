@@ -14,8 +14,9 @@ public class Database {
         }
     }
 
+    private ArrayList<CompetitiveMember> compMeembers = new ArrayList<>();
 
-    public void registrerMedlem(String name, String dateOfBirth, String gender, int phonenumber, String address, int memberNumber, String passiveOrActive, String memberType,String motionist ) {
+    public void registrerMedlem(String name, String dateOfBirth, String gender, int phonenumber, String address, int memberNumber, String passiveOrActive, String memberType, String motionist) {
         try {
             Member member = new Member(name, dateOfBirth, gender, phonenumber, address, memberNumber, passiveOrActive, memberType, motionist);
             meembers.add(member);
@@ -26,7 +27,6 @@ public class Database {
             e.printStackTrace();
         }
     }
-
 
 
     public int calculateYearlyIncome() {
@@ -43,6 +43,7 @@ public class Database {
     public ArrayList<Member> getMeembers() {
         return meembers;
     }
+
     public void sortMembersByAge(List<Member> meembers) {
         meembers.sort(Comparator.comparingInt(Member::calculateAgeList));
     }
@@ -50,11 +51,10 @@ public class Database {
     /*public  updateMembership() {
         LocalDate today = LocalDate.now();
         return today.getYear();*/
-        //Period ageDifference
+    //Period ageDifference
 
 
-
-
-
-
+    public ArrayList<CompetitiveMember> getCompMeembers() {
+        return compMeembers;
+    }
 }
