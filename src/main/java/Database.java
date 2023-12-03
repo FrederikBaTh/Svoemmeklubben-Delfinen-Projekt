@@ -1,3 +1,4 @@
+import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -62,10 +63,10 @@ public class Database {
         return compMeembersEvent;
     }
 
-    public void registrerTræningTid(LocalTime svimTime, LocalDate dateOfSwim, SwimmingDiscipline swimmingDiscipline) {
+    public void registrerTræningTid( int memberNumber,Duration svimTime, LocalDate dateOfSwim, SwimmingDiscipline swimmingDiscipline) {
         try {
-            CompetitiveMember træning = new CompetitiveMember(svimTime, dateOfSwim, swimmingDiscipline);
-            compMeembersTræning.add(træning);
+            Member member = new Member(memberNumber, svimTime, dateOfSwim, swimmingDiscipline);
+            compMeembersTræning.add((CompetitiveMember) member);
             fileHandler.saveListOfTræningsTidToFile("TræningsTid.csv", compMeembersTræning);
 
         } catch (Exception e) {

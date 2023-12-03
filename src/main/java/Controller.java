@@ -1,4 +1,6 @@
+import java.time.Duration;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -49,5 +51,9 @@ public class Controller {
         List<Member> members = getMembers();
 
 
+    }
+
+    public void registrerTræningsResultat(int memberNumber, Duration svimTime, LocalDate dateOfSwim, SwimmingDiscipline swimmingDiscipline) {
+        database.registrerTræningTid(memberNumber, svimTime, dateOfSwim, swimmingDiscipline);
     }
 }

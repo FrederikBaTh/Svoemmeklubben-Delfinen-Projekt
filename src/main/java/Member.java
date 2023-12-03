@@ -34,10 +34,15 @@ public class Member {
         this.motionist = motionist;
     }
 
-    public Member(String name, LocalDate dateOfBirth, int phonenumber, int memberNumber, String memberType, Duration swimTime, LocalDate dateOfSwim, SwimmingDiscipline swimmingDiscipline, String eventName, String eventPlacement, Duration eventSwimTime) {
+    public Member(int memberNumber, Duration swimTime, LocalDate dateOfSwim, SwimmingDiscipline swimmingDiscipline, String eventName, String eventPlacement, Duration eventSwimTime) {
     }
 
+    public Member() {
 
+    }
+
+    public Member(int memberNumber, java.time.Duration swimTime, LocalDate dateOfSwim, SwimmingDiscipline swimmingDiscipline) {
+    }
 
     public int generateMemberNumber() {
         Random random = new Random();

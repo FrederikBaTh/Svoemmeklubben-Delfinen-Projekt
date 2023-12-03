@@ -13,22 +13,25 @@ public class CompetitiveMember extends Member {
     private Duration eventSwimTime;
 
     // Training
-    public CompetitiveMember(String name, LocalDate dateOfBirth, int phonenumber, int memberNumber, String memberType, Duration swimTime, LocalDate dateOfSwim, SwimmingDiscipline swimmingDiscipline) {
-        super(name, dateOfBirth, phonenumber, memberNumber, memberType, swimTime, dateOfSwim, swimmingDiscipline, eventName, eventPlacement, eventSwimTime);
-    // Training
-    public CompetitiveMember(String name, LocalDate dateOfBirth, int phonenumber, int memberNumber, String memberType, Duration swimTime, LocalDate dateOfSwim, String swimmingDiscipline) {
-        super(name, dateOfBirth, phonenumber, memberNumber, memberType, swimTime, dateOfSwim, swimmingDiscipline);
+    public CompetitiveMember( int memberNumber, Duration swimTime, LocalDate dateOfSwim, SwimmingDiscipline swimmingDiscipline) {
+        super(memberNumber, swimTime, dateOfSwim, swimmingDiscipline);
 
         initializeEventDetailsTræning(swimTime, dateOfSwim, swimmingDiscipline);
     }
 
     // Event
     public CompetitiveMember(String name, LocalDate dateOfBirth, int phonenumber, int memberNumber, String memberType, Duration swimTime, LocalDate dateOfSwim, SwimmingDiscipline swimmingDiscipline, String eventName, String eventPlacement, Duration eventSwimTime) {
-        super(name, dateOfBirth, phonenumber, memberNumber, memberType, swimTime, dateOfSwim, swimmingDiscipline, eventName, eventPlacement, eventSwimTime);
+        super(memberNumber, swimTime, dateOfSwim, swimmingDiscipline, eventName, eventPlacement, eventSwimTime);
 
         initializeEventDetailsEvent(swimTime, dateOfSwim, swimmingDiscipline, eventName, eventPlacement, eventSwimTime);
     }
 
+    public CompetitiveMember() {
+
+    }
+
+    public CompetitiveMember(LocalTime svimTime, LocalDate dateOfSwim, SwimmingDiscipline swimmingDiscipline) {
+    }
 
 
     private void initializeEventDetailsEvent(Duration swimTime, LocalDate dateOfSwim, SwimmingDiscipline swimmingDiscipline, String eventName, String eventPlacement, Duration eventSwimTime) {
@@ -44,10 +47,15 @@ public class CompetitiveMember extends Member {
         this.dateOfSwim = dateOfSwim;
         this.swimmingDiscipline = swimmingDiscipline;
     }
-    private void initializeEventDetailsTræning(Duration swimTime, LocalDate dateOfSwim, String swimmingDiscipline) {
-        this.swimTime = swimTime;
-        this.dateOfSwim = dateOfSwim;
-        this.swimmingDiscipline = swimmingDiscipline;
+
+  public Duration getSwimTime() {
+        return swimTime;
+    }
+    public LocalDate getDateOfSwim() {
+        return dateOfSwim;
+    }
+    public SwimmingDiscipline getSwimmingDiscipline() {
+        return swimmingDiscipline;
     }
 
     @Override

@@ -253,18 +253,46 @@ public class Userinterface {
         public void resultaterKonkurrence () {
             keyboard.nextLine();
 
+            //System.out.println("Medlemsnummer: ");
+            int memberNumber = getValidIntegerInputMedlemsnummer("Medlemsnummer: "); // TODO lav et input der kigger igennem et arrayliste for at se om nummeret findes
+
             System.out.println("Svømmetid (hh:mm:ss): ");
             String svømmeTidInputKonkurrence = keyboard.nextLine();
 
-            Duration svømmetid = parseDuration(svømmeTidInputKonkurrence);
 
-            String svømmeDatoKonkurrence = getValidStringInputSvømmeDato("Konkurrence dato: ");
+            Duration svimTime = parseDuration(svømmeTidInputKonkurrence);
+
+            String dateOfSwim = getValidStringInputSvømmeDato("Konkurrence dato: ");
 
             System.out.println("Svømmedisciplin: ");
-            SwimmingDiscipline svømmeDiciplinKonkurrence = getValidSwimmingDiscipline();
+            SwimmingDiscipline swimmingDiscipline = getValidSwimmingDiscipline();
 
-
+            controller.registrerTræningsResultat(memberNumber, svimTime, LocalDate.parse(dateOfSwim), swimmingDiscipline);
         }
+
+
+        private int getValidIntegerInputMedlemsnummer(String prompt) {
+                while (true) {
+                    try {
+                        System.out.print(prompt);
+                        int input = keyboard.nextInt();
+                        keyboard.nextLine();
+                        if (String.valueOf(input).length() == 6)
+                            return input;
+                        else {
+                            System.out.println("Ugyldig input. Indtast venligst et medlemsnummer på 6 cifre.");
+
+                        }
+                    } catch (java.util.InputMismatchException e) {
+                        //vi skal spørger hvor mange cifre medlemsnummer har!!
+                        System.out.println("Ugyldig input. Indtast venligst et medlemsnummer på 6 cifre.");
+                        keyboard.nextLine();
+                    }
+                }
+            }
+
+
+
 
         public void displayYearlyIncome () {
             int yearlyIncome = controller.calculateYearlyIncome();
