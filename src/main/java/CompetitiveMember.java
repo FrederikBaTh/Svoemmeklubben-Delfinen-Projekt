@@ -12,6 +12,9 @@ public class CompetitiveMember extends Member {
     private Duration eventSwimTime;
 
     // Training
+    public CompetitiveMember(String name, LocalDate dateOfBirth, int phonenumber, int memberNumber, String memberType, Duration swimTime, LocalDate dateOfSwim, SwimmingDiscipline swimmingDiscipline) {
+        super(name, dateOfBirth, phonenumber, memberNumber, memberType, swimTime, dateOfSwim, swimmingDiscipline, eventName, eventPlacement, eventSwimTime);
+    // Training
     public CompetitiveMember(String name, LocalDate dateOfBirth, int phonenumber, int memberNumber, String memberType, Duration swimTime, LocalDate dateOfSwim, String swimmingDiscipline) {
         super(name, dateOfBirth, phonenumber, memberNumber, memberType, swimTime, dateOfSwim, swimmingDiscipline);
 
@@ -32,6 +35,11 @@ public class CompetitiveMember extends Member {
         this.eventName = eventName;
         this.eventPlacement = eventPlacement;
         this.eventSwimTime = eventSwimTime;
+    }
+    private void initializeEventDetailsTræning(Duration swimTime, LocalDate dateOfSwim, SwimmingDiscipline swimmingDiscipline) {
+        this.swimTime = swimTime;
+        this.dateOfSwim = dateOfSwim;
+        this.swimmingDiscipline = swimmingDiscipline;
     }
     private void initializeEventDetailsTræning(Duration swimTime, LocalDate dateOfSwim, String swimmingDiscipline) {
         this.swimTime = swimTime;

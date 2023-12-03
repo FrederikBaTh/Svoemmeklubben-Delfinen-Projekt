@@ -2,6 +2,8 @@ import java.time.Duration;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Random;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Member {
 
@@ -14,6 +16,8 @@ public class Member {
     private String passiveOrActive; // TODO Overvej at ændre til boolean
     private String memberType;
     private String motionist;
+
+    private List<Integer> usedMemberNumbers = new ArrayList<>();
 
     //constructor
 
@@ -40,10 +44,30 @@ public class Member {
     }
 
     public int generateMemberNumber() {
-
         Random random = new Random();
-        return random.nextInt(999999);
+        int newMemberNumber;
+
+
+        do {
+            newMemberNumber = random.nextInt(999999);
+        } while (memberNumberUsed(newMemberNumber));
+
+        usedMemberNumbers.add(newMemberNumber);
+        return newMemberNumber;
     }
+
+    public boolean memberNumberUsed(int number) {
+        for (int usedNumber : usedMemberNumbers) {
+            if (usedNumber == number) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+
+
+
 
     public int calculateAge(LocalDate date) {
         this.dateOfBirth = date;
