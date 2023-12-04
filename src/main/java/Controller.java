@@ -49,14 +49,15 @@ public class Controller {
     }
 
 
-    //TODO brug til noget?
-    public void someMethod() {
-        List<Member> members = getMembers();
-
-
-    }
-
     public void registrerTræningsResultat(int memberNumber, Duration svimTime, LocalDate dateOfSwim, SwimmingDiscipline swimmingDiscipline) {
         database.registrerTræningTid(memberNumber, svimTime, dateOfSwim, swimmingDiscipline);
+    }
+
+    public void registrerEventResultat(int memberNumber, Duration swimTime, LocalDate dateOfSwim, SwimmingDiscipline swimmingDiscipline, String eventName, String eventPlacement, Duration eventSwimTime) {
+        database.registrerEventTid(memberNumber, swimTime, dateOfSwim, swimmingDiscipline, eventName, eventPlacement, eventSwimTime);
+    }
+
+    public boolean memberNumberUsed(int input) {
+        return false;
     }
 }

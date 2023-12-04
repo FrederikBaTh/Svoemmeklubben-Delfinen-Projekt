@@ -53,18 +53,13 @@ public class Database {
         meembers.sort(Comparator.comparingInt(Member::calculateAgeList));
     }
 
-    /*public  updateMembership() {
-        LocalDate today = LocalDate.now();
-        return today.getYear();*/
-    //Period ageDifference
-
-
     public ArrayList<CompetitiveMember> getCompMeembers() {
         return compMeembersEvent;
     }
 
-    public void registrerTræningTid( int memberNumber,Duration svimTime, LocalDate dateOfSwim, SwimmingDiscipline swimmingDiscipline) {
+    public void registrerTræningTid(int memberNumber, Duration svimTime, LocalDate dateOfSwim, SwimmingDiscipline swimmingDiscipline) {
         try {
+
             Member member = new Member(memberNumber, svimTime, dateOfSwim, swimmingDiscipline);
             compMeembersTræning.add((CompetitiveMember) member);
             fileHandler.saveListOfTræningsTidToFile("TræningsTid.csv", compMeembersTræning);
@@ -74,5 +69,17 @@ public class Database {
         }
     }
 
+    public void registrerEventTid(int memberNumber, Duration svimTime, LocalDate dateOfSwim, SwimmingDiscipline swimmingDiscipline, String eventName, String eventPlacement, Duration eventSwimTime) {
+        try {
+
+            Member member = new Member(memberNumber, svimTime, dateOfSwim, swimmingDiscipline);
+            compMeembersTræning.add((CompetitiveMember) member);
+            fileHandler.saveListOfTræningsTidToFile("TræningsTid.csv", compMeembersTræning);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+
+        }
+    }
 
 }

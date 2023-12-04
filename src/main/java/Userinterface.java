@@ -1,10 +1,6 @@
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
 import java.util.Scanner;
 import java.time.format.DateTimeParseException;
 import java.time.LocalDate;
@@ -246,11 +242,12 @@ public class Userinterface {
             String svømmeDato = getValidStringInputSvømmeDato("Svømmedato: ");
 
             System.out.println("Svømmedisciplin: vælg en af disse: ");
-            SwimmingDiscipline svømmeDiciplin = getValidSwimmingDiscipline();
+            SwimmingDiscipline svømmeDisciplin = chooseBetweenSwimmingStyles();
 
         }
-
+// TODO Den skal vise en liste som man skal vælge fra med navn og meldemsnummer også derefter sætte tider og det til
         public void resultaterKonkurrence () {
+
             keyboard.nextLine();
 
             //System.out.println("Medlemsnummer: ");
@@ -265,7 +262,7 @@ public class Userinterface {
             String dateOfSwim = getValidStringInputSvømmeDato("Konkurrence dato: ");
 
             System.out.println("Svømmedisciplin: ");
-            SwimmingDiscipline swimmingDiscipline = getValidSwimmingDiscipline();
+            SwimmingDiscipline swimmingDiscipline = chooseBetweenSwimmingStyles();
 
             controller.registrerTræningsResultat(memberNumber, svimTime, LocalDate.parse(dateOfSwim), swimmingDiscipline);
         }
@@ -281,10 +278,11 @@ public class Userinterface {
                             return input;
                         else {
                             System.out.println("Ugyldig input. Indtast venligst et medlemsnummer på 6 cifre.");
-
+                            if (controller.memberNumberUsed(input)) {
+                                System.out.println("Medlemsnummeret findes ikke i systemet.");
+                            }
                         }
                     } catch (java.util.InputMismatchException e) {
-                        //vi skal spørger hvor mange cifre medlemsnummer har!!
                         System.out.println("Ugyldig input. Indtast venligst et medlemsnummer på 6 cifre.");
                         keyboard.nextLine();
                     }
@@ -326,12 +324,12 @@ public class Userinterface {
             System.out.println();
         }
 
-        public SwimmingDiscipline getValidSwimmingDiscipline () {
+       /* public SwimmingDiscipline getValidSwimmingDiscipline () {
             while (true) {
                 try {
                     //TODO menu med 1-4 ?
-                    System.out.print("Vælg svømmedisciplin (BUTTERFLY, FRONT_CRAWL, BACKSTROKE, BREASTSTROKE): ");
-                    String input = keyboard.nextLine().toUpperCase();
+                    System.out.print("Vælg svømmedisciplin (Butterfly, Crawl, Backstroke, Breaststroke): ");
+                    String input = chooseBetweenSwimmingStyles();
 
                     //TODO skifter til switch case?? Så man kan vælge fra 1. til 4. ud af de disciplerne.
                     for (SwimmingDiscipline discipline : SwimmingDiscipline.values()) {
@@ -345,6 +343,62 @@ public class Userinterface {
                     System.out.println("Ugyldig indtastning. Vælg venligst en gyldig svømmedisciplin.");
                 }
             }
+        }*/
+
+        public SwimmingDiscipline chooseBetweenSwimmingStyles() {
+        String input = keyboard.nextLine();
+            System.out.println("Vælg mellem Butterfly, Crawl, Backstroke, Breaststroke");
+                        switch (keyboard.nextInt()) {
+                case 1:
+                    Butterfly(input);
+                    break;
+                case 2:
+                    Crawl(input);
+                    break;
+                case 3:
+                    Backstroke(input);
+                    break;
+                case 4:
+                    Breaststroke(input);
+                    break;
+
+            }
+            return null;
+        }
+
+        public SwimmingDiscipline Butterfly(String input) {
+            for (SwimmingDiscipline discipline : SwimmingDiscipline.values()) {
+                if (discipline.name().equalsIgnoreCase(input)) {
+                    return discipline;
+                }
+            }
+            return null;
+        }
+
+        public SwimmingDiscipline Crawl(String input) {
+            for (SwimmingDiscipline discipline : SwimmingDiscipline.values()) {
+                if (discipline.name().equalsIgnoreCase(input)) {
+                    return discipline;
+                }
+            }
+            return null;
+        }
+
+        public SwimmingDiscipline Backstroke(String input) {
+            for (SwimmingDiscipline discipline : SwimmingDiscipline.values()) {
+                if (discipline.name().equalsIgnoreCase(input)) {
+                    return discipline;
+                }
+            }
+            return null;
+        }
+        public SwimmingDiscipline Breaststroke(String input) {
+            for (SwimmingDiscipline discipline : SwimmingDiscipline.values()) {
+                if (discipline.name().equalsIgnoreCase(input)) {
+                    return discipline;
+                }
+            }
+            return null;
         }
 
 

@@ -20,6 +20,7 @@ public class Member {
 
     private List<Integer> usedMemberNumbers = new ArrayList<>();
 
+
     //constructor
 
     public Member(String name, String dateOfBirth, String gender, int phonenumber, String adress, int memberNumber, String passiveOrActive, String memberType, String motionist ) {
@@ -40,9 +41,18 @@ public class Member {
     public Member() {
 
     }
-
-    public Member(int memberNumber, java.time.Duration swimTime, LocalDate dateOfSwim, SwimmingDiscipline swimmingDiscipline) {
+    public void updateArrearsStatus() {
+        this.inArrears = isInArrears();
     }
+    private LocalDate getLastPaymentDate() {
+       return LocalDate.now().minusMonths(2);
+    }
+    public void performMembershipRenewal() {
+        this.membershipExpiryDate = this.membershipExpiryDate.plusYears(1);
+        System.out.println("medlemskabet fornyes med 1 år.");
+    }
+    //_____________
+
 
     public int generateMemberNumber() {
         Random random = new Random();
@@ -65,10 +75,6 @@ public class Member {
         }
         return false;
     }
-
-
-
-
 
     public int calculateAge(LocalDate date) {
         this.dateOfBirth = date;
@@ -154,6 +160,9 @@ public class Member {
         return motionist;
     }
 
+    public List<Integer> getUsedMemberNumbers() {
+        return usedMemberNumbers;
+    }
 
     //setters
 
@@ -208,4 +217,5 @@ public class Member {
                 "Motionist:" + " " + motionist + "\n";
     }
 }
+
 
