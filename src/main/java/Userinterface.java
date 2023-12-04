@@ -107,9 +107,10 @@ public class Userinterface {
         boolean exit = false;
         while (!exit) {
             System.out.println("""
-                    1: se årligindkomst
-                    2: se medlemsstatus og gebyr 
-                    3: afslut programmet
+                    1: se årlig indkomst
+                    2: se medlemsstatus og gebyr
+                    3: fornyelse af medlemskab
+                    4: afslut programmet
                     """);
             switch (keyboard.nextInt()) {
                 case 1:
@@ -119,6 +120,9 @@ public class Userinterface {
                     displayMembershipStatusAndFees();
                     break;
                 case 3:
+                    showMembershipRenewalMenu();
+                    break;
+                case 4:
                     exit = true;
                     break;
                 default:
@@ -296,6 +300,33 @@ public class Userinterface {
             int yearlyIncome = controller.calculateYearlyIncome();
             System.out.println("Forventet Årlig Indtægt: " + yearlyIncome + " kr.");
         }
+
+        //______________ Renewal membership
+        //TODO Søren R. (Se ChatGPT!)
+        public void showMembershipRenewalMenu() {
+            boolean exit = false;
+            while (!exit) {
+                System.out.println("""
+                    1. Renew Membership
+                    """);
+            }
+            switch (keyboard.nextInt()) {
+
+                case 1:
+                    indtastresultaterTræning();
+                    break;
+                case 2:
+                    resultaterKonkurrence();
+                    break;
+                case 3:
+                    exit = true;
+                    break;
+                default:
+                    System.out.println("ugyldigt valg ");
+
+            }
+        }
+        //______________
 
         public void displayMembershipStatusAndFees () {
             ArrayList<Member> members = controller.getMembers();
@@ -532,9 +563,12 @@ public class Userinterface {
             }
         }
     }
-        private void exitProgram () {
-            System.out.println("Afslutter programmet.");
-            System.exit(0);
-        }
+
+
+
+    private void exitProgram () {
+        System.out.println("Afslutter programmet.");
+        System.exit(0);
     }
+}
 

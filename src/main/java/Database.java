@@ -26,6 +26,7 @@ public class Database {
             Member member = new Member(name, dateOfBirth, gender, phonenumber, address, memberNumber, passiveOrActive, memberType, motionist);
             meembers.add(member);
             fileHandler.saveListOfMembersToFile("MedlemsListe.csv", meembers);
+            // lave en metode i filehandle til at gemme medlemsnr i en anden CSV file.
             System.out.println("Member successfully registered.");
         } catch (Exception e) {
             System.out.println("Error registering member: " + e.getMessage());
@@ -68,6 +69,19 @@ public class Database {
             e.printStackTrace();
         }
     }
+    //____________
+    public void processArrears() {
+        for (Member member : meembers) {
+            if (member.isInArrears()) {
+                // Implement logic to handle arrears, e.g., send a notification or take appropriate action
+                System.out.println("Member in arrears: " + member.getName());
+            }
+        }
+    }
+    public void performMembershipRenewal() {
+
+    }
+    //_____________
 
     public void registrerEventTid(int memberNumber, Duration svimTime, LocalDate dateOfSwim, SwimmingDiscipline swimmingDiscipline, String eventName, String eventPlacement, Duration eventSwimTime) {
         try {

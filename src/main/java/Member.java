@@ -17,6 +17,8 @@ public class Member {
     private String passiveOrActive; // TODO Overvej at ændre til boolean
     private String memberType;
     private String motionist;
+    private boolean inArrears;
+    private LocalDate membershipExpiryDate;
 
     private List<Integer> usedMemberNumbers = new ArrayList<>();
 
@@ -33,13 +35,24 @@ public class Member {
         this.passiveOrActive = passiveOrActive;
         this.memberType = memberType;
         this.motionist = motionist;
+        this.inArrears = false;
     }
 
     public Member(int memberNumber, Duration swimTime, LocalDate dateOfSwim, SwimmingDiscipline swimmingDiscipline, String eventName, String eventPlacement, Duration eventSwimTime) {
     }
-
+    public Member(int memberNumber) {
+    }
     public Member() {
+    }
+    public Member(int memberNumber, java.time.Duration swimTime, LocalDate dateOfSwim, SwimmingDiscipline swimmingDiscipline) {
+    }
 
+    //___________
+    public boolean isInArrears() {
+        LocalDate currentDate = LocalDate.now();
+        LocalDate lastPaymentDate = getLastPaymentDate();
+
+        return lastPaymentDate.isBefore(currentDate.minusMonths(3));
     }
     public void updateArrearsStatus() {
         this.inArrears = isInArrears();
@@ -87,11 +100,12 @@ public class Member {
         return today.getYear() - dateOfBirth.getYear();
     }
 
-    public String getFormattedDateOfBirth() {
+    //TODO bruger til noget??
+    /*public String getFormattedDateOfBirth() {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
         return dateOfBirth.format(formatter);
 
-    }
+    }*/
 
     public int calculateYearlySubscriptionFee() {
 

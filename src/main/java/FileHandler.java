@@ -61,14 +61,14 @@ public class FileHandler {
         try (FileOutputStream fileOutputStream = new FileOutputStream(fileName, true)) {
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
             for (Member member : members) {
-                String memberInfo = member.getName() + ":" +
-                        member.getDateOfBirth().format(formatter) + ":" +
-                        member.getGender() + ":" +
-                        member.getPhonenumber() + ":" +
-                        member.getAdress() + ":" +
-                        member.getMemberNumber() + ":" +
-                        member.getPassiveOrActive() + ":" +
-                        member.getMemberType() + ":" +
+                String memberInfo = member.getName() + "/" +
+                        member.getDateOfBirth().format(formatter) + "/" +
+                        member.getGender() + "/" +
+                        member.getPhonenumber() + "/" +
+                        member.getAdress() + "/" +
+                        member.getMemberNumber() + "/" +
+                        member.getPassiveOrActive() + "/" +
+                        member.getMemberType() + "/" +
                         member.getMotionist();
 
                 memberInfo += System.lineSeparator();
@@ -80,21 +80,7 @@ public class FileHandler {
     }
 
 
-
-       /* public void toFile() {
-            try {
-                PrintStream writeToFile = new PrintStream(new File("MedlemsListe.csv"));
-                for (int i = 0; i < this.members.toArray().length; i++) {
-                    writeToFile.println(this.members.get(i).toCsvString());
-                    System.out.println("toFileMethod " + this.members.get(i).toCsvString());
-                }
-           }
-            catch (FileNotFoundException e) {
-                System.out.println(e);
-            }
-        } */
-
-    public ArrayList<CompetitiveMember> loadedCompetitiveMember(){
+    public ArrayList<CompetitiveMember> loadedCompetitiveMember() {
         ArrayList<CompetitiveMember> loadedCompetitiveMember = new ArrayList<>();
 
         try (Scanner fileScanner = new Scanner(new File(fileName))) {
