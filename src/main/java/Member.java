@@ -38,7 +38,7 @@ public class Member {
         this.inArrears = false;
     }
 
-    public Member(int memberNumber, Duration swimTime, LocalDate dateOfSwim, SwimmingDiscipline swimmingDiscipline, String eventName, String eventPlacement, Duration eventSwimTime) {
+    public Member(int memberNumber, Duration swimTime, LocalDate dateOfSwim, SwimmingDiscipline swimmingDiscipline, String eventName, String eventPlacement) {
     }
     public Member(int memberNumber) {
     }

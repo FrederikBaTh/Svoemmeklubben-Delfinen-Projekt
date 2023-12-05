@@ -17,9 +17,38 @@ public class Database {
         }
     }
 
-    private ArrayList<CompetitiveMember> compMeembersEvent = new ArrayList<>();
 
-    private ArrayList<CompetitiveMember> compMeembersTræning = new ArrayList<>();
+    public boolean isCompetitiveUnder18(Member member) {
+        return "aktivt".equalsIgnoreCase(member.getPassiveOrActive()) && "ungdomssvømmer u18".equalsIgnoreCase(member.getMemberType()) && member.calculateAgeList() < 18;
+    }
+
+    public boolean isCompetitiveOver18(Member member) {
+        return "aktivt".equalsIgnoreCase(member.getPassiveOrActive()) && "ungdomssvømmer o18".equalsIgnoreCase(member.getMemberType()) && member.calculateAgeList() >= 18;
+    }
+
+    public List<Member> getCompetitiveMembersUnder18() {
+        List<Member> competitiveMembersUnder18 = new ArrayList<>();
+
+        for (Member member : meembers) {
+            if (isCompetitiveUnder18(member)) {
+                competitiveMembersUnder18.add(member);
+            }
+        }
+
+        return competitiveMembersUnder18;
+    }
+
+    public List<Member> getCompetitiveMembersOver18() {
+        List<Member> competitiveMembersOver18 = new ArrayList<>();
+
+        for (Member member : meembers) {
+            if (isCompetitiveOver18(member)) {
+                competitiveMembersOver18.add(member);
+            }
+        }
+
+        return competitiveMembersOver18;
+    }
 
     public void registrerMedlem(String name, String dateOfBirth, String gender, int phonenumber, String address, int memberNumber, String passiveOrActive, String memberType, String motionist) {
         try {
@@ -83,7 +112,7 @@ public class Database {
     }
     //_____________
 
-    public void registrerEventTid(int memberNumber, Duration svimTime, LocalDate dateOfSwim, SwimmingDiscipline swimmingDiscipline, String eventName, String eventPlacement, Duration eventSwimTime) {
+    /*public void registrerEventTid(int memberNumber, Duration svimTime, LocalDate dateOfSwim, SwimmingDiscipline swimmingDiscipline, String eventName, String eventPlacement) {
         try {
 
             Member member = new Member(memberNumber, svimTime, dateOfSwim, swimmingDiscipline);
@@ -96,4 +125,14 @@ public class Database {
         }
     }
 
-}
+        public boolean memberExists ( int memberNumber){
+            for (Member member : meembers) {
+                if (member.getMemberNumber() == memberNumber) {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+
+    }

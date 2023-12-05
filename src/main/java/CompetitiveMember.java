@@ -20,8 +20,8 @@ public class CompetitiveMember extends Member {
     }
 
     // Event
-    public CompetitiveMember(String name, LocalDate dateOfBirth, int phonenumber, int memberNumber, String memberType, Duration swimTime, LocalDate dateOfSwim, SwimmingDiscipline swimmingDiscipline, String eventName, String eventPlacement, Duration eventSwimTime) {
-        super(memberNumber, swimTime, dateOfSwim, swimmingDiscipline, eventName, eventPlacement, eventSwimTime);
+    public CompetitiveMember(int memberNumber, Duration swimTime, LocalDate dateOfSwim, SwimmingDiscipline swimmingDiscipline, String eventName, String eventPlacement) {
+        super(memberNumber, swimTime, dateOfSwim, swimmingDiscipline, eventName, eventPlacement);
 
         initializeEventDetailsEvent(swimTime, dateOfSwim, swimmingDiscipline, eventName, eventPlacement, eventSwimTime);
     }
@@ -57,6 +57,14 @@ public class CompetitiveMember extends Member {
     public SwimmingDiscipline getSwimmingDiscipline() {
         return swimmingDiscipline;
     }
+    public String getEventName() {
+        return eventName;
+    }
+    public String getEventPlacement() {
+        return eventPlacement;
+    }
+
+
 
     @Override
     public String toString() {

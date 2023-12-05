@@ -30,7 +30,7 @@ public class FileHandler {
                     continue;
                 }
 
-                String[] memberInfo = line.split(":");
+                String[] memberInfo = line.split(",");
 
                 if (memberInfo.length >= 2) {
                     String name = memberInfo[0];
@@ -61,14 +61,14 @@ public class FileHandler {
         try (FileOutputStream fileOutputStream = new FileOutputStream(fileName, true)) {
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
             for (Member member : members) {
-                String memberInfo = member.getName() + "/" +
-                        member.getDateOfBirth().format(formatter) + "/" +
-                        member.getGender() + "/" +
-                        member.getPhonenumber() + "/" +
-                        member.getAdress() + "/" +
-                        member.getMemberNumber() + "/" +
-                        member.getPassiveOrActive() + "/" +
-                        member.getMemberType() + "/" +
+                String memberInfo = member.getName() + "," +
+                        member.getDateOfBirth().format(formatter) + "," +
+                        member.getGender() + "," +
+                        member.getPhonenumber() + "," +
+                        member.getAdress() + "," +
+                        member.getMemberNumber() + "," +
+                        member.getPassiveOrActive() + "," +
+                        member.getMemberType() + "," +
                         member.getMotionist();
 
                 memberInfo += System.lineSeparator();
@@ -111,17 +111,23 @@ public class FileHandler {
     }
 
     public void saveListOfTræningsTidToFile(String fileName, ArrayList<CompetitiveMember> compMember) {
-        try (PrintStream output = new PrintStream(fileName)) {
+        try (FileOutputStream fileOutputStream = new FileOutputStream(fileName, true)) {
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
 
             for (CompetitiveMember CompMember : compMember) {
+                for (Member member : compMember) {
+                    String memberInfo = member.getMemberNumber() + "," +
+                            CompMember.getSwimTime() + "," +
+                            CompMember.getDateOfSwim() + "," +
+                            CompMember.getSwimmingDiscipline();
 
-                output.println(CompMember.getSwimTime());
-                output.println(CompMember.getDateOfSwim());
-                output.println(CompMember.getSwimmingDiscipline());
-                output.println();
+
+                    memberInfo += System.lineSeparator();
+                    fileOutputStream.write(memberInfo.getBytes());
+                }
             }
-        } catch (FileNotFoundException e) {
-            System.err.println("Fejl: " + e.getMessage());
+        }  catch (IOException e) {
+            throw new RuntimeException(e);
         }
 
     }
@@ -132,7 +138,7 @@ public class FileHandler {
         try (Scanner fileScanner = new Scanner(new File(fileName))) {
             while (fileScanner.hasNextLine()) {
                 String line = fileScanner.nextLine();
-                String[] memberInfo = line.split("/");
+                String[] memberInfo = line.split(",");
 
 
                 int memberNumber = Integer.parseInt(memberInfo[0]);
@@ -152,7 +158,7 @@ public class FileHandler {
         try (FileOutputStream fileOutputStream = new FileOutputStream(fileName, true)) {
             for (Member memberNumbers : usedMemberNumbers) {
                 String memberInfo =
-                        memberNumbers.getUsedMemberNumbers() + "/";
+                        memberNumbers.getUsedMemberNumbers() + ",";
 
                 memberInfo += System.lineSeparator();
                 fileOutputStream.write(memberInfo.getBytes());

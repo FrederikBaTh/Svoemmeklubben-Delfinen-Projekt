@@ -61,7 +61,7 @@ public class Userinterface {
             switch (keyboard.nextInt()) {
 
                 case 1:
-                    resultater();
+                    tidsresultater();
                     break;
                 case 2:
                     indtastResultater();
@@ -204,9 +204,19 @@ public class Userinterface {
 
 
         //TODO resultater af alle træningens tiderne, så træneren kan sætte de bedste ind i konkurrence.
-        public void resultater () {
+
+
+    public void tidsresultater () {
+        ArrayList<CompetitiveMember> competitiveMembers = controller.getCompetitiveMembers();
+        for (CompetitiveMember competitiveMember : competitiveMembers) {
+            System.out.println("Medlemsnummer: " + competitiveMember.getMemberNumber());
+            System.out.println("Navn: " + competitiveMember.getName());
+            System.out.println("Svømmedisciplin: " + competitiveMember.getSwimmingDiscipline());
+            System.out.println("Svømmetid: " + competitiveMember.getSwimTime());
+            System.out.println("Svømmedato: " + competitiveMember.getDateOfSwim());
             System.out.println();
         }
+    }
 
         public void indtastResultater () {
             boolean exit = false;
@@ -219,10 +229,10 @@ public class Userinterface {
                 switch (keyboard.nextInt()) {
 
                     case 1:
-                        indtastresultaterTræning();
+                        indtastResultaterTræning();
                         break;
                     case 2:
-                        resultaterKonkurrence();
+                        indtastResultaterKonkurrence();
                         break;
                     case 3:
                         exit = true;
@@ -233,44 +243,126 @@ public class Userinterface {
                 }
             }
         }
+    public void seKokurrenceHold () {
+        boolean exit = false;
+        while (!exit) {
+            System.out.println("""
+                        1: se kokurrence hold over 18
+                        2: se kokurrence hold under 18
+                        3: afslut programmet
+                        """);
+            switch (keyboard.nextInt()) {
 
+                case 1:
+                    printCompMembersOver18();
+                    break;
+                case 2:
+                    printCompMembersUnder18();
+                    break;
+                case 3:
+                    exit = true;
+                    break;
+                default:
+                    System.out.println("ugyldigt valg ");
 
-        public void indtastresultaterTræning () {
-            keyboard.nextLine();
-
-            System.out.print("Svømmetid (hh:mm:ss): ");
-            String svømmeTidInput = keyboard.nextLine();
-
-            Duration svømmeTid = parseDuration(svømmeTidInput);
-
-            String svømmeDato = getValidStringInputSvømmeDato("Svømmedato: ");
-
-            System.out.println("Svømmedisciplin: vælg en af disse: ");
-            SwimmingDiscipline svømmeDisciplin = chooseBetweenSwimmingStyles();
-
+            }
         }
+    }
+    public void printCompMembersUnder18() {
+        List<Member> competitiveMembersUnder18 = controller.getCompetitiveMembersUnder18();
+
+
+        for (Member member : competitiveMembersUnder18) {
+            System.out.println(member);
+        }
+    }
+    public void printCompMembersOver18(){
+        List<Member> competitiveMembersOver18 = controller.getCompetitiveMembersOver18();
+
+        for (Member member : competitiveMembersOver18) {
+            System.out.println(member);
+        }
+
+
+    }
+        public void indtastResultaterTræning() {
+
+            ArrayList<Member> members = controller.getMembers();
+
+            System.out.println("List of Member Numbers:");
+            for (int i = 0; i < members.size(); i++) {
+                Member member = members.get(i);
+                System.out.println((i + 1) + ". Member Number: " + member.getUsedMemberNumbers());
+            }
+
+
+            int selectedMemberNumber = getValidIntegerInputMedlemsnummer("Select Member Number from the list: ");
+
+            if (controller.memberExists(selectedMemberNumber)) {
+                System.out.println("Svømmetid (hh:mm:ss): ");
+                String svømmeTidInputKonkurrence = keyboard.nextLine();
+
+                Duration svimTime = parseDuration(svømmeTidInputKonkurrence);
+
+                String dateOfSwim = getValidStringInputSvømmeDato("Konkurrence dato: ");
+
+                System.out.println("Svømmedisciplin: ");
+                SwimmingDiscipline swimmingDiscipline = chooseBetweenSwimmingStyles();
+
+                controller.registrerTræningsResultat(selectedMemberNumber, svimTime, LocalDate.parse(dateOfSwim, DateTimeFormatter.ofPattern("dd-MM-yyyy")), swimmingDiscipline);
+            }
+        }
+
 // TODO Den skal vise en liste som man skal vælge fra med navn og meldemsnummer også derefter sætte tider og det til
-        public void resultaterKonkurrence () {
+        public void indtastResultaterKonkurrence() {
 
-            keyboard.nextLine();
+            ArrayList<Member> members = controller.getMembers();
 
-            //System.out.println("Medlemsnummer: ");
-            int memberNumber = getValidIntegerInputMedlemsnummer("Medlemsnummer: "); // TODO lav et input der kigger igennem et arrayliste for at se om nummeret findes
+            System.out.println("List of Member Numbers:");
+            for (int i = 0; i < members.size(); i++) {
+                Member member = members.get(i);
+                System.out.println((i + 1) + ". Member Number: " + member.getUsedMemberNumbers());
+            }
 
-            System.out.println("Svømmetid (hh:mm:ss): ");
-            String svømmeTidInputKonkurrence = keyboard.nextLine();
 
+            int selectedMemberNumber = getValidIntegerInputMedlemsnummer("Select Member Number from the list: ");
 
-            Duration svimTime = parseDuration(svømmeTidInputKonkurrence);
+            if (controller.memberExists(selectedMemberNumber)) {
+                System.out.println("Svømmetid (hh:mm:ss): ");
+                String svømmeTidInputKonkurrence = keyboard.nextLine();
 
-            String dateOfSwim = getValidStringInputSvømmeDato("Konkurrence dato: ");
+                Duration svimTime = parseDuration(svømmeTidInputKonkurrence);
 
-            System.out.println("Svømmedisciplin: ");
-            SwimmingDiscipline swimmingDiscipline = chooseBetweenSwimmingStyles();
+                String dateOfSwim = getValidStringInputSvømmeDato("Konkurrence dato: ");
 
-            controller.registrerTræningsResultat(memberNumber, svimTime, LocalDate.parse(dateOfSwim), swimmingDiscipline);
+                System.out.println("Svømmedisciplin: ");
+                SwimmingDiscipline swimmingDiscipline = chooseBetweenSwimmingStyles();
+
+                System.out.println("Event navn: ");
+                String eventName = getValidEventName();
+
+                System.out.println("Event placering: ");
+                String eventPlacement = getValidEventPlacement();
+
+                controller.registrerEventResultat(selectedMemberNumber, svimTime, LocalDate.parse(dateOfSwim, DateTimeFormatter.ofPattern("dd-MM-yyyy")), swimmingDiscipline, eventName, eventPlacement);
+            }
         }
 
+
+        public String getValidEventName() {
+        if (keyboard.hasNextLine()) {
+            String input = keyboard.nextLine();
+            return input;
+        }
+            return getValidEventName();
+        }
+    public String getValidEventPlacement() {
+        if (keyboard.hasNextLine()) {
+            String input = keyboard.nextLine();
+            return input;
+        }
+        return getValidEventPlacement();
+    }
 
         private int getValidIntegerInputMedlemsnummer(String prompt) {
                 while (true) {
@@ -292,8 +384,6 @@ public class Userinterface {
                     }
                 }
             }
-
-
 
 
         public void displayYearlyIncome () {
@@ -376,9 +466,9 @@ public class Userinterface {
             }
         }*/
 
-        public SwimmingDiscipline chooseBetweenSwimmingStyles() {
-        String input = keyboard.nextLine();
+       /* public SwimmingDiscipline chooseBetweenSwimmingStyles() {
             System.out.println("Vælg mellem Butterfly, Crawl, Backstroke, Breaststroke");
+            String input = keyboard.nextLine();
                         switch (keyboard.nextInt()) {
                 case 1:
                     Butterfly(input);
@@ -395,11 +485,21 @@ public class Userinterface {
 
             }
             return null;
-        }
-
+        }*/
+       public SwimmingDiscipline chooseBetweenSwimmingStyles() {
+           System.out.println("Vælg mellem Butterfly, Front Crawl, Backstroke, Breaststroke");
+           String input = keyboard.nextLine().toUpperCase();
+           try {
+               return SwimmingDiscipline.valueOf(input);
+           } catch (IllegalArgumentException e) {
+               System.out.println("Ugyldig indtastning. Prøv igen.");
+               return chooseBetweenSwimmingStyles();
+           }
+       }
+/*
         public SwimmingDiscipline Butterfly(String input) {
             for (SwimmingDiscipline discipline : SwimmingDiscipline.values()) {
-                if (discipline.name().equalsIgnoreCase(input)) {
+                if (discipline.name().equalsIgnoreCase("Butterfly")) {
                     return discipline;
                 }
             }
@@ -408,7 +508,7 @@ public class Userinterface {
 
         public SwimmingDiscipline Crawl(String input) {
             for (SwimmingDiscipline discipline : SwimmingDiscipline.values()) {
-                if (discipline.name().equalsIgnoreCase(input)) {
+                if (discipline.name().equalsIgnoreCase("Crawl")) {
                     return discipline;
                 }
             }
@@ -417,7 +517,7 @@ public class Userinterface {
 
         public SwimmingDiscipline Backstroke(String input) {
             for (SwimmingDiscipline discipline : SwimmingDiscipline.values()) {
-                if (discipline.name().equalsIgnoreCase(input)) {
+                if (discipline.name().equalsIgnoreCase("Backstroke")) {
                     return discipline;
                 }
             }
@@ -425,7 +525,7 @@ public class Userinterface {
         }
         public SwimmingDiscipline Breaststroke(String input) {
             for (SwimmingDiscipline discipline : SwimmingDiscipline.values()) {
-                if (discipline.name().equalsIgnoreCase(input)) {
+                if (discipline.name().equalsIgnoreCase("Breaststroke")) {
                     return discipline;
                 }
             }

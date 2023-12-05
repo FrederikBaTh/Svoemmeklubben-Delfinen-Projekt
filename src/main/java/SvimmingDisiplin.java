@@ -1,9 +1,7 @@
 enum SwimmingDiscipline {
-    butterfly,
-    frontCrawl,
-    backstroke,
-    breaststroke
+    FRONTCRAWL,
+    BACKSTROKE,
+    BUTTERFLY,
+    BREASTSTROKE
 
 }
-
-

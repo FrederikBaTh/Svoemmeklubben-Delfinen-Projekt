@@ -1,6 +1,5 @@
 import java.time.Duration;
 import java.time.LocalDate;
-import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -46,11 +45,35 @@ public class Controller {
         database.registrerTræningTid(memberNumber, svimTime, dateOfSwim, swimmingDiscipline);
     }
 
-    public void registrerEventResultat(int memberNumber, Duration swimTime, LocalDate dateOfSwim, SwimmingDiscipline swimmingDiscipline, String eventName, String eventPlacement, Duration eventSwimTime) {
-        database.registrerEventTid(memberNumber, swimTime, dateOfSwim, swimmingDiscipline, eventName, eventPlacement, eventSwimTime);
+    public void registrerEventResultat(int memberNumber, Duration swimTime, LocalDate dateOfSwim, SwimmingDiscipline swimmingDiscipline, String eventName, String eventPlacement) {
+        database.registrerEventTid(memberNumber, swimTime, dateOfSwim, swimmingDiscipline, eventName, eventPlacement);
     }
 
     public boolean memberNumberUsed(int input) {
         return false;
     }
+
+    public List<Member> getCompetitiveMembersUnder18(){
+        return database.getCompetitiveMembersUnder18();
+    }
+    public List<Member> getCompetitiveMembersOver18(){
+        return database.getCompetitiveMembersOver18();
+    }
+
+
+    public boolean memberExists(int memberNumber){
+        return database.memberExists(memberNumber);
+    }
+
+    //_______________________
+    public boolean hasPaidAnnualMembership(Member member) {
+        return member.hasPaidAnnualMembership();
+    }
+    //_______________________
+
+    public ArrayList<CompetitiveMember> getCompetitiveMembers() {
+        return database.getCompMeembers();
+    }
+
+
 }
