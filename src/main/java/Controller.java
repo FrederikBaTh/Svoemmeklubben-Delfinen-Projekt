@@ -53,4 +53,15 @@ public class Controller {
     public boolean memberNumberUsed(int input) {
         return false;
     }
+
+
+    public void printCompMembersOver18() {
+        database.printCompMembersOver18();
+    }
+
+    public void setCompetitiveMember(String name, LocalDate dateOfBirth, String gender, int phonenumber, String address, int memberNumber, String passiveOrActive, String memberType, String motionist) {
+        database.setCompetitiveMember(name, dateOfBirth, gender, phonenumber, address, memberNumber, passiveOrActive, memberType, motionist);
+
+    }
+
 }

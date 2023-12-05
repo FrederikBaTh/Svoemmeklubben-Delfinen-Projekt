@@ -56,7 +56,8 @@ public class Userinterface {
             System.out.println("""
                     1: Vis alle medlemmers resultaterne
                     2: registrer resultat af en medlem
-                    3: afslut programmet
+                    3: se Kokurrence Hold
+                    4: exit
                     """);
             switch (keyboard.nextInt()) {
 
@@ -67,6 +68,9 @@ public class Userinterface {
                     indtastResultater();
                     break;
                 case 3:
+                    seKokurrenceHold();
+                    break;
+                case 4:
                     exit = true;
                     break;
                 default:
@@ -196,6 +200,8 @@ public class Userinterface {
 
         controller.registrerMedlem(name, dateOfBirth, gender, phonenumber, adress, memberNumber, passiveOrActive, memberType, motionist);
 
+        LocalDate convertedDateOfBirth = LocalDate.parse(dateOfBirth, DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+        controller.setCompetitiveMember(name, convertedDateOfBirth, gender, phonenumber, adress, memberNumber, passiveOrActive, memberType, motionist);
 
         System.out.println("Går ud af registrermedlem metoden");
 
@@ -207,6 +213,36 @@ public class Userinterface {
         public void resultater () {
             System.out.println();
         }
+    public void seKokurrenceHold () {
+        boolean exit = false;
+        while (!exit) {
+            System.out.println("""
+                        1: se kokurrence hold over 18
+                        2: se kokurrence hold under 18
+                        3: afslut programmet
+                        """);
+            switch (keyboard.nextInt()) {
+
+                case 1:
+                    printCompMembersOver18();
+                    break;
+                case 2:
+                    //printCompMembersUnder18();
+                    break;
+                case 3:
+                    exit = true;
+                    break;
+                default:
+                    System.out.println("ugyldigt valg ");
+
+            }
+        }
+    }
+    public void printCompMembersOver18(){
+
+    System.out.println("Competitive Members Over 18:");
+    controller.printCompMembersOver18();
+    }
 
         public void indtastResultater () {
             boolean exit = false;

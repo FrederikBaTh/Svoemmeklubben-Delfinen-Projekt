@@ -7,8 +7,17 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Database {
-
+    Member member = new Member();
     private ArrayList<Member> meembers = new ArrayList<>();
+
+    private ArrayList<CompetitiveMember> compMembersUnder18 = new ArrayList<>();
+    private ArrayList<CompetitiveMember> compMembersOver18 = new ArrayList<>();
+
+
+    private ArrayList<CompetitiveMember> compMeembersEvent = new ArrayList<>();
+
+    private ArrayList<CompetitiveMember> compMeembersTræning = new ArrayList<>();
+
     private FileHandler fileHandler = new FileHandler("MedlemsListe.csv");
 
     public Database() {
@@ -17,9 +26,45 @@ public class Database {
         }
     }
 
-    private ArrayList<CompetitiveMember> compMeembersEvent = new ArrayList<>();
 
-    private ArrayList<CompetitiveMember> compMeembersTræning = new ArrayList<>();
+
+    public void printCompMembersUnder18() {
+        System.out.println("Competitive Members Under 18:");
+        printCompetitiveMembers(compMembersUnder18);
+    }
+
+    // Print competitive members over 18
+    public void printCompMembersOver18() {
+        printCompetitiveMembers(compMembersOver18);
+    }
+
+    private void printCompetitiveMembers(List<CompetitiveMember> members) {
+        for (CompetitiveMember member : members) {
+            System.out.println(member);
+        }
+    }
+    public void setCompetitiveMember(String name, LocalDate dateOfBirth, String gender, int phonenumber, String address, int memberNumber, String passiveOrActive, String memberType, String motionist) {
+        CompetitiveMember compMember = new CompetitiveMember(name, dateOfBirth, gender, phonenumber, address, memberNumber, passiveOrActive, memberType, motionist);
+
+        boolean isOver18 = compMember.calculateAge(dateOfBirth) > 18;
+
+        if (isOver18) {
+            compMembersOver18.add(compMember);
+        } else {
+            compMembersUnder18.add(compMember);
+        }
+
+        // Save to file or perform other actions as needed
+    }
+
+
+
+
+
+
+
+
+
 
     public void registrerMedlem(String name, String dateOfBirth, String gender, int phonenumber, String address, int memberNumber, String passiveOrActive, String memberType, String motionist) {
         try {

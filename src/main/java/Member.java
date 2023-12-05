@@ -23,6 +23,7 @@ public class Member {
     private List<Integer> usedMemberNumbers = new ArrayList<>();
 
 
+
     //constructor
 
     public Member(String name, String dateOfBirth, String gender, int phonenumber, String adress, int memberNumber, String passiveOrActive, String memberType, String motionist ) {
@@ -46,6 +47,7 @@ public class Member {
     }
     public Member(int memberNumber, java.time.Duration swimTime, LocalDate dateOfSwim, SwimmingDiscipline swimmingDiscipline) {
     }
+
 
     //___________
     public boolean isInArrears() {
