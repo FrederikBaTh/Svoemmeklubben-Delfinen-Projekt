@@ -112,6 +112,16 @@ public class Database {
     }
     //_____________
 
+    public void registrerEventTid(int memberNumber, Duration svimTime, LocalDate dateOfSwim, SwimmingDiscipline swimmingDiscipline, String eventName, String eventPlacement) {
+        try {
+            CompetitiveMember competitiveMember = new CompetitiveMember(memberNumber, svimTime, dateOfSwim, swimmingDiscipline, eventName, eventPlacement);
+            compMeembersTræning.add(competitiveMember);
+            fileHandler.saveListOfKokurrenceTidToFile("KonkurrenceTid.csv", compMeembersTræning);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     /*public void registrerEventTid(int memberNumber, Duration svimTime, LocalDate dateOfSwim, SwimmingDiscipline swimmingDiscipline, String eventName, String eventPlacement) {
         try {
 
@@ -123,7 +133,7 @@ public class Database {
             e.printStackTrace();
 
         }
-    }
+    }*/
 
         public boolean memberExists ( int memberNumber){
             for (Member member : meembers) {
