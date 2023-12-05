@@ -5,15 +5,19 @@ import java.util.Scanner;
 import java.time.format.DateTimeParseException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 
 // systemet
 public class Userinterface {
     private final Controller controller;
+    private List<Member> members;
+
 
     private Scanner keyboard = new Scanner(System.in);
 
-    public Userinterface(Controller controller) {
+    public Userinterface(Controller controller,List<Member> members) {
         this.controller = controller;
+        this.members=members;
     }
 
 
@@ -56,7 +60,8 @@ public class Userinterface {
             System.out.println("""
                     1: Vis alle medlemmers resultaterne
                     2: registrer resultat af en medlem
-                    3: afslut programmet
+                    3: se Kokurrence Hold
+                    4: exit
                     """);
             switch (keyboard.nextInt()) {
 
@@ -67,6 +72,9 @@ public class Userinterface {
                     indtastResultater();
                     break;
                 case 3:
+                    seKokurrenceHold();
+                    break;
+                case 4:
                     exit = true;
                     break;
                 default:
@@ -531,7 +539,7 @@ public class Userinterface {
             }
             return null;
         }
-
+*/
 
         private Duration parseDuration (String input){
             String[] timeComponents = input.split(":");

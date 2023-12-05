@@ -12,6 +12,9 @@ public class CompetitiveMember extends Member {
     private String eventPlacement;
     private Duration eventSwimTime;
 
+
+
+
     // Training
     public CompetitiveMember( int memberNumber, Duration swimTime, LocalDate dateOfSwim, SwimmingDiscipline swimmingDiscipline) {
         super(memberNumber, swimTime, dateOfSwim, swimmingDiscipline);

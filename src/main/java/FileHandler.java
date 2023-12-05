@@ -110,6 +110,32 @@ public class FileHandler {
         return loadedCompetitiveMember;
     }
 
+    public void saveListOfKokurrenceTidToFile(String fileName, ArrayList<CompetitiveMember> compMember) {
+        try (FileOutputStream fileOutputStream = new FileOutputStream(fileName, true)) {
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+
+            for (CompetitiveMember CompMember : compMember) {
+                for (Member member : compMember) {
+                    String memberInfo = member.getMemberNumber() + "," +
+                            CompMember.getSwimTime() + "," +
+                            CompMember.getDateOfSwim() + "," +
+                            CompMember.getSwimmingDiscipline() + "," +
+                            CompMember.getEventName() + "," +
+                            CompMember.getEventPlacement();
+
+                    memberInfo += System.lineSeparator();
+                    fileOutputStream.write(memberInfo.getBytes());
+                }
+            }
+        }  catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+
+
+
+
     public void saveListOfTræningsTidToFile(String fileName, ArrayList<CompetitiveMember> compMember) {
         try (FileOutputStream fileOutputStream = new FileOutputStream(fileName, true)) {
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");

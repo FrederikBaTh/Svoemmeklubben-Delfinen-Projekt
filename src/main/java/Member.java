@@ -22,6 +22,27 @@ public class Member {
 
     private List<Integer> usedMemberNumbers = new ArrayList<>();
 
+    private Database database;
+
+
+
+    /*public boolean isCompetitiveUnder18() {
+        return "aktivt".equalsIgnoreCase(passiveOrActive) && "ungdomssvømmer u18".equalsIgnoreCase(memberType) && calculateAgeList() < 18;
+    }
+
+    public List<Member> getCompetitiveMembersUnder18() {
+        List<Member> competitiveMembersUnder18 = new ArrayList<>();
+
+        for (Member member : database.getMeembers()) {
+            if (member.isCompetitiveUnder18()) {
+                competitiveMembersUnder18.add(member);
+            }
+        }
+
+        return competitiveMembersUnder18;
+    }
+*/
+
 
     //constructor
 

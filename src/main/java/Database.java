@@ -11,6 +11,12 @@ public class Database {
     private ArrayList<Member> meembers = new ArrayList<>();
     private FileHandler fileHandler = new FileHandler("MedlemsListe.csv");
 
+    private ArrayList<CompetitiveMember> compMeembersEvent = new ArrayList<>();
+
+    private ArrayList<CompetitiveMember> compMeembersTræning = new ArrayList<>();
+
+    private Member member;
+
     public Database() {
         if (meembers.isEmpty()) {
             meembers = fileHandler.loadedMembers();
