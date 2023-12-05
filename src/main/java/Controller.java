@@ -16,7 +16,6 @@ public class Controller {
         database.registrerMedlem(name, dateOfBirth, gender, phonenumber, adress, memberNumber, passiveOrActive, memberType, motionist);
     }
 
-
     public void sortMembersByAge(ArrayList<Member> members) {
         database.sortMembersByAge(members);
     }
@@ -27,19 +26,15 @@ public class Controller {
 
     public ArrayList<Member> getMembers() {
         return database.getMeembers();
-
     }
 
     public int calculateYearlyIncome(){
         return database.calculateYearlyIncome();
     }
 
-
     public int generateMemberNumber(){
-
         return member.generateMemberNumber();
     }
-
 
     public void registrerTræningsResultat(int memberNumber, Duration svimTime, LocalDate dateOfSwim, SwimmingDiscipline swimmingDiscipline) {
         database.registrerTræningTid(memberNumber, svimTime, dateOfSwim, swimmingDiscipline);

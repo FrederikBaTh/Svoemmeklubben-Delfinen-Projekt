@@ -17,8 +17,8 @@ public class Member {
     private String passiveOrActive; // TODO Overvej at ændre til boolean
     private String memberType;
     private String motionist;
-    private boolean inArrears;
     private LocalDate membershipExpiryDate;
+    private boolean paidAnnualMembership;
 
     private List<Integer> usedMemberNumbers = new ArrayList<>();
 
@@ -56,7 +56,7 @@ public class Member {
         this.passiveOrActive = passiveOrActive;
         this.memberType = memberType;
         this.motionist = motionist;
-        this.inArrears = false;
+
     }
 
     public Member(int memberNumber, Duration swimTime, LocalDate dateOfSwim, SwimmingDiscipline swimmingDiscipline, String eventName, String eventPlacement) {
@@ -69,22 +69,7 @@ public class Member {
     }
 
     //___________
-    public boolean isInArrears() {
-        LocalDate currentDate = LocalDate.now();
-        LocalDate lastPaymentDate = getLastPaymentDate();
 
-        return lastPaymentDate.isBefore(currentDate.minusMonths(3));
-    }
-    public void updateArrearsStatus() {
-        this.inArrears = isInArrears();
-    }
-    private LocalDate getLastPaymentDate() {
-       return LocalDate.now().minusMonths(2);
-    }
-    public void performMembershipRenewal() {
-        this.membershipExpiryDate = this.membershipExpiryDate.plusYears(1);
-        System.out.println("medlemskabet fornyes med 1 år.");
-    }
     //_____________
 
 
@@ -121,7 +106,6 @@ public class Member {
         return today.getYear() - dateOfBirth.getYear();
     }
 
-    //TODO bruger til noget??
     /*public String getFormattedDateOfBirth() {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
         return dateOfBirth.format(formatter);
@@ -237,6 +221,9 @@ public class Member {
         this.motionist = motionist;
     }
 
+    public boolean hasPaidAnnualMembership() {
+        return paidAnnualMembership;
+    }
 
     @Override
     public String toString() {

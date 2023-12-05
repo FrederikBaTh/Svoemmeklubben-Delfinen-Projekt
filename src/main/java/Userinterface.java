@@ -400,28 +400,36 @@ public class Userinterface {
         }
 
         //______________ Renewal membership
-        //TODO Søren R. (Se ChatGPT!)
         public void showMembershipRenewalMenu() {
             boolean exit = false;
             while (!exit) {
                 System.out.println("""
                     1. Renew Membership
                     """);
+                switch (keyboard.nextInt()) {
+                    case 1:
+                        checkAnnualMembershipPayments();
+                        break;
+                    case 2:
+
+                        break;
+                    case 3:
+                        exit = true;
+                        break;
+                    default:
+                        System.out.println("ugyldigt valg ");
+                }
             }
-            switch (keyboard.nextInt()) {
+        }
+        private void checkAnnualMembershipPayments() {
+            System.out.println("Checking Annual Membership Payments:");
 
-                case 1:
-                    indtastresultaterTræning();
-                    break;
-                case 2:
-                    resultaterKonkurrence();
-                    break;
-                case 3:
-                    exit = true;
-                    break;
-                default:
-                    System.out.println("ugyldigt valg ");
-
+            for (Member member : members) {
+                if (controller.hasPaidAnnualMembership(member)) {
+                    System.out.println(member.getName() + " has paid for the annual membership.");
+                } else {
+                    System.out.println(member.getName() + " has not paid for the annual membership.");
+                }
             }
         }
         //______________

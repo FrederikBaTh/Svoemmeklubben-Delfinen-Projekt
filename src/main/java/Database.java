@@ -105,17 +105,7 @@ public class Database {
         }
     }
     //____________
-    public void processArrears() {
-        for (Member member : meembers) {
-            if (member.isInArrears()) {
-                // Implement logic to handle arrears, e.g., send a notification or take appropriate action
-                System.out.println("Member in arrears: " + member.getName());
-            }
-        }
-    }
-    public void performMembershipRenewal() {
 
-    }
     //_____________
 
     public void registrerEventTid(int memberNumber, Duration svimTime, LocalDate dateOfSwim, SwimmingDiscipline swimmingDiscipline, String eventName, String eventPlacement) {
