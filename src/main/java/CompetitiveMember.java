@@ -37,7 +37,8 @@ public class CompetitiveMember extends Member {
     }
 
 
-    private void initializeEventDetailsEvent(Duration swimTime, LocalDate dateOfSwim, SwimmingDiscipline swimmingDiscipline, String eventName, String eventPlacement, Duration eventSwimTime) {
+    private void initializeEventDetailsEvent(int memberNumber, Duration swimTime, LocalDate dateOfSwim, SwimmingDiscipline swimmingDiscipline, String eventName, String eventPlacement, Duration eventSwimTime) {
+        this.setMemberNumber(memberNumber);
         this.swimTime = swimTime;
         this.dateOfSwim = dateOfSwim;
         this.swimmingDiscipline = swimmingDiscipline;

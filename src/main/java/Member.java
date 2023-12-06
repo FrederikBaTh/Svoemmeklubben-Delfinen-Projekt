@@ -46,7 +46,7 @@ public class Member {
 
     //constructor
 
-    public Member(String name, String dateOfBirth, String gender, int phonenumber, String adress, int memberNumber, String passiveOrActive, String memberType, String motionist ) {
+    public Member(String name, String dateOfBirth, String gender, int phonenumber, String adress, int memberNumber, String passiveOrActive, String memberType, String motionist) {
         this.name = name;
         this.dateOfBirth = LocalDate.parse(dateOfBirth, DateTimeFormatter.ofPattern("dd-MM-yyyy"));
         this.gender = gender;
@@ -61,10 +61,13 @@ public class Member {
 
     public Member(int memberNumber, Duration swimTime, LocalDate dateOfSwim, SwimmingDiscipline swimmingDiscipline, String eventName, String eventPlacement) {
     }
+
     public Member(int memberNumber) {
     }
+
     public Member() {
     }
+
     public Member(int memberNumber, java.time.Duration swimTime, LocalDate dateOfSwim, SwimmingDiscipline swimmingDiscipline) {
     }
 
@@ -101,6 +104,7 @@ public class Member {
         //System.out.println(today.getYear() - dateOfBirth.getYear());
         return today.getYear() - dateOfBirth.getYear();
     }
+
     public int calculateAgeList() {
         LocalDate today = LocalDate.now();
         return today.getYear() - dateOfBirth.getYear();
@@ -113,29 +117,20 @@ public class Member {
     }*/
 
     public int calculateYearlySubscriptionFee() {
-
         int baseFee = 0;
 
         if ("aktivt".equalsIgnoreCase(passiveOrActive)) {
             if ("ungdomssvømmer u18".equalsIgnoreCase(memberType)) {
                 baseFee = 1000;
-            } else if ("seniorsvømmer".equalsIgnoreCase(memberType)) {
+            } else if ("seniorsvømmer".equalsIgnoreCase(memberType) || "ungdomssvømmer o18".equalsIgnoreCase(memberType)) {
                 baseFee = 1600;
                 if (calculateAgeList() > 60) {
-
-                    baseFee = (int) (baseFee * 0.75);
-                }
-            }else if("ungdomssvømmer o18".equalsIgnoreCase(memberType)){
-                baseFee = 1600;
-                if (calculateAgeList() > 60) {
-
                     baseFee = (int) (baseFee * 0.75);
                 }
             }
         } else if ("passivt".equalsIgnoreCase(passiveOrActive)) {
             baseFee = 500;
         }
-
 
         return baseFee;
     }

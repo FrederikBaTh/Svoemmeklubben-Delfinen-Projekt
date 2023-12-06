@@ -1,6 +1,5 @@
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.PrintStream;
+import java.io.*;
+import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
@@ -8,9 +7,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
-
-import java.io.FileOutputStream;
-import java.io.IOException;
 
 public class FileHandler {
     private String fileName;
@@ -44,8 +40,8 @@ public class FileHandler {
                     String motionist = memberInfo[8];
 
 
-                Member member = new Member(name, dateOfBirth, gender, phonenumber, address, memberNumber, passiveOrActive, memberType, motionist);
-                loadedMembers.add(member);
+                    Member member = new Member(name, dateOfBirth, gender, phonenumber, address, memberNumber, passiveOrActive, memberType, motionist);
+                    loadedMembers.add(member);
                 } else {
                 }
             }
@@ -55,6 +51,39 @@ public class FileHandler {
 
         return loadedMembers;
     }
+
+    public ArrayList<CompetitiveMember> loadedTræningsResultater(String fileName) {
+        ArrayList<CompetitiveMember> loadedTræningsResultater = new ArrayList<>();
+        try (Scanner fileScanner = new Scanner(new File(fileName))) {
+            while (fileScanner.hasNextLine()) {
+                String line = fileScanner.nextLine();
+                if (line.trim().isEmpty()) {
+                    continue;
+                }
+                String[] memberInfo = line.split(",");
+
+                if (memberInfo.length >= 2) {
+                    int memberNumber = Integer.parseInt(memberInfo[0]);
+                    Duration swimTime = Duration.parse(memberInfo[1]);
+                    LocalDate dateOfSwim = LocalDate.parse(memberInfo[2]);
+                    // TODO måske ligger der en fejl her
+                    SwimmingDiscipline swimmingDiscipline = SwimmingDiscipline.valueOf(memberInfo[3]);
+
+
+                    CompetitiveMember træningsResultat = new CompetitiveMember(memberNumber, swimTime, dateOfSwim,  swimmingDiscipline);
+                    loadedTræningsResultater.add(træningsResultat);
+                } else {
+
+                }
+
+            }
+        }catch (FileNotFoundException | NumberFormatException | NoSuchElementException e) {
+            System.err.println("Fejl: " + e.getMessage());
+        }
+        return loadedTræningsResultater(fileName);
+    }
+
+
 
 
     public void saveListOfMembersToFile(String fileName, ArrayList<Member> members) {
@@ -127,13 +156,11 @@ public class FileHandler {
                     fileOutputStream.write(memberInfo.getBytes());
                 }
             }
-        }  catch (IOException e) {
+        } catch (IOException e) {
             throw new RuntimeException(e);
         }
 
     }
-
-
 
 
     public void saveListOfTræningsTidToFile(String fileName, ArrayList<CompetitiveMember> compMember) {
@@ -152,11 +179,12 @@ public class FileHandler {
                     fileOutputStream.write(memberInfo.getBytes());
                 }
             }
-        }  catch (IOException e) {
+        } catch (IOException e) {
             throw new RuntimeException(e);
         }
 
     }
+
 
 
     public ArrayList<Member> loadUsedMemberNumbers(String fileName, ArrayList<CompetitiveMember> coompMeembers) {

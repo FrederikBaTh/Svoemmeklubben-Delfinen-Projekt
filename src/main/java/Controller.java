@@ -70,5 +70,10 @@ public class Controller {
         return database.getCompMeembers();
     }
 
+    public void redigerResultaterTræning(List<Integer> getUsedMemberNumbers){
+        database.redigerResultaterTræning(getUsedMemberNumbers);
+    }
+
+
 
 }

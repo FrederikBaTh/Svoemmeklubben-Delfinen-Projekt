@@ -9,11 +9,15 @@ import java.util.Scanner;
 public class Database {
 
     private ArrayList<Member> meembers = new ArrayList<>();
+
     private FileHandler fileHandler = new FileHandler("MedlemsListe.csv");
+    private FileHandler fileHandler1 = new FileHandler("TræningsTid.csv");
 
     private ArrayList<CompetitiveMember> compMeembersEvent = new ArrayList<>();
 
     private ArrayList<CompetitiveMember> compMeembersTræning = new ArrayList<>();
+
+
 
     private Member member;
 
@@ -21,7 +25,11 @@ public class Database {
         if (meembers.isEmpty()) {
             meembers = fileHandler.loadedMembers();
         }
+         //   compMeembersTræning = FileHandler.loadedTræningsResultater("TræningsTid.csv");
+
     }
+
+
 
 
     public boolean isCompetitiveUnder18(Member member) {
@@ -69,7 +77,7 @@ public class Database {
         }
     }
 
-
+// fjerne print fra metoden 
     public int calculateYearlyIncome() {
         int yearlyIncome = 0;
 
@@ -139,6 +147,31 @@ public class Database {
             }
             return false;
         }
+
+
+
+
+        public void redigerResultaterTræning( List<Integer> getUsedMemberNumbers){
+            compMeembersEvent = fileHandler.loadedTræningsResultater("TræningsTid.csv");
+
+            CompetitiveMember træningRedigere = null ;
+            for (CompetitiveMember træning : compMeembersEvent){
+                if(træning.getUsedMemberNumbers().equals(getUsedMemberNumbers));
+                træningRedigere=træning;
+                break;
+            }
+            if(træningRedigere==null){
+                System.out.println("Medlem kunne ikke findes.");
+                return;
+            }
+
+        }
+
+
+
+
+
+
 
 
     }

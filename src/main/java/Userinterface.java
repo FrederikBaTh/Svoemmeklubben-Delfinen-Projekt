@@ -1,6 +1,7 @@
 import java.time.Duration;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Scanner;
 import java.time.format.DateTimeParseException;
 import java.time.LocalDate;
@@ -20,6 +21,12 @@ public class Userinterface {
         this.members=members;
     }
 
+    private final String ADMIN_PASSWORD = "123";
+    private boolean checkPassword() {
+        System.out.print("Enter password: ");
+        String enteredPassword = keyboard.next();
+        return enteredPassword.equals(ADMIN_PASSWORD);
+    }
 
     public void menu() {
         System.out.println("""
@@ -39,13 +46,28 @@ public class Userinterface {
 
             switch (keyboard.nextInt()) {
                 case 1:
-                    trænerMenu();
+                    if(checkPassword()){
+                        trænerMenu();
+                    }
+                    else{
+                        System.out.println("Forkert adgangskode, adgang nægtet");
+                    }
                     break;
                 case 2:
-                    formandMenu();
+                    if(checkPassword()){
+                        formandMenu();
+                    }
+                    else{
+                        System.out.println("Forkert adgangskode, adgang nægtet");
+                    }
                     break;
                 case 3:
-                    kassereMenu();
+                    if(checkPassword()){
+                        kassereMenu();
+                    }
+                    else{
+                        System.out.println("Forkert adgangskode, adgang nægtet");
+                    }
                     break;
                 case 9:
                     exitProgram();
@@ -66,7 +88,7 @@ public class Userinterface {
             switch (keyboard.nextInt()) {
 
                 case 1:
-                    tidsresultater();
+                    seTidsResultater();
                     break;
                 case 2:
                     indtastResultater();
@@ -213,6 +235,49 @@ public class Userinterface {
 
         //TODO resultater af alle træningens tiderne, så træneren kan sætte de bedste ind i konkurrence.
 
+    public void seTidsResultater() {
+        boolean exit = false;
+        while (!exit) {
+            System.out.println("""
+                        1: se resultater fra træning 
+                        2: se resultater fra konkurrence 
+                        3: afslut programmet 
+                        """);
+            // resultater fra træning i FRONTCRAWL over 18
+// resultater fra træning i FRONTCRAWL under 18
+// resultater fra træning i BACKSTROKE over 18
+// resultater fra træning i BACKSTROKE under 18
+// resultater fra træning i BUTTERFLY over 18
+// resultater fra træning i BUTTERFLY under 18
+// resultater fra træning i BREASTSTROKE over 18
+// resultater fra træning i BREASTSTROKE under 18
+
+
+            // resultater fra konkurrence i FRONTCRAWL over 18
+// resultater fra konkurrence i FRONTCRAWL under 18
+// resultater fra konkurrence i BACKSTROKE over 18
+// resultater fra konkurrence i BACKSTROKE under 18
+// resultater fra konkurrence i BUTTERFLY over 18
+// resultater fra konkurrence i BUTTERFLY under 18
+// resultater fra konkurrence i BREASTSTROKE over 18
+// resultater fra konkurrence i BREASTSTROKE under 18
+            switch (keyboard.nextInt()) {
+
+                case 1:
+                    //seResultaterTræning();
+                    break;
+                case 2:
+                    //seResultaterKonkurrence();
+                    break;
+                case 3:
+                    exit = true;
+                    break;
+                default:
+                    System.out.println("ugyldigt valg ");
+
+            }
+        }
+    }
 
     public void tidsresultater () {
         ArrayList<CompetitiveMember> competitiveMembers = controller.getCompetitiveMembers();
@@ -231,8 +296,10 @@ public class Userinterface {
             while (!exit) {
                 System.out.println("""
                         1: registrer resultater af en træning
-                        2: registrer resultater af en konkurrence
-                        3: afslut programmet
+                        2: rediger resultater af en træning
+                        3: registrer resultater af en konkurrence
+                        4: rediger resultater af en konkurrence
+                        5: afslut programmet
                         """);
                 switch (keyboard.nextInt()) {
 
@@ -240,9 +307,15 @@ public class Userinterface {
                         indtastResultaterTræning();
                         break;
                     case 2:
-                        indtastResultaterKonkurrence();
+                        //redigerResultaterTræning();
                         break;
                     case 3:
+                        indtastResultaterKonkurrence();
+                        break;
+                    case 4:
+                        redigerResultaterKonkurrence();
+                        break;
+                    case 5:
                         exit = true;
                         break;
                     default:
@@ -251,6 +324,35 @@ public class Userinterface {
                 }
             }
         }
+        /*public void redigerResultaterTræning(){
+
+
+
+            System.out.print("Indtast navnet på medlemmet, du vil redigere: ");
+            int getUsedMemberNumbers = keyboard.nextInt();
+            controller.redigerResultaterTræning(Collections.singletonList(getUsedMemberNumbers));
+
+
+            System.out.println("Medlemsresultater for en træning");
+            System.out.println(træningRedigere);
+
+            System.out.println("Rediger svømmetid: "+ træningRedigere.getSwimTime());
+
+            System.out.println("Ny svømmetid (tryk Enter for at beholde det origninale): ");
+
+
+
+
+
+
+        }
+        */
+
+        public void redigerResultaterKonkurrence(){
+
+
+        }
+
     public void seKokurrenceHold () {
         boolean exit = false;
         while (!exit) {
@@ -372,88 +474,38 @@ public class Userinterface {
         return getValidEventPlacement();
     }
 
-        private int getValidIntegerInputMedlemsnummer(String prompt) {
-                while (true) {
-                    try {
-                        System.out.print(prompt);
-                        int input = keyboard.nextInt();
-                        keyboard.nextLine();
-                        if (String.valueOf(input).length() == 6)
-                            return input;
-                        else {
-                            System.out.println("Ugyldig input. Indtast venligst et medlemsnummer på 6 cifre.");
-                            if (controller.memberNumberUsed(input)) {
-                                System.out.println("Medlemsnummeret findes ikke i systemet.");
-                            }
-                        }
-                    } catch (java.util.InputMismatchException e) {
-                        System.out.println("Ugyldig input. Indtast venligst et medlemsnummer på 6 cifre.");
-                        keyboard.nextLine();
+    public int getValidIntegerInputMedlemsnummer(String prompt) {
+        ArrayList<Member> members = controller.getMembers();
+
+        System.out.println("List of Member Numbers:");
+        for (int i = 0; i < members.size(); i++) {
+            Member member = members.get(i);
+            System.out.println((i + 1) + ". Member Number: " + member.getMemberNumber());
+        }
+
+        while (true) {
+            try {
+                System.out.print(prompt);
+                String inputString = keyboard.nextLine();
+                int input = Integer.parseInt(inputString.trim());
+
+                if (String.valueOf(input).length() == 6) {
+                    if (controller.memberExists(input)) {
+                        return input;
+                    } else {
+                        System.out.println("Medlemsnummeret findes ikke i systemet.");
                     }
-                }
-            }
-
-
-        public void displayYearlyIncome () {
-            int yearlyIncome = controller.calculateYearlyIncome();
-            System.out.println("Forventet Årlig Indtægt: " + yearlyIncome + " kr.");
-        }
-
-        //______________ Renewal membership
-        public void showMembershipRenewalMenu() {
-            boolean exit = false;
-            while (!exit) {
-                System.out.println("""
-                    1. Renew Membership
-                    """);
-                switch (keyboard.nextInt()) {
-                    case 1:
-                        checkAnnualMembershipPayments();
-                        break;
-                    case 2:
-
-                        break;
-                    case 3:
-                        exit = true;
-                        break;
-                    default:
-                        System.out.println("ugyldigt valg ");
-                }
-            }
-        }
-        private void checkAnnualMembershipPayments() {
-            System.out.println("Checking Annual Membership Payments:");
-
-            for (Member member : members) {
-                if (controller.hasPaidAnnualMembership(member)) {
-                    System.out.println(member.getName() + " has paid for the annual membership.");
                 } else {
-                    System.out.println(member.getName() + " has not paid for the annual membership.");
+                    System.out.println("Ugyldig input. Indtast venligst et medlemsnummer på 6 cifre.");
                 }
+            } catch (NumberFormatException e) {
+                System.out.println("Ugyldig input. Indtast venligst et medlemsnummer på 6 cifre.");
             }
         }
-        //______________
+    }
 
-        public void displayMembershipStatusAndFees () {
-            ArrayList<Member> members = controller.getMembers();
 
-            System.out.println("Medlemsstatus og kontingentgebyr:");
-            for (Member member : members) {
-                System.out.println("Medlem: " + member.getName());
-                System.out.println("medlemsstatus: " + member.getPassiveOrActive());
 
-                if ("aktivt".equalsIgnoreCase(member.getPassiveOrActive())) {
-                    int subscriptionFee = member.calculateYearlySubscriptionFee();
-                    System.out.println("Kontingentgebyr: " + subscriptionFee + " kr. årligt");
-                }
-                if ("passivt".equalsIgnoreCase(member.getPassiveOrActive())) {
-                    int subscriptionFee = member.calculateYearlySubscriptionFee();
-                    System.out.println("Kontingentgebyr: " + subscriptionFee + " kr. årligt");
-
-                }
-                System.out.println();
-            }
-        }
 
 
         //TODO top 5 til at træneren kan se på de bedste 5 i hver disciple.
