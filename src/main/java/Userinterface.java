@@ -1,7 +1,6 @@
 import java.time.Duration;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Scanner;
 import java.time.format.DateTimeParseException;
 import java.time.LocalDate;
@@ -827,7 +826,7 @@ public class Userinterface {
                     System.out.println("No changes made.");
                 }
 
-                break; // Exit the loop since the member has been found
+                break;
             }
         }
 

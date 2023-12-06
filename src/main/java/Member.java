@@ -1,6 +1,5 @@
 import java.time.Duration;
 import java.time.LocalDate;
-import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Random;
 import java.util.ArrayList;
@@ -19,7 +18,7 @@ public class Member {
     private String motionist;
     private LocalDate membershipExpiryDate;
     private boolean paidAnnualMembership;
-
+    private String selectedMember;
     private List<Integer> usedMemberNumbers = new ArrayList<>();
 
     private Database database;
@@ -91,12 +90,9 @@ public class Member {
     }
     //_____________
 
-
     public int generateMemberNumber() {
         Random random = new Random();
         int newMemberNumber;
-
-
         do {
             newMemberNumber = random.nextInt(999999);
         } while (memberNumberUsed(newMemberNumber));
@@ -190,6 +186,10 @@ public class Member {
         return motionist;
     }
 
+    public String getSelectedMember() {
+        return selectedMember;
+    }
+
     public List<Integer> getUsedMemberNumbers() {
         return usedMemberNumbers;
     }
@@ -235,6 +235,7 @@ public class Member {
     public boolean hasPaidAnnualMembership() {
         return paidAnnualMembership;
     }
+
 
     @Override
     public String toString() {

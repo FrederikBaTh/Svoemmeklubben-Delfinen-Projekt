@@ -1,6 +1,5 @@
 import java.time.Duration;
 import java.time.LocalDate;
-import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -166,9 +165,43 @@ public class Database {
             }
 
         }
+    private void renewMembershipForSelectedMember(Member selectedMember) {
+        // Implement logic to renew membership, e.g., update membership status
+        // You may need to modify this based on your actual data structure and logic
+        selectedMember.setPaidAnnualMembership(true);
+    }
+    public void renewMembership() {
+        ArrayList<Member> members = getMeembers();
 
+        System.out.println("List of Members:");
+        for (Member member : members) {
+            System.out.println("Member Number: " + member.getMemberNumber() + ", Name: " + member.getName() + ", Membership Status: " + (member.hasPaidAnnualMembership() ? "Paid" : "Not Paid"));
+        }
 
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter the Member Number to renew membership: ");
+        int selectedMemberNumber = scanner.nextInt();
 
+        Member selectedMember = getMemberByNumber(selectedMemberNumber);
+        if (selectedMember != null) {
+            if (member.hasPaidAnnualMembership()) {
+                System.out.println("Membership is already paid for this member.");
+            } else {
+                renewMembershipForSelectedMember(selectedMember);
+                System.out.println("Membership renewed successfully!");
+            }
+        } else {
+            System.out.println("Member not found.");
+        }
+    }
+    private Member getMemberByNumber(int memberNumber) {
+        for (Member member : getMeembers()) {
+            if (member.getMemberNumber() == memberNumber) {
+                return member;
+            }
+        }
+        return null;  // Member not found
+    }
 
 
 
