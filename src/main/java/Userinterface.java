@@ -426,16 +426,10 @@ public class Userinterface {
 // TODO Den skal vise en liste som man skal vælge fra med navn og meldemsnummer også derefter sætte tider og det til
         public void indtastResultaterKonkurrence() {
 
-            ArrayList<Member> members = controller.getMembers();
 
-            System.out.println("List of Member Numbers:");
-            for (int i = 0; i < members.size(); i++) {
-                Member member = members.get(i);
-                System.out.println((i + 1) + ". Member Number: " + member.getUsedMemberNumbers());
-            }
-
-
-            int selectedMemberNumber = getValidIntegerInputMedlemsnummer("Select Member Number from the list: ");
+            int selectedMemberNumber = getValidIntegerInputMedlemsnummer("Vælg det medlemsnummer du vil tiføje en tid til: ");
+            System.out.println("Selected Member Number: " + selectedMemberNumber);
+            System.out.println();
 
             if (controller.memberExists(selectedMemberNumber)) {
                 System.out.println("Svømmetid (hh:mm:ss): ");
@@ -508,7 +502,7 @@ public class Userinterface {
 
 
 
-        //TODO top 5 til at træneren kan se på de bedste 5 i hver disciple.
+    //TODO top 5 til at træneren kan se på de bedste 5 i hver disciple.
         public void top5Svimmers () {
             System.out.println();
         }

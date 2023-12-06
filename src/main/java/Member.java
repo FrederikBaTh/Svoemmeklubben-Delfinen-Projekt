@@ -71,6 +71,11 @@ public class Member {
     public Member(int memberNumber, java.time.Duration swimTime, LocalDate dateOfSwim, SwimmingDiscipline swimmingDiscipline) {
     }
 
+    //TODO Lav en Save metode til denne her
+    //public Member(String name, newStatus) {
+
+   // }
+
     //___________
 
     //_____________

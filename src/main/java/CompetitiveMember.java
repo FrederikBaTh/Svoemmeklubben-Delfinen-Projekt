@@ -26,7 +26,7 @@ public class CompetitiveMember extends Member {
     public CompetitiveMember(int memberNumber, Duration swimTime, LocalDate dateOfSwim, SwimmingDiscipline swimmingDiscipline, String eventName, String eventPlacement) {
         super(memberNumber, swimTime, dateOfSwim, swimmingDiscipline, eventName, eventPlacement);
 
-        initializeEventDetailsEvent(swimTime, dateOfSwim, swimmingDiscipline, eventName, eventPlacement, eventSwimTime);
+        initializeEventDetailsEvent(memberNumber, swimTime, dateOfSwim, swimmingDiscipline, eventName, eventPlacement, eventSwimTime);
     }
 
     public CompetitiveMember() {
