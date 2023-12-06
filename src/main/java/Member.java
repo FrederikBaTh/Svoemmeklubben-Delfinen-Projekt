@@ -134,7 +134,7 @@ public class Member {
         if ("aktivt".equalsIgnoreCase(passiveOrActive)) {
             if ("ungdomssvømmer u18".equalsIgnoreCase(memberType)) {
                 baseFee = 1000;
-            } else if ("seniorsvømmer".equalsIgnoreCase(memberType) || "ungdomssvømmer o18".equalsIgnoreCase(memberType)) {
+            } else if ("senior".equalsIgnoreCase(memberType) || "ungdomssvømmer o18".equalsIgnoreCase(memberType)) {
                 baseFee = 1600;
                 if (calculateAgeList() > 60) {
                     baseFee = (int) (baseFee * 0.75);
