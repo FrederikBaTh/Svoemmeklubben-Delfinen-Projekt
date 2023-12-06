@@ -2,6 +2,7 @@ import java.time.Duration;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 //
 public class Controller {
@@ -63,6 +64,49 @@ public class Controller {
     //_______________________
     public boolean hasPaidAnnualMembership(Member member) {
         return member.hasPaidAnnualMembership();
+    }
+    public void renewMembership() {
+        // Display list of members
+        ArrayList<Member> members = getMembers();  // Assume you have a method to get the list of members
+
+        System.out.println("List of Members:");
+        for (Member member : members) {
+            System.out.println("Member Number: " + member.getMemberNumber() + ", Name: " + member.getName() + ", Membership Status: " + (member.hasPaidAnnualMembership() ? "Paid" : "Not Paid"));
+        }
+
+        // Prompt user for member selection
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter the Member Number to renew membership: ");
+        int selectedMemberNumber = scanner.nextInt();
+
+        Member selectedMember = getMemberByNumber(selectedMemberNumber);  // Implement this method to retrieve a member by number
+        if (selectedMember != null) {
+            if (hasPaidAnnualMembership(selectedMember)) {
+                System.out.println("Membership is already paid for this member.");
+            } else {
+                // Perform the necessary actions to renew membership
+                renewMembershipForSelectedMember(selectedMember);
+                System.out.println("Membership renewed successfully!");
+            }
+        } else {
+            System.out.println("Member not found.");
+        }
+    }
+
+    private Member getMemberByNumber(int memberNumber) {
+        for (Member member : getMembers()) {
+            if (member.getMemberNumber() == memberNumber) {
+                return member;
+            }
+        }
+        return null;  // Member not found
+    }
+
+    // Method to renew membership for the selected member
+    private void renewMembershipForSelectedMember(Member selectedMember) {
+        // Implement logic to renew membership, e.g., update membership status
+        // You may need to modify this based on your actual data structure and logic
+        selectedMember.setPaidAnnualMembership(true);
     }
     //_______________________
 

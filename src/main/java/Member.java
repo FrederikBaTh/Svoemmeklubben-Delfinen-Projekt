@@ -77,7 +77,18 @@ public class Member {
    // }
 
     //___________
+    public void setPaidAnnualMembership(boolean paidAnnualMembership) {
+        this.paidAnnualMembership = paidAnnualMembership;
+    }
 
+    // Existing code...
+    public boolean hasPaidAnnualmembership() {
+        return paidAnnualMembership;
+    }
+
+    public void setAnnualMembershipPaymentStatus(boolean paid) {
+        this.paidAnnualMembership = paid;
+    }
     //_____________
 
 

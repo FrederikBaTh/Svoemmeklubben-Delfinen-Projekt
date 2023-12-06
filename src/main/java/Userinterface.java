@@ -139,7 +139,7 @@ public class Userinterface {
             System.out.println("""
                     1: se årlig indkomst
                     2: se medlemsstatus og gebyr
-                    3: fornyelse af medlemskab
+                    3: se oversigt for manglende betalinger
                     4: afslut programmet
                     """);
             switch (keyboard.nextInt()) {
@@ -726,6 +726,116 @@ public class Userinterface {
         }
     }
 
+
+    // Kasseren metoderne.
+    public void displayYearlyIncome () {
+        int yearlyIncome = controller.calculateYearlyIncome();
+        System.out.println("Forventet Årlig Indtægt: " + yearlyIncome + " kr.");
+    }
+
+
+
+    public void displayMembershipStatusAndFees () {
+        ArrayList<Member> members = controller.getMembers();
+
+        System.out.println("Medlemsstatus og kontingentgebyr:");
+        for (Member member : members) {
+            System.out.println("Medlem: " + member.getName());
+            System.out.println("medlemsstatus: " + member.getPassiveOrActive());
+
+            if ("aktivt".equalsIgnoreCase(member.getPassiveOrActive())) {
+                int subscriptionFee = member.calculateYearlySubscriptionFee();
+                System.out.println("Kontingentgebyr: " + subscriptionFee + " kr. årligt");
+            }
+            if ("passivt".equalsIgnoreCase(member.getPassiveOrActive())) {
+                int subscriptionFee = member.calculateYearlySubscriptionFee();
+                System.out.println("Kontingentgebyr: " + subscriptionFee + " kr. årligt");
+
+            }
+            System.out.println();
+        }
+    }
+
+    //______________ Renewal membership
+    public void showMembershipRenewalMenu() {
+        boolean exit = false;
+        while (!exit) {
+            System.out.println("""
+                    1. Renew Membership
+                    3. tilbage til kasseren menu
+                    """);
+            switch (keyboard.nextInt()) {
+                case 1:
+                    checkAnnualMembershipPayments();
+                    break;
+                case 2:
+                    changeAnnualMembershipPayments();
+                    break;
+                case 3:
+                    exit = true;
+                    break;
+                default:
+                    System.out.println("ugyldigt valg ");
+            }
+        }
+    }
+
+    private void checkAnnualMembershipPayments() {
+        ArrayList<Member> members = controller.getMembers();
+
+        System.out.println("Checking Annual Membership Payments:\n");
+        for (Member member : members) {
+            System.out.println("Member: " + member.getName() + " (Member Number: " + member.getMemberNumber() + ")");
+            System.out.println("medlemsstatus: " + member.getPassiveOrActive());
+
+
+            if (controller.hasPaidAnnualMembership(member)) {
+                System.out.println("\u001B[32m Paid for the annual membership. \u001B[0m \n");
+            } else {
+                System.out.println("\u001B[31m Has not paid for the annual membership. \u001B[0m \n");
+            }
+        }
+    }
+
+    public void changeAnnualMembershipPayments() {
+        Scanner scanner = new Scanner(System.in);
+        ArrayList<Member> members = controller.getMembers();
+
+        System.out.println("Enter the member number for which you want to change the annual membership payment status:");
+        int memberNumber = scanner.nextInt();
+
+        boolean found = false;
+
+        for (Member member : members) {
+            if (member.getMemberNumber() == memberNumber) {
+                found = true;
+
+                System.out.println("Current annual membership payment status for member " + member.getName() + ": " +
+                        (member.hasPaidAnnualMembership() ? "Paid" : "Not paid"));
+
+                System.out.println("Do you want to change the status? (Enter 'Y' for Yes, 'N' for No)");
+                String input = scanner.next();
+
+                if (input.equalsIgnoreCase("Y")) {
+                    boolean newStatus = !member.hasPaidAnnualMembership();
+                    member.setAnnualMembershipPaymentStatus(newStatus);
+                    System.out.println("Updated annual membership payment status for member " + member.getName() +
+                            " to " + (newStatus ? "Paid" : "Not paid"));
+
+                    //controller.();
+                } else {
+                    System.out.println("No changes made.");
+                }
+
+                break; // Exit the loop since the member has been found
+            }
+        }
+
+        if (!found) {
+            System.out.println("Member with member number " + memberNumber + " not found.");
+        }
+    }
+    //______________
 
 
     private void exitProgram () {
