@@ -1,0 +1,276 @@
+Index: src/main/java/Database.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import java.time.Duration;\nimport java.time.LocalDate;\nimport java.time.LocalTime;\nimport java.util.ArrayList;\nimport java.util.Comparator;\nimport java.util.List;\nimport java.util.Scanner;\n\npublic class Database {\n\n    private ArrayList<Member> meembers = new ArrayList<>();\n    private FileHandler fileHandler = new FileHandler(\"MedlemsListe.csv\");\n\n    public Database() {\n        if (meembers.isEmpty()) {\n            meembers = fileHandler.loadedMembers();\n        }\n    }\n\n    private ArrayList<CompetitiveMember> compMeembersEvent = new ArrayList<>();\n\n    private ArrayList<CompetitiveMember> compMeembersTræning = new ArrayList<>();\n\n    public void registrerMedlem(String name, String dateOfBirth, String gender, int phonenumber, String address, int memberNumber, String passiveOrActive, String memberType, String motionist) {\n        try {\n            Member member = new Member(name, dateOfBirth, gender, phonenumber, address, memberNumber, passiveOrActive, memberType, motionist);\n            meembers.add(member);\n            fileHandler.saveListOfMembersToFile(\"MedlemsListe.csv\", meembers);\n            // lave en metode i filehandle til at gemme medlemsnr i en anden CSV file.\n            System.out.println(\"Member successfully registered.\");\n        } catch (Exception e) {\n            System.out.println(\"Error registering member: \" + e.getMessage());\n            e.printStackTrace();\n        }\n    }\n\n\n    public int calculateYearlyIncome() {\n        int yearlyIncome = 0;\n\n        for (Member member : meembers) {\n            yearlyIncome += member.calculateYearlySubscriptionFee();\n        }\n\n        return yearlyIncome;\n    }\n\n\n    public ArrayList<Member> getMeembers() {\n        return meembers;\n    }\n\n    public void sortMembersByAge(List<Member> meembers) {\n        meembers.sort(Comparator.comparingInt(Member::calculateAgeList));\n    }\n\n    public ArrayList<CompetitiveMember> getCompMeembers() {\n        return compMeembersEvent;\n    }\n\n    public void registrerTræningTid(int memberNumber, Duration svimTime, LocalDate dateOfSwim, SwimmingDiscipline swimmingDiscipline) {\n        try {\n\n            Member member = new Member(memberNumber, svimTime, dateOfSwim, swimmingDiscipline);\n            compMeembersTræning.add((CompetitiveMember) member);\n            fileHandler.saveListOfTræningsTidToFile(\"TræningsTid.csv\", compMeembersTræning);\n\n        } catch (Exception e) {\n            e.printStackTrace();\n        }\n    }\n    //____________\n    public void processArrears() {\n        for (Member member : meembers) {\n            if (member.isInArrears()) {\n                // Implement logic to handle arrears, e.g., send a notification or take appropriate action\n                System.out.println(\"Member in arrears: \" + member.getName());\n            }\n        }\n    }\n    public void performMembershipRenewal() {\n\n    }\n    //_____________\n\n    public void registrerEventTid(int memberNumber, Duration svimTime, LocalDate dateOfSwim, SwimmingDiscipline swimmingDiscipline, String eventName, String eventPlacement, Duration eventSwimTime) {\n        try {\n\n            Member member = new Member(memberNumber, svimTime, dateOfSwim, swimmingDiscipline);\n            compMeembersTræning.add((CompetitiveMember) member);\n            fileHandler.saveListOfTræningsTidToFile(\"TræningsTid.csv\", compMeembersTræning);\n\n        } catch (Exception e) {\n            e.printStackTrace();\n\n        }\n    }\n\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/Database.java b/src/main/java/Database.java
+--- a/src/main/java/Database.java	(revision 14e65bd0deb347e8270f9d3755d9bba5736171ef)
++++ b/src/main/java/Database.java	(date 1701776248308)
+@@ -34,7 +34,7 @@
+         }
+     }
+ 
+-
++// fjerne print fra metoden 
+     public int calculateYearlyIncome() {
+         int yearlyIncome = 0;
+ 
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"AutoImportSettings\">\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\n  </component>\n  <component name=\"ChangeListManager\">\n    <list default=\"true\" id=\"c8e94393-bee2-45ff-a00f-fe84b417e598\" name=\"Changes\" comment=\"Version ER i gang med Comp Member\">\n      <change afterPath=\"$PROJECT_DIR$/MedlemsNumre.csv\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/MedlemsListe.csv\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/MedlemsListe.csv\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/Controller.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/Controller.java\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/Database.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/Database.java\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/FileHandler.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/FileHandler.java\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/Member.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/Member.java\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/Userinterface.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/Userinterface.java\" afterDir=\"false\" />\n    </list>\n    <list id=\"2a237768-9de4-4a09-b015-05cf8b104204\" name=\"Changes by frede\" comment=\"\" />\n    <list id=\"ee53a291-a654-4187-b034-5c1b0c3d7a32\" name=\"Changes by pauls\" comment=\"Version Er i gang med CompMembers\" />\n    <list id=\"94e2b45a-2e0d-411e-b7d4-5750d824dc2d\" name=\"Changes by paulsebastiankrus\" comment=\"\" />\n    <list id=\"67793032-fb6c-4540-abf8-3a33fa1e9568\" name=\"Changes by Severius\" comment=\"\">\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/Controller.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/Controller.java\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/Database.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/Database.java\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/FileHandler.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/FileHandler.java\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/Member.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/Member.java\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/Userinterface.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/Userinterface.java\" afterDir=\"false\" />\n    </list>\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\n  </component>\n  <component name=\"FileTemplateManagerImpl\">\n    <option name=\"RECENT_TEMPLATES\">\n      <list>\n        <option value=\"Class\" />\n        <option value=\"Enum\" />\n      </list>\n    </option>\n  </component>\n  <component name=\"Git.Settings\">\n    <option name=\"RECENT_BRANCH_BY_REPOSITORY\">\n      <map>\n        <entry key=\"$PROJECT_DIR$\" value=\"prøverAtGøreNogleTingFærdige\" />\n      </map>\n    </option>\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\n    <option name=\"UPDATE_TYPE\" value=\"REBASE\" />\n  </component>\n  <component name=\"HighlightingSettingsPerFile\">\n    <setting file=\"jar:///Library/Java/JavaVirtualMachines/jdk-20.jdk/Contents/Home/lib/src.zip!/java.base/java/lang/Integer.java\" root0=\"SKIP_INSPECTION\" />\n  </component>\n  <component name=\"LineStatusTrackerManager\">\n    <file path=\"$PROJECT_DIR$/src/main/java/FileHandler.java\">\n      <ranges>\n        <range start1=\"7\" end1=\"7\" start2=\"7\" end2=\"8\" changelist=\"c8e94393-bee2-45ff-a00f-fe84b417e598\" />\n        <range start1=\"12\" end1=\"12\" start2=\"13\" end2=\"14\" changelist=\"c8e94393-bee2-45ff-a00f-fe84b417e598\" />\n        <range start1=\"19\" end1=\"19\" start2=\"21\" end2=\"22\" changelist=\"c8e94393-bee2-45ff-a00f-fe84b417e598\" />\n        <range start1=\"25\" end1=\"25\" start2=\"28\" end2=\"32\" changelist=\"c8e94393-bee2-45ff-a00f-fe84b417e598\" />\n        <range start1=\"27\" end1=\"36\" start2=\"34\" end2=\"44\" changelist=\"c8e94393-bee2-45ff-a00f-fe84b417e598\" />\n        <range start1=\"40\" end1=\"40\" start2=\"48\" end2=\"50\" changelist=\"c8e94393-bee2-45ff-a00f-fe84b417e598\" />\n        <range start1=\"48\" end1=\"73\" start2=\"58\" end2=\"58\" changelist=\"c8e94393-bee2-45ff-a00f-fe84b417e598\" />\n        <range start1=\"78\" end1=\"86\" start2=\"63\" end2=\"71\" changelist=\"67793032-fb6c-4540-abf8-3a33fa1e9568\" />\n        <range start1=\"97\" end1=\"112\" start2=\"82\" end2=\"83\" changelist=\"67793032-fb6c-4540-abf8-3a33fa1e9568\" />\n        <range start1=\"114\" end1=\"116\" start2=\"85\" end2=\"87\" changelist=\"c8e94393-bee2-45ff-a00f-fe84b417e598\" />\n        <range start1=\"117\" end1=\"119\" start2=\"88\" end2=\"90\" changelist=\"c8e94393-bee2-45ff-a00f-fe84b417e598\" />\n        <range start1=\"124\" end1=\"125\" start2=\"95\" end2=\"95\" changelist=\"c8e94393-bee2-45ff-a00f-fe84b417e598\" />\n        <range start1=\"152\" end1=\"154\" start2=\"122\" end2=\"123\" changelist=\"c8e94393-bee2-45ff-a00f-fe84b417e598\" />\n        <range start1=\"160\" end1=\"160\" start2=\"129\" end2=\"163\" changelist=\"c8e94393-bee2-45ff-a00f-fe84b417e598\" />\n      </ranges>\n    </file>\n    <file path=\"$PROJECT_DIR$/src/main/java/Userinterface.java\">\n      <ranges>\n        <range start1=\"0\" end1=\"2\" start2=\"0\" end2=\"0\" changelist=\"c8e94393-bee2-45ff-a00f-fe84b417e598\" />\n        <range start1=\"5\" end1=\"7\" start2=\"3\" end2=\"3\" changelist=\"c8e94393-bee2-45ff-a00f-fe84b417e598\" />\n        <range start1=\"113\" end1=\"116\" start2=\"109\" end2=\"113\" changelist=\"67793032-fb6c-4540-abf8-3a33fa1e9568\" />\n        <range start1=\"125\" end1=\"125\" start2=\"122\" end2=\"125\" changelist=\"67793032-fb6c-4540-abf8-3a33fa1e9568\" />\n        <range start1=\"248\" end1=\"249\" start2=\"248\" end2=\"249\" changelist=\"c8e94393-bee2-45ff-a00f-fe84b417e598\" />\n        <range start1=\"251\" end1=\"252\" start2=\"251\" end2=\"252\" changelist=\"c8e94393-bee2-45ff-a00f-fe84b417e598\" />\n        <range start1=\"253\" end1=\"253\" start2=\"253\" end2=\"254\" changelist=\"c8e94393-bee2-45ff-a00f-fe84b417e598\" />\n        <range start1=\"267\" end1=\"268\" start2=\"268\" end2=\"269\" changelist=\"c8e94393-bee2-45ff-a00f-fe84b417e598\" />\n        <range start1=\"283\" end1=\"284\" start2=\"284\" end2=\"287\" changelist=\"c8e94393-bee2-45ff-a00f-fe84b417e598\" />\n        <range start1=\"286\" end1=\"287\" start2=\"289\" end2=\"289\" changelist=\"c8e94393-bee2-45ff-a00f-fe84b417e598\" />\n        <range start1=\"300\" end1=\"300\" start2=\"302\" end2=\"309\" changelist=\"67793032-fb6c-4540-abf8-3a33fa1e9568\" />\n        <range start1=\"328\" end1=\"329\" start2=\"337\" end2=\"338\" changelist=\"c8e94393-bee2-45ff-a00f-fe84b417e598\" />\n        <range start1=\"332\" end1=\"334\" start2=\"341\" end2=\"343\" changelist=\"c8e94393-bee2-45ff-a00f-fe84b417e598\" />\n        <range start1=\"347\" end1=\"347\" start2=\"356\" end2=\"412\" changelist=\"c8e94393-bee2-45ff-a00f-fe84b417e598\" />\n        <range start1=\"480\" end1=\"485\" start2=\"545\" end2=\"553\" changelist=\"67793032-fb6c-4540-abf8-3a33fa1e9568\" />\n      </ranges>\n    </file>\n    <file path=\"$PROJECT_DIR$/src/main/java/Controller.java\">\n      <ranges>\n        <range start1=\"14\" end1=\"21\" start2=\"14\" end2=\"14\" changelist=\"67793032-fb6c-4540-abf8-3a33fa1e9568\" />\n        <range start1=\"50\" end1=\"57\" start2=\"43\" end2=\"43\" changelist=\"c8e94393-bee2-45ff-a00f-fe84b417e598\" />\n        <range start1=\"61\" end1=\"61\" start2=\"47\" end2=\"55\" changelist=\"c8e94393-bee2-45ff-a00f-fe84b417e598\" />\n      </ranges>\n    </file>\n    <file path=\"$PROJECT_DIR$/src/main/java/Member.java\">\n      <ranges>\n        <range start1=\"19\" end1=\"19\" start2=\"19\" end2=\"21\" changelist=\"67793032-fb6c-4540-abf8-3a33fa1e9568\" />\n        <range start1=\"22\" end1=\"22\" start2=\"24\" end2=\"25\" changelist=\"c8e94393-bee2-45ff-a00f-fe84b417e598\" />\n        <range start1=\"34\" end1=\"34\" start2=\"37\" end2=\"38\" changelist=\"67793032-fb6c-4540-abf8-3a33fa1e9568\" />\n        <range start1=\"38\" end1=\"39\" start2=\"42\" end2=\"44\" changelist=\"67793032-fb6c-4540-abf8-3a33fa1e9568\" />\n        <range start1=\"40\" end1=\"40\" start2=\"45\" end2=\"48\" changelist=\"67793032-fb6c-4540-abf8-3a33fa1e9568\" />\n        <range start1=\"41\" end1=\"41\" start2=\"49\" end2=\"55\" changelist=\"67793032-fb6c-4540-abf8-3a33fa1e9568\" />\n        <range start1=\"42\" end1=\"44\" start2=\"56\" end2=\"61\" changelist=\"c8e94393-bee2-45ff-a00f-fe84b417e598\" />\n        <range start1=\"45\" end1=\"45\" start2=\"62\" end2=\"68\" changelist=\"c8e94393-bee2-45ff-a00f-fe84b417e598\" />\n        <range start1=\"67\" end1=\"71\" start2=\"90\" end2=\"90\" changelist=\"c8e94393-bee2-45ff-a00f-fe84b417e598\" />\n        <range start1=\"83\" end1=\"84\" start2=\"102\" end2=\"104\" changelist=\"67793032-fb6c-4540-abf8-3a33fa1e9568\" />\n        <range start1=\"87\" end1=\"88\" start2=\"107\" end2=\"108\" changelist=\"67793032-fb6c-4540-abf8-3a33fa1e9568\" />\n        <range start1=\"156\" end1=\"156\" start2=\"176\" end2=\"179\" changelist=\"c8e94393-bee2-45ff-a00f-fe84b417e598\" />\n        <range start1=\"210\" end1=\"210\" start2=\"233\" end2=\"234\" changelist=\"c8e94393-bee2-45ff-a00f-fe84b417e598\" />\n      </ranges>\n    </file>\n    <file path=\"$PROJECT_DIR$/src/main/java/Database.java\">\n      <ranges>\n        <range start1=\"28\" end1=\"28\" start2=\"28\" end2=\"29\" changelist=\"67793032-fb6c-4540-abf8-3a33fa1e9568\" />\n        <range start1=\"55\" end1=\"61\" start2=\"56\" end2=\"56\" changelist=\"c8e94393-bee2-45ff-a00f-fe84b417e598\" />\n        <range start1=\"65\" end1=\"66\" start2=\"60\" end2=\"61\" changelist=\"c8e94393-bee2-45ff-a00f-fe84b417e598\" />\n        <range start1=\"67\" end1=\"67\" start2=\"62\" end2=\"63\" changelist=\"c8e94393-bee2-45ff-a00f-fe84b417e598\" />\n        <range start1=\"75\" end1=\"75\" start2=\"71\" end2=\"84\" changelist=\"67793032-fb6c-4540-abf8-3a33fa1e9568\" />\n        <range start1=\"76\" end1=\"76\" start2=\"85\" end2=\"97\" changelist=\"c8e94393-bee2-45ff-a00f-fe84b417e598\" />\n      </ranges>\n    </file>\n  </component>\n  <component name=\"ProblemsViewState\">\n    <option name=\"selectedTabId\" value=\"CurrentFile\" />\n  </component>\n  <component name=\"ProjectColorInfo\">{\n  &quot;associatedIndex&quot;: 4\n}</component>\n  <component name=\"ProjectId\" id=\"2YZW3B8qavazBkYFZwsCDWoo24s\" />\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\" />\n  <component name=\"ProjectViewState\">\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\n    <option name=\"showLibraryContents\" value=\"true\" />\n  </component>\n  <component name=\"PropertiesComponent\">{\n  &quot;keyToString&quot;: {\n    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,\n    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,\n    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,\n    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,\n    &quot;git-widget-placeholder&quot;: &quot;master&quot;,\n    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,\n    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,\n    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,\n    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,\n    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,\n    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,\n    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,\n    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,\n    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;\n  }\n}</component>\n  <component name=\"RecentsManager\">\n    <key name=\"MoveFile.RECENT_KEYS\">\n      <recent name=\"C:\\Users\\pauls\\Desktop\\INTELLIJ PROJECTER\\Svoemmeklubben-Delfinen-Projekt\\src\" />\n    </key>\n  </component>\n  <component name=\"RunManager\">\n    <configuration name=\"Main\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\n      <option name=\"MAIN_CLASS_NAME\" value=\"Main\" />\n      <module name=\"Delfinen\" />\n      <method v=\"2\">\n        <option name=\"Make\" enabled=\"true\" />\n      </method>\n    </configuration>\n    <recent_temporary>\n      <list>\n        <item itemvalue=\"Application.Main\" />\n        <item itemvalue=\"Application.Main\" />\n      </list>\n    </recent_temporary>\n  </component>\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\n  <component name=\"TaskManager\">\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\n      <changelist id=\"c8e94393-bee2-45ff-a00f-fe84b417e598\" name=\"Changes\" comment=\"\" />\n      <created>1700733382632</created>\n      <option name=\"number\" value=\"Default\" />\n      <option name=\"presentableId\" value=\"Default\" />\n      <updated>1700733382632</updated>\n      <workItem from=\"1700733383725\" duration=\"2934000\" />\n      <workItem from=\"1700758495923\" duration=\"6085000\" />\n      <workItem from=\"1700811268115\" duration=\"275000\" />\n      <workItem from=\"1701093255413\" duration=\"2776000\" />\n      <workItem from=\"1701337496163\" duration=\"2700000\" />\n      <workItem from=\"1701429245559\" duration=\"2352000\" />\n      <workItem from=\"1700826683546\" duration=\"396000\" />\n      <workItem from=\"1701118664800\" duration=\"2011000\" />\n      <workItem from=\"1701171387000\" duration=\"1329000\" />\n      <workItem from=\"1701179245718\" duration=\"521000\" />\n      <workItem from=\"1701295369375\" duration=\"732000\" />\n      <workItem from=\"1701540863878\" duration=\"25000\" />\n      <workItem from=\"1701606526601\" duration=\"21981000\" />\n      <workItem from=\"1701689312355\" duration=\"9678000\" />\n    </task>\n    <task id=\"LOCAL-00001\" summary=\"Version 2.3 ændret lidt nogle steder som er typefejl.\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1701343545483</created>\n      <option name=\"number\" value=\"00001\" />\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1701343545483</updated>\n    </task>\n    <task id=\"LOCAL-00004\" summary=\"lavet årlig indkomst\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1701389804027</created>\n      <option name=\"number\" value=\"00004\" />\n      <option name=\"presentableId\" value=\"LOCAL-00004\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1701389804027</updated>\n    </task>\n    <task id=\"LOCAL-00005\" summary=\"autogenereret medlemsnummer og fjernet en sout print for meget på aktiv passiv\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1701430822536</created>\n      <option name=\"number\" value=\"00005\" />\n      <option name=\"presentableId\" value=\"LOCAL-00005\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1701430822536</updated>\n    </task>\n    <task id=\"LOCAL-00002\" summary=\"lavet årlig indkomst\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1701388083086</created>\n      <option name=\"number\" value=\"00002\" />\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1701388083086</updated>\n    </task>\n    <task id=\"LOCAL-00003\" summary=\"lavet årlig indkomst\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1701389516510</created>\n      <option name=\"number\" value=\"00003\" />\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1701389516510</updated>\n    </task>\n    <task id=\"LOCAL-00006\" summary=\"Version Checker om o eller u 18\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1701608324676</created>\n      <option name=\"number\" value=\"00006\" />\n      <option name=\"presentableId\" value=\"LOCAL-00006\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1701608324676</updated>\n    </task>\n    <task id=\"LOCAL-00007\" summary=\"Version Motionis eller konkurence check\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1701621534624</created>\n      <option name=\"number\" value=\"00007\" />\n      <option name=\"presentableId\" value=\"LOCAL-00007\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1701621534624</updated>\n    </task>\n    <task id=\"LOCAL-00008\" summary=\"Version Register er 100% DONE\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1701640545662</created>\n      <option name=\"number\" value=\"00008\" />\n      <option name=\"presentableId\" value=\"LOCAL-00008\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1701640545662</updated>\n    </task>\n    <task id=\"LOCAL-00009\" summary=\"Version Register er 100% DONE\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1701641872114</created>\n      <option name=\"number\" value=\"00009\" />\n      <option name=\"presentableId\" value=\"LOCAL-00009\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1701641872114</updated>\n    </task>\n    <task id=\"LOCAL-00010\" summary=\"Version Register er 100% DONE\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1701641988149</created>\n      <option name=\"number\" value=\"00010\" />\n      <option name=\"presentableId\" value=\"LOCAL-00010\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1701641988149</updated>\n    </task>\n    <task id=\"LOCAL-00011\" summary=\"Version ER i gang med Comp Member\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1701645924240</created>\n      <option name=\"number\" value=\"00011\" />\n      <option name=\"presentableId\" value=\"LOCAL-00011\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1701645924240</updated>\n    </task>\n    <task id=\"LOCAL-00012\" summary=\"Version Er i gang med CompMembers\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1701645949964</created>\n      <option name=\"number\" value=\"00012\" />\n      <option name=\"presentableId\" value=\"LOCAL-00012\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1701645949965</updated>\n    </task>\n    <option name=\"localTasksCounter\" value=\"13\" />\n    <servers />\n  </component>\n  <component name=\"TypeScriptGeneratedFilesManager\">\n    <option name=\"version\" value=\"3\" />\n  </component>\n  <component name=\"Vcs.Log.Tabs.Properties\">\n    <option name=\"TAB_STATES\">\n      <map>\n        <entry key=\"MAIN\">\n          <value>\n            <State />\n          </value>\n        </entry>\n      </map>\n    </option>\n  </component>\n  <component name=\"VcsManagerConfiguration\">\n    <MESSAGE value=\"Version 2.1\" />\n    <MESSAGE value=\"Version 2.2\" />\n    <MESSAGE value=\"Version 2.2 mandag yes\" />\n    <MESSAGE value=\"Changes by marcusmortensen\" />\n    <MESSAGE value=\"Version 2.3\" />\n    <MESSAGE value=\"Version 2.3 ændret lidt nogle steder som er typefejl.\" />\n    <MESSAGE value=\"lavet årlig indkomst\" />\n    <MESSAGE value=\"autogenereret medlemsnummer og fjernet en sout print for meget på aktiv passiv\" />\n    <MESSAGE value=\"Version Checker om o eller u 18\" />\n    <MESSAGE value=\"Version Motionis eller konkurence check\" />\n    <MESSAGE value=\"ah\" />\n    <MESSAGE value=\"Version Register er 100% DONE\" />\n    <MESSAGE value=\"Version ER i gang med Comp Member\" />\n    <MESSAGE value=\"Version Er i gang med CompMembers\" />\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"Version Er i gang med CompMembers\" />\n  </component>\n  <component name=\"XDebuggerManager\">\n    <breakpoint-manager>\n      <breakpoints>\n        <breakpoint enabled=\"true\" type=\"java-exception\">\n          <properties class=\"java.util.NoSuchElementException\" package=\"java.util\" />\n          <option name=\"timeStamp\" value=\"2\" />\n        </breakpoint>\n      </breakpoints>\n    </breakpoint-manager>\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 14e65bd0deb347e8270f9d3755d9bba5736171ef)
++++ b/.idea/workspace.xml	(date 1701848801291)
+@@ -4,26 +4,13 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="c8e94393-bee2-45ff-a00f-fe84b417e598" name="Changes" comment="Version ER i gang med Comp Member">
+-      <change afterPath="$PROJECT_DIR$/MedlemsNumre.csv" afterDir="false" />
++    <list default="true" id="c8e94393-bee2-45ff-a00f-fe84b417e598" name="Changes" comment="lavet årlig indkomst">
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/MedlemsListe.csv" beforeDir="false" afterPath="$PROJECT_DIR$/MedlemsListe.csv" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/main/java/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Database.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/FileHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/FileHandler.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/Member.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Member.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/Userinterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Userinterface.java" afterDir="false" />
+     </list>
+     <list id="2a237768-9de4-4a09-b015-05cf8b104204" name="Changes by frede" comment="" />
+-    <list id="ee53a291-a654-4187-b034-5c1b0c3d7a32" name="Changes by pauls" comment="Version Er i gang med CompMembers" />
+     <list id="94e2b45a-2e0d-411e-b7d4-5750d824dc2d" name="Changes by paulsebastiankrus" comment="" />
+-    <list id="67793032-fb6c-4540-abf8-3a33fa1e9568" name="Changes by Severius" comment="">
+-      <change beforePath="$PROJECT_DIR$/src/main/java/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Database.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/FileHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/FileHandler.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/Member.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Member.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/Userinterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Userinterface.java" afterDir="false" />
+-    </list>
++    <list id="67793032-fb6c-4540-abf8-3a33fa1e9568" name="Changes by Severius" comment="" />
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+@@ -44,86 +31,9 @@
+       </map>
+     </option>
+     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+-    <option name="UPDATE_TYPE" value="REBASE" />
+   </component>
+   <component name="HighlightingSettingsPerFile">
+     <setting file="jar:///Library/Java/JavaVirtualMachines/jdk-20.jdk/Contents/Home/lib/src.zip!/java.base/java/lang/Integer.java" root0="SKIP_INSPECTION" />
+-  </component>
+-  <component name="LineStatusTrackerManager">
+-    <file path="$PROJECT_DIR$/src/main/java/FileHandler.java">
+-      <ranges>
+-        <range start1="7" end1="7" start2="7" end2="8" changelist="c8e94393-bee2-45ff-a00f-fe84b417e598" />
+-        <range start1="12" end1="12" start2="13" end2="14" changelist="c8e94393-bee2-45ff-a00f-fe84b417e598" />
+-        <range start1="19" end1="19" start2="21" end2="22" changelist="c8e94393-bee2-45ff-a00f-fe84b417e598" />
+-        <range start1="25" end1="25" start2="28" end2="32" changelist="c8e94393-bee2-45ff-a00f-fe84b417e598" />
+-        <range start1="27" end1="36" start2="34" end2="44" changelist="c8e94393-bee2-45ff-a00f-fe84b417e598" />
+-        <range start1="40" end1="40" start2="48" end2="50" changelist="c8e94393-bee2-45ff-a00f-fe84b417e598" />
+-        <range start1="48" end1="73" start2="58" end2="58" changelist="c8e94393-bee2-45ff-a00f-fe84b417e598" />
+-        <range start1="78" end1="86" start2="63" end2="71" changelist="67793032-fb6c-4540-abf8-3a33fa1e9568" />
+-        <range start1="97" end1="112" start2="82" end2="83" changelist="67793032-fb6c-4540-abf8-3a33fa1e9568" />
+-        <range start1="114" end1="116" start2="85" end2="87" changelist="c8e94393-bee2-45ff-a00f-fe84b417e598" />
+-        <range start1="117" end1="119" start2="88" end2="90" changelist="c8e94393-bee2-45ff-a00f-fe84b417e598" />
+-        <range start1="124" end1="125" start2="95" end2="95" changelist="c8e94393-bee2-45ff-a00f-fe84b417e598" />
+-        <range start1="152" end1="154" start2="122" end2="123" changelist="c8e94393-bee2-45ff-a00f-fe84b417e598" />
+-        <range start1="160" end1="160" start2="129" end2="163" changelist="c8e94393-bee2-45ff-a00f-fe84b417e598" />
+-      </ranges>
+-    </file>
+-    <file path="$PROJECT_DIR$/src/main/java/Userinterface.java">
+-      <ranges>
+-        <range start1="0" end1="2" start2="0" end2="0" changelist="c8e94393-bee2-45ff-a00f-fe84b417e598" />
+-        <range start1="5" end1="7" start2="3" end2="3" changelist="c8e94393-bee2-45ff-a00f-fe84b417e598" />
+-        <range start1="113" end1="116" start2="109" end2="113" changelist="67793032-fb6c-4540-abf8-3a33fa1e9568" />
+-        <range start1="125" end1="125" start2="122" end2="125" changelist="67793032-fb6c-4540-abf8-3a33fa1e9568" />
+-        <range start1="248" end1="249" start2="248" end2="249" changelist="c8e94393-bee2-45ff-a00f-fe84b417e598" />
+-        <range start1="251" end1="252" start2="251" end2="252" changelist="c8e94393-bee2-45ff-a00f-fe84b417e598" />
+-        <range start1="253" end1="253" start2="253" end2="254" changelist="c8e94393-bee2-45ff-a00f-fe84b417e598" />
+-        <range start1="267" end1="268" start2="268" end2="269" changelist="c8e94393-bee2-45ff-a00f-fe84b417e598" />
+-        <range start1="283" end1="284" start2="284" end2="287" changelist="c8e94393-bee2-45ff-a00f-fe84b417e598" />
+-        <range start1="286" end1="287" start2="289" end2="289" changelist="c8e94393-bee2-45ff-a00f-fe84b417e598" />
+-        <range start1="300" end1="300" start2="302" end2="309" changelist="67793032-fb6c-4540-abf8-3a33fa1e9568" />
+-        <range start1="328" end1="329" start2="337" end2="338" changelist="c8e94393-bee2-45ff-a00f-fe84b417e598" />
+-        <range start1="332" end1="334" start2="341" end2="343" changelist="c8e94393-bee2-45ff-a00f-fe84b417e598" />
+-        <range start1="347" end1="347" start2="356" end2="412" changelist="c8e94393-bee2-45ff-a00f-fe84b417e598" />
+-        <range start1="480" end1="485" start2="545" end2="553" changelist="67793032-fb6c-4540-abf8-3a33fa1e9568" />
+-      </ranges>
+-    </file>
+-    <file path="$PROJECT_DIR$/src/main/java/Controller.java">
+-      <ranges>
+-        <range start1="14" end1="21" start2="14" end2="14" changelist="67793032-fb6c-4540-abf8-3a33fa1e9568" />
+-        <range start1="50" end1="57" start2="43" end2="43" changelist="c8e94393-bee2-45ff-a00f-fe84b417e598" />
+-        <range start1="61" end1="61" start2="47" end2="55" changelist="c8e94393-bee2-45ff-a00f-fe84b417e598" />
+-      </ranges>
+-    </file>
+-    <file path="$PROJECT_DIR$/src/main/java/Member.java">
+-      <ranges>
+-        <range start1="19" end1="19" start2="19" end2="21" changelist="67793032-fb6c-4540-abf8-3a33fa1e9568" />
+-        <range start1="22" end1="22" start2="24" end2="25" changelist="c8e94393-bee2-45ff-a00f-fe84b417e598" />
+-        <range start1="34" end1="34" start2="37" end2="38" changelist="67793032-fb6c-4540-abf8-3a33fa1e9568" />
+-        <range start1="38" end1="39" start2="42" end2="44" changelist="67793032-fb6c-4540-abf8-3a33fa1e9568" />
+-        <range start1="40" end1="40" start2="45" end2="48" changelist="67793032-fb6c-4540-abf8-3a33fa1e9568" />
+-        <range start1="41" end1="41" start2="49" end2="55" changelist="67793032-fb6c-4540-abf8-3a33fa1e9568" />
+-        <range start1="42" end1="44" start2="56" end2="61" changelist="c8e94393-bee2-45ff-a00f-fe84b417e598" />
+-        <range start1="45" end1="45" start2="62" end2="68" changelist="c8e94393-bee2-45ff-a00f-fe84b417e598" />
+-        <range start1="67" end1="71" start2="90" end2="90" changelist="c8e94393-bee2-45ff-a00f-fe84b417e598" />
+-        <range start1="83" end1="84" start2="102" end2="104" changelist="67793032-fb6c-4540-abf8-3a33fa1e9568" />
+-        <range start1="87" end1="88" start2="107" end2="108" changelist="67793032-fb6c-4540-abf8-3a33fa1e9568" />
+-        <range start1="156" end1="156" start2="176" end2="179" changelist="c8e94393-bee2-45ff-a00f-fe84b417e598" />
+-        <range start1="210" end1="210" start2="233" end2="234" changelist="c8e94393-bee2-45ff-a00f-fe84b417e598" />
+-      </ranges>
+-    </file>
+-    <file path="$PROJECT_DIR$/src/main/java/Database.java">
+-      <ranges>
+-        <range start1="28" end1="28" start2="28" end2="29" changelist="67793032-fb6c-4540-abf8-3a33fa1e9568" />
+-        <range start1="55" end1="61" start2="56" end2="56" changelist="c8e94393-bee2-45ff-a00f-fe84b417e598" />
+-        <range start1="65" end1="66" start2="60" end2="61" changelist="c8e94393-bee2-45ff-a00f-fe84b417e598" />
+-        <range start1="67" end1="67" start2="62" end2="63" changelist="c8e94393-bee2-45ff-a00f-fe84b417e598" />
+-        <range start1="75" end1="75" start2="71" end2="84" changelist="67793032-fb6c-4540-abf8-3a33fa1e9568" />
+-        <range start1="76" end1="76" start2="85" end2="97" changelist="c8e94393-bee2-45ff-a00f-fe84b417e598" />
+-      </ranges>
+-    </file>
+-  </component>
+-  <component name="ProblemsViewState">
+-    <option name="selectedTabId" value="CurrentFile" />
+   </component>
+   <component name="ProjectColorInfo">{
+   &quot;associatedIndex&quot;: 4
+@@ -148,7 +58,6 @@
+     &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+     &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+     &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+   }
+ }</component>
+@@ -185,15 +94,6 @@
+       <workItem from="1700811268115" duration="275000" />
+       <workItem from="1701093255413" duration="2776000" />
+       <workItem from="1701337496163" duration="2700000" />
+-      <workItem from="1701429245559" duration="2352000" />
+-      <workItem from="1700826683546" duration="396000" />
+-      <workItem from="1701118664800" duration="2011000" />
+-      <workItem from="1701171387000" duration="1329000" />
+-      <workItem from="1701179245718" duration="521000" />
+-      <workItem from="1701295369375" duration="732000" />
+-      <workItem from="1701540863878" duration="25000" />
+-      <workItem from="1701606526601" duration="21981000" />
+-      <workItem from="1701689312355" duration="9678000" />
+     </task>
+     <task id="LOCAL-00001" summary="Version 2.3 ændret lidt nogle steder som er typefejl.">
+       <option name="closed" value="true" />
+@@ -202,22 +102,6 @@
+       <option name="presentableId" value="LOCAL-00001" />
+       <option name="project" value="LOCAL" />
+       <updated>1701343545483</updated>
+-    </task>
+-    <task id="LOCAL-00004" summary="lavet årlig indkomst">
+-      <option name="closed" value="true" />
+-      <created>1701389804027</created>
+-      <option name="number" value="00004" />
+-      <option name="presentableId" value="LOCAL-00004" />
+-      <option name="project" value="LOCAL" />
+-      <updated>1701389804027</updated>
+-    </task>
+-    <task id="LOCAL-00005" summary="autogenereret medlemsnummer og fjernet en sout print for meget på aktiv passiv">
+-      <option name="closed" value="true" />
+-      <created>1701430822536</created>
+-      <option name="number" value="00005" />
+-      <option name="presentableId" value="LOCAL-00005" />
+-      <option name="project" value="LOCAL" />
+-      <updated>1701430822536</updated>
+     </task>
+     <task id="LOCAL-00002" summary="lavet årlig indkomst">
+       <option name="closed" value="true" />
+@@ -235,63 +119,7 @@
+       <option name="project" value="LOCAL" />
+       <updated>1701389516510</updated>
+     </task>
+-    <task id="LOCAL-00006" summary="Version Checker om o eller u 18">
+-      <option name="closed" value="true" />
+-      <created>1701608324676</created>
+-      <option name="number" value="00006" />
+-      <option name="presentableId" value="LOCAL-00006" />
+-      <option name="project" value="LOCAL" />
+-      <updated>1701608324676</updated>
+-    </task>
+-    <task id="LOCAL-00007" summary="Version Motionis eller konkurence check">
+-      <option name="closed" value="true" />
+-      <created>1701621534624</created>
+-      <option name="number" value="00007" />
+-      <option name="presentableId" value="LOCAL-00007" />
+-      <option name="project" value="LOCAL" />
+-      <updated>1701621534624</updated>
+-    </task>
+-    <task id="LOCAL-00008" summary="Version Register er 100% DONE">
+-      <option name="closed" value="true" />
+-      <created>1701640545662</created>
+-      <option name="number" value="00008" />
+-      <option name="presentableId" value="LOCAL-00008" />
+-      <option name="project" value="LOCAL" />
+-      <updated>1701640545662</updated>
+-    </task>
+-    <task id="LOCAL-00009" summary="Version Register er 100% DONE">
+-      <option name="closed" value="true" />
+-      <created>1701641872114</created>
+-      <option name="number" value="00009" />
+-      <option name="presentableId" value="LOCAL-00009" />
+-      <option name="project" value="LOCAL" />
+-      <updated>1701641872114</updated>
+-    </task>
+-    <task id="LOCAL-00010" summary="Version Register er 100% DONE">
+-      <option name="closed" value="true" />
+-      <created>1701641988149</created>
+-      <option name="number" value="00010" />
+-      <option name="presentableId" value="LOCAL-00010" />
+-      <option name="project" value="LOCAL" />
+-      <updated>1701641988149</updated>
+-    </task>
+-    <task id="LOCAL-00011" summary="Version ER i gang med Comp Member">
+-      <option name="closed" value="true" />
+-      <created>1701645924240</created>
+-      <option name="number" value="00011" />
+-      <option name="presentableId" value="LOCAL-00011" />
+-      <option name="project" value="LOCAL" />
+-      <updated>1701645924240</updated>
+-    </task>
+-    <task id="LOCAL-00012" summary="Version Er i gang med CompMembers">
+-      <option name="closed" value="true" />
+-      <created>1701645949964</created>
+-      <option name="number" value="00012" />
+-      <option name="presentableId" value="LOCAL-00012" />
+-      <option name="project" value="LOCAL" />
+-      <updated>1701645949965</updated>
+-    </task>
+-    <option name="localTasksCounter" value="13" />
++    <option name="localTasksCounter" value="4" />
+     <servers />
+   </component>
+   <component name="TypeScriptGeneratedFilesManager">
+@@ -313,17 +141,9 @@
+     <MESSAGE value="Version 2.2" />
+     <MESSAGE value="Version 2.2 mandag yes" />
+     <MESSAGE value="Changes by marcusmortensen" />
+-    <MESSAGE value="Version 2.3" />
+     <MESSAGE value="Version 2.3 ændret lidt nogle steder som er typefejl." />
+     <MESSAGE value="lavet årlig indkomst" />
+-    <MESSAGE value="autogenereret medlemsnummer og fjernet en sout print for meget på aktiv passiv" />
+-    <MESSAGE value="Version Checker om o eller u 18" />
+-    <MESSAGE value="Version Motionis eller konkurence check" />
+-    <MESSAGE value="ah" />
+-    <MESSAGE value="Version Register er 100% DONE" />
+-    <MESSAGE value="Version ER i gang med Comp Member" />
+-    <MESSAGE value="Version Er i gang med CompMembers" />
+-    <option name="LAST_COMMIT_MESSAGE" value="Version Er i gang med CompMembers" />
++    <option name="LAST_COMMIT_MESSAGE" value="lavet årlig indkomst" />
+   </component>
+   <component name="XDebuggerManager">
+     <breakpoint-manager>
