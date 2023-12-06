@@ -87,7 +87,7 @@ public class FileHandler {
 
 
     public void saveListOfMembersToFile(String fileName, ArrayList<Member> members) {
-        try (FileOutputStream fileOutputStream = new FileOutputStream(fileName, true)) {
+        try (PrintWriter writer = new PrintWriter(fileName)) {
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
             for (Member member : members) {
                 String memberInfo = member.getName() + "," +
@@ -100,10 +100,9 @@ public class FileHandler {
                         member.getMemberType() + "," +
                         member.getMotionist();
 
-                memberInfo += System.lineSeparator();
-                fileOutputStream.write(memberInfo.getBytes());
+                writer.println(memberInfo);
             }
-        } catch (IOException e) {
+        } catch (FileNotFoundException e) {
             System.err.println("Fejl: " + e.getMessage());
         }
     }
