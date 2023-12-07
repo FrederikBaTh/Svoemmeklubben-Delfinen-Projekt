@@ -1,0 +1,354 @@
+Index: .idea/shelf/Uncommitted_changes_before_Update_at_28-11-2023_15_04__Changes_.xml
+===================================================================
+diff --git a/.idea/shelf/Uncommitted_changes_before_Update_at_28-11-2023_15_04__Changes_.xml b/.idea/shelf/Uncommitted_changes_before_Update_at_28-11-2023_15_04__Changes_.xml
+deleted file mode 100644
+--- a/.idea/shelf/Uncommitted_changes_before_Update_at_28-11-2023_15_04__Changes_.xml	(revision 740d2334cc9b4159760abc99c80143f0c36ecd0e)
++++ /dev/null	(revision 740d2334cc9b4159760abc99c80143f0c36ecd0e)
+@@ -1,4 +0,0 @@
+-<changelist name="Uncommitted_changes_before_Update_at_28-11-2023_15_04_[Changes]" date="1701180326063" recycled="true" deleted="true">
+-  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_28-11-2023_15_04_[Changes]/shelved.patch" />
+-  <option name="DESCRIPTION" value="Uncommitted changes before Update at 28-11-2023 15:04 [Changes]" />
+-</changelist>
+\ No newline at end of file
+Index: .idea/shelf/Uncommitted_changes_before_Update_at_28_11_2023__12_35__Changes_.xml
+===================================================================
+diff --git a/.idea/shelf/Uncommitted_changes_before_Update_at_28_11_2023__12_35__Changes_.xml b/.idea/shelf/Uncommitted_changes_before_Update_at_28_11_2023__12_35__Changes_.xml
+deleted file mode 100644
+--- a/.idea/shelf/Uncommitted_changes_before_Update_at_28_11_2023__12_35__Changes_.xml	(revision 740d2334cc9b4159760abc99c80143f0c36ecd0e)
++++ /dev/null	(revision 740d2334cc9b4159760abc99c80143f0c36ecd0e)
+@@ -1,4 +0,0 @@
+-<changelist name="Uncommitted_changes_before_Update_at_28_11_2023,_12_35_[Changes]" date="1701171330771" recycled="true" deleted="true">
+-  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_28_11_2023,_12_35_[Changes]/shelved.patch" />
+-  <option name="DESCRIPTION" value="Uncommitted changes before Update at 28/11/2023, 12.35 [Changes]" />
+-</changelist>
+\ No newline at end of file
+Index: .idea/shelf/Uncommitted_changes_before_Update_at_28-11-2023_15_04_[Changes]/shelved.patch
+===================================================================
+diff --git a/.idea/shelf/Uncommitted_changes_before_Update_at_28-11-2023_15_04_[Changes]/shelved.patch b/.idea/shelf/Uncommitted_changes_before_Update_at_28-11-2023_15_04_[Changes]/shelved.patch
+deleted file mode 100644
+--- a/.idea/shelf/Uncommitted_changes_before_Update_at_28-11-2023_15_04_[Changes]/shelved.patch	(revision 740d2334cc9b4159760abc99c80143f0c36ecd0e)
++++ /dev/null	(revision 740d2334cc9b4159760abc99c80143f0c36ecd0e)
+@@ -1,57 +0,0 @@
+-Index: MedlemsListe.csv
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+-<+>12\r\n12-12-1700\r\nmand\r\n12345678\r\n1231\r\n123456\r\npasi\r\ne\r\ne\r\n\r\nhej\r\n12-12-2000\r\nmand\r\n12345678\r\nsdasd\r\n123456\r\nja\r\nja\r\nja\r\n\r\nscdsad\r\n12-12-1900\r\nmand\r\n12345678\r\ndasd\r\n123456\r\nad\r\nasd\r\nasd\r\n\r\nhej\r\n22-12-2222\r\nmand\r\n12345678\r\nsdad\r\n123456\r\nAktivt\r\nja\r\nja\r\n\r\n
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+-diff --git a/MedlemsListe.csv b/MedlemsListe.csv
+---- a/MedlemsListe.csv	(revision 984440c825b243c7815aa6936b781426deb1ee94)
+-+++ b/MedlemsListe.csv	(date 1701172052367)
+-@@ -38,3 +38,13 @@
+- ja
+- ja
+- 
+-+Søren
+-+06-11-1988
+-+mand
+-+31248901
+-+lolvej 666
+-+666999
+-+Aktivt
+-+Ja
+-+ja
+-+
+-Index: .idea/workspace.xml
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+-<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"c8e94393-bee2-45ff-a00f-fe84b417e598\" name=\"Changes\" comment=\"\">\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_24_11_2023_08_43__Changes_.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_24_11_2023_08_43__Changes_.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_27_11_2023__12_33__Changes_.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_27_11_2023__12_33__Changes_.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_27_11_2023__12_33__Changes_1.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_27_11_2023__12_33__Changes_1.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/MedlemsListe.csv\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/MedlemsListe.csv\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/Controller.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/Controller.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/Userinterface.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/Userinterface.java\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"ProjectColorInfo\">{\r\n  &quot;associatedIndex&quot;: 4\r\n}</component>\r\n  <component name=\"ProjectId\" id=\"2YZW3B8qavazBkYFZwsCDWoo24s\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">{\r\n  &quot;keyToString&quot;: {\r\n    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,\r\n    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,\r\n    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,\r\n    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,\r\n    &quot;git-widget-placeholder&quot;: &quot;master&quot;,\r\n    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,\r\n    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,\r\n    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,\r\n    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,\r\n    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,\r\n    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,\r\n    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,\r\n    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;\r\n  }\r\n}</component>\r\n  <component name=\"RunManager\">\r\n    <configuration name=\"Main\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"Main\" />\r\n      <module name=\"Delfinen\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <recent_temporary>\r\n      <list>\r\n        <item itemvalue=\"Application.Main\" />\r\n      </list>\r\n    </recent_temporary>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"c8e94393-bee2-45ff-a00f-fe84b417e598\" name=\"Changes\" comment=\"\" />\r\n      <created>1700733382632</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1700733382632</updated>\r\n      <workItem from=\"1700733383725\" duration=\"2934000\" />\r\n    </task>\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n</project>
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+-diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+---- a/.idea/workspace.xml	(revision 984440c825b243c7815aa6936b781426deb1ee94)
+-+++ b/.idea/workspace.xml	(date 1701172739274)
+-@@ -5,13 +5,11 @@
+-   </component>
+-   <component name="ChangeListManager">
+-     <list default="true" id="c8e94393-bee2-45ff-a00f-fe84b417e598" name="Changes" comment="">
+-+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+-       <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_24_11_2023_08_43__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_24_11_2023_08_43__Changes_.xml" afterDir="false" />
+-       <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_27_11_2023__12_33__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_27_11_2023__12_33__Changes_.xml" afterDir="false" />
+-       <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_27_11_2023__12_33__Changes_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_27_11_2023__12_33__Changes_1.xml" afterDir="false" />
+--      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-       <change beforePath="$PROJECT_DIR$/MedlemsListe.csv" beforeDir="false" afterPath="$PROJECT_DIR$/MedlemsListe.csv" afterDir="false" />
+--      <change beforePath="$PROJECT_DIR$/src/main/java/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller.java" afterDir="false" />
+--      <change beforePath="$PROJECT_DIR$/src/main/java/Userinterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Userinterface.java" afterDir="false" />
+-     </list>
+-     <option name="SHOW_DIALOG" value="false" />
+-     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+-@@ -77,6 +75,7 @@
+-       <option name="presentableId" value="Default" />
+-       <updated>1700733382632</updated>
+-       <workItem from="1700733383725" duration="2934000" />
+-+      <workItem from="1701171820872" duration="918000" />
+-     </task>
+-     <servers />
+-   </component>
+Index: .idea/shelf/Uncommitted_changes_before_Update_at_28_11_2023,_12_35_[Changes]/shelved.patch
+===================================================================
+diff --git a/.idea/shelf/Uncommitted_changes_before_Update_at_28_11_2023,_12_35_[Changes]/shelved.patch b/.idea/shelf/Uncommitted_changes_before_Update_at_28_11_2023,_12_35_[Changes]/shelved.patch
+deleted file mode 100644
+--- a/.idea/shelf/Uncommitted_changes_before_Update_at_28_11_2023,_12_35_[Changes]/shelved.patch	(revision 740d2334cc9b4159760abc99c80143f0c36ecd0e)
++++ /dev/null	(revision 740d2334cc9b4159760abc99c80143f0c36ecd0e)
+@@ -1,186 +0,0 @@
+-Index: .idea/workspace.xml
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+-<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"AutoImportSettings\">\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\n  </component>\n  <component name=\"ChangeListManager\">\n    <list default=\"true\" id=\"c8e94393-bee2-45ff-a00f-fe84b417e598\" name=\"Changes\" comment=\"Version 2.2 mandag yes\">\n      <change afterPath=\"$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_27_11_2023,_12_33_[Changes]/shelved.patch\" afterDir=\"false\" />\n      <change afterPath=\"$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_27_11_2023,_12_33_[Changes]1/shelved.patch\" afterDir=\"false\" />\n      <change afterPath=\"$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_27_11_2023__12_33__Changes_.xml\" afterDir=\"false\" />\n      <change afterPath=\"$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_27_11_2023__12_33__Changes_1.xml\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/MedlemsListe.csv\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/MedlemsListe.csv\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/Controller.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/Controller.java\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/Database.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/Database.java\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/Main.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/Main.java\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/Member.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/Member.java\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/Userinterface.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/Userinterface.java\" afterDir=\"false\" />\n    </list>\n    <list id=\"fb177936-fb46-4acb-949a-0f3451925b84\" name=\"Changes by marcusmortensen\" comment=\"Changes by marcusmortensen\">\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/Controller.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/Controller.java\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/Database.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/Database.java\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/FileHandler.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/FileHandler.java\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/Member.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/Member.java\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/Userinterface.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/Userinterface.java\" afterDir=\"false\" />\n    </list>\n    <list id=\"94e2b45a-2e0d-411e-b7d4-5750d824dc2d\" name=\"Changes by paulsebastiankrus\" comment=\"\" />\n    <list id=\"67793032-fb6c-4540-abf8-3a33fa1e9568\" name=\"Changes by Severius\" comment=\"\">\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/FileHandler.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/FileHandler.java\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/Userinterface.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/Userinterface.java\" afterDir=\"false\" />\n    </list>\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\n  </component>\n  <component name=\"FileTemplateManagerImpl\">\n    <option name=\"RECENT_TEMPLATES\">\n      <list>\n        <option value=\"Class\" />\n      </list>\n    </option>\n  </component>\n  <component name=\"Git.Settings\">\n    <option name=\"RECENT_BRANCH_BY_REPOSITORY\">\n      <map>\n        <entry key=\"$PROJECT_DIR$\" value=\"master\" />\n      </map>\n    </option>\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\n  </component>\n  <component name=\"LineStatusTrackerManager\">\n    <file path=\"$PROJECT_DIR$/src/main/java/Userinterface.java\">\n      <ranges>\n        <range start1=\"2\" end1=\"4\" start2=\"2\" end2=\"2\" changelist=\"67793032-fb6c-4540-abf8-3a33fa1e9568\" />\n        <range start1=\"6\" end1=\"6\" start2=\"4\" end2=\"5\" changelist=\"fb177936-fb46-4acb-949a-0f3451925b84\" />\n        <range start1=\"7\" end1=\"7\" start2=\"6\" end2=\"9\" changelist=\"fb177936-fb46-4acb-949a-0f3451925b84\" />\n        <range start1=\"10\" end1=\"11\" start2=\"12\" end2=\"13\" changelist=\"c8e94393-bee2-45ff-a00f-fe84b417e598\" />\n        <range start1=\"13\" end1=\"13\" start2=\"15\" end2=\"21\" changelist=\"c8e94393-bee2-45ff-a00f-fe84b417e598\" />\n        <range start1=\"19\" end1=\"20\" start2=\"27\" end2=\"28\" changelist=\"c8e94393-bee2-45ff-a00f-fe84b417e598\" />\n        <range start1=\"44\" end1=\"45\" start2=\"52\" end2=\"53\" changelist=\"c8e94393-bee2-45ff-a00f-fe84b417e598\" />\n        <range start1=\"46\" end1=\"47\" start2=\"54\" end2=\"55\" changelist=\"c8e94393-bee2-45ff-a00f-fe84b417e598\" />\n        <range start1=\"58\" end1=\"58\" start2=\"66\" end2=\"70\" changelist=\"c8e94393-bee2-45ff-a00f-fe84b417e598\" />\n        <range start1=\"65\" end1=\"67\" start2=\"77\" end2=\"81\" changelist=\"fb177936-fb46-4acb-949a-0f3451925b84\" />\n        <range start1=\"68\" end1=\"79\" start2=\"82\" end2=\"94\" changelist=\"fb177936-fb46-4acb-949a-0f3451925b84\" />\n        <range start1=\"80\" end1=\"81\" start2=\"95\" end2=\"97\" changelist=\"c8e94393-bee2-45ff-a00f-fe84b417e598\" />\n        <range start1=\"82\" end1=\"82\" start2=\"98\" end2=\"99\" changelist=\"fb177936-fb46-4acb-949a-0f3451925b84\" />\n        <range start1=\"86\" end1=\"86\" start2=\"103\" end2=\"104\" changelist=\"c8e94393-bee2-45ff-a00f-fe84b417e598\" />\n        <range start1=\"87\" end1=\"87\" start2=\"105\" end2=\"107\" changelist=\"c8e94393-bee2-45ff-a00f-fe84b417e598\" />\n        <range start1=\"88\" end1=\"89\" start2=\"108\" end2=\"114\" changelist=\"c8e94393-bee2-45ff-a00f-fe84b417e598\" />\n        <range start1=\"90\" end1=\"90\" start2=\"115\" end2=\"119\" changelist=\"c8e94393-bee2-45ff-a00f-fe84b417e598\" />\n        <range start1=\"92\" end1=\"92\" start2=\"121\" end2=\"124\" changelist=\"c8e94393-bee2-45ff-a00f-fe84b417e598\" />\n        <range start1=\"93\" end1=\"94\" start2=\"125\" end2=\"125\" changelist=\"67793032-fb6c-4540-abf8-3a33fa1e9568\" />\n        <range start1=\"95\" end1=\"95\" start2=\"126\" end2=\"160\" changelist=\"67793032-fb6c-4540-abf8-3a33fa1e9568\" />\n        <range start1=\"114\" end1=\"115\" start2=\"179\" end2=\"180\" changelist=\"c8e94393-bee2-45ff-a00f-fe84b417e598\" />\n        <range start1=\"123\" end1=\"124\" start2=\"188\" end2=\"189\" changelist=\"c8e94393-bee2-45ff-a00f-fe84b417e598\" />\n        <range start1=\"126\" end1=\"127\" start2=\"191\" end2=\"192\" changelist=\"fb177936-fb46-4acb-949a-0f3451925b84\" />\n        <range start1=\"129\" end1=\"130\" start2=\"194\" end2=\"195\" changelist=\"fb177936-fb46-4acb-949a-0f3451925b84\" />\n        <range start1=\"135\" end1=\"136\" start2=\"200\" end2=\"201\" changelist=\"c8e94393-bee2-45ff-a00f-fe84b417e598\" />\n        <range start1=\"145\" end1=\"146\" start2=\"210\" end2=\"227\" changelist=\"c8e94393-bee2-45ff-a00f-fe84b417e598\" />\n        <range start1=\"188\" end1=\"225\" start2=\"269\" end2=\"273\" changelist=\"c8e94393-bee2-45ff-a00f-fe84b417e598\" />\n        <range start1=\"226\" end1=\"231\" start2=\"274\" end2=\"274\" changelist=\"c8e94393-bee2-45ff-a00f-fe84b417e598\" />\n      </ranges>\n    </file>\n    <file path=\"$PROJECT_DIR$/src/main/java/Database.java\">\n      <ranges>\n        <range start1=\"1\" end1=\"1\" start2=\"1\" end2=\"2\" changelist=\"c8e94393-bee2-45ff-a00f-fe84b417e598\" />\n        <range start1=\"2\" end1=\"2\" start2=\"3\" end2=\"5\" changelist=\"c8e94393-bee2-45ff-a00f-fe84b417e598\" />\n        <range start1=\"7\" end1=\"8\" start2=\"10\" end2=\"12\" changelist=\"c8e94393-bee2-45ff-a00f-fe84b417e598\" />\n        <range start1=\"15\" end1=\"20\" start2=\"19\" end2=\"30\" changelist=\"c8e94393-bee2-45ff-a00f-fe84b417e598\" />\n        <range start1=\"23\" end1=\"24\" start2=\"33\" end2=\"34\" changelist=\"c8e94393-bee2-45ff-a00f-fe84b417e598\" />\n        <range start1=\"25\" end1=\"25\" start2=\"35\" end2=\"38\" changelist=\"c8e94393-bee2-45ff-a00f-fe84b417e598\" />\n        <range start1=\"36\" end1=\"36\" start2=\"49\" end2=\"52\" changelist=\"c8e94393-bee2-45ff-a00f-fe84b417e598\" />\n        <range start1=\"37\" end1=\"38\" start2=\"53\" end2=\"54\" changelist=\"c8e94393-bee2-45ff-a00f-fe84b417e598\" />\n        <range start1=\"39\" end1=\"39\" start2=\"55\" end2=\"56\" changelist=\"fb177936-fb46-4acb-949a-0f3451925b84\" />\n        <range start1=\"41\" end1=\"41\" start2=\"58\" end2=\"61\" changelist=\"fb177936-fb46-4acb-949a-0f3451925b84\" />\n        <range start1=\"44\" end1=\"47\" start2=\"64\" end2=\"64\" changelist=\"c8e94393-bee2-45ff-a00f-fe84b417e598\" />\n      </ranges>\n    </file>\n    <file path=\"$PROJECT_DIR$/src/main/java/FileHandler.java\">\n      <ranges>\n        <range start1=\"18\" end1=\"19\" start2=\"18\" end2=\"19\" changelist=\"fb177936-fb46-4acb-949a-0f3451925b84\" />\n        <range start1=\"47\" end1=\"48\" start2=\"47\" end2=\"48\" changelist=\"fb177936-fb46-4acb-949a-0f3451925b84\" />\n        <range start1=\"63\" end1=\"63\" start2=\"63\" end2=\"82\" changelist=\"67793032-fb6c-4540-abf8-3a33fa1e9568\" />\n      </ranges>\n    </file>\n    <file path=\"$PROJECT_DIR$/src/main/java/Member.java\">\n      <ranges>\n        <range start1=\"30\" end1=\"30\" start2=\"30\" end2=\"34\" changelist=\"fb177936-fb46-4acb-949a-0f3451925b84\" />\n        <range start1=\"31\" end1=\"31\" start2=\"35\" end2=\"41\" changelist=\"c8e94393-bee2-45ff-a00f-fe84b417e598\" />\n        <range start1=\"37\" end1=\"38\" start2=\"47\" end2=\"48\" changelist=\"c8e94393-bee2-45ff-a00f-fe84b417e598\" />\n        <range start1=\"39\" end1=\"66\" start2=\"49\" end2=\"84\" changelist=\"c8e94393-bee2-45ff-a00f-fe84b417e598\" />\n        <range start1=\"67\" end1=\"68\" start2=\"85\" end2=\"86\" changelist=\"c8e94393-bee2-45ff-a00f-fe84b417e598\" />\n        <range start1=\"69\" end1=\"72\" start2=\"87\" end2=\"90\" changelist=\"c8e94393-bee2-45ff-a00f-fe84b417e598\" />\n        <range start1=\"73\" end1=\"76\" start2=\"91\" end2=\"94\" changelist=\"c8e94393-bee2-45ff-a00f-fe84b417e598\" />\n        <range start1=\"77\" end1=\"80\" start2=\"95\" end2=\"98\" changelist=\"c8e94393-bee2-45ff-a00f-fe84b417e598\" />\n        <range start1=\"81\" end1=\"84\" start2=\"99\" end2=\"102\" changelist=\"c8e94393-bee2-45ff-a00f-fe84b417e598\" />\n        <range start1=\"85\" end1=\"88\" start2=\"103\" end2=\"106\" changelist=\"c8e94393-bee2-45ff-a00f-fe84b417e598\" />\n        <range start1=\"89\" end1=\"92\" start2=\"107\" end2=\"110\" changelist=\"c8e94393-bee2-45ff-a00f-fe84b417e598\" />\n        <range start1=\"93\" end1=\"96\" start2=\"111\" end2=\"114\" changelist=\"c8e94393-bee2-45ff-a00f-fe84b417e598\" />\n        <range start1=\"97\" end1=\"100\" start2=\"115\" end2=\"118\" changelist=\"c8e94393-bee2-45ff-a00f-fe84b417e598\" />\n        <range start1=\"101\" end1=\"104\" start2=\"119\" end2=\"122\" changelist=\"c8e94393-bee2-45ff-a00f-fe84b417e598\" />\n        <range start1=\"105\" end1=\"119\" start2=\"123\" end2=\"137\" changelist=\"c8e94393-bee2-45ff-a00f-fe84b417e598\" />\n      </ranges>\n    </file>\n    <file path=\"$PROJECT_DIR$/src/main/java/Controller.java\">\n      <ranges>\n        <range start1=\"0\" end1=\"1\" start2=\"0\" end2=\"1\" changelist=\"c8e94393-bee2-45ff-a00f-fe84b417e598\" />\n        <range start1=\"4\" end1=\"4\" start2=\"4\" end2=\"7\" changelist=\"fb177936-fb46-4acb-949a-0f3451925b84\" />\n        <range start1=\"8\" end1=\"9\" start2=\"11\" end2=\"12\" changelist=\"c8e94393-bee2-45ff-a00f-fe84b417e598\" />\n        <range start1=\"12\" end1=\"14\" start2=\"15\" end2=\"17\" changelist=\"c8e94393-bee2-45ff-a00f-fe84b417e598\" />\n        <range start1=\"15\" end1=\"15\" start2=\"18\" end2=\"22\" changelist=\"fb177936-fb46-4acb-949a-0f3451925b84\" />\n        <range start1=\"16\" end1=\"16\" start2=\"23\" end2=\"26\" changelist=\"c8e94393-bee2-45ff-a00f-fe84b417e598\" />\n        <range start1=\"18\" end1=\"19\" start2=\"28\" end2=\"32\" changelist=\"c8e94393-bee2-45ff-a00f-fe84b417e598\" />\n        <range start1=\"20\" end1=\"20\" start2=\"33\" end2=\"39\" changelist=\"c8e94393-bee2-45ff-a00f-fe84b417e598\" />\n      </ranges>\n    </file>\n  </component>\n  <component name=\"ProjectColorInfo\">{\n  &quot;associatedIndex&quot;: 4\n}</component>\n  <component name=\"ProjectId\" id=\"2YZW3B8qavazBkYFZwsCDWoo24s\" />\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\" />\n  <component name=\"ProjectViewState\">\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\n    <option name=\"showLibraryContents\" value=\"true\" />\n  </component>\n  <component name=\"PropertiesComponent\">{\n  &quot;keyToString&quot;: {\n    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,\n    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,\n    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,\n    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,\n    &quot;git-widget-placeholder&quot;: &quot;master&quot;,\n    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,\n    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,\n    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,\n    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,\n    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,\n    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,\n    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,\n    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;\n  }\n}</component>\n  <component name=\"RecentsManager\">\n    <key name=\"MoveFile.RECENT_KEYS\">\n      <recent name=\"C:\\Users\\pauls\\Desktop\\INTELLIJ PROJECTER\\Svoemmeklubben-Delfinen-Projekt\\src\" />\n    </key>\n  </component>\n  <component name=\"RunManager\">\n    <configuration name=\"Main\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\n      <option name=\"MAIN_CLASS_NAME\" value=\"Main\" />\n      <module name=\"Delfinen\" />\n      <method v=\"2\">\n        <option name=\"Make\" enabled=\"true\" />\n      </method>\n    </configuration>\n    <recent_temporary>\n      <list>\n        <item itemvalue=\"Application.Main\" />\n      </list>\n    </recent_temporary>\n  </component>\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\n  <component name=\"TaskManager\">\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\n      <changelist id=\"c8e94393-bee2-45ff-a00f-fe84b417e598\" name=\"Changes\" comment=\"\" />\n      <created>1700733382632</created>\n      <option name=\"number\" value=\"Default\" />\n      <option name=\"presentableId\" value=\"Default\" />\n      <updated>1700733382632</updated>\n      <workItem from=\"1700733383725\" duration=\"2934000\" />\n      <workItem from=\"1700758495923\" duration=\"6085000\" />\n      <workItem from=\"1700811268115\" duration=\"275000\" />\n      <workItem from=\"1701093255413\" duration=\"2776000\" />\n    </task>\n    <servers />\n  </component>\n  <component name=\"TypeScriptGeneratedFilesManager\">\n    <option name=\"version\" value=\"3\" />\n  </component>\n  <component name=\"Vcs.Log.Tabs.Properties\">\n    <option name=\"TAB_STATES\">\n      <map>\n        <entry key=\"MAIN\">\n          <value>\n            <State />\n          </value>\n        </entry>\n      </map>\n    </option>\n  </component>\n  <component name=\"VcsManagerConfiguration\">\n    <MESSAGE value=\"Version 2.1\" />\n    <MESSAGE value=\"Version 2.2\" />\n    <MESSAGE value=\"Version 2.2 mandag yes\" />\n    <MESSAGE value=\"Changes by marcusmortensen\" />\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"Changes by marcusmortensen\" />\n  </component>\n  <component name=\"XDebuggerManager\">\n    <breakpoint-manager>\n      <breakpoints>\n        <breakpoint enabled=\"true\" type=\"java-exception\">\n          <properties class=\"java.util.NoSuchElementException\" package=\"java.util\" />\n          <option name=\"timeStamp\" value=\"2\" />\n        </breakpoint>\n      </breakpoints>\n    </breakpoint-manager>\n  </component>\n</project>
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+-diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+---- a/.idea/workspace.xml	(revision 05b8864b01e9b32f23ffd6fadaf5717989ce5ca2)
+-+++ b/.idea/workspace.xml	(date 1701096190213)
+-@@ -4,31 +4,10 @@
+-     <option name="autoReloadType" value="SELECTIVE" />
+-   </component>
+-   <component name="ChangeListManager">
+--    <list default="true" id="c8e94393-bee2-45ff-a00f-fe84b417e598" name="Changes" comment="Version 2.2 mandag yes">
+--      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_27_11_2023,_12_33_[Changes]/shelved.patch" afterDir="false" />
+--      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_27_11_2023,_12_33_[Changes]1/shelved.patch" afterDir="false" />
+--      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_27_11_2023__12_33__Changes_.xml" afterDir="false" />
+--      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_27_11_2023__12_33__Changes_1.xml" afterDir="false" />
+--      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+--      <change beforePath="$PROJECT_DIR$/MedlemsListe.csv" beforeDir="false" afterPath="$PROJECT_DIR$/MedlemsListe.csv" afterDir="false" />
+--      <change beforePath="$PROJECT_DIR$/src/main/java/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller.java" afterDir="false" />
+--      <change beforePath="$PROJECT_DIR$/src/main/java/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Database.java" afterDir="false" />
+--      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
+--      <change beforePath="$PROJECT_DIR$/src/main/java/Member.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Member.java" afterDir="false" />
+--      <change beforePath="$PROJECT_DIR$/src/main/java/Userinterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Userinterface.java" afterDir="false" />
+--    </list>
+--    <list id="fb177936-fb46-4acb-949a-0f3451925b84" name="Changes by marcusmortensen" comment="Changes by marcusmortensen">
+--      <change beforePath="$PROJECT_DIR$/src/main/java/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller.java" afterDir="false" />
+--      <change beforePath="$PROJECT_DIR$/src/main/java/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Database.java" afterDir="false" />
+--      <change beforePath="$PROJECT_DIR$/src/main/java/FileHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/FileHandler.java" afterDir="false" />
+--      <change beforePath="$PROJECT_DIR$/src/main/java/Member.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Member.java" afterDir="false" />
+--      <change beforePath="$PROJECT_DIR$/src/main/java/Userinterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Userinterface.java" afterDir="false" />
+--    </list>
+-+    <list default="true" id="c8e94393-bee2-45ff-a00f-fe84b417e598" name="Changes" comment="Version 2.2 mandag yes" />
+-+    <list id="fb177936-fb46-4acb-949a-0f3451925b84" name="Changes by marcusmortensen" comment="Changes by marcusmortensen" />
+-     <list id="94e2b45a-2e0d-411e-b7d4-5750d824dc2d" name="Changes by paulsebastiankrus" comment="" />
+--    <list id="67793032-fb6c-4540-abf8-3a33fa1e9568" name="Changes by Severius" comment="">
+--      <change beforePath="$PROJECT_DIR$/src/main/java/FileHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/FileHandler.java" afterDir="false" />
+--      <change beforePath="$PROJECT_DIR$/src/main/java/Userinterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Userinterface.java" afterDir="false" />
+--    </list>
+-+    <list id="67793032-fb6c-4540-abf8-3a33fa1e9568" name="Changes by Severius" comment="Changes by Severius" />
+-     <option name="SHOW_DIALOG" value="false" />
+-     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+-     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+-@@ -49,93 +28,6 @@
+-     </option>
+-     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+-   </component>
+--  <component name="LineStatusTrackerManager">
+--    <file path="$PROJECT_DIR$/src/main/java/Userinterface.java">
+--      <ranges>
+--        <range start1="2" end1="4" start2="2" end2="2" changelist="67793032-fb6c-4540-abf8-3a33fa1e9568" />
+--        <range start1="6" end1="6" start2="4" end2="5" changelist="fb177936-fb46-4acb-949a-0f3451925b84" />
+--        <range start1="7" end1="7" start2="6" end2="9" changelist="fb177936-fb46-4acb-949a-0f3451925b84" />
+--        <range start1="10" end1="11" start2="12" end2="13" changelist="c8e94393-bee2-45ff-a00f-fe84b417e598" />
+--        <range start1="13" end1="13" start2="15" end2="21" changelist="c8e94393-bee2-45ff-a00f-fe84b417e598" />
+--        <range start1="19" end1="20" start2="27" end2="28" changelist="c8e94393-bee2-45ff-a00f-fe84b417e598" />
+--        <range start1="44" end1="45" start2="52" end2="53" changelist="c8e94393-bee2-45ff-a00f-fe84b417e598" />
+--        <range start1="46" end1="47" start2="54" end2="55" changelist="c8e94393-bee2-45ff-a00f-fe84b417e598" />
+--        <range start1="58" end1="58" start2="66" end2="70" changelist="c8e94393-bee2-45ff-a00f-fe84b417e598" />
+--        <range start1="65" end1="67" start2="77" end2="81" changelist="fb177936-fb46-4acb-949a-0f3451925b84" />
+--        <range start1="68" end1="79" start2="82" end2="94" changelist="fb177936-fb46-4acb-949a-0f3451925b84" />
+--        <range start1="80" end1="81" start2="95" end2="97" changelist="c8e94393-bee2-45ff-a00f-fe84b417e598" />
+--        <range start1="82" end1="82" start2="98" end2="99" changelist="fb177936-fb46-4acb-949a-0f3451925b84" />
+--        <range start1="86" end1="86" start2="103" end2="104" changelist="c8e94393-bee2-45ff-a00f-fe84b417e598" />
+--        <range start1="87" end1="87" start2="105" end2="107" changelist="c8e94393-bee2-45ff-a00f-fe84b417e598" />
+--        <range start1="88" end1="89" start2="108" end2="114" changelist="c8e94393-bee2-45ff-a00f-fe84b417e598" />
+--        <range start1="90" end1="90" start2="115" end2="119" changelist="c8e94393-bee2-45ff-a00f-fe84b417e598" />
+--        <range start1="92" end1="92" start2="121" end2="124" changelist="c8e94393-bee2-45ff-a00f-fe84b417e598" />
+--        <range start1="93" end1="94" start2="125" end2="125" changelist="67793032-fb6c-4540-abf8-3a33fa1e9568" />
+--        <range start1="95" end1="95" start2="126" end2="160" changelist="67793032-fb6c-4540-abf8-3a33fa1e9568" />
+--        <range start1="114" end1="115" start2="179" end2="180" changelist="c8e94393-bee2-45ff-a00f-fe84b417e598" />
+--        <range start1="123" end1="124" start2="188" end2="189" changelist="c8e94393-bee2-45ff-a00f-fe84b417e598" />
+--        <range start1="126" end1="127" start2="191" end2="192" changelist="fb177936-fb46-4acb-949a-0f3451925b84" />
+--        <range start1="129" end1="130" start2="194" end2="195" changelist="fb177936-fb46-4acb-949a-0f3451925b84" />
+--        <range start1="135" end1="136" start2="200" end2="201" changelist="c8e94393-bee2-45ff-a00f-fe84b417e598" />
+--        <range start1="145" end1="146" start2="210" end2="227" changelist="c8e94393-bee2-45ff-a00f-fe84b417e598" />
+--        <range start1="188" end1="225" start2="269" end2="273" changelist="c8e94393-bee2-45ff-a00f-fe84b417e598" />
+--        <range start1="226" end1="231" start2="274" end2="274" changelist="c8e94393-bee2-45ff-a00f-fe84b417e598" />
+--      </ranges>
+--    </file>
+--    <file path="$PROJECT_DIR$/src/main/java/Database.java">
+--      <ranges>
+--        <range start1="1" end1="1" start2="1" end2="2" changelist="c8e94393-bee2-45ff-a00f-fe84b417e598" />
+--        <range start1="2" end1="2" start2="3" end2="5" changelist="c8e94393-bee2-45ff-a00f-fe84b417e598" />
+--        <range start1="7" end1="8" start2="10" end2="12" changelist="c8e94393-bee2-45ff-a00f-fe84b417e598" />
+--        <range start1="15" end1="20" start2="19" end2="30" changelist="c8e94393-bee2-45ff-a00f-fe84b417e598" />
+--        <range start1="23" end1="24" start2="33" end2="34" changelist="c8e94393-bee2-45ff-a00f-fe84b417e598" />
+--        <range start1="25" end1="25" start2="35" end2="38" changelist="c8e94393-bee2-45ff-a00f-fe84b417e598" />
+--        <range start1="36" end1="36" start2="49" end2="52" changelist="c8e94393-bee2-45ff-a00f-fe84b417e598" />
+--        <range start1="37" end1="38" start2="53" end2="54" changelist="c8e94393-bee2-45ff-a00f-fe84b417e598" />
+--        <range start1="39" end1="39" start2="55" end2="56" changelist="fb177936-fb46-4acb-949a-0f3451925b84" />
+--        <range start1="41" end1="41" start2="58" end2="61" changelist="fb177936-fb46-4acb-949a-0f3451925b84" />
+--        <range start1="44" end1="47" start2="64" end2="64" changelist="c8e94393-bee2-45ff-a00f-fe84b417e598" />
+--      </ranges>
+--    </file>
+--    <file path="$PROJECT_DIR$/src/main/java/FileHandler.java">
+--      <ranges>
+--        <range start1="18" end1="19" start2="18" end2="19" changelist="fb177936-fb46-4acb-949a-0f3451925b84" />
+--        <range start1="47" end1="48" start2="47" end2="48" changelist="fb177936-fb46-4acb-949a-0f3451925b84" />
+--        <range start1="63" end1="63" start2="63" end2="82" changelist="67793032-fb6c-4540-abf8-3a33fa1e9568" />
+--      </ranges>
+--    </file>
+--    <file path="$PROJECT_DIR$/src/main/java/Member.java">
+--      <ranges>
+--        <range start1="30" end1="30" start2="30" end2="34" changelist="fb177936-fb46-4acb-949a-0f3451925b84" />
+--        <range start1="31" end1="31" start2="35" end2="41" changelist="c8e94393-bee2-45ff-a00f-fe84b417e598" />
+--        <range start1="37" end1="38" start2="47" end2="48" changelist="c8e94393-bee2-45ff-a00f-fe84b417e598" />
+--        <range start1="39" end1="66" start2="49" end2="84" changelist="c8e94393-bee2-45ff-a00f-fe84b417e598" />
+--        <range start1="67" end1="68" start2="85" end2="86" changelist="c8e94393-bee2-45ff-a00f-fe84b417e598" />
+--        <range start1="69" end1="72" start2="87" end2="90" changelist="c8e94393-bee2-45ff-a00f-fe84b417e598" />
+--        <range start1="73" end1="76" start2="91" end2="94" changelist="c8e94393-bee2-45ff-a00f-fe84b417e598" />
+--        <range start1="77" end1="80" start2="95" end2="98" changelist="c8e94393-bee2-45ff-a00f-fe84b417e598" />
+--        <range start1="81" end1="84" start2="99" end2="102" changelist="c8e94393-bee2-45ff-a00f-fe84b417e598" />
+--        <range start1="85" end1="88" start2="103" end2="106" changelist="c8e94393-bee2-45ff-a00f-fe84b417e598" />
+--        <range start1="89" end1="92" start2="107" end2="110" changelist="c8e94393-bee2-45ff-a00f-fe84b417e598" />
+--        <range start1="93" end1="96" start2="111" end2="114" changelist="c8e94393-bee2-45ff-a00f-fe84b417e598" />
+--        <range start1="97" end1="100" start2="115" end2="118" changelist="c8e94393-bee2-45ff-a00f-fe84b417e598" />
+--        <range start1="101" end1="104" start2="119" end2="122" changelist="c8e94393-bee2-45ff-a00f-fe84b417e598" />
+--        <range start1="105" end1="119" start2="123" end2="137" changelist="c8e94393-bee2-45ff-a00f-fe84b417e598" />
+--      </ranges>
+--    </file>
+--    <file path="$PROJECT_DIR$/src/main/java/Controller.java">
+--      <ranges>
+--        <range start1="0" end1="1" start2="0" end2="1" changelist="c8e94393-bee2-45ff-a00f-fe84b417e598" />
+--        <range start1="4" end1="4" start2="4" end2="7" changelist="fb177936-fb46-4acb-949a-0f3451925b84" />
+--        <range start1="8" end1="9" start2="11" end2="12" changelist="c8e94393-bee2-45ff-a00f-fe84b417e598" />
+--        <range start1="12" end1="14" start2="15" end2="17" changelist="c8e94393-bee2-45ff-a00f-fe84b417e598" />
+--        <range start1="15" end1="15" start2="18" end2="22" changelist="fb177936-fb46-4acb-949a-0f3451925b84" />
+--        <range start1="16" end1="16" start2="23" end2="26" changelist="c8e94393-bee2-45ff-a00f-fe84b417e598" />
+--        <range start1="18" end1="19" start2="28" end2="32" changelist="c8e94393-bee2-45ff-a00f-fe84b417e598" />
+--        <range start1="20" end1="20" start2="33" end2="39" changelist="c8e94393-bee2-45ff-a00f-fe84b417e598" />
+--      </ranges>
+--    </file>
+--  </component>
+-   <component name="ProjectColorInfo">{
+-   &quot;associatedIndex&quot;: 4
+- }</component>
+-@@ -193,7 +85,33 @@
+-       <workItem from="1700758495923" duration="6085000" />
+-       <workItem from="1700811268115" duration="275000" />
+-       <workItem from="1701093255413" duration="2776000" />
+-+      <workItem from="1701096051201" duration="139000" />
+-     </task>
+-+    <task id="LOCAL-00001" summary="Version 2.2 mandag yes">
+-+      <option name="closed" value="true" />
+-+      <created>1701096061904</created>
+-+      <option name="number" value="00001" />
+-+      <option name="presentableId" value="LOCAL-00001" />
+-+      <option name="project" value="LOCAL" />
+-+      <updated>1701096061904</updated>
+-+    </task>
+-+    <task id="LOCAL-00002" summary="Changes by marcusmortensen">
+-+      <option name="closed" value="true" />
+-+      <created>1701096139445</created>
+-+      <option name="number" value="00002" />
+-+      <option name="presentableId" value="LOCAL-00002" />
+-+      <option name="project" value="LOCAL" />
+-+      <updated>1701096139445</updated>
+-+    </task>
+-+    <task id="LOCAL-00003" summary="Changes by Severius">
+-+      <option name="closed" value="true" />
+-+      <created>1701096145921</created>
+-+      <option name="number" value="00003" />
+-+      <option name="presentableId" value="LOCAL-00003" />
+-+      <option name="project" value="LOCAL" />
+-+      <updated>1701096145921</updated>
+-+    </task>
+-+    <option name="localTasksCounter" value="4" />
+-     <servers />
+-   </component>
+-   <component name="TypeScriptGeneratedFilesManager">
+-@@ -213,9 +131,10 @@
+-   <component name="VcsManagerConfiguration">
+-     <MESSAGE value="Version 2.1" />
+-     <MESSAGE value="Version 2.2" />
+--    <MESSAGE value="Version 2.2 mandag yes" />
+-     <MESSAGE value="Changes by marcusmortensen" />
+--    <option name="LAST_COMMIT_MESSAGE" value="Changes by marcusmortensen" />
+-+    <MESSAGE value="Version 2.2 mandag yes" />
+-+    <MESSAGE value="Changes by Severius" />
+-+    <option name="LAST_COMMIT_MESSAGE" value="Changes by Severius" />
+-   </component>
+-   <component name="XDebuggerManager">
+-     <breakpoint-manager>
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"c8e94393-bee2-45ff-a00f-fe84b417e598\" name=\"Changes\" comment=\"Version ER i gang med Comp Member\">\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/misc.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/misc.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_27_11_2023,_12_33_[Changes]1/shelved.patch\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_27_11_2023__12_33__Changes_.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_27_11_2023__12_33__Changes_.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_27_11_2023__12_33__Changes_1.xml\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_28-11-2023_15_04__Changes_.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_28-11-2023_15_04__Changes_.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_28_11_2023__12_35__Changes_.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_28_11_2023__12_35__Changes_.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_30-11-2023_12_07__Changes_.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_30-11-2023_12_07__Changes_.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_30_11_2023__09_10__Changes_.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_30_11_2023__09_10__Changes_.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/MedlemsListe.csv\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/MedlemsListe.csv\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/CompetitiveMember.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/CompetitiveMember.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/Controller.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/Controller.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/Database.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/Database.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/Member.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/Member.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/Userinterface.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/Userinterface.java\" afterDir=\"false\" />\r\n    </list>\r\n    <list id=\"2a237768-9de4-4a09-b015-05cf8b104204\" name=\"Changes by frede\" comment=\"\" />\r\n    <list id=\"ee53a291-a654-4187-b034-5c1b0c3d7a32\" name=\"Changes by pauls\" comment=\"Version Er i gang med CompMembers\" />\r\n    <list id=\"94e2b45a-2e0d-411e-b7d4-5750d824dc2d\" name=\"Changes by paulsebastiankrus\" comment=\"\" />\r\n    <list id=\"67793032-fb6c-4540-abf8-3a33fa1e9568\" name=\"Changes by Severius\" comment=\"\" />\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Class\" />\r\n        <option value=\"Enum\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_BRANCH_BY_REPOSITORY\">\r\n      <map>\r\n        <entry key=\"$PROJECT_DIR$\" value=\"master\" />\r\n      </map>\r\n    </option>\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n    <option name=\"UPDATE_TYPE\" value=\"REBASE\" />\r\n  </component>\r\n  <component name=\"HighlightingSettingsPerFile\">\r\n    <setting file=\"jar:///Library/Java/JavaVirtualMachines/jdk-20.jdk/Contents/Home/lib/src.zip!/java.base/java/lang/Integer.java\" root0=\"SKIP_INSPECTION\" />\r\n  </component>\r\n  <component name=\"ProblemsViewState\">\r\n    <option name=\"selectedTabId\" value=\"CurrentFile\" />\r\n  </component>\r\n  <component name=\"ProjectColorInfo\">{\r\n  &quot;associatedIndex&quot;: 4\r\n}</component>\r\n  <component name=\"ProjectId\" id=\"2YZW3B8qavazBkYFZwsCDWoo24s\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\"><![CDATA[{\r\n  \"keyToString\": {\r\n    \"RunOnceActivity.OpenProjectViewOnStart\": \"true\",\r\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\r\n    \"WebServerToolWindowFactoryState\": \"false\",\r\n    \"codeWithMe.voiceChat.enabledByDefault\": \"false\",\r\n    \"git-widget-placeholder\": \"prøver-atlave-hold\",\r\n    \"node.js.detected.package.eslint\": \"true\",\r\n    \"node.js.detected.package.tslint\": \"true\",\r\n    \"node.js.selected.package.eslint\": \"(autodetect)\",\r\n    \"node.js.selected.package.tslint\": \"(autodetect)\",\r\n    \"project.structure.last.edited\": \"Modules\",\r\n    \"project.structure.proportion\": \"0.0\",\r\n    \"project.structure.side.proportion\": \"0.0\",\r\n    \"settings.editor.selected.configurable\": \"preferences.pluginManager\",\r\n    \"vue.rearranger.settings.migration\": \"true\"\r\n  }\r\n}]]></component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"MoveFile.RECENT_KEYS\">\r\n      <recent name=\"C:\\Users\\pauls\\Desktop\\INTELLIJ PROJECTER\\Svoemmeklubben-Delfinen-Projekt\\src\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"RunManager\">\r\n    <configuration name=\"Main\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"Main\" />\r\n      <module name=\"Delfinen\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <recent_temporary>\r\n      <list>\r\n        <item itemvalue=\"Application.Main\" />\r\n        <item itemvalue=\"Application.Main\" />\r\n      </list>\r\n    </recent_temporary>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"c8e94393-bee2-45ff-a00f-fe84b417e598\" name=\"Changes\" comment=\"\" />\r\n      <created>1700733382632</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1700733382632</updated>\r\n      <workItem from=\"1700733383725\" duration=\"2934000\" />\r\n      <workItem from=\"1700758495923\" duration=\"6085000\" />\r\n      <workItem from=\"1700811268115\" duration=\"275000\" />\r\n      <workItem from=\"1701093255413\" duration=\"2776000\" />\r\n      <workItem from=\"1701337496163\" duration=\"2700000\" />\r\n      <workItem from=\"1701429245559\" duration=\"2352000\" />\r\n      <workItem from=\"1700826683546\" duration=\"396000\" />\r\n      <workItem from=\"1701118664800\" duration=\"2011000\" />\r\n      <workItem from=\"1701171387000\" duration=\"1329000\" />\r\n      <workItem from=\"1701179245718\" duration=\"521000\" />\r\n      <workItem from=\"1701295369375\" duration=\"732000\" />\r\n      <workItem from=\"1701540863878\" duration=\"25000\" />\r\n      <workItem from=\"1701606526601\" duration=\"21981000\" />\r\n      <workItem from=\"1701689312355\" duration=\"9678000\" />\r\n      <workItem from=\"1701738985252\" duration=\"6890000\" />\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"Version 2.3 ændret lidt nogle steder som er typefejl.\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1701343545483</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1701343545483</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00004\" summary=\"lavet årlig indkomst\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1701389804027</created>\r\n      <option name=\"number\" value=\"00004\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00004\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1701389804027</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00005\" summary=\"autogenereret medlemsnummer og fjernet en sout print for meget på aktiv passiv\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1701430822536</created>\r\n      <option name=\"number\" value=\"00005\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00005\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1701430822536</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"lavet årlig indkomst\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1701388083086</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1701388083086</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00003\" summary=\"lavet årlig indkomst\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1701389516510</created>\r\n      <option name=\"number\" value=\"00003\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1701389516510</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00006\" summary=\"Version Checker om o eller u 18\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1701608324676</created>\r\n      <option name=\"number\" value=\"00006\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00006\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1701608324676</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00007\" summary=\"Version Motionis eller konkurence check\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1701621534624</created>\r\n      <option name=\"number\" value=\"00007\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00007\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1701621534624</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00008\" summary=\"Version Register er 100% DONE\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1701640545662</created>\r\n      <option name=\"number\" value=\"00008\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00008\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1701640545662</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00009\" summary=\"Version Register er 100% DONE\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1701641872114</created>\r\n      <option name=\"number\" value=\"00009\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00009\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1701641872114</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00010\" summary=\"Version Register er 100% DONE\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1701641988149</created>\r\n      <option name=\"number\" value=\"00010\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00010\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1701641988149</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00011\" summary=\"Version ER i gang med Comp Member\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1701645924240</created>\r\n      <option name=\"number\" value=\"00011\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00011\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1701645924240</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00012\" summary=\"Version Er i gang med CompMembers\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1701645949964</created>\r\n      <option name=\"number\" value=\"00012\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00012\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1701645949965</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"13\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"Version 2.1\" />\r\n    <MESSAGE value=\"Version 2.2\" />\r\n    <MESSAGE value=\"Version 2.2 mandag yes\" />\r\n    <MESSAGE value=\"Changes by marcusmortensen\" />\r\n    <MESSAGE value=\"Version 2.3\" />\r\n    <MESSAGE value=\"Version 2.3 ændret lidt nogle steder som er typefejl.\" />\r\n    <MESSAGE value=\"lavet årlig indkomst\" />\r\n    <MESSAGE value=\"autogenereret medlemsnummer og fjernet en sout print for meget på aktiv passiv\" />\r\n    <MESSAGE value=\"Version Checker om o eller u 18\" />\r\n    <MESSAGE value=\"Version Motionis eller konkurence check\" />\r\n    <MESSAGE value=\"ah\" />\r\n    <MESSAGE value=\"Version Register er 100% DONE\" />\r\n    <MESSAGE value=\"Version ER i gang med Comp Member\" />\r\n    <MESSAGE value=\"Version Er i gang med CompMembers\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"Version Er i gang med CompMembers\" />\r\n  </component>\r\n  <component name=\"XDebuggerManager\">\r\n    <breakpoint-manager>\r\n      <breakpoints>\r\n        <breakpoint enabled=\"true\" type=\"java-exception\">\r\n          <properties class=\"java.util.NoSuchElementException\" package=\"java.util\" />\r\n          <option name=\"timeStamp\" value=\"2\" />\r\n        </breakpoint>\r\n      </breakpoints>\r\n    </breakpoint-manager>\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 740d2334cc9b4159760abc99c80143f0c36ecd0e)
++++ b/.idea/workspace.xml	(date 1701746140794)
+@@ -4,23 +4,7 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="c8e94393-bee2-45ff-a00f-fe84b417e598" name="Changes" comment="Version ER i gang med Comp Member">
+-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_27_11_2023,_12_33_[Changes]1/shelved.patch" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_27_11_2023__12_33__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_27_11_2023__12_33__Changes_.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_27_11_2023__12_33__Changes_1.xml" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_28-11-2023_15_04__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_28-11-2023_15_04__Changes_.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_28_11_2023__12_35__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_28_11_2023__12_35__Changes_.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_30-11-2023_12_07__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_30-11-2023_12_07__Changes_.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_30_11_2023__09_10__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_30_11_2023__09_10__Changes_.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/MedlemsListe.csv" beforeDir="false" afterPath="$PROJECT_DIR$/MedlemsListe.csv" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/CompetitiveMember.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/CompetitiveMember.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Database.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/Member.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Member.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/Userinterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Userinterface.java" afterDir="false" />
+-    </list>
++    <list default="true" id="c8e94393-bee2-45ff-a00f-fe84b417e598" name="Changes" comment="Version ER i gang med Comp Member" />
+     <list id="2a237768-9de4-4a09-b015-05cf8b104204" name="Changes by frede" comment="" />
+     <list id="ee53a291-a654-4187-b034-5c1b0c3d7a32" name="Changes by pauls" comment="Version Er i gang med CompMembers" />
+     <list id="94e2b45a-2e0d-411e-b7d4-5750d824dc2d" name="Changes by paulsebastiankrus" comment="" />
+@@ -122,7 +106,7 @@
+       <workItem from="1701540863878" duration="25000" />
+       <workItem from="1701606526601" duration="21981000" />
+       <workItem from="1701689312355" duration="9678000" />
+-      <workItem from="1701738985252" duration="6890000" />
++      <workItem from="1701738985252" duration="6953000" />
+     </task>
+     <task id="LOCAL-00001" summary="Version 2.3 ændret lidt nogle steder som er typefejl.">
+       <option name="closed" value="true" />
+@@ -220,7 +204,15 @@
+       <option name="project" value="LOCAL" />
+       <updated>1701645949965</updated>
+     </task>
+-    <option name="localTasksCounter" value="13" />
++    <task id="LOCAL-00013" summary="Version ER i gang med Comp Member">
++      <option name="closed" value="true" />
++      <created>1701746081094</created>
++      <option name="number" value="00013" />
++      <option name="presentableId" value="LOCAL-00013" />
++      <option name="project" value="LOCAL" />
++      <updated>1701746081094</updated>
++    </task>
++    <option name="localTasksCounter" value="14" />
+     <servers />
+   </component>
+   <component name="TypeScriptGeneratedFilesManager">
+@@ -250,9 +242,9 @@
+     <MESSAGE value="Version Motionis eller konkurence check" />
+     <MESSAGE value="ah" />
+     <MESSAGE value="Version Register er 100% DONE" />
++    <MESSAGE value="Version Er i gang med CompMembers" />
+     <MESSAGE value="Version ER i gang med Comp Member" />
+-    <MESSAGE value="Version Er i gang med CompMembers" />
+-    <option name="LAST_COMMIT_MESSAGE" value="Version Er i gang med CompMembers" />
++    <option name="LAST_COMMIT_MESSAGE" value="Version ER i gang med Comp Member" />
+   </component>
+   <component name="XDebuggerManager">
+     <breakpoint-manager>
