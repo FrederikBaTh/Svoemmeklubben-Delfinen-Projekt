@@ -69,9 +69,7 @@ public class Database {
             meembers.add(member);
             fileHandler.saveListOfMembersToFile("MedlemsListe.csv", meembers);
             // lave en metode i filehandle til at gemme medlemsnr i en anden CSV file.
-            System.out.println("Member successfully registered.");
         } catch (Exception e) {
-            System.out.println("Error registering member: " + e.getMessage());
             e.printStackTrace();
         }
     }
@@ -126,18 +124,6 @@ public class Database {
         }
     }
 
-    /*public void registrerEventTid(int memberNumber, Duration svimTime, LocalDate dateOfSwim, SwimmingDiscipline swimmingDiscipline, String eventName, String eventPlacement) {
-        try {
-
-            Member member = new Member(memberNumber, svimTime, dateOfSwim, swimmingDiscipline);
-            compMeembersTræning.add((CompetitiveMember) member);
-            fileHandler.saveListOfTræningsTidToFile("TræningsTid.csv", compMeembersTræning);
-
-        } catch (Exception e) {
-            e.printStackTrace();
-
-        }
-    }*/
 
         public boolean memberExists ( int memberNumber){
             for (Member member : meembers) {
@@ -201,7 +187,7 @@ public class Database {
                 return member;
             }
         }
-        return null;  // Member not found
+        return null;
     }
 
 

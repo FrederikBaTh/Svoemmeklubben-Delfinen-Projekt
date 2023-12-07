@@ -396,16 +396,10 @@ public class Userinterface {
     }
         public void indtastResultaterTræning() {
 
-            ArrayList<Member> members = controller.getMembers();
-
-            System.out.println("List of Member Numbers:");
-            for (int i = 0; i < members.size(); i++) {
-                Member member = members.get(i);
-                System.out.println((i + 1) + ". Member Number: " + member.getUsedMemberNumbers());
-            }
-
 
             int selectedMemberNumber = getValidIntegerInputMedlemsnummer("Select Member Number from the list: ");
+            System.out.println("Selected Member Number: " + selectedMemberNumber);
+            System.out.println();
 
             if (controller.memberExists(selectedMemberNumber)) {
                 System.out.println("Svømmetid (hh:mm:ss): ");
@@ -419,12 +413,13 @@ public class Userinterface {
                 SwimmingDiscipline swimmingDiscipline = chooseBetweenSwimmingStyles();
 
                 controller.registrerTræningsResultat(selectedMemberNumber, svimTime, LocalDate.parse(dateOfSwim, DateTimeFormatter.ofPattern("dd-MM-yyyy")), swimmingDiscipline);
+                System.out.println("Member successfully registered.");
+
             }
         }
 
 // TODO Den skal vise en liste som man skal vælge fra med navn og meldemsnummer også derefter sætte tider og det til
         public void indtastResultaterKonkurrence() {
-
 
             int selectedMemberNumber = getValidIntegerInputMedlemsnummer("Vælg det medlemsnummer du vil tiføje en tid til: ");
             System.out.println("Selected Member Number: " + selectedMemberNumber);
@@ -436,7 +431,7 @@ public class Userinterface {
 
                 Duration svimTime = parseDuration(svømmeTidInputKonkurrence);
 
-                String dateOfSwim = getValidStringInputSvømmeDato("Konkurrence dato: ");
+                String dateOfSwim = getValidStringInputSvømmeDato("Konkurrence dato: DD-MM-ÅÅÅÅ");
 
                 System.out.println("Svømmedisciplin: ");
                 SwimmingDiscipline swimmingDiscipline = chooseBetweenSwimmingStyles();
@@ -448,6 +443,8 @@ public class Userinterface {
                 String eventPlacement = getValidEventPlacement();
 
                 controller.registrerEventResultat(selectedMemberNumber, svimTime, LocalDate.parse(dateOfSwim, DateTimeFormatter.ofPattern("dd-MM-yyyy")), swimmingDiscipline, eventName, eventPlacement);
+                System.out.println("Member successfully registered.");
+
             }
         }
 
@@ -479,8 +476,10 @@ public class Userinterface {
         while (true) {
             try {
                 System.out.print(prompt);
-                String inputString = keyboard.nextLine();
-                int input = Integer.parseInt(inputString.trim());
+                int inputString = keyboard.nextInt();
+                keyboard.nextLine();
+
+                int input = Integer.parseInt(String.valueOf(inputString));
 
                 if (String.valueOf(input).length() == 6) {
                     if (controller.memberExists(input)) {
@@ -528,26 +527,7 @@ public class Userinterface {
             }
         }*/
 
-       /* public SwimmingDiscipline chooseBetweenSwimmingStyles() {
-            System.out.println("Vælg mellem Butterfly, Crawl, Backstroke, Breaststroke");
-            String input = keyboard.nextLine();
-                        switch (keyboard.nextInt()) {
-                case 1:
-                    Butterfly(input);
-                    break;
-                case 2:
-                    Crawl(input);
-                    break;
-                case 3:
-                    Backstroke(input);
-                    break;
-                case 4:
-                    Breaststroke(input);
-                    break;
 
-            }
-            return null;
-        }*/
        public SwimmingDiscipline chooseBetweenSwimmingStyles() {
            System.out.println("Vælg mellem Butterfly, Front Crawl, Backstroke, Breaststroke");
            String input = keyboard.nextLine().toUpperCase();
@@ -558,42 +538,7 @@ public class Userinterface {
                return chooseBetweenSwimmingStyles();
            }
        }
-/*
-        public SwimmingDiscipline Butterfly(String input) {
-            for (SwimmingDiscipline discipline : SwimmingDiscipline.values()) {
-                if (discipline.name().equalsIgnoreCase("Butterfly")) {
-                    return discipline;
-                }
-            }
-            return null;
-        }
 
-        public SwimmingDiscipline Crawl(String input) {
-            for (SwimmingDiscipline discipline : SwimmingDiscipline.values()) {
-                if (discipline.name().equalsIgnoreCase("Crawl")) {
-                    return discipline;
-                }
-            }
-            return null;
-        }
-
-        public SwimmingDiscipline Backstroke(String input) {
-            for (SwimmingDiscipline discipline : SwimmingDiscipline.values()) {
-                if (discipline.name().equalsIgnoreCase("Backstroke")) {
-                    return discipline;
-                }
-            }
-            return null;
-        }
-        public SwimmingDiscipline Breaststroke(String input) {
-            for (SwimmingDiscipline discipline : SwimmingDiscipline.values()) {
-                if (discipline.name().equalsIgnoreCase("Breaststroke")) {
-                    return discipline;
-                }
-            }
-            return null;
-        }
-*/
 
         private Duration parseDuration (String input){
             String[] timeComponents = input.split(":");

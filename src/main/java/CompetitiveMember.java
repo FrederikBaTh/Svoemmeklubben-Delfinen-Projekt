@@ -19,8 +19,9 @@ public class CompetitiveMember extends Member {
     public CompetitiveMember( int memberNumber, Duration swimTime, LocalDate dateOfSwim, SwimmingDiscipline swimmingDiscipline) {
         super(memberNumber, swimTime, dateOfSwim, swimmingDiscipline);
 
-        initializeEventDetailsTræning(swimTime, dateOfSwim, swimmingDiscipline);
+        initializeEventDetailsTræning(memberNumber, swimTime, dateOfSwim, swimmingDiscipline);
     }
+
 
     // Event
     public CompetitiveMember(int memberNumber, Duration swimTime, LocalDate dateOfSwim, SwimmingDiscipline swimmingDiscipline, String eventName, String eventPlacement) {
@@ -33,7 +34,7 @@ public class CompetitiveMember extends Member {
 
     }
 
-    public CompetitiveMember(LocalTime svimTime, LocalDate dateOfSwim, SwimmingDiscipline swimmingDiscipline) {
+    public CompetitiveMember(int memberNumber, LocalTime swimTime, LocalDate dateOfSwim, SwimmingDiscipline swimmingDiscipline) {
     }
 
 
@@ -46,7 +47,8 @@ public class CompetitiveMember extends Member {
         this.eventPlacement = eventPlacement;
         this.eventSwimTime = eventSwimTime;
     }
-    private void initializeEventDetailsTræning(Duration swimTime, LocalDate dateOfSwim, SwimmingDiscipline swimmingDiscipline) {
+    private void initializeEventDetailsTræning(int memberNumber, Duration swimTime, LocalDate dateOfSwim, SwimmingDiscipline swimmingDiscipline) {
+        this.setMemberNumber(memberNumber);
         this.swimTime = swimTime;
         this.dateOfSwim = dateOfSwim;
         this.swimmingDiscipline = swimmingDiscipline;

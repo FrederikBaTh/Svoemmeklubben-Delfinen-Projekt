@@ -113,6 +113,7 @@ public class FileHandler {
 
         try (Scanner fileScanner = new Scanner(new File(fileName))) {
             while (fileScanner.hasNext()) {
+                int memberNumber = fileScanner.nextInt();
                 String swimTimeString = fileScanner.nextLine();
                 String dateOfSwimString = fileScanner.nextLine();
                 String swimmingDisciplineString = fileScanner.nextLine();
@@ -125,7 +126,7 @@ public class FileHandler {
                 SwimmingDiscipline swimmingDiscipline = SwimmingDiscipline.valueOf(swimmingDisciplineString);
 
 
-                CompetitiveMember træningMember = new CompetitiveMember(swimTime, dateOfSwim, swimmingDiscipline);
+                CompetitiveMember træningMember = new CompetitiveMember(memberNumber, swimTime, dateOfSwim, swimmingDiscipline);
                 loadedCompetitiveMember.add(træningMember);
 
             }
@@ -138,9 +139,10 @@ public class FileHandler {
         return loadedCompetitiveMember;
     }
 
-    public void saveListOfKokurrenceTidToFile(String fileName, ArrayList<CompetitiveMember> compMember) {
+   /* public void saveListOfKokurrenceTidToFile(String fileName, ArrayList<CompetitiveMember> compMember) {
         try (FileOutputStream fileOutputStream = new FileOutputStream(fileName, true)) {
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+
 
             for (CompetitiveMember CompMember : compMember) {
                 for (Member member : compMember) {
@@ -182,7 +184,69 @@ public class FileHandler {
             throw new RuntimeException(e);
         }
 
+    }*/
+
+    public void saveListOfKokurrenceTidToFile(String fileName, ArrayList<CompetitiveMember> compMember) {
+        try (FileOutputStream fileOutputStream = new FileOutputStream(fileName, true)) {
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+
+            for (CompetitiveMember CompMember : compMember) {
+                for (Member member : compMember) {
+                    String swimTimeFormatted = formatDuration(CompMember.getSwimTime());
+
+                    String memberInfo = member.getMemberNumber() + "," +
+                            swimTimeFormatted + "," +
+                            CompMember.getDateOfSwim().format(formatter) + "," +
+                            CompMember.getSwimmingDiscipline() + "," +
+                            CompMember.getEventName() + "," +
+                            CompMember.getEventPlacement();
+
+                    memberInfo += System.lineSeparator();
+                    fileOutputStream.write(memberInfo.getBytes());
+                }
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
+
+    public void saveListOfTræningsTidToFile(String fileName, ArrayList<CompetitiveMember> compMember) {
+        try (FileOutputStream fileOutputStream = new FileOutputStream(fileName, true)) {
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+
+            for (CompetitiveMember CompMember : compMember) {
+                for (Member member : compMember) {
+                    String swimTimeFormatted = formatDuration(CompMember.getSwimTime());
+
+                    String memberInfo = member.getMemberNumber() + "," +
+                            swimTimeFormatted + "," +
+                            CompMember.getDateOfSwim().format(formatter) + "," +
+                            CompMember.getSwimmingDiscipline();
+
+                    memberInfo += System.lineSeparator();
+                    fileOutputStream.write(memberInfo.getBytes());
+                }
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private String formatDuration(Duration duration) {
+        long hours = duration.toHours();
+        long minutes = (duration.toMinutes() % 60);
+        long seconds = (duration.getSeconds() % 60);
+
+        return String.format("%02d:%02d:%02d", hours, minutes, seconds);
+    }
+
+
+
+
+
+
+
+
 
 
 
@@ -205,6 +269,8 @@ public class FileHandler {
 
         return loadUsedMemberNumbers(fileName, coompMeembers);
     }
+
+
 
 
     public void saveListOfMemberNumbersToFile(String fileName, ArrayList<Member> usedMemberNumbers) {

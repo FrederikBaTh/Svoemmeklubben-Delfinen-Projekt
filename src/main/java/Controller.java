@@ -44,9 +44,6 @@ public class Controller {
         database.registrerEventTid(memberNumber, swimTime, dateOfSwim, swimmingDiscipline, eventName, eventPlacement);
     }
 
-    public boolean memberNumberUsed(int input) {
-        return false;
-    }
 
     public List<Member> getCompetitiveMembersUnder18(){
         return database.getCompetitiveMembersUnder18();
@@ -54,7 +51,6 @@ public class Controller {
     public List<Member> getCompetitiveMembersOver18(){
         return database.getCompetitiveMembersOver18();
     }
-
 
     public boolean memberExists(int memberNumber){
         return database.memberExists(memberNumber);
