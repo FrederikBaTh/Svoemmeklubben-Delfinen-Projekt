@@ -4,13 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c8e94393-bee2-45ff-a00f-fe84b417e598" name="Changes" comment="Version ER i gang med Comp Member">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_01_12_2023__10_06__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_01_12_2023__10_06__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_05_12_2023__12_37__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_05_12_2023__12_37__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_06_12_2023__08_46__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_06_12_2023__08_46__Changes_.xml" afterDir="false" />
+    <list default="true" id="c8e94393-bee2-45ff-a00f-fe84b417e598" name="Changes" comment="fixet årlig beregning metode">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/KonkurrenceTid.csv" beforeDir="false" afterPath="$PROJECT_DIR$/KonkurrenceTid.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TræningsTid.csv" beforeDir="false" afterPath="$PROJECT_DIR$/TræningsTid.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Database.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Userinterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Userinterface.java" afterDir="false" />
     </list>
     <list id="2a237768-9de4-4a09-b015-05cf8b104204" name="Changes by frede" comment="" />
+    <list id="4babf067-84d3-45a2-91be-ecc58e07c2ef" name="Changes by Frederik" comment="">
+      <change beforePath="$PROJECT_DIR$/src/main/java/CompetitiveMember.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/CompetitiveMember.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Database.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/FileHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/FileHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Userinterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Userinterface.java" afterDir="false" />
+    </list>
     <list id="b041e648-6bcb-4a8e-a759-87b582053a41" name="Changes by marcusmortensen" comment="" />
     <list id="ee53a291-a654-4187-b034-5c1b0c3d7a32" name="Changes by pauls" comment="Version Er i gang med CompMembers" />
     <list id="94e2b45a-2e0d-411e-b7d4-5750d824dc2d" name="Changes by paulsebastiankrus" comment="" />
@@ -40,6 +47,41 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="jar:///Library/Java/JavaVirtualMachines/jdk-20.jdk/Contents/Home/lib/src.zip!/java.base/java/lang/Integer.java" root0="SKIP_INSPECTION" />
   </component>
+  <component name="LineStatusTrackerManager">
+    <file path="$PROJECT_DIR$/src/main/java/Database.java">
+      <ranges>
+        <range start1="71" end1="72" start2="71" end2="71" changelist="4babf067-84d3-45a2-91be-ecc58e07c2ef" />
+        <range start1="73" end1="74" start2="72" end2="72" changelist="4babf067-84d3-45a2-91be-ecc58e07c2ef" />
+        <range start1="105" end1="107" start2="103" end2="106" changelist="c8e94393-bee2-45ff-a00f-fe84b417e598" />
+        <range start1="120" end1="122" start2="119" end2="121" changelist="c8e94393-bee2-45ff-a00f-fe84b417e598" />
+        <range start1="127" end1="139" start2="126" end2="126" changelist="4babf067-84d3-45a2-91be-ecc58e07c2ef" />
+        <range start1="153" end1="154" start2="140" end2="141" changelist="c8e94393-bee2-45ff-a00f-fe84b417e598" />
+        <range start1="165" end1="166" start2="152" end2="153" changelist="c8e94393-bee2-45ff-a00f-fe84b417e598" />
+        <range start1="202" end1="203" start2="189" end2="190" changelist="4babf067-84d3-45a2-91be-ecc58e07c2ef" />
+      </ranges>
+    </file>
+    <file path="$PROJECT_DIR$/src/main/java/Userinterface.java">
+      <ranges>
+        <range start1="308" end1="309" start2="308" end2="309" changelist="c8e94393-bee2-45ff-a00f-fe84b417e598" />
+        <range start1="325" end1="327" start2="325" end2="327" changelist="c8e94393-bee2-45ff-a00f-fe84b417e598" />
+        <range start1="345" end1="346" start2="345" end2="346" changelist="c8e94393-bee2-45ff-a00f-fe84b417e598" />
+        <range start1="347" end1="348" start2="347" end2="348" changelist="c8e94393-bee2-45ff-a00f-fe84b417e598" />
+        <range start1="397" end1="405" start2="397" end2="397" changelist="4babf067-84d3-45a2-91be-ecc58e07c2ef" />
+        <range start1="408" end1="408" start2="400" end2="402" changelist="4babf067-84d3-45a2-91be-ecc58e07c2ef" />
+        <range start1="415" end1="416" start2="409" end2="410" changelist="c8e94393-bee2-45ff-a00f-fe84b417e598" />
+        <range start1="421" end1="421" start2="415" end2="417" changelist="4babf067-84d3-45a2-91be-ecc58e07c2ef" />
+        <range start1="427" end1="428" start2="423" end2="423" changelist="4babf067-84d3-45a2-91be-ecc58e07c2ef" />
+        <range start1="438" end1="439" start2="433" end2="434" changelist="4babf067-84d3-45a2-91be-ecc58e07c2ef" />
+        <range start1="450" end1="450" start2="445" end2="447" changelist="4babf067-84d3-45a2-91be-ecc58e07c2ef" />
+        <range start1="481" end1="483" start2="478" end2="482" changelist="4babf067-84d3-45a2-91be-ecc58e07c2ef" />
+        <range start1="494" end1="494" start2="493" end2="494" changelist="c8e94393-bee2-45ff-a00f-fe84b417e598" />
+        <range start1="529" end1="545" start2="529" end2="529" changelist="4babf067-84d3-45a2-91be-ecc58e07c2ef" />
+        <range start1="546" end1="549" start2="530" end2="530" changelist="4babf067-84d3-45a2-91be-ecc58e07c2ef" />
+        <range start1="559" end1="568" start2="540" end2="540" changelist="4babf067-84d3-45a2-91be-ecc58e07c2ef" />
+        <range start1="569" end1="595" start2="541" end2="541" changelist="4babf067-84d3-45a2-91be-ecc58e07c2ef" />
+      </ranges>
+    </file>
+  </component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="CurrentFile" />
   </component>
@@ -52,24 +94,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "git-widget-placeholder": "master",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "preferences.lookFeel",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\pauls\Desktop\INTELLIJ PROJECTER\Svoemmeklubben-Delfinen-Projekt\src" />
@@ -209,7 +251,15 @@
       <option name="project" value="LOCAL" />
       <updated>1701645949965</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="fixet årlig beregning metode">
+      <option name="closed" value="true" />
+      <created>1701901309087</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1701901309087</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -241,7 +291,8 @@
     <MESSAGE value="Version Register er 100% DONE" />
     <MESSAGE value="Version ER i gang med Comp Member" />
     <MESSAGE value="Version Er i gang med CompMembers" />
-    <option name="LAST_COMMIT_MESSAGE" value="Version Er i gang med CompMembers" />
+    <MESSAGE value="fixet årlig beregning metode" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixet årlig beregning metode" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -250,6 +301,20 @@
           <properties class="java.util.NoSuchElementException" package="java.util" />
           <option name="timeStamp" value="2" />
         </breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/main/java/Userinterface.java</url>
+          <line>466</line>
+          <properties class="Userinterface" method="getValidIntegerInputMedlemsnummer">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/Userinterface.java</url>
+          <line>423</line>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>

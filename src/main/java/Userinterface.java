@@ -306,7 +306,7 @@ public class Userinterface {
                         indtastResultaterTræning();
                         break;
                     case 2:
-                        //redigerResultaterTræning();
+                        redigerResultaterTræning();
                         break;
                     case 3:
                         indtastResultaterKonkurrence();
@@ -323,8 +323,8 @@ public class Userinterface {
                 }
             }
         }
-        /*public void redigerResultaterTræning(){
-
+        public void redigerResultaterTræning(){
+/*
 
 
             System.out.print("Indtast navnet på medlemmet, du vil redigere: ");
@@ -343,9 +343,9 @@ public class Userinterface {
 
 
 
-
+*/
         }
-        */
+
 
         public void redigerResultaterKonkurrence(){
 
@@ -413,7 +413,7 @@ public class Userinterface {
 
                 Duration svimTime = parseDuration(svømmeTidInputKonkurrence);
 
-                String dateOfSwim = getValidStringInputSvømmeDato("Konkurrence dato: ");
+                String dateOfSwim = getValidStringInputSvømmeDato("Konkurrence dato: DD-MM-ÅÅÅÅ");
 
                 System.out.println("Svømmedisciplin: ");
                 SwimmingDiscipline swimmingDiscipline = chooseBetweenSwimmingStyles();
@@ -492,6 +492,7 @@ public class Userinterface {
                     System.out.println("Ugyldig input. Indtast venligst et medlemsnummer på 6 cifre.");
                 }
             } catch (NumberFormatException e) {
+                keyboard.nextLine();
                 System.out.println("Ugyldig input. Indtast venligst et medlemsnummer på 6 cifre.");
             }
         }

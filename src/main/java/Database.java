@@ -103,8 +103,9 @@ public class Database {
     public void registrerTræningTid(int memberNumber, Duration svimTime, LocalDate dateOfSwim, SwimmingDiscipline swimmingDiscipline) {
         try {
 
-            Member member = new Member(memberNumber, svimTime, dateOfSwim, swimmingDiscipline);
-            compMeembersTræning.add((CompetitiveMember) member);
+            //Member member = new Member(memberNumber, svimTime, dateOfSwim, swimmingDiscipline);
+            CompetitiveMember competitiveMember = new CompetitiveMember(memberNumber, svimTime, dateOfSwim, swimmingDiscipline);
+            compMeembersTræning.add(competitiveMember);
             fileHandler.saveListOfTræningsTidToFile("TræningsTid.csv", compMeembersTræning);
 
         } catch (Exception e) {
@@ -118,8 +119,8 @@ public class Database {
     public void registrerEventTid(int memberNumber, Duration svimTime, LocalDate dateOfSwim, SwimmingDiscipline swimmingDiscipline, String eventName, String eventPlacement) {
         try {
             CompetitiveMember competitiveMember = new CompetitiveMember(memberNumber, svimTime, dateOfSwim, swimmingDiscipline, eventName, eventPlacement);
-            compMeembersTræning.add(competitiveMember);
-            fileHandler.saveListOfKokurrenceTidToFile("KonkurrenceTid.csv", compMeembersTræning);
+            compMeembersEvent.add(competitiveMember);
+            fileHandler.saveListOfKokurrenceTidToFile("KonkurrenceTid.csv", compMeembersEvent);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -151,7 +152,7 @@ public class Database {
 
 
         public void redigerResultaterTræning( List<Integer> getUsedMemberNumbers){
-            compMeembersEvent = fileHandler.loadedTræningsResultater("TræningsTid.csv");
+         /*   compMeembersEvent = fileHandler.loadedTræningsResultater("TræningsTid.csv");
 
             CompetitiveMember træningRedigere = null ;
             for (CompetitiveMember træning : compMeembersEvent){
@@ -163,7 +164,7 @@ public class Database {
                 System.out.println("Medlem kunne ikke findes.");
                 return;
             }
-
+*/
         }
     private void renewMembershipForSelectedMember(Member selectedMember) {
         // Implement logic to renew membership, e.g., update membership status
