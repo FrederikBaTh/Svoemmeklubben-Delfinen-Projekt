@@ -21,6 +21,12 @@ public class Member {
     private String selectedMember;
     private List<Integer> usedMemberNumbers = new ArrayList<>();
 
+    private String newName;
+    private LocalDate newDateOfBirth;
+    private String newGender;
+    private int newPhonenumber;
+    private String newAdress;
+
     private Database database;
 
 
@@ -236,6 +242,31 @@ public class Member {
         return paidAnnualMembership;
     }
 
+    public void editName(String newName) {
+        this.name = newName;
+    }
+
+    public void editDateOfBirth(String newDateOfBirth) {
+        this.dateOfBirth = LocalDate.parse(newDateOfBirth, DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+    }
+
+    public void editGender(String newGender) {
+        this.gender = newGender;
+    }
+
+    public void editPhonenumber(int newPhonenumber) {
+        this.phonenumber = newPhonenumber;
+    }
+    public void editAdress(String newAdress) {
+        this.adress = newAdress;
+    }
+
+    public void editPassiveOrActive(String newPassiveOrActive) {
+        this.passiveOrActive = newPassiveOrActive;
+    }
+    public void editMotionist(String newMotionist) {
+        this.motionist = newMotionist;
+    }
 
     @Override
     public String toString() {

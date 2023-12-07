@@ -37,7 +37,7 @@ public class FileHandler {
                     int memberNumber = Integer.parseInt(memberInfo[5]);
                     String passiveOrActive = memberInfo[6];
                     String memberType = memberInfo[7];
-                    String motionist = memberInfo[8];
+                    String motionist = memberInfo[7];
 
 
                     Member member = new Member(name, dateOfBirth, gender, phonenumber, address, memberNumber, passiveOrActive, memberType, motionist);
@@ -273,17 +273,5 @@ public class FileHandler {
 
 
 
-    public void saveListOfMemberNumbersToFile(String fileName, ArrayList<Member> usedMemberNumbers) {
-        try (FileOutputStream fileOutputStream = new FileOutputStream(fileName, true)) {
-            for (Member memberNumbers : usedMemberNumbers) {
-                String memberInfo =
-                        memberNumbers.getUsedMemberNumbers() + ",";
 
-                memberInfo += System.lineSeparator();
-                fileOutputStream.write(memberInfo.getBytes());
-            }
-        } catch (IOException e) {
-            System.err.println("Fejl: " + e.getMessage());
-        }
-    }
 }

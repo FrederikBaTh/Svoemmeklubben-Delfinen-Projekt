@@ -28,6 +28,8 @@ public class Controller {
         return database.getMeembers();
     }
 
+
+
     public int calculateYearlyIncome(){
         return database.calculateYearlyIncome();
     }
@@ -72,6 +74,30 @@ public class Controller {
         database.redigerResultaterTræning(getUsedMemberNumbers);
     }
 
+public void updateMember(Member updatedMember) {
+    database.updateMember(updatedMember);
+}
 
+
+    public void sortTrainingMembersBySwimTime(){
+        database.sortTrainingMembersBySwimTime();
+    }
+
+    public ArrayList<CompetitiveMember> getCompMeembersTræning(){
+        return database.getCompMeembersTræning();
+    }
+
+    public void sortEventMembersBySwimTime(){
+        database.sortEventMembersBySwimTime();
+    }
+    public ArrayList<CompetitiveMember> getCompMeembersEvent(){
+        return database.getCompMeembersEvent();
+    }
+
+
+
+    public Member getMemberByMemberNumber(int memberNumber){
+        return database.getMemberByNumber(memberNumber);
+    }
 
 }

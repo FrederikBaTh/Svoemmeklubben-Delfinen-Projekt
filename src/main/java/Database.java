@@ -1,5 +1,6 @@
 import java.time.Duration;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -16,7 +17,10 @@ public class Database {
 
     private ArrayList<CompetitiveMember> compMeembersTræning = new ArrayList<>();
 
+    public ArrayList<CompetitiveMember> getCompMeembersTræning() {
+        return compMeembersTræning;
 
+    }
 
     private Member member;
 
@@ -24,12 +28,15 @@ public class Database {
         if (meembers.isEmpty()) {
             meembers = fileHandler.loadedMembers();
         }
-         //   compMeembersTræning = FileHandler.loadedTræningsResultater("TræningsTid.csv");
+        //   compMeembersTræning = FileHandler.loadedTræningsResultater("TræningsTid.csv");
 
     }
-
-
-
+    public void sortTrainingMembersBySwimTime() {
+        compMeembersTræning.sort(Comparator.comparing(CompetitiveMember::getSwimTime));
+    }
+    public void sortEventMembersBySwimTime() {
+        compMeembersEvent.sort(Comparator.comparing(CompetitiveMember ::getSwimTime ));
+    }
 
     public boolean isCompetitiveUnder18(Member member) {
         return "aktivt".equalsIgnoreCase(member.getPassiveOrActive()) && "ungdomssvømmer u18".equalsIgnoreCase(member.getMemberType()) && member.calculateAgeList() < 18;
@@ -74,7 +81,7 @@ public class Database {
         }
     }
 
-// fjerne print fra metoden 
+    // fjerne print fra metoden
     public int calculateYearlyIncome() {
         int yearlyIncome = 0;
 
@@ -125,19 +132,17 @@ public class Database {
     }
 
 
-        public boolean memberExists ( int memberNumber){
-            for (Member member : meembers) {
-                if (member.getMemberNumber() == memberNumber) {
-                    return true;
-                }
+    public boolean memberExists(int memberNumber) {
+        for (Member member : meembers) {
+            if (member.getMemberNumber() == memberNumber) {
+                return true;
             }
-            return false;
         }
+        return false;
+    }
 
 
-
-
-        public void redigerResultaterTræning( List<Integer> getUsedMemberNumbers){
+    public void redigerResultaterTræning(List<Integer> getUsedMemberNumbers) {
          /*   compMeembersEvent = fileHandler.loadedTræningsResultater("TræningsTid.csv");
 
             CompetitiveMember træningRedigere = null ;
@@ -151,12 +156,14 @@ public class Database {
                 return;
             }
 */
-        }
+    }
+
     private void renewMembershipForSelectedMember(Member selectedMember) {
         // Implement logic to renew membership, e.g., update membership status
         // You may need to modify this based on your actual data structure and logic
         selectedMember.setPaidAnnualMembership(true);
     }
+
     public void renewMembership() {
         ArrayList<Member> members = getMeembers();
 
@@ -181,7 +188,8 @@ public class Database {
             System.out.println("Member not found.");
         }
     }
-    private Member getMemberByNumber(int memberNumber) {
+
+    public Member getMemberByNumber(int memberNumber) {
         for (Member member : getMeembers()) {
             if (member.getMemberNumber() == memberNumber) {
                 return member;
@@ -190,8 +198,18 @@ public class Database {
         return null;
     }
 
-
-
-
-
+    public void updateMember(Member updatedMember) {
+        for (int i = 0; i < meembers.size(); i++) {
+            Member existingMember = meembers.get(i);
+            if (existingMember.getMemberNumber() == updatedMember.getMemberNumber()) {
+                meembers.set(i, updatedMember);
+                fileHandler.saveListOfMembersToFile("MedlemsListe.csv", meembers);
+                break;
+            }
+        }
     }
+
+
+
+
+}
