@@ -15,6 +15,10 @@ public class Database {
 
     private ArrayList<CompetitiveMember> compMeembersEvent = new ArrayList<>();
 
+    public ArrayList<CompetitiveMember> getCompMeembersEvent() {
+        return compMeembersEvent;
+
+    }
     private ArrayList<CompetitiveMember> compMeembersTræning = new ArrayList<>();
 
     public ArrayList<CompetitiveMember> getCompMeembersTræning() {

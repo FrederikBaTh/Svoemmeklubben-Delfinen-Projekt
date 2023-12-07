@@ -263,10 +263,10 @@ public class Userinterface {
             switch (keyboard.nextInt()) {
 
                 case 1:
-                    //seResultaterTræning();
+                    seResultaterTræning();
                     break;
                 case 2:
-                    //seResultaterKonkurrence();
+                    seResultaterKonkurrence();
                     break;
                 case 3:
                     exit = true;

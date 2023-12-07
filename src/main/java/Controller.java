@@ -10,6 +10,10 @@ public class Controller {
     Member member = new Member();
     CompetitiveMember competitiveMember = new CompetitiveMember();
 
+   //private ArrayList<CompetitiveMember> compMeembersTræning = new ArrayList<>();
+   //private ArrayList<CompetitiveMember> compMeembersEvent = new ArrayList<>();
+
+
     Database database = new Database();
 
     public void registrerMedlem(String name, String dateOfBirth, String gender, int phonenumber, String adress, int memberNumber, String passiveOrActive, String memberType, String motionist) {
