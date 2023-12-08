@@ -6,9 +6,7 @@ import java.util.List;
 //
 public class Controller {
 
-
     Member member = new Member();
-    CompetitiveMember competitiveMember = new CompetitiveMember();
 
     Database database = new Database();
 
@@ -24,9 +22,6 @@ public class Controller {
         return member.calculateAge(date);
     }
 
-    public ArrayList<Member> getMembers() {
-        return database.getMeembers();
-    }
 
 
 
@@ -38,71 +33,68 @@ public class Controller {
         return member.generateMemberNumber();
     }
 
-    public void registrerTræningsResultat(int memberNumber, Duration svimTime, LocalDate dateOfSwim, SwimmingDiscipline swimmingDiscipline) {
-        database.registrerTræningTid(memberNumber, svimTime, dateOfSwim, swimmingDiscipline);
+    public void registrerTræningsResultat(int memberNumber, Duration swimTime, LocalDate dateOfSwim, SwimmingDiscipline swimmingDiscipline) {
+        database.registrerTræningTid(memberNumber, swimTime, dateOfSwim, swimmingDiscipline);
     }
-
     public void registrerEventResultat(int memberNumber, Duration swimTime, LocalDate dateOfSwim, SwimmingDiscipline swimmingDiscipline, String eventName, String eventPlacement) {
         database.registrerEventTid(memberNumber, swimTime, dateOfSwim, swimmingDiscipline, eventName, eventPlacement);
     }
 
-
+//TODO Getters
+    public ArrayList<Member> getMembers() {
+    return database.getMeembers();
+}
     public List<Member> getCompetitiveMembersUnder18(){
         return database.getCompetitiveMembersUnder18();
     }
     public List<Member> getCompetitiveMembersOver18(){
         return database.getCompetitiveMembersOver18();
     }
-
-    public boolean memberExists(int memberNumber){
-        return database.memberExists(memberNumber);
-    }
-
-    //_______________________
-    public boolean hasPaidAnnualMembership(Member member) {
-        return member.hasPaidAnnualMembership();
-    }
-
-
-    //_______________________
-
-    public ArrayList<CompetitiveMember> getCompetitiveMembers() {
-        return database.getCompMeembers();
-    }
-
-
-public void updateMember(Member updatedMember) {
-    database.updateMember(updatedMember);
-}
-
-
-    public void sortTrainingMembersBySwimTime(){
-        database.sortTrainingMembersBySwimTime();
-    }
-
     public ArrayList<CompetitiveMember> getCompMeembersTræning(){
         return database.getCompMeembersTræning();
-    }
-
-    public ArrayList<CompetitiveMember> getCompMeembersEvent(){
-        return database.getCompMeembersEvent();
-    }
-    public void sortEventMembersBySwimTime(){
-        database.sortEventMembersBySwimTime();
     }
     public Member getMemberByMemberNumber(int memberNumber){
         return database.getMemberByNumber(memberNumber);
     }
 
+    public ArrayList<CompetitiveMember> getCompMeembersEvent(){
+        return database.getCompMeembersEvent();
+    }
+    public boolean memberExists(int memberNumber){
+        return database.memberExists(memberNumber);
+    }
     public CompetitiveMember getCompetitiveMemberByMemberNumbertræning(int memberNumber){
         return database.getMemberByMemberNumberTræning(memberNumber);
     }
     CompetitiveMember getCompetitiveMemberByMemberNumberEvent(int memberNumber){
         return database.getMemberByMemberNumberEvent(memberNumber);
     }
+    public List<CompetitiveMember> getTop5SwimTimes(SwimmingDiscipline style){
+        return database.getTop5SwimTimes(style);
+    }
+    //_______________________
+    public boolean hasPaidAnnualMembership(Member member) {
+        return member.hasPaidAnnualMembership();
+    }
 
-    public Duration getSwimTime() {
-        return competitiveMember.getSwimTime();
+    public void registretPaidOrNot(int memberNumber, boolean paid) {
+        database.registrerPaidOrNot(memberNumber, paid);
+    }
+
+    //_______________________
+
+
+
+    public void sortTrainingMembersBySwimTime(){
+        database.sortTrainingMembersBySwimTime();
+    }
+
+
+
+
+    //TODO Update
+    public void updateMember(Member updatedMember) {
+        database.updateMember(updatedMember);
     }
 
     public void updateKonkurrenceTid(CompetitiveMember updatedMember) {
@@ -112,7 +104,5 @@ public void updateMember(Member updatedMember) {
         database.updateTræning(updatedMember);
     }
 
-public List<CompetitiveMember> getTop5SwimTimes(SwimmingDiscipline style){
-        return database.getTop5SwimTimes(style);
-    }
+
 }

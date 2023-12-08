@@ -14,6 +14,7 @@ public class FileHandler {
         this.fileName = fileName;
     }
 
+    //TODO Load og save Members
     public ArrayList<Member> loadedMembers() {
         ArrayList<Member> loadedMembers = new ArrayList<>();
 
@@ -50,6 +51,29 @@ public class FileHandler {
         return loadedMembers;
     }
 
+    public void saveListOfMembersToFile(String fileName, ArrayList<Member> members) {
+        try (PrintWriter writer = new PrintWriter(fileName)) {
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+            for (Member member : members) {
+                String memberInfo = member.getName() + "," +
+                        member.getDateOfBirth().format(formatter) + "," +
+                        member.getGender() + "," +
+                        member.getPhonenumber() + "," +
+                        member.getAdress() + "," +
+                        member.getMemberNumber() + "," +
+                        member.getPassiveOrActive() + "," +
+                        member.getMemberType() + "," +
+                        member.getMotionist();
+
+                writer.println(memberInfo);
+            }
+        } catch (FileNotFoundException e) {
+            System.err.println("Fejl: " + e.getMessage());
+        }
+    }
+
+    //TODO Load Træning og konkurrence resultater
+
     public ArrayList<CompetitiveMember> loadedTræningsResultater(String fileName) {
         ArrayList<CompetitiveMember> loadedTræningsResultater = new ArrayList<>();
         try (Scanner fileScanner = new Scanner(new File(fileName))) {
@@ -77,8 +101,6 @@ public class FileHandler {
         return loadedTræningsResultater;
     }
 
-
-
     public ArrayList<CompetitiveMember> loadedCompetitiveMember(String fileName) {
         ArrayList<CompetitiveMember> loadedCompetitiveMember = new ArrayList<>();
         try (Scanner fileScanner = new Scanner(new File(fileName))) {
@@ -91,19 +113,18 @@ public class FileHandler {
                 String[] memberInfo = line.split(",");
 
                 if (memberInfo.length >= 5) {
-                int memberNumber = Integer.parseInt(memberInfo[0]);
-                Duration swimTime = parseDuration(memberInfo[1]);
-                LocalDate dateOfSwim = parseDate(memberInfo[2]);
-                SwimmingDiscipline swimmingDiscipline = SwimmingDiscipline.valueOf(memberInfo[3]);
-                String eventName = memberInfo[4];
-                String eventPlacement = memberInfo[5];
+                    int memberNumber = Integer.parseInt(memberInfo[0]);
+                    Duration swimTime = parseDuration(memberInfo[1]);
+                    LocalDate dateOfSwim = parseDate(memberInfo[2]);
+                    SwimmingDiscipline swimmingDiscipline = SwimmingDiscipline.valueOf(memberInfo[3]);
+                    String eventName = memberInfo[4];
+                    String eventPlacement = memberInfo[5];
 
 
-
-                CompetitiveMember træningMember = new CompetitiveMember(memberNumber, swimTime, dateOfSwim, swimmingDiscipline, eventName, eventPlacement);
-                loadedCompetitiveMember.add(træningMember);
-            } else {
-            }
+                    CompetitiveMember træningMember = new CompetitiveMember(memberNumber, swimTime, dateOfSwim, swimmingDiscipline, eventName, eventPlacement);
+                    loadedCompetitiveMember.add(træningMember);
+                } else {
+                }
             }
 
         } catch (FileNotFoundException e) {
@@ -115,33 +136,7 @@ public class FileHandler {
     }
 
 
-
-    public void saveListOfMembersToFile(String fileName, ArrayList<Member> members) {
-        try (PrintWriter writer = new PrintWriter(fileName)) {
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-            for (Member member : members) {
-                String memberInfo = member.getName() + "," +
-                        member.getDateOfBirth().format(formatter) + "," +
-                        member.getGender() + "," +
-                        member.getPhonenumber() + "," +
-                        member.getAdress() + "," +
-                        member.getMemberNumber() + "," +
-                        member.getPassiveOrActive() + "," +
-                        member.getMemberType() + "," +
-                        member.getMotionist();
-
-                writer.println(memberInfo);
-            }
-        } catch (FileNotFoundException e) {
-            System.err.println("Fejl: " + e.getMessage());
-        }
-    }
-
-
-
-
-
-
+    //TODO Save Træning og konkurrence resultater
     public void saveListOfKokurrenceTidToFile(String fileName, ArrayList<CompetitiveMember> compMembers) {
         try (PrintWriter writer = new PrintWriter(new FileWriter(fileName))) {
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
@@ -182,6 +177,8 @@ public class FileHandler {
         }
     }
 
+
+    //TODO Fomatter og parser
     private String formatDuration(Duration duration) {
         long hours = duration.toHours();
         long minutes = (duration.toMinutes() % 60);
@@ -195,7 +192,6 @@ public class FileHandler {
     private Duration parseDuration(String durationString) {
         String[] components = durationString.split(":");
 
-        // Assuming the format is "HH:mm:ss"
         long hours = Long.parseLong(components[0]);
         long minutes = Long.parseLong(components[1]);
         long seconds = Long.parseLong(components[2]);
@@ -207,30 +203,52 @@ public class FileHandler {
         return LocalDate.parse(dateString, formatter);
     }
 
+    //____________
 
+    public void saveListOfPaidOrNot(String fileName, ArrayList<MembershipStatus> paidStatus) {
+        try (FileOutputStream fileOutputStream = new FileOutputStream(fileName, true)) {
 
+            for (MembershipStatus status : paidStatus) {
+                for (Member member : paidStatus) {
+                    String memberInfo = member.getMemberNumber() + "," +
+                            status.isPaidOrNot();
 
-
-
-    public ArrayList<Member> loadUsedMemberNumbers(String fileName, ArrayList<CompetitiveMember> coompMeembers) {
-
-        try (Scanner fileScanner = new Scanner(new File(fileName))) {
-            while (fileScanner.hasNextLine()) {
-                String line = fileScanner.nextLine();
-                String[] memberInfo = line.split(",");
-
-
-                int memberNumber = Integer.parseInt(memberInfo[0]);
-
-                Member usedMembernumber = new Member(memberNumber);
-                coompMeembers.add((CompetitiveMember) usedMembernumber);
+                    memberInfo += System.lineSeparator();
+                    fileOutputStream.write(memberInfo.getBytes());
+                }
             }
-        } catch (FileNotFoundException | NumberFormatException | NoSuchElementException e) {
-            System.err.println("Fejl: " + e.getMessage());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+   
+    public ArrayList<MembershipStatus> loadListOfPaidOrNot(String fileName) {
+        ArrayList<MembershipStatus> loadListOfPaidOrNot = new ArrayList<>();
+        try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                String[] parts = line.split(",");
+                if (parts.length == 2) {
+                    int memberNumber = Integer.parseInt(parts[0].trim());
+                    boolean isPaid = Boolean.parseBoolean(parts[1].trim());
+
+                    // Assuming MembershipStatus has a constructor that takes memberNumber and paid status
+                    MembershipStatus status = new MembershipStatus(memberNumber, isPaid);
+
+                    // Add the MembershipStatus object to the list
+                    //paidOrNot.add(status);
+                } else {
+                    // Handle invalid data in the file
+                    System.out.println("Invalid data in the file: " + line);
+                }
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
 
-        return loadUsedMemberNumbers(fileName, coompMeembers);
+        return loadListOfPaidOrNot;
     }
+}
 
 
 

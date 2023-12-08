@@ -16,35 +16,11 @@ public class Member {
     private String passiveOrActive; // TODO Overvej at ændre til boolean
     private String memberType;
     private String motionist;
-    private LocalDate membershipExpiryDate;
     private boolean paidAnnualMembership;
-    private String selectedMember;
     private List<Integer> usedMemberNumbers = new ArrayList<>();
 
-    private Database database;
 
-
-
-    /*public boolean isCompetitiveUnder18() {
-        return "aktivt".equalsIgnoreCase(passiveOrActive) && "ungdomssvømmer u18".equalsIgnoreCase(memberType) && calculateAgeList() < 18;
-    }
-
-    public List<Member> getCompetitiveMembersUnder18() {
-        List<Member> competitiveMembersUnder18 = new ArrayList<>();
-
-        for (Member member : database.getMeembers()) {
-            if (member.isCompetitiveUnder18()) {
-                competitiveMembersUnder18.add(member);
-            }
-        }
-
-        return competitiveMembersUnder18;
-    }
-*/
-
-
-    //constructor
-
+    //TODO Konstruktører
     public Member(String name, String dateOfBirth, String gender, int phonenumber, String adress, int memberNumber, String passiveOrActive, String memberType, String motionist) {
         this.name = name;
         this.dateOfBirth = LocalDate.parse(dateOfBirth, DateTimeFormatter.ofPattern("dd-MM-yyyy"));
@@ -70,17 +46,15 @@ public class Member {
     public Member(int memberNumber, java.time.Duration swimTime, LocalDate dateOfSwim, SwimmingDiscipline swimmingDiscipline) {
     }
 
-    //TODO Lav en Save metode til denne her
-    //public Member(String name, newStatus) {
+    public Member() {
+    }
 
-   // }
 
     //___________
     public void setPaidAnnualMembership(boolean paidAnnualMembership) {
         this.paidAnnualMembership = paidAnnualMembership;
     }
 
-    // Existing code...
     public boolean hasPaidAnnualmembership() {
         return paidAnnualMembership;
     }
@@ -122,11 +96,6 @@ public class Member {
         return today.getYear() - dateOfBirth.getYear();
     }
 
-    /*public String getFormattedDateOfBirth() {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-        return dateOfBirth.format(formatter);
-
-    }*/
 
     public int calculateYearlySubscriptionFee() {
         int baseFee = 0;
@@ -148,8 +117,7 @@ public class Member {
     }
 
 
-    // getters
-
+// TODO Getters
     public String getName() {
         return name;
     }
@@ -187,42 +155,10 @@ public class Member {
     }
 
 
-    //setters
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setDateOfBirth(LocalDate dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
-    }
-
-    public void setGender(String gender) {
-        this.gender = gender;
-    }
-
-    public void setPhonenumber(int phonenumber) {
-        this.phonenumber = phonenumber;
-    }
-
-    public void setAdress(String adress) {
-        this.adress = adress;
-    }
+    //TODO Setters
 
     public void setMemberNumber(int memberNumber) {
         this.memberNumber = memberNumber;
-    }
-
-    public void setPassiveOrActive(String passiveOrActive) {
-        this.passiveOrActive = passiveOrActive;
-    }
-
-    public void setMemberType(String Membertype) {
-        this.memberType = Membertype;
-    }
-
-    public void setMotionist(String motionist) {
-        this.motionist = motionist;
     }
 
     public boolean hasPaidAnnualMembership() {
@@ -236,7 +172,7 @@ public class Member {
     public void editDateOfBirth(String newDateOfBirth) {
         this.dateOfBirth = LocalDate.parse(newDateOfBirth, DateTimeFormatter.ofPattern("dd-MM-yyyy"));
     }
-
+//TODO Edits
     public void editGender(String newGender) {
         this.gender = newGender;
     }
@@ -269,5 +205,3 @@ public class Member {
                 "Motionist:" + " " + motionist + "\n";
     }
 }
-
-
