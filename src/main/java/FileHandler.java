@@ -192,6 +192,7 @@ public class FileHandler {
     private Duration parseDuration(String durationString) {
         String[] components = durationString.split(":");
 
+        //ssasa
         long hours = Long.parseLong(components[0]);
         long minutes = Long.parseLong(components[1]);
         long seconds = Long.parseLong(components[2]);
@@ -221,7 +222,7 @@ public class FileHandler {
             throw new RuntimeException(e);
         }
     }
-   
+
     public ArrayList<MembershipStatus> loadListOfPaidOrNot(String fileName) {
         ArrayList<MembershipStatus> loadListOfPaidOrNot = new ArrayList<>();
         try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
