@@ -56,33 +56,65 @@ public class FileHandler {
         ArrayList<CompetitiveMember> loadedTræningsResultater = new ArrayList<>();
         try (Scanner fileScanner = new Scanner(new File(fileName))) {
             while (fileScanner.hasNextLine()) {
-                String line = fileScanner.nextLine();
+                String line = fileScanner.nextLine().trim();
                 if (line.trim().isEmpty()) {
                     continue;
                 }
                 String[] memberInfo = line.split(",");
 
-                if (memberInfo.length >= 2) {
+                if (memberInfo.length >= 1) {
                     int memberNumber = Integer.parseInt(memberInfo[0]);
-                    Duration swimTime = Duration.parse(memberInfo[1]);
-                    LocalDate dateOfSwim = LocalDate.parse(memberInfo[2]);
-                    // TODO måske ligger der en fejl her
+                    Duration swimTime = parseDuration(memberInfo[1]);
+                    LocalDate dateOfSwim = parseDate(memberInfo[2]);
                     SwimmingDiscipline swimmingDiscipline = SwimmingDiscipline.valueOf(memberInfo[3]);
 
-
-                    CompetitiveMember træningsResultat = new CompetitiveMember(memberNumber, swimTime, dateOfSwim,  swimmingDiscipline);
+                    CompetitiveMember træningsResultat = new CompetitiveMember(memberNumber, swimTime, dateOfSwim, swimmingDiscipline);
                     loadedTræningsResultater.add(træningsResultat);
                 } else {
-
                 }
-
             }
-        }catch (FileNotFoundException | NumberFormatException | NoSuchElementException e) {
+        } catch (FileNotFoundException | NumberFormatException | NoSuchElementException e) {
             System.err.println("Fejl: " + e.getMessage());
         }
-        return loadedTræningsResultater(fileName);
+        return loadedTræningsResultater;
     }
 
+
+
+    public ArrayList<CompetitiveMember> loadedCompetitiveMember(String fileName) {
+        ArrayList<CompetitiveMember> loadedCompetitiveMember = new ArrayList<>();
+        try (Scanner fileScanner = new Scanner(new File(fileName))) {
+            while (fileScanner.hasNextLine()) {
+                String line = fileScanner.nextLine().trim();
+                if (line.trim().isEmpty()) {
+                    continue;
+                }
+
+                String[] memberInfo = line.split(",");
+
+                if (memberInfo.length >= 5) {
+                int memberNumber = Integer.parseInt(memberInfo[0]);
+                Duration swimTime = parseDuration(memberInfo[1]);
+                LocalDate dateOfSwim = parseDate(memberInfo[2]);
+                SwimmingDiscipline swimmingDiscipline = SwimmingDiscipline.valueOf(memberInfo[3]);
+                String eventName = memberInfo[4];
+                String eventPlacement = memberInfo[5];
+
+
+
+                CompetitiveMember træningMember = new CompetitiveMember(memberNumber, swimTime, dateOfSwim, swimmingDiscipline, eventName, eventPlacement);
+                loadedCompetitiveMember.add(træningMember);
+            } else {
+            }
+            }
+
+        } catch (FileNotFoundException e) {
+            System.err.println("Fejl: " + e.getMessage());
+        }
+
+
+        return loadedCompetitiveMember;
+    }
 
 
 
@@ -108,83 +140,9 @@ public class FileHandler {
     }
 
 
-    public ArrayList<CompetitiveMember> loadedCompetitiveMember() {
-        ArrayList<CompetitiveMember> loadedCompetitiveMember = new ArrayList<>();
-
-        try (Scanner fileScanner = new Scanner(new File(fileName))) {
-            while (fileScanner.hasNext()) {
-                int memberNumber = fileScanner.nextInt();
-                String swimTimeString = fileScanner.nextLine();
-                String dateOfSwimString = fileScanner.nextLine();
-                String swimmingDisciplineString = fileScanner.nextLine();
-
-                //Duration swimTime = Duration.parse(swimTimeString);
-                LocalTime swimTime = LocalTime.parse(swimTimeString, DateTimeFormatter.ofPattern("HH:mm:ss"));
 
 
-                LocalDate dateOfSwim = LocalDate.parse(dateOfSwimString, DateTimeFormatter.ofPattern("dd-MM-yyyy"));
-                SwimmingDiscipline swimmingDiscipline = SwimmingDiscipline.valueOf(swimmingDisciplineString);
 
-
-                CompetitiveMember træningMember = new CompetitiveMember(memberNumber, swimTime, dateOfSwim, swimmingDiscipline);
-                loadedCompetitiveMember.add(træningMember);
-
-            }
-
-        } catch (FileNotFoundException e) {
-            System.err.println("Fejl: " + e.getMessage());
-        }
-
-
-        return loadedCompetitiveMember;
-    }
-
-   /* public void saveListOfKokurrenceTidToFile(String fileName, ArrayList<CompetitiveMember> compMember) {
-        try (FileOutputStream fileOutputStream = new FileOutputStream(fileName, true)) {
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-
-
-            for (CompetitiveMember CompMember : compMember) {
-                for (Member member : compMember) {
-                    String memberInfo = member.getMemberNumber() + "," +
-                            CompMember.getSwimTime() + "," +
-                            CompMember.getDateOfSwim() + "," +
-                            CompMember.getSwimmingDiscipline() + "," +
-                            CompMember.getEventName() + "," +
-                            CompMember.getEventPlacement();
-
-                    memberInfo += System.lineSeparator();
-                    fileOutputStream.write(memberInfo.getBytes());
-                }
-            }
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-
-    }
-
-
-    public void saveListOfTræningsTidToFile(String fileName, ArrayList<CompetitiveMember> compMember) {
-        try (FileOutputStream fileOutputStream = new FileOutputStream(fileName, true)) {
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-
-            for (CompetitiveMember CompMember : compMember) {
-                for (Member member : compMember) {
-                    String memberInfo = member.getMemberNumber() + "," +
-                            CompMember.getSwimTime() + "," +
-                            CompMember.getDateOfSwim() + "," +
-                            CompMember.getSwimmingDiscipline();
-
-
-                    memberInfo += System.lineSeparator();
-                    fileOutputStream.write(memberInfo.getBytes());
-                }
-            }
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-
-    }*/
 
     public void saveListOfKokurrenceTidToFile(String fileName, ArrayList<CompetitiveMember> compMember) {
         try (FileOutputStream fileOutputStream = new FileOutputStream(fileName, true)) {

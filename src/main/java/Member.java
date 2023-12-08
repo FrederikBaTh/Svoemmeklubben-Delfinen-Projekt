@@ -21,12 +21,6 @@ public class Member {
     private String selectedMember;
     private List<Integer> usedMemberNumbers = new ArrayList<>();
 
-    private String newName;
-    private LocalDate newDateOfBirth;
-    private String newGender;
-    private int newPhonenumber;
-    private String newAdress;
-
     private Database database;
 
 
@@ -192,13 +186,6 @@ public class Member {
         return motionist;
     }
 
-    public String getSelectedMember() {
-        return selectedMember;
-    }
-
-    public List<Integer> getUsedMemberNumbers() {
-        return usedMemberNumbers;
-    }
 
     //setters
 

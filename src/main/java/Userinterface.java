@@ -1,6 +1,7 @@
 import java.time.Duration;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Scanner;
 import java.time.format.DateTimeParseException;
 import java.time.LocalDate;
@@ -109,7 +110,8 @@ public class Userinterface {
             System.out.println("""
                     1: Vis alle medlemmer
                     2: registrer medlem
-                    3: afslut programmet
+                    3: rediger medlem
+                    4: afslut programmet
                     """);
             switch (keyboard.nextInt()) {
 
@@ -268,7 +270,10 @@ public class Userinterface {
                 case 2:
                     seResultaterKonkurrence();
                     break;
-                case 3:
+                    case 3:
+                        visTop5SvømmetiderEfterStil();
+                        break;
+                case 4:
                     exit = true;
                     break;
                 default:
@@ -277,52 +282,63 @@ public class Userinterface {
             }
         }
     }
+    public void visTop5SvømmetiderEfterStil() {
+        // Assuming there are four swimming styles: Butterfly, Backstroke, Breaststroke, and Freestyle
+        SwimmingDiscipline[] swimmingStyles = SwimmingDiscipline.values();
+
+        for (SwimmingDiscipline style : swimmingStyles) {
+            System.out.println("Top 5 fastest times in " + style + ":");
+            List<CompetitiveMember> top5Times = controller.getTop5SwimTimes(style);
+
+            if (top5Times.isEmpty()) {
+                System.out.println("No times recorded for this style.");
+            } else {
+                for (int i = 0; i < Math.min(5, top5Times.size()); i++) {
+                    CompetitiveMember member = top5Times.get(i);
+                    System.out.println((i + 1) + ". Member: " + member.getMemberNumber() +
+                            ", Time: " + member.getSwimTime() +
+                            ", Date: " + member.getDateOfSwim());
+                }
+            }
+
+            System.out.println();  // Add a newline between styles
+        }
+    }
+
 
     public void seResultaterTræning() {
-        ArrayList<CompetitiveMember> members = controller.getCompMeembersTræning();
+        ArrayList<CompetitiveMember> compMembers = controller.getCompMeembersEvent();
 
-        controller.sortTrainingMembersBySwimTime();
+        compMembers.sort(Comparator.comparing(CompetitiveMember::getSwimTime));
 
         System.out.println("Sorteret træningsmedlemmer efter svømmetid: ");
-        for (CompetitiveMember CompMember : controller.getCompMeembersTræning()) {
+        for (CompetitiveMember CompMember : compMembers) {
             System.out.println("Member Number: " + CompMember.getMemberNumber());
-            System.out.println("Name: " + CompMember.getName());
             System.out.println("Swim Time: " + CompMember.getSwimTime());
             System.out.println("Dato: " + CompMember.getDateOfSwim());
             System.out.println("Svømmedisciplin: " + CompMember.getSwimmingDiscipline());
-
+            System.out.println();
         }
 
-    }
 
-    public void seResultaterKonkurrence() {
+    }
+    public void seResultaterKonkurrence () {
+        ArrayList<CompetitiveMember> members = controller.getCompMeembersEvent();
 
         controller.sortTrainingMembersBySwimTime();
         System.out.println("Sorteret eventmedlemmer efter svømmetid: ");
-        for (CompetitiveMember CompMember : controller.getCompMeembersEvent()) {
+        for (CompetitiveMember CompMember : members) {
             System.out.println("Member Number: " + CompMember.getMemberNumber());
-            System.out.println("Name: " + CompMember.getName());
             System.out.println("Swim Time: " + CompMember.getSwimTime());
             System.out.println("Dato: " + CompMember.getDateOfSwim());
             System.out.println("Svømmedisciplin: " + CompMember.getSwimmingDiscipline());
             System.out.println("Event navn: " + CompMember.getEventName());
-            System.out.println("Arrangementsplacering: "+CompMember.getEventPlacement());
-
+            System.out.println("Arrangementsplacering: " + CompMember.getEventPlacement());
+            System.out.println();
 
         }
-}
+    }
 
-        public void tidsresultater () {
-            ArrayList<CompetitiveMember> competitiveMembers = controller.getCompetitiveMembers();
-            for (CompetitiveMember competitiveMember : competitiveMembers) {
-                System.out.println("Medlemsnummer: " + competitiveMember.getMemberNumber());
-                System.out.println("Navn: " + competitiveMember.getName());
-                System.out.println("Svømmedisciplin: " + competitiveMember.getSwimmingDiscipline());
-                System.out.println("Svømmetid: " + competitiveMember.getSwimTime());
-                System.out.println("Svømmedato: " + competitiveMember.getDateOfSwim());
-                System.out.println();
-            }
-        }
 
         public void indtastResultater () {
             boolean exit = false;
@@ -358,36 +374,136 @@ public class Userinterface {
             }
         }
 
-        public void redigerResultaterTræning () {
-/*
+    public void redigerResultaterTræning() {
+        int selectedMemberNumber = getValidIntegerInputTræningMedlemsnummer("Vælg det medlemsnummer du vil redigere:");
+
+        CompetitiveMember competitiveMember = controller.getCompetitiveMemberByMemberNumberEvent(selectedMemberNumber);
+
+        if (competitiveMember != null) {
+            Scanner scanner = new Scanner(System.in);
+
+            System.out.println("Edit Member Attribute Menu:");
+            System.out.println("1. Edit Swim Time");
+            System.out.println("2. Edit Date of Birth");
+            System.out.println("3. Edit Swimming Discipline");
+            System.out.println("4. Edit Event Name");
+            System.out.println("5. Edit Event Location");
+            System.out.println("0. Exit");
+            System.out.print("Enter your choice: " + "\n");
+
+            int choice = scanner.nextInt();
+            scanner.nextLine();
+
+            switch (choice) {
+                case 1:
+                    System.out.print("Enter the new swim time: ");
+                    Duration newSwimTime = parseDuration(scanner.nextLine());
+                    competitiveMember.editSwimTime(String.valueOf(newSwimTime));
+                    break;
+                case 2:
+                    System.out.print("Enter the new swimming date (dd-MM-yyyy): ");
+                    LocalDate newDateOfSwim = parseDate(scanner.nextLine());
+                    competitiveMember.editDateOfSwim(String.valueOf(newDateOfSwim));
+                    break;
+                case 3:
+                    System.out.print("Enter the new swimming discipline: ");
+                    SwimmingDiscipline newSwimmingDiscipline = SwimmingDiscipline.valueOf(scanner.nextLine());
+                    competitiveMember.editSwimmingDiscipline(String.valueOf(newSwimmingDiscipline));
+                    break;
+                case 4:
+                    System.out.print("Enter the new event name: ");
+                    String newEventName = scanner.nextLine();
+                    competitiveMember.editEventName(newEventName);
+                    break;
+                case 5:
+                    System.out.print("Enter the new event location: ");
+                    String newEventPlacement = scanner.nextLine();
+                    competitiveMember.editEventPlacement(newEventPlacement);
+                    break;
+                case 0:
+                    System.out.println("Exiting edit menu.");
+                    break;
+                default:
+                    System.out.println("Invalid choice. Please enter a valid option.");
+                    break;
+            }
+
+            controller.updateTræningsTid(competitiveMember);
+        } else {
+            System.out.println("Selected member is not a CompetitiveMember or does not exist.");
+        }
+    }
 
 
-            System.out.print("Indtast navnet på medlemmet, du vil redigere: ");
-            int getUsedMemberNumbers = keyboard.nextInt();
-            controller.redigerResultaterTræning(Collections.singletonList(getUsedMemberNumbers));
 
 
-            System.out.println("Medlemsresultater for en træning");
-            System.out.println(træningRedigere);
+    public void redigerResultaterKonkurrence() {
+        int selectedMemberNumber = getValidIntegerInputKonkurrenceMedlemsnummer("Vælg det medlemsnummer du vil redigere:");
 
-            System.out.println("Rediger svømmetid: "+ træningRedigere.getSwimTime());
+        CompetitiveMember competitiveMember = controller.getCompetitiveMemberByMemberNumberEvent(selectedMemberNumber);
 
-            System.out.println("Ny svømmetid (tryk Enter for at beholde det origninale): ");
+        if (competitiveMember != null) {
+            Scanner scanner = new Scanner(System.in);
+
+            System.out.println("Edit Member Attribute Menu:");
+            System.out.println("1. Edit Swim Time");
+            System.out.println("2. Edit Date of Birth");
+            System.out.println("3. Edit Swimming Discipline");
+            System.out.println("4. Edit Event Name");
+            System.out.println("5. Edit Event Location");
+            System.out.println("0. Exit");
+            System.out.print("Enter your choice: " + "\n");
+
+            int choice = scanner.nextInt();
+            scanner.nextLine();
+
+            switch (choice) {
+                case 1:
+                    System.out.print("Enter the new swim time: ");
+                    Duration newSwimTime = parseDuration(scanner.nextLine());
+                    competitiveMember.editSwimTime(String.valueOf(newSwimTime));
+                    break;
+                case 2:
+                    System.out.print("Enter the new swimming date (dd-MM-yyyy): ");
+                    LocalDate newDateOfSwim = parseDate(scanner.nextLine());
+                    competitiveMember.editDateOfSwim(String.valueOf(newDateOfSwim));
+                    break;
+                case 3:
+                    System.out.print("Enter the new swimming discipline: ");
+                    SwimmingDiscipline newSwimmingDiscipline = SwimmingDiscipline.valueOf(scanner.nextLine());
+                    competitiveMember.editSwimmingDiscipline(String.valueOf(newSwimmingDiscipline));
+                    break;
+                case 4:
+                    System.out.print("Enter the new event name: ");
+                    String newEventName = scanner.nextLine();
+                    competitiveMember.editEventName(newEventName);
+                    break;
+                case 5:
+                    System.out.print("Enter the new event location: ");
+                    String newEventPlacement = scanner.nextLine();
+                    competitiveMember.editEventPlacement(newEventPlacement);
+                    break;
+                case 0:
+                    System.out.println("Exiting edit menu.");
+                    break;
+                default:
+                    System.out.println("Invalid choice. Please enter a valid option.");
+                    break;
+            }
+
+            controller.updateKonkurrenceTid(competitiveMember);
+        } else {
+            System.out.println("Selected member is not a CompetitiveMember or does not exist.");
+        }
+    }
 
 
 
 
 
-*/
         }
 
-
-        public void redigerResultaterKonkurrence () {
-
-
-        }
-
-        public void seKokurrenceHold () {
+    public void seKokurrenceHold () {
             boolean exit = false;
             while (!exit) {
                 System.out.println("""
@@ -535,10 +651,79 @@ public class Userinterface {
                 }
             }
         }
+    public int getValidIntegerInputKonkurrenceMedlemsnummer(String prompt) {
+        ArrayList<CompetitiveMember> compMembers = controller.getCompMeembersEvent();
+
+        System.out.println("List of Competitive Member Numbers:");
+        for (int i = 0; i < compMembers.size(); i++) {
+            CompetitiveMember compMember = compMembers.get(i);
+            System.out.println((i + 1) + ". Member Number: " + compMember.getMemberNumber());
+        }
+
+        while (true) {
+            try {
+                System.out.print(prompt);
+                int inputString = keyboard.nextInt();
+                keyboard.nextLine();
+
+                int input = Integer.parseInt(String.valueOf(inputString));
+
+                if (String.valueOf(input).length() == 6) {
+                    if (controller.getCompetitiveMemberByMemberNumberEvent(input) != null) {
+                        return input;
+                    } else {
+                        System.out.println("Competitive member with the specified member number does not exist.");
+                    }
+                } else {
+                    System.out.println("Invalid input. Please enter a member number with 6 digits.");
+                }
+            } catch (NumberFormatException e) {
+                keyboard.nextLine();
+                System.out.println("Invalid input. Please enter a member number with 6 digits.");
+            }
+        }
+    }
+
+    public int getValidIntegerInputTræningMedlemsnummer(String prompt) {
+        ArrayList<CompetitiveMember> compMembers = controller.getCompMeembersTræning();
+
+        System.out.println("List of Competitive Member Numbers:");
+        for (int i = 0; i < compMembers.size(); i++) {
+            CompetitiveMember compMember = compMembers.get(i);
+            System.out.println((i + 1) + ". Member Number: " + compMember.getMemberNumber());
+        }
+
+        while (true) {
+            try {
+                System.out.print(prompt);
+                int inputString = keyboard.nextInt();
+                keyboard.nextLine();
+
+                int input = Integer.parseInt(String.valueOf(inputString));
+
+                if (String.valueOf(input).length() == 6) {
+                    if (controller.getCompetitiveMemberByMemberNumbertræning(input) != null) {
+                        return input;
+                    } else {
+                        System.out.println("Competitive member with the specified member number does not exist.");
+                    }
+                } else {
+                    System.out.println("Invalid input. Please enter a member number with 6 digits.");
+                }
+            } catch (NumberFormatException e) {
+                keyboard.nextLine();
+                System.out.println("Invalid input. Please enter a member number with 6 digits.");
+            }
+        }
+    }
 
 
 
-        //TODO top 5 til at træneren kan se på de bedste 5 i hver disciple.
+
+
+
+
+    //TODO top 5 til at træneren kan se på de bedste 5 i hver disciple.
         public void top5Svimmers () {
             System.out.println();
         }
@@ -822,7 +1007,7 @@ public class Userinterface {
 
 
         public void editMemberAttribute() {
-            int selectedMember = getValidIntegerInputMedlemsnummerTilEdit("Vælg det medlemsnummer du vil redigere:");
+            int selectedMember = getValidIntegerInputMedlemsnummer("Vælg det medlemsnummer du vil redigere:");
 
             Scanner scanner = new Scanner(System.in);
 
@@ -889,35 +1074,23 @@ public class Userinterface {
             controller.updateMember(selectedMemberObject);
         }
 
-    public int getValidIntegerInputMedlemsnummerTilEdit (String prompt){
-        ArrayList<Member> members = controller.getMembers();
 
-        System.out.println("List of Member Numbers:");
-        for (int i = 0; i < members.size(); i++) {
-            Member member = members.get(i);
-            System.out.println((i + 1) + ". Member Number: " + member.getMemberNumber());
-        }
+    private String formatDuration(Duration duration) {
+        long hours = duration.toHours();
+        long minutes = (duration.toMinutes() % 60);
+        long seconds = (duration.getSeconds() % 60);
 
-        while (true) {
-            try {
-                int inputString = keyboard.nextInt();
-                keyboard.nextLine();
-
-                int input = Integer.parseInt(String.valueOf(inputString));
-
-                if (String.valueOf(input).length() == 6) {
-                    if (controller.memberExists(input)) {
-                        return input;
-                    } else {
-                        System.out.println("Medlemsnummeret findes ikke i systemet.");
-                    }
-                }
-            } catch (NumberFormatException e) {
-                keyboard.nextLine();
-                System.out.println("Ugyldig input. Indtast venligst et medlemsnummer på 6 cifre.");
-            }
-        }
+        return String.format("%02d:%02d:%02d", hours, minutes, seconds);
     }
+
+
+
+    public static LocalDate parseDate(String dateString) {
+        // Assuming the format is "yyyy-MM-dd"
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        return LocalDate.parse(dateString, formatter);
+    }
+
 
 
 

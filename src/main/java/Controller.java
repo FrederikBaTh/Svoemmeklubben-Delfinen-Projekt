@@ -10,10 +10,6 @@ public class Controller {
     Member member = new Member();
     CompetitiveMember competitiveMember = new CompetitiveMember();
 
-   //private ArrayList<CompetitiveMember> compMeembersTræning = new ArrayList<>();
-   //private ArrayList<CompetitiveMember> compMeembersEvent = new ArrayList<>();
-
-
     Database database = new Database();
 
     public void registrerMedlem(String name, String dateOfBirth, String gender, int phonenumber, String adress, int memberNumber, String passiveOrActive, String memberType, String motionist) {
@@ -74,9 +70,6 @@ public class Controller {
         return database.getCompMeembers();
     }
 
-    public void redigerResultaterTræning(List<Integer> getUsedMemberNumbers){
-        database.redigerResultaterTræning(getUsedMemberNumbers);
-    }
 
 public void updateMember(Member updatedMember) {
     database.updateMember(updatedMember);
@@ -91,17 +84,35 @@ public void updateMember(Member updatedMember) {
         return database.getCompMeembersTræning();
     }
 
-    public void sortEventMembersBySwimTime(){
-        database.sortEventMembersBySwimTime();
-    }
     public ArrayList<CompetitiveMember> getCompMeembersEvent(){
         return database.getCompMeembersEvent();
     }
-
-
-
+    public void sortEventMembersBySwimTime(){
+        database.sortEventMembersBySwimTime();
+    }
     public Member getMemberByMemberNumber(int memberNumber){
         return database.getMemberByNumber(memberNumber);
     }
 
+    public CompetitiveMember getCompetitiveMemberByMemberNumbertræning(int memberNumber){
+        return database.getMemberByMemberNumberTræning(memberNumber);
+    }
+    CompetitiveMember getCompetitiveMemberByMemberNumberEvent(int memberNumber){
+        return database.getMemberByMemberNumberEvent(memberNumber);
+    }
+
+    public Duration getSwimTime() {
+        return competitiveMember.getSwimTime();
+    }
+
+    public void updateKonkurrenceTid(CompetitiveMember updatedMember) {
+        database.updateKonkurrence(updatedMember);
+    }
+    public void updateTræningsTid(CompetitiveMember updatedMember) {
+        database.updateTræning(updatedMember);
+    }
+
+public List<CompetitiveMember> getTop5SwimTimes(SwimmingDiscipline style){
+        return database.getTop5SwimTimes(style);
+    }
 }

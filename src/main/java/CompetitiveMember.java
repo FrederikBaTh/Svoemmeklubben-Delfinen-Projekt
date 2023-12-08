@@ -12,7 +12,7 @@ public class CompetitiveMember extends Member {
     private String eventPlacement;
     private Duration eventSwimTime;
 
-
+    private String selectedMember;
 
 
     // Training
@@ -70,7 +70,21 @@ public class CompetitiveMember extends Member {
         return eventPlacement;
     }
 
-
+    public void editSwimTime(String newSwimTime) {
+        this.swimTime = Duration.parse(newSwimTime);
+}
+public void editDateOfSwim(String newDateOfSwim){
+        this.dateOfSwim = LocalDate.parse(newDateOfSwim);
+}
+public void editSwimmingDiscipline(String newSwimmingDiscipline) {
+        this.swimmingDiscipline = SwimmingDiscipline.valueOf(newSwimmingDiscipline);
+}
+public void editEventName(String newEventName) {
+        this.eventName = newEventName;
+}
+public void editEventPlacement(String newEventPlacement) {
+        this.eventPlacement = newEventPlacement;
+    }
 
     @Override
     public String toString() {

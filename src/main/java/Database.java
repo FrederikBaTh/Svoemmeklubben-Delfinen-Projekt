@@ -1,10 +1,8 @@
 import java.time.Duration;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class Database {
 
@@ -32,9 +30,16 @@ public class Database {
         if (meembers.isEmpty()) {
             meembers = fileHandler.loadedMembers();
         }
-        //   compMeembersTræning = FileHandler.loadedTræningsResultater("TræningsTid.csv");
-
+        if (compMeembersEvent.isEmpty()) {
+            compMeembersEvent = fileHandler.loadedCompetitiveMember("KonkurrenceTid.csv");
+        }
+        if (compMeembersTræning.isEmpty()) {
+            compMeembersTræning = fileHandler1.loadedTræningsResultater( "TræningsTid.csv");
+        }
     }
+
+
+
     public void sortTrainingMembersBySwimTime() {
         compMeembersTræning.sort(Comparator.comparing(CompetitiveMember::getSwimTime));
     }
@@ -145,23 +150,6 @@ public class Database {
         return false;
     }
 
-
-    public void redigerResultaterTræning(List<Integer> getUsedMemberNumbers) {
-         /*   compMeembersEvent = fileHandler.loadedTræningsResultater("TræningsTid.csv");
-
-            CompetitiveMember træningRedigere = null ;
-            for (CompetitiveMember træning : compMeembersEvent){
-                if(træning.getUsedMemberNumbers().equals(getUsedMemberNumbers));
-                træningRedigere=træning;
-                break;
-            }
-            if(træningRedigere==null){
-                System.out.println("Medlem kunne ikke findes.");
-                return;
-            }
-*/
-    }
-
     private void renewMembershipForSelectedMember(Member selectedMember) {
         // Implement logic to renew membership, e.g., update membership status
         // You may need to modify this based on your actual data structure and logic
@@ -202,6 +190,24 @@ public class Database {
         return null;
     }
 
+    public CompetitiveMember getMemberByMemberNumberTræning(int memberNumber) {
+        for (CompetitiveMember member : getCompMeembersTræning()) {
+            if (member.getMemberNumber() == memberNumber) {
+                return member;
+            }
+        }
+        return null; // Return null if the member is not found
+    }
+    public CompetitiveMember getMemberByMemberNumberEvent (int memberNumber) {
+        for (CompetitiveMember member : getCompMeembersEvent()) {
+            if (member.getMemberNumber() == memberNumber) {
+                return member;
+            }
+        }
+        return null; // Return null if the member is not found
+    }
+
+
     public void updateMember(Member updatedMember) {
         for (int i = 0; i < meembers.size(); i++) {
             Member existingMember = meembers.get(i);
@@ -212,8 +218,61 @@ public class Database {
             }
         }
     }
+    public void updateKonkurrence(CompetitiveMember updatedMember) {
+        for (int i = 0; i < compMeembersEvent.size(); i++) {
+            CompetitiveMember existingMember = compMeembersEvent.get(i);
+            if (existingMember.getMemberNumber() == updatedMember.getMemberNumber()) {
+                compMeembersEvent.set(i, updatedMember);
+                fileHandler.saveListOfKokurrenceTidToFile("KonkurrenceTid.csv", compMeembersEvent);
+                break;
+            }
+        }
+    }
+    public void updateTræning(CompetitiveMember updatedMember) {
+        for (int i = 0; i < compMeembersTræning.size(); i++) {
+            CompetitiveMember existingMember = compMeembersTræning.get(i);
+            if (existingMember.getMemberNumber() == updatedMember.getMemberNumber()) {
+                compMeembersTræning.set(i, updatedMember);
+                fileHandler.saveListOfTræningsTidToFile("TræningsTid.csv", compMeembersTræning);
+                break;
+            }
+        }
+    }
+    public List<CompetitiveMember> getTop5SwimTimes(SwimmingDiscipline swimmingDiscipline) {
+        List<CompetitiveMember> competitiveMembers = new ArrayList<>();
+
+        switch (swimmingDiscipline) {
+            case BUTTERFLY:
+                competitiveMembers.addAll(getCompMeembersTræning());
+                competitiveMembers.addAll(getCompMeembersEvent());
+                break;
+            case BACKSTROKE:
+                competitiveMembers.addAll(getCompMeembersTræning());
+                competitiveMembers.addAll(getCompMeembersEvent());
+                break;
+            case BREASTSTROKE:
+                competitiveMembers.addAll(getCompMeembersTræning());
+                competitiveMembers.addAll(getCompMeembersEvent());
+                break;
+            case FREESTYLE:
+                competitiveMembers.addAll(getCompMeembersTræning());
+                competitiveMembers.addAll(getCompMeembersEvent());
+                break;
+        }
 
 
+        // Sort the list based on swim times
+        competitiveMembers.sort(Comparator.comparing(CompetitiveMember::getSwimTime));
+
+        // Reverse the list to get the slowest times first
+        Collections.reverse(competitiveMembers);
+
+        return competitiveMembers;
+    }
+
+
+
+}
 
 
 }
