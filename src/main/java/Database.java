@@ -11,17 +11,18 @@ public class Database {
     private FileHandler fileHandler = new FileHandler("MedlemsListe.csv");
     private FileHandler fileHandler1 = new FileHandler("TræningsTid.csv");
 
+
+
     private ArrayList<CompetitiveMember> compMeembersEvent = new ArrayList<>();
 
     public ArrayList<CompetitiveMember> getCompMeembersEvent() {
         return compMeembersEvent;
-
     }
+
     private ArrayList<CompetitiveMember> compMeembersTræning = new ArrayList<>();
 
     public ArrayList<CompetitiveMember> getCompMeembersTræning() {
         return compMeembersTræning;
-
     }
 
     private Member member;
@@ -275,4 +276,4 @@ public class Database {
 }
 
 
-}
+

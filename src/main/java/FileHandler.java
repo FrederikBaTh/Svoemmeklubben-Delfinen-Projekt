@@ -1,10 +1,8 @@
 import java.io.*;
 import java.time.Duration;
 import java.time.LocalDate;
-import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 
@@ -144,46 +142,40 @@ public class FileHandler {
 
 
 
-    public void saveListOfKokurrenceTidToFile(String fileName, ArrayList<CompetitiveMember> compMember) {
-        try (FileOutputStream fileOutputStream = new FileOutputStream(fileName, true)) {
+    public void saveListOfKokurrenceTidToFile(String fileName, ArrayList<CompetitiveMember> compMembers) {
+        try (PrintWriter writer = new PrintWriter(new FileWriter(fileName))) {
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
 
-            for (CompetitiveMember CompMember : compMember) {
-                for (Member member : compMember) {
-                    String swimTimeFormatted = formatDuration(CompMember.getSwimTime());
+            for (CompetitiveMember compMember : compMembers) {
+                String swimTimeFormatted = formatDuration(compMember.getSwimTime());
 
-                    String memberInfo = member.getMemberNumber() + "," +
-                            swimTimeFormatted + "," +
-                            CompMember.getDateOfSwim().format(formatter) + "," +
-                            CompMember.getSwimmingDiscipline() + "," +
-                            CompMember.getEventName() + "," +
-                            CompMember.getEventPlacement();
+                String memberInfo = compMember.getMemberNumber() + "," +
+                        swimTimeFormatted + "," +
+                        compMember.getDateOfSwim().format(formatter) + "," +
+                        compMember.getSwimmingDiscipline() + "," +
+                        compMember.getEventName() + "," +
+                        compMember.getEventPlacement();
 
-                    memberInfo += System.lineSeparator();
-                    fileOutputStream.write(memberInfo.getBytes());
-                }
+                writer.println(memberInfo);
             }
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
 
-    public void saveListOfTræningsTidToFile(String fileName, ArrayList<CompetitiveMember> compMember) {
-        try (FileOutputStream fileOutputStream = new FileOutputStream(fileName, true)) {
+    public void saveListOfTræningsTidToFile(String fileName, ArrayList<CompetitiveMember> compMembers) {
+        try (PrintWriter writer = new PrintWriter(new FileWriter(fileName))) {
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
 
-            for (CompetitiveMember CompMember : compMember) {
-                for (Member member : compMember) {
-                    String swimTimeFormatted = formatDuration(CompMember.getSwimTime());
+            for (CompetitiveMember compMember : compMembers) {
+                String swimTimeFormatted = formatDuration(compMember.getSwimTime());
 
-                    String memberInfo = member.getMemberNumber() + "," +
-                            swimTimeFormatted + "," +
-                            CompMember.getDateOfSwim().format(formatter) + "," +
-                            CompMember.getSwimmingDiscipline();
+                String memberInfo = compMember.getMemberNumber() + "," +
+                        swimTimeFormatted + "," +
+                        compMember.getDateOfSwim().format(formatter) + "," +
+                        compMember.getSwimmingDiscipline();
 
-                    memberInfo += System.lineSeparator();
-                    fileOutputStream.write(memberInfo.getBytes());
-                }
+                writer.println(memberInfo);
             }
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -200,8 +192,20 @@ public class FileHandler {
 
 
 
+    private Duration parseDuration(String durationString) {
+        String[] components = durationString.split(":");
 
+        // Assuming the format is "HH:mm:ss"
+        long hours = Long.parseLong(components[0]);
+        long minutes = Long.parseLong(components[1]);
+        long seconds = Long.parseLong(components[2]);
 
+        return Duration.ofHours(hours).plusMinutes(minutes).plusSeconds(seconds);
+    }
+    public static LocalDate parseDate(String dateString) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        return LocalDate.parse(dateString, formatter);
+    }
 
 
 

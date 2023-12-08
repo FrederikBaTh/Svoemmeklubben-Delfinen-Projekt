@@ -240,9 +240,10 @@ public class Userinterface {
         boolean exit = false;
         while (!exit) {
             System.out.println("""
-                    1: se resultater fra træning 
-                    2: se resultater fra konkurrence 
-                    3: afslut programmet 
+                    1: Se resultater fra træning 
+                    2: Se resultater fra konkurrence 
+                    3: Vis de bedste 5 Svømmetider Efter Stil
+                    4: Afslut programmet 
                     """);
             // resultater fra træning i FRONTCRAWL over 18
 // resultater fra træning i FRONTCRAWL under 18
@@ -501,7 +502,7 @@ public class Userinterface {
 
 
 
-        }
+
 
     public void seKokurrenceHold () {
             boolean exit = false;
@@ -565,6 +566,7 @@ public class Userinterface {
 
                 System.out.println("Svømmedisciplin: ");
                 SwimmingDiscipline swimmingDiscipline = chooseBetweenSwimmingStyles();
+
 
                 controller.registrerTræningsResultat(selectedMemberNumber, svimTime, LocalDate.parse(dateOfSwim, DateTimeFormatter.ofPattern("dd-MM-yyyy")), swimmingDiscipline);
                 System.out.println("Member successfully registered.");
