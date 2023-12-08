@@ -26,6 +26,9 @@ public class Database {
         if (compMeembersTræning.isEmpty()) {
             compMeembersTræning = fileHandler1.loadedTræningsResultater( "TræningsTid.csv");
         }
+        if (statusPayment.isEmpty()){
+            statusPayment = fileHandler2.loadListOfPaidOrNot("KontingentOversigt.csv");
+        }
     }
 
    /* public void registrerPaidOrNot(int memberNumber, boolean paid) {
