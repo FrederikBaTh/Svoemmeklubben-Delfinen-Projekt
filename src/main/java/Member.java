@@ -40,7 +40,7 @@ public class Member {
     public Member(int memberNumber) {
     }
 
-    public Member() {
+    public Member(int memberNumber, Boolean paidOrNot) {
     }
 
     public Member(int memberNumber, java.time.Duration swimTime, LocalDate dateOfSwim, SwimmingDiscipline swimmingDiscipline) {

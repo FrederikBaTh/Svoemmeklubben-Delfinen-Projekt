@@ -930,10 +930,10 @@ public class Userinterface {
     private void checkAnnualMembershipPayments() {
         ArrayList<Member> members = controller.getMembers();
 
-            System.out.println("Checking Annual Membership Payments:\n");
-            for (Member member : members) {
-                System.out.println("Member: " + member.getName() + " (Member Number: " + member.getMemberNumber() + ")");
-                System.out.println("medlemsstatus: " + member.getPassiveOrActive());
+        System.out.println("Checking Annual Membership Payments:\n");
+        for (Member member : members) {
+            System.out.println("Member: " + member.getName() + " (Member Number: " + member.getMemberNumber() + ")");
+            System.out.println("medlemsstatus: " + member.getPassiveOrActive());
 
 
             if (controller.hasPaidAnnualMembership(member)) {
@@ -948,20 +948,20 @@ public class Userinterface {
         Scanner scanner = new Scanner(System.in);
         ArrayList<Member> members = controller.getMembers();
 
-            System.out.println("Enter the member number for which you want to change the annual membership payment status:");
-            int memberNumber = scanner.nextInt();
+        System.out.println("Enter the member number for which you want to change the annual membership payment status:");
+        int memberNumber = scanner.nextInt();
 
-            boolean found = false;
+        boolean found = false;
 
-            for (Member member : members) {
-                if (member.getMemberNumber() == memberNumber) {
-                    found = true;
+        for (Member member : members) {
+            if (member.getMemberNumber() == memberNumber) {
+                found = true;
 
-                    System.out.println("Current annual membership payment status for member " + member.getName() + ": " +
-                            (member.hasPaidAnnualMembership() ? "Paid" : "Not paid"));
+                System.out.println("Current annual membership payment status for member " + member.getName() + ": " +
+                        (member.hasPaidAnnualMembership() ? "Paid" : "Not paid"));
 
-                    System.out.println("Do you want to change the status? (Enter 'Y' for Yes, 'N' for No)");
-                    String input = scanner.next();
+                System.out.println("Do you want to change the status? (Enter 'Y' for Yes, 'N' for No)");
+                String input = scanner.next();
 
                 if (input.equalsIgnoreCase("Y")) {
                     boolean newStatus = !member.hasPaidAnnualMembership();
@@ -978,10 +978,50 @@ public class Userinterface {
             }
         }
 
-            if (!found) {
-                System.out.println("Member with member number " + memberNumber + " not found.");
+        if (!found) {
+            System.out.println("Member with member number " + memberNumber + " not found.");
+        }
+    }*/
+    public void changeAnnualMembershipPayments() {
+        Scanner scanner = new Scanner(System.in);
+        ArrayList<Member> members = controller.getMembers();
+
+        System.out.println("Enter the member number for which you want to change the annual membership payment status:");
+        int memberNumber = scanner.nextInt();
+
+        boolean found = false;
+
+        for (Member member : members) {
+            if (member.getMemberNumber() == memberNumber) {
+                found = true;
+
+                System.out.println("Current annual membership payment status for member " + member.getName() + ": " +
+                        (member.hasPaidAnnualMembership() ? "Paid" : "Not paid"));
+
+                System.out.println("Do you want to change the status? (Enter 'Y' for Yes, 'N' for No)");
+                String input = scanner.next();
+
+                if (input.equalsIgnoreCase("Y")) {
+                    boolean newStatus = !member.hasPaidAnnualMembership();
+                    member.setAnnualMembershipPaymentStatus(newStatus);
+                    System.out.println("Updated annual membership payment status for member " + member.getName() +
+                            " to " + (newStatus ? "Paid" : "Not paid"));
+
+                    // Pass the correct member number to the controller method
+                    controller.registretPaidOrNot(memberNumber, newStatus);
+                } else {
+                    System.out.println("No changes made.");
+                }
+
+                break; // Exit the loop since the member has been found
             }
         }
+
+        if (!found) {
+            System.out.println("Member with member number " + memberNumber + " not found.");
+        }
+    }
+
 
     //______________
 
