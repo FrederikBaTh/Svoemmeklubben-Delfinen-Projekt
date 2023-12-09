@@ -9,15 +9,10 @@ import java.util.Scanner;
 public class FileHandler {
     private String fileName;
 
-
-
-
-
     public FileHandler(String fileName) {
         this.fileName = fileName;
     }
 
-    //TODO Load og save Members
     public ArrayList<Member> loadedMembers() {
         ArrayList<Member> loadedMembers = new ArrayList<>();
 
@@ -75,9 +70,7 @@ public class FileHandler {
         }
     }
 
-    //TODO Load Træning og konkurrence resultater
-
-    public ArrayList<CompetitiveMember> loadedTræningsResultater(String fileName) {
+    public ArrayList<CompetitiveMember> loadedTrainingResults(String fileName) {
         ArrayList<CompetitiveMember> loadedTræningsResultater = new ArrayList<>();
         try (Scanner fileScanner = new Scanner(new File(fileName))) {
             while (fileScanner.hasNextLine()) {
@@ -139,7 +132,6 @@ public class FileHandler {
     }
 
 
-    //TODO Save Træning og konkurrence resultater
     public void saveListOfKokurrenceTidToFile(String fileName, ArrayList<CompetitiveMember> compMembers) {
         try (PrintWriter writer = new PrintWriter(new FileWriter(fileName))) {
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
@@ -161,7 +153,7 @@ public class FileHandler {
         }
     }
 
-    public void saveListOfTræningsTidToFile(String fileName, ArrayList<CompetitiveMember> compMembers) {
+    public void saveListOfTrainingtimeToFile(String fileName, ArrayList<CompetitiveMember> compMembers) {
         try (PrintWriter writer = new PrintWriter(new FileWriter(fileName))) {
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
 
@@ -181,7 +173,6 @@ public class FileHandler {
     }
 
 
-    //TODO Fomatter og parser
     private String formatDuration(Duration duration) {
         long hours = duration.toHours();
         long minutes = (duration.toMinutes() % 60);

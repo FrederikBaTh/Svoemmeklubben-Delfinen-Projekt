@@ -51,7 +51,7 @@ public class CompetitiveMember extends Member {
         return eventPlacement;
     }
 
-    //TODO Setters
+    //
     private void initializeEventDetailsEvent(int memberNumber, Duration swimTime, LocalDate dateOfSwim, SwimmingDiscipline swimmingDiscipline, String eventName, String eventPlacement, Duration eventSwimTime) {
         this.setMemberNumber(memberNumber);
         this.swimTime = swimTime;

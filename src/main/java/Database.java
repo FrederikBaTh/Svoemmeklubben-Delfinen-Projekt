@@ -4,7 +4,7 @@ import java.util.*;
 
 public class Database {
 
-    private ArrayList<Member> meembers = new ArrayList<>();
+    private ArrayList<Member> membersList = new ArrayList<>();
     private FileHandler fileHandler = new FileHandler("MedlemsListe.csv");
     private FileHandler fileHandler1 = new FileHandler("TræningsTid.csv");
 
@@ -15,14 +15,14 @@ public class Database {
     private Member member;
 
     public Database() {
-        if (meembers.isEmpty()) {
-            meembers = fileHandler.loadedMembers();
+        if (membersList.isEmpty()) {
+            membersList = fileHandler.loadedMembers();
         }
         if (compMeembersEvent.isEmpty()) {
             compMeembersEvent = fileHandler.loadedCompetitiveMember("KonkurrenceTid.csv");
         }
         if (compMeembersTræning.isEmpty()) {
-            compMeembersTræning = fileHandler1.loadedTræningsResultater( "TræningsTid.csv");
+            compMeembersTræning = fileHandler1.loadedTrainingResults( "TræningsTid.csv");
         }
         if (statusPayment.isEmpty()){
             statusPayment = fileHandler2.loadListOfPaidOrNot("KontingentOversigt.csv");
@@ -39,7 +39,7 @@ public class Database {
         }
     }*/
 
-    public void registrerPaidOrNot(int memberNumber, boolean paid) {
+    public void registerPaidOrNot(int memberNumber, boolean paid) {
         try {
             MembershipStatus membershipStatus = new MembershipStatus(memberNumber, paid);
             statusPayment.add(membershipStatus);
@@ -59,7 +59,7 @@ public class Database {
     public int calculateYearlyIncome() {
         int yearlyIncome = 0;
 
-        for (Member member : meembers) {
+        for (Member member : membersList) {
             yearlyIncome += member.calculateYearlySubscriptionFee();
         }
 
@@ -73,7 +73,7 @@ public class Database {
     }
 
     public void renewMembership() {
-        ArrayList<Member> members = getMeembers();
+        ArrayList<Member> members = getMembersList();
 
         System.out.println("List of Members:");
         for (Member member : members) {
@@ -98,32 +98,25 @@ public class Database {
     }
 
 
-
-
-
-
-    //TODO MEDLEM
-
-
-    public void registrerMedlem(String name, String dateOfBirth, String gender, int phonenumber, String address, int memberNumber, String passiveOrActive, String memberType, String motionist) {
+    public void registerMember(String name, String dateOfBirth, String gender, int phonenumber, String address, int memberNumber, String passiveOrActive, String memberType, String motionist) {
         try {
             Member member = new Member(name, dateOfBirth, gender, phonenumber, address, memberNumber, passiveOrActive, memberType, motionist);
-            meembers.add(member);
-            fileHandler.saveListOfMembersToFile("MedlemsListe.csv", meembers);
+            membersList.add(member);
+            fileHandler.saveListOfMembersToFile("MedlemsListe.csv", membersList);
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    public ArrayList<Member> getMeembers() {
-        return meembers;
+    public ArrayList<Member> getMembersList() {
+        return membersList;
     }
 
     public void sortMembersByAge(List<Member> meembers) {
         meembers.sort(Comparator.comparingInt(Member::calculateAgeList));
     }
     public boolean memberExists(int memberNumber) {
-        for (Member member : meembers) {
+        for (Member member : membersList) {
             if (member.getMemberNumber() == memberNumber) {
                 return true;
             }
@@ -131,7 +124,7 @@ public class Database {
         return false;
     }
     public Member getMemberByNumber(int memberNumber) {
-        for (Member member : getMeembers()) {
+        for (Member member : getMembersList()) {
             if (member.getMemberNumber() == memberNumber) {
                 return member;
             }
@@ -139,17 +132,17 @@ public class Database {
         return null;
     }
     public void updateMember(Member updatedMember) {
-        for (int i = 0; i < meembers.size(); i++) {
-            Member existingMember = meembers.get(i);
+        for (int i = 0; i < membersList.size(); i++) {
+            Member existingMember = membersList.get(i);
             if (existingMember.getMemberNumber() == updatedMember.getMemberNumber()) {
-                meembers.set(i, updatedMember);
-                fileHandler.saveListOfMembersToFile("MedlemsListe.csv", meembers);
+                membersList.set(i, updatedMember);
+                fileHandler.saveListOfMembersToFile("MedlemsListe.csv", membersList);
                 break;
             }
         }
     }
     public CompetitiveMember getMemberByMemberNumberEvent (int memberNumber) {
-        for (CompetitiveMember member : getCompMeembersEvent()) {
+        for (CompetitiveMember member : getCompMembersForEvent()) {
             if (member.getMemberNumber() == memberNumber) {
                 return member;
             }
@@ -158,7 +151,7 @@ public class Database {
     }
     //TODO EVENT
 
-    public ArrayList<CompetitiveMember> getCompMeembersEvent() {
+    public ArrayList<CompetitiveMember> getCompMembersForEvent() {
         return compMeembersEvent;
     }
 
@@ -179,7 +172,7 @@ public class Database {
     public List<Member> getCompetitiveMembersUnder18() {
         List<Member> competitiveMembersUnder18 = new ArrayList<>();
 
-        for (Member member : meembers) {
+        for (Member member : membersList) {
             if (isCompetitiveUnder18(member)) {
                 competitiveMembersUnder18.add(member);
             }
@@ -191,7 +184,7 @@ public class Database {
     public List<Member> getCompetitiveMembersOver18() {
         List<Member> competitiveMembersOver18 = new ArrayList<>();
 
-        for (Member member : meembers) {
+        for (Member member : membersList) {
             if (isCompetitiveOver18(member)) {
                 competitiveMembersOver18.add(member);
             }
@@ -202,7 +195,7 @@ public class Database {
     public ArrayList<CompetitiveMember> getCompMeembers() {
         return compMeembersEvent;
     }
-    public void registrerEventTid(int memberNumber, Duration swimTime, LocalDate dateOfSwim, SwimmingDiscipline swimmingDiscipline, String eventName, String eventPlacement) {
+    public void registerEventTime(int memberNumber, Duration swimTime, LocalDate dateOfSwim, SwimmingDiscipline swimmingDiscipline, String eventName, String eventPlacement) {
         try {
             CompetitiveMember competitiveMember = new CompetitiveMember(memberNumber, swimTime, dateOfSwim, swimmingDiscipline, eventName, eventPlacement);
             compMeembersEvent.add(competitiveMember);
@@ -211,7 +204,7 @@ public class Database {
             e.printStackTrace();
         }
     }
-    public void updateKonkurrence(CompetitiveMember updatedMember) {
+    public void updateContest(CompetitiveMember updatedMember) {
         for (int i = 0; i < compMeembersEvent.size(); i++) {
             CompetitiveMember existingMember = compMeembersEvent.get(i);
             if (existingMember.getMemberNumber() == updatedMember.getMemberNumber()) {
@@ -222,63 +215,59 @@ public class Database {
         }
     }
 
-//TODO TRÆNING
-public ArrayList<CompetitiveMember> getCompMeembersTræning() {
+public ArrayList<CompetitiveMember> getCompMembersTraining() {
     return compMeembersTræning;
 }
-public void registrerTræningTid(int memberNumber, Duration swimTime, LocalDate dateOfSwim, SwimmingDiscipline swimmingDiscipline) {
+public void registerTrainingTime(int memberNumber, Duration swimTime, LocalDate dateOfSwim, SwimmingDiscipline swimmingDiscipline) {
     try {
 
         //Member member = new Member(memberNumber, svimTime, dateOfSwim, swimmingDiscipline);
         CompetitiveMember competitiveMember = new CompetitiveMember(memberNumber, swimTime, dateOfSwim, swimmingDiscipline);
         compMeembersTræning.add(competitiveMember);
-        fileHandler.saveListOfTræningsTidToFile("TræningsTid.csv", compMeembersTræning);
+        fileHandler.saveListOfTrainingtimeToFile("TræningsTid.csv", compMeembersTræning);
 
     } catch (Exception e) {
         e.printStackTrace();
     }
 }
-public CompetitiveMember getMemberByMemberNumberTræning(int memberNumber) {
-    for (CompetitiveMember member : getCompMeembersTræning()) {
+public CompetitiveMember getMemberByMemberNumberTraining(int memberNumber) {
+    for (CompetitiveMember member : getCompMembersTraining()) {
         if (member.getMemberNumber() == memberNumber) {
             return member;
         }
     }
     return null;
 }
-    public void updateTræning(CompetitiveMember updatedMember) {
+    public void updateTraining(CompetitiveMember updatedMember) {
         for (int i = 0; i < compMeembersTræning.size(); i++) {
             CompetitiveMember existingMember = compMeembersTræning.get(i);
             if (existingMember.getMemberNumber() == updatedMember.getMemberNumber()) {
                 compMeembersTræning.set(i, updatedMember);
-                fileHandler.saveListOfTræningsTidToFile("TræningsTid.csv", compMeembersTræning);
+                fileHandler.saveListOfTrainingtimeToFile("TræningsTid.csv", compMeembersTræning);
                 break;
             }
         }
     }
-
-
-    //TODO BÅDE TRÆNING OG EVENT
 
     public List<CompetitiveMember> getTop5SwimTimes(SwimmingDiscipline swimmingDiscipline) {
         List<CompetitiveMember> competitiveMembers = new ArrayList<>();
 
         switch (swimmingDiscipline) {
             case BUTTERFLY:
-                competitiveMembers.addAll(getCompMeembersTræning());
-                competitiveMembers.addAll(getCompMeembersEvent());
+                competitiveMembers.addAll(getCompMembersTraining());
+                competitiveMembers.addAll(getCompMembersForEvent());
                 break;
             case BACKSTROKE:
-                competitiveMembers.addAll(getCompMeembersTræning());
-                competitiveMembers.addAll(getCompMeembersEvent());
+                competitiveMembers.addAll(getCompMembersTraining());
+                competitiveMembers.addAll(getCompMembersForEvent());
                 break;
             case BREASTSTROKE:
-                competitiveMembers.addAll(getCompMeembersTræning());
-                competitiveMembers.addAll(getCompMeembersEvent());
+                competitiveMembers.addAll(getCompMembersTraining());
+                competitiveMembers.addAll(getCompMembersForEvent());
                 break;
             case FREESTYLE:
-                competitiveMembers.addAll(getCompMeembersTræning());
-                competitiveMembers.addAll(getCompMeembersEvent());
+                competitiveMembers.addAll(getCompMembersTraining());
+                competitiveMembers.addAll(getCompMembersForEvent());
                 break;
         }
 

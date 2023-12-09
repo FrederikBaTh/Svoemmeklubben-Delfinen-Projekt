@@ -4,7 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c8e94393-bee2-45ff-a00f-fe84b417e598" name="Changes" comment="Version Restance og sortering af kode." />
+    <list default="true" id="c8e94393-bee2-45ff-a00f-fe84b417e598" name="Changes" comment="Version Restance og sortering af kode.">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/CompetitiveMember.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/CompetitiveMember.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Database.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Userinterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Userinterface.java" afterDir="false" />
+    </list>
     <list id="2a237768-9de4-4a09-b015-05cf8b104204" name="Changes by frede" comment="" />
     <list id="4babf067-84d3-45a2-91be-ecc58e07c2ef" name="Changes by Frederik" comment="" />
     <list id="b041e648-6bcb-4a8e-a759-87b582053a41" name="Changes by marcusmortensen" comment="" />
@@ -134,6 +140,7 @@
       <workItem from="1701689312355" duration="10369000" />
       <workItem from="1701776443667" duration="18641000" />
       <workItem from="1702030535314" duration="3058000" />
+      <workItem from="1702128227546" duration="405000" />
     </task>
     <task id="LOCAL-00001" summary="Version 2.3 ændret lidt nogle steder som er typefejl.">
       <option name="closed" value="true" />
