@@ -1,0 +1,332 @@
+Index: src/main/java/Database.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import java.util.ArrayList;\r\nimport java.util.Comparator;\r\nimport java.util.List;\r\nimport java.util.Scanner;\r\n\r\npublic class Database {\r\n\r\n    private ArrayList<Member> meembers = new ArrayList<>();\r\n    private FileHandler fileHandler = new FileHandler(\"MedlemsListe.csv\");\r\n\r\n    public Database() {\r\n        if (meembers.isEmpty()) {\r\n            meembers = fileHandler.loadedMembers();\r\n        }\r\n    }\r\n\r\n    private ArrayList<CompetitiveMember> compMeembers = new ArrayList<>();\r\n\r\n    public void registrerMedlem(String name, String dateOfBirth, String gender, int phonenumber, String address, int memberNumber, String passiveOrActive, String memberType, String motionist) {\r\n        try {\r\n            Member member = new Member(name, dateOfBirth, gender, phonenumber, address, memberNumber, passiveOrActive, memberType, motionist);\r\n            meembers.add(member);\r\n            fileHandler.saveListOfMembersToFile(\"MedlemsListe.csv\", meembers);\r\n            System.out.println(\"Member successfully registered.\");\r\n        } catch (Exception e) {\r\n            System.out.println(\"Error registering member: \" + e.getMessage());\r\n            e.printStackTrace();\r\n        }\r\n    }\r\n\r\n\r\n    public int calculateYearlyIncome() {\r\n        int yearlyIncome = 0;\r\n\r\n        for (Member member : meembers) {\r\n            yearlyIncome += member.calculateYearlySubscriptionFee();\r\n        }\r\n\r\n        return yearlyIncome;\r\n    }\r\n\r\n\r\n    public ArrayList<Member> getMeembers() {\r\n        return meembers;\r\n    }\r\n\r\n    public void sortMembersByAge(List<Member> meembers) {\r\n        meembers.sort(Comparator.comparingInt(Member::calculateAgeList));\r\n    }\r\n\r\n    /*public  updateMembership() {\r\n        LocalDate today = LocalDate.now();\r\n        return today.getYear();*/\r\n    //Period ageDifference\r\n\r\n\r\n    public ArrayList<CompetitiveMember> getCompMeembers() {\r\n        return compMeembers;\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/Database.java b/src/main/java/Database.java
+--- a/src/main/java/Database.java	(revision d54732d80184b472298eabead3d08dca5de1ad51)
++++ b/src/main/java/Database.java	(date 1701641138005)
+@@ -1,3 +1,5 @@
++import java.time.LocalDate;
++import java.time.LocalTime;
+ import java.util.ArrayList;
+ import java.util.Comparator;
+ import java.util.List;
+@@ -14,7 +16,9 @@
+         }
+     }
+ 
+-    private ArrayList<CompetitiveMember> compMeembers = new ArrayList<>();
++    private ArrayList<CompetitiveMember> compMeembersEvent = new ArrayList<>();
++
++    private ArrayList<CompetitiveMember> compMeembersTræning = new ArrayList<>();
+ 
+     public void registrerMedlem(String name, String dateOfBirth, String gender, int phonenumber, String address, int memberNumber, String passiveOrActive, String memberType, String motionist) {
+         try {
+@@ -55,6 +59,19 @@
+ 
+ 
+     public ArrayList<CompetitiveMember> getCompMeembers() {
+-        return compMeembers;
++        return compMeembersEvent;
+     }
++
++    public void registrerTræningTid(LocalTime svimTime, LocalDate dateOfSwim, SwimmingDiscipline swimmingDiscipline) {
++        try {
++            CompetitiveMember træning = new CompetitiveMember(svimTime, dateOfSwim, swimmingDiscipline);
++            compMeembersTræning.add(træning);
++            fileHandler.saveListOfTræningsTidToFile("TræningsTid.csv", compMeembersTræning);
++
++        } catch (Exception e) {
++            e.printStackTrace();
++        }
++    }
++
++
+ }
+\ No newline at end of file
+Index: src/main/java/Controller.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import java.time.LocalDate;\r\nimport java.util.ArrayList;\r\nimport java.util.List;\r\n\r\n//\r\npublic class Controller {\r\n\r\n\r\n    Member member = new Member();\r\n\r\n    Database database = new Database();\r\n\r\n    //TODO brug til noget?\r\n    public ArrayList<Member> printMedlemmerStamoplysninger() {\r\n       return database.getMeembers();\r\n    }\r\n\r\n    public void registrerMedlem(String name, String dateOfBirth, String gender, int phonenumber, String adress, int memberNumber, String passiveOrActive, String memberType, String motionist) {\r\n        database.registrerMedlem(name, dateOfBirth, gender, phonenumber, adress, memberNumber, passiveOrActive, memberType, motionist);\r\n    }\r\n\r\n\r\n    public void sortMembersByAge(ArrayList<Member> members) {\r\n        database.sortMembersByAge(members);\r\n    }\r\n\r\n    public int calculateAge(LocalDate date){\r\n        return member.calculateAge(date);\r\n    }\r\n\r\n    public ArrayList<Member> getMembers() {\r\n        return database.getMeembers();\r\n\r\n    }\r\n\r\n    public int calculateYearlyIncome(){\r\n        return database.calculateYearlyIncome();\r\n    }\r\n\r\n\r\n    public int generateMemberNumber(){\r\n\r\n        return member.generateMemberNumber();\r\n    }\r\n\r\n\r\n    //TODO brug til noget?\r\n    public void someMethod() {\r\n        List<Member> members = getMembers();\r\n\r\n\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/Controller.java b/src/main/java/Controller.java
+--- a/src/main/java/Controller.java	(revision d54732d80184b472298eabead3d08dca5de1ad51)
++++ b/src/main/java/Controller.java	(date 1701641761038)
+@@ -6,7 +6,7 @@
+ public class Controller {
+ 
+ 
+-    Member member = new Member();
++    Member member = new Member(name, dateOfBirth, phonenumber, memberNumber, memberType, swimTime, dateOfSwim, swimmingDiscipline, eventName, eventPlacement, eventSwimTime);
+ 
+     Database database = new Database();
+ 
+Index: src/main/java/FileHandler.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import java.io.File;\r\nimport java.io.FileNotFoundException;\r\nimport java.io.PrintStream;\r\nimport java.time.format.DateTimeFormatter;\r\nimport java.util.ArrayList;\r\nimport java.util.NoSuchElementException;\r\nimport java.util.Scanner;\r\n\r\nimport java.io.FileOutputStream;\r\nimport java.io.IOException;\r\npublic class FileHandler {\r\n    private String fileName;\r\n\r\n\r\n    public FileHandler(String fileName) {\r\n        this.fileName = fileName;\r\n    }\r\n    public ArrayList<Member> loadedMembers() {\r\n        ArrayList<Member> loadedMembers = new ArrayList<>();\r\n\r\n        try (Scanner fileScanner = new Scanner(new File(fileName))) {\r\n            while (fileScanner.hasNextLine()) {\r\n                String line = fileScanner.nextLine();\r\n                String[] memberInfo = line.split(\":\");\r\n\r\n                String name = memberInfo[0];\r\n                String dateOfBirth = memberInfo[1];\r\n                String gender = memberInfo[2];\r\n                int phonenumber = Integer.parseInt(memberInfo[3]);\r\n                String address = memberInfo[4];\r\n                int memberNumber = Integer.parseInt(memberInfo[5]);\r\n                String passiveOrActive = memberInfo[6];\r\n                String memberType = memberInfo[7];\r\n                String motionist = memberInfo[8];\r\n\r\n\r\n                Member member = new Member(name, dateOfBirth, gender, phonenumber, address, memberNumber, passiveOrActive, memberType, motionist);\r\n                loadedMembers.add(member);\r\n            }\r\n        } catch (FileNotFoundException | NumberFormatException | NoSuchElementException e) {\r\n            System.err.println(\"Fejl: \" + e.getMessage());\r\n        }\r\n\r\n        return loadedMembers;\r\n    }\r\n\r\n\r\n    /*public void saveListOfMembersToFile(String fileName, ArrayList<Member> members) {\r\n        try (PrintStream output = new PrintStream(fileName)) {\r\n            DateTimeFormatter formatter = DateTimeFormatter.ofPattern(\"dd-MM-yyyy\");\r\n            for (Member member : members) {\r\n                String memberInfo = member.getName() + \":\" +\r\n                        member.getDateOfBirth().format(formatter) + \":\" +\r\n                        member.getGender() + \":\" +\r\n                        member.getPhonenumber() + \":\" +\r\n                        member.getAdress() + \":\" +\r\n                        member.getMemberNumber() + \":\" +\r\n                        member.getPassiveOrActive() + \":\" +\r\n                        member.getMemberType() + \":\" +\r\n                        member.getMotionist() + \":\" +\r\n\r\n                output.println(memberInfo);\r\n                output.println();\r\n            }\r\n        } catch (FileNotFoundException e) {\r\n            System.err.println(\"Fejl: \" + e.getMessage());\r\n        }\r\n        catch (NumberFormatException | NoSuchElementException e) {\r\n        System.err.println(\"Fejl ved indlæsning af medlemmer: \" + e.getMessage());\r\n        }\r\n    }*/\r\n\r\n    public void saveListOfMembersToFile(String fileName, ArrayList<Member> members) {\r\n        try (FileOutputStream fileOutputStream = new FileOutputStream(fileName, true)) {\r\n            DateTimeFormatter formatter = DateTimeFormatter.ofPattern(\"dd-MM-yyyy\");\r\n            for (Member member : members) {\r\n                String memberInfo = member.getName() + \":\" +\r\n                        member.getDateOfBirth().format(formatter) + \":\" +\r\n                        member.getGender() + \":\" +\r\n                        member.getPhonenumber() + \":\" +\r\n                        member.getAdress() + \":\" +\r\n                        member.getMemberNumber() + \":\" +\r\n                        member.getPassiveOrActive() + \":\" +\r\n                        member.getMemberType() + \":\" +\r\n                        member.getMotionist();\r\n\r\n                memberInfo += System.lineSeparator();\r\n                fileOutputStream.write(memberInfo.getBytes());\r\n            }\r\n        } catch (IOException e) {\r\n            System.err.println(\"Fejl: \" + e.getMessage());\r\n        }\r\n    }\r\n\r\n\r\n        /*\r\n        public void toFile() {\r\n            try {\r\n                PrintStream writeToFile = new PrintStream(new File(\"MedlemsListe.csv\"));\r\n                for (int i = 0; i < this.members.toArray().length; i++) {\r\n                    writeToFile.println(this.members.get(i).toCsvString());\r\n                    System.out.println(\"toFileMethod \" + this.members.get(i).toCsvString());\r\n                }\r\n           }\r\n            catch (FileNotFoundException e) {\r\n                System.out.println(e);\r\n            }\r\n        } */\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/FileHandler.java b/src/main/java/FileHandler.java
+--- a/src/main/java/FileHandler.java	(revision d54732d80184b472298eabead3d08dca5de1ad51)
++++ b/src/main/java/FileHandler.java	(date 1701640833161)
+@@ -1,6 +1,8 @@
+ import java.io.File;
+ import java.io.FileNotFoundException;
+ import java.io.PrintStream;
++import java.time.LocalDate;
++import java.time.LocalTime;
+ import java.time.format.DateTimeFormatter;
+ import java.util.ArrayList;
+ import java.util.NoSuchElementException;
+@@ -93,8 +95,8 @@
+     }
+ 
+ 
+-        /*
+-        public void toFile() {
++
++       /* public void toFile() {
+             try {
+                 PrintStream writeToFile = new PrintStream(new File("MedlemsListe.csv"));
+                 for (int i = 0; i < this.members.toArray().length; i++) {
+@@ -106,4 +108,54 @@
+                 System.out.println(e);
+             }
+         } */
++
++    public ArrayList<CompetitiveMember> loadedCompetitiveMember(){
++        ArrayList<CompetitiveMember> loadedCompetitiveMember = new ArrayList<>();
++
++        try (Scanner fileScanner = new Scanner(new File(fileName))){
++            while(fileScanner.hasNext()){
++                String swimTimeString = fileScanner.nextLine();
++                String dateOfSwimString =  fileScanner.nextLine();
++                String  swimmingDisciplineString = fileScanner.nextLine();
++
++                //Duration swimTime = Duration.parse(swimTimeString);
++                LocalTime swimTime = LocalTime.parse(swimTimeString, DateTimeFormatter.ofPattern("HH:mm:ss"));
++
++
++
++                LocalDate dateOfSwim = LocalDate.parse(dateOfSwimString, DateTimeFormatter.ofPattern("dd-MM-yyyy"));
++                SwimmingDiscipline swimmingDiscipline = SwimmingDiscipline.valueOf(swimmingDisciplineString);
++
++
++                CompetitiveMember træningMember = new CompetitiveMember(swimTime, dateOfSwim, swimmingDiscipline);
++                loadedCompetitiveMember.add(træningMember);
++
++            }
++
++        } catch (FileNotFoundException e) {
++            System.err.println("Fejl: " + e.getMessage());
++        }
++
++
++        return loadedCompetitiveMember;
++    }
++
++    public void saveListOfTræningsTidToFile(String fileName, ArrayList<CompetitiveMember> compMember) {
++        try (PrintStream output = new PrintStream(fileName)) {
++
++            for (CompetitiveMember CompMember : compMember) {
++
++                output.println(CompMember.getSwimTime());
++                output.println(CompMember.getDateOfSwim());
++                output.println(CompMember.getSwimmingDiscipline());
++                output.println();
++            }
++        }
++        catch (FileNotFoundException e) {
++            System.err.println("Fejl: " + e.getMessage());
++        }
++
++    }
++
++
+ }
+Index: src/main/java/CompetitiveMember.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import java.time.Duration;\r\nimport java.time.LocalDate;\r\n\r\npublic class CompetitiveMember extends Member {\r\n\r\n    private Duration swimTime;\r\n    private LocalDate dateOfSwim;\r\n    private String swimmingDiscipline;\r\n\r\n    private String eventName;\r\n    private String eventPlacement;\r\n    private Duration eventSwimTime;\r\n\r\n    // Training\r\n    public CompetitiveMember(String name, LocalDate dateOfBirth, int phonenumber, int memberNumber, String memberType, Duration swimTime, LocalDate dateOfSwim, SwimmingDiscipline swimmingDiscipline) {\r\n        super(name, dateOfBirth, phonenumber, memberNumber, memberType, swimTime, dateOfSwim, swimmingDiscipline, eventName, eventPlacement, eventSwimTime);\r\n\r\n        initializeEventDetailsTræning(swimTime, dateOfSwim, swimmingDiscipline);\r\n    }\r\n\r\n    // Event\r\n    public CompetitiveMember(String name, LocalDate dateOfBirth, int phonenumber, int memberNumber, String memberType, Duration swimTime, LocalDate dateOfSwim, String swimmingDiscipline, String eventName, String eventPlacement, Duration eventSwimTime) {\r\n        super(name, dateOfBirth, phonenumber, memberNumber, memberType, swimTime, dateOfSwim, swimmingDiscipline);\r\n\r\n        initializeEventDetailsEvent(swimTime, dateOfSwim, swimmingDiscipline, eventName, eventPlacement, eventSwimTime);\r\n    }\r\n\r\n    private void initializeEventDetailsEvent(Duration swimTime, LocalDate dateOfSwim, String swimmingDiscipline, String eventName, String eventPlacement, Duration eventSwimTime) {\r\n        this.swimTime = swimTime;\r\n        this.dateOfSwim = dateOfSwim;\r\n        this.swimmingDiscipline = swimmingDiscipline;\r\n        this.eventName = eventName;\r\n        this.eventPlacement = eventPlacement;\r\n        this.eventSwimTime = eventSwimTime;\r\n    }\r\n    private void initializeEventDetailsTræning(Duration swimTime, LocalDate dateOfSwim, SwimmingDiscipline swimmingDiscipline) {\r\n        this.swimTime = swimTime;\r\n        this.dateOfSwim = dateOfSwim;\r\n        this.swimmingDiscipline = swimmingDiscipline;\r\n    }\r\n\r\n    @Override\r\n    public String toString() {\r\n        return \"CompetitiveMember{\" +\r\n                \"swimTime=\" + swimTime +\r\n                \", dateOfSwim=\" + dateOfSwim +\r\n                \", swimmingDiscipline=\" + swimmingDiscipline +\r\n                \", eventName='\" + eventName + '\\'' +\r\n                \", eventPlacement='\" + eventPlacement + '\\'' +\r\n                '}';\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/CompetitiveMember.java b/src/main/java/CompetitiveMember.java
+--- a/src/main/java/CompetitiveMember.java	(revision d54732d80184b472298eabead3d08dca5de1ad51)
++++ b/src/main/java/CompetitiveMember.java	(date 1701641846813)
+@@ -1,11 +1,12 @@
+ import java.time.Duration;
+ import java.time.LocalDate;
++import java.time.LocalTime;
+ 
+ public class CompetitiveMember extends Member {
+ 
+     private Duration swimTime;
+     private LocalDate dateOfSwim;
+-    private String swimmingDiscipline;
++    private SwimmingDiscipline swimmingDiscipline;
+ 
+     private String eventName;
+     private String eventPlacement;
+@@ -19,13 +20,15 @@
+     }
+ 
+     // Event
+-    public CompetitiveMember(String name, LocalDate dateOfBirth, int phonenumber, int memberNumber, String memberType, Duration swimTime, LocalDate dateOfSwim, String swimmingDiscipline, String eventName, String eventPlacement, Duration eventSwimTime) {
+-        super(name, dateOfBirth, phonenumber, memberNumber, memberType, swimTime, dateOfSwim, swimmingDiscipline);
++    public CompetitiveMember(String name, LocalDate dateOfBirth, int phonenumber, int memberNumber, String memberType, Duration swimTime, LocalDate dateOfSwim, SwimmingDiscipline swimmingDiscipline, String eventName, String eventPlacement, Duration eventSwimTime) {
++        super(name, dateOfBirth, phonenumber, memberNumber, memberType, swimTime, dateOfSwim, swimmingDiscipline, eventName, eventPlacement, eventSwimTime);
+ 
+         initializeEventDetailsEvent(swimTime, dateOfSwim, swimmingDiscipline, eventName, eventPlacement, eventSwimTime);
+     }
+ 
+-    private void initializeEventDetailsEvent(Duration swimTime, LocalDate dateOfSwim, String swimmingDiscipline, String eventName, String eventPlacement, Duration eventSwimTime) {
++
++
++    private void initializeEventDetailsEvent(Duration swimTime, LocalDate dateOfSwim, SwimmingDiscipline swimmingDiscipline, String eventName, String eventPlacement, Duration eventSwimTime) {
+         this.swimTime = swimTime;
+         this.dateOfSwim = dateOfSwim;
+         this.swimmingDiscipline = swimmingDiscipline;
+Index: src/main/java/Member.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import java.time.Duration;\r\nimport java.time.LocalDate;\r\nimport java.time.format.DateTimeFormatter;\r\nimport java.util.Random;\r\nimport java.util.ArrayList;\r\nimport java.util.List;\r\n\r\npublic class Member {\r\n\r\n    private String name;\r\n    private LocalDate dateOfBirth;\r\n    private String gender;\r\n    private int phonenumber;\r\n    private String adress;\r\n    private int memberNumber;\r\n    private String passiveOrActive; // TODO Overvej at ændre til boolean\r\n    private String memberType;\r\n    private String motionist;\r\n\r\n    private List<Integer> usedMemberNumbers = new ArrayList<>();\r\n\r\n    //constructor\r\n\r\n    public Member(String name, String dateOfBirth, String gender, int phonenumber, String adress, int memberNumber, String passiveOrActive, String memberType, String motionist ) {\r\n        this.name = name;\r\n        this.dateOfBirth = LocalDate.parse(dateOfBirth, DateTimeFormatter.ofPattern(\"dd-MM-yyyy\"));\r\n        this.gender = gender;\r\n        this.phonenumber = phonenumber;\r\n        this.adress = adress;\r\n        this.memberNumber = memberNumber;\r\n        this.passiveOrActive = passiveOrActive;\r\n        this.memberType = memberType;\r\n        this.motionist = motionist;\r\n    }\r\n\r\n    public Member() {\r\n    }\r\n\r\n    public Member(String name, LocalDate dateOfBirth, String gender, int phonenumber, String adress, int memberNumber, String passiveOrActive, String memberType, String motionist, Duration swimTime, LocalDate dateOfSwim, String swimmingDiscipline) {\r\n    }\r\n\r\n    public Member(String name, LocalDate dateOfBirth, int phonenumber, int memberNumber, String memberType, Duration swimTime, LocalDate dateOfSwim, String swimmingDiscipline) {\r\n\r\n    }\r\n\r\n    public int generateMemberNumber() {\r\n        Random random = new Random();\r\n        int newMemberNumber;\r\n\r\n\r\n        do {\r\n            newMemberNumber = random.nextInt(999999);\r\n        } while (memberNumberUsed(newMemberNumber));\r\n\r\n        usedMemberNumbers.add(newMemberNumber);\r\n        return newMemberNumber;\r\n    }\r\n\r\n    public boolean memberNumberUsed(int number) {\r\n        for (int usedNumber : usedMemberNumbers) {\r\n            if (usedNumber == number) {\r\n                return true;\r\n            }\r\n        }\r\n        return false;\r\n    }\r\n\r\n\r\n\r\n\r\n\r\n    public int calculateAge(LocalDate date) {\r\n        this.dateOfBirth = date;\r\n        LocalDate today = LocalDate.now();\r\n        //System.out.println(today.getYear() - dateOfBirth.getYear());\r\n        return today.getYear() - dateOfBirth.getYear();\r\n    }\r\n    public int calculateAgeList() {\r\n        LocalDate today = LocalDate.now();\r\n        return today.getYear() - dateOfBirth.getYear();\r\n    }\r\n\r\n    public String getFormattedDateOfBirth() {\r\n        DateTimeFormatter formatter = DateTimeFormatter.ofPattern(\"dd-MM-yyyy\");\r\n        return dateOfBirth.format(formatter);\r\n\r\n    }\r\n\r\n    public int calculateYearlySubscriptionFee() {\r\n\r\n        int baseFee = 0;\r\n\r\n        if (\"aktivt\".equalsIgnoreCase(passiveOrActive)) {\r\n            if (\"ungdomssvømmer u18\".equalsIgnoreCase(memberType)) {\r\n                baseFee = 1000;\r\n            } else if (\"seniorsvømmer\".equalsIgnoreCase(memberType)) {\r\n                baseFee = 1600;\r\n                if (calculateAgeList() > 60) {\r\n\r\n                    baseFee = (int) (baseFee * 0.75);\r\n                }\r\n            }else if(\"ungdomssvømmer o18\".equalsIgnoreCase(memberType)){\r\n                baseFee = 1600;\r\n                if (calculateAgeList() > 60) {\r\n\r\n                    baseFee = (int) (baseFee * 0.75);\r\n                }\r\n            }\r\n        } else if (\"passivt\".equalsIgnoreCase(passiveOrActive)) {\r\n            baseFee = 500;\r\n        }\r\n\r\n\r\n        return baseFee;\r\n    }\r\n\r\n\r\n    // getters\r\n\r\n    public String getName() {\r\n        return name;\r\n    }\r\n\r\n    public LocalDate getDateOfBirth() {\r\n        return dateOfBirth;\r\n    }\r\n\r\n    public String getGender() {\r\n        return gender;\r\n    }\r\n\r\n    public int getPhonenumber() {\r\n        return phonenumber;\r\n    }\r\n\r\n    public String getAdress() {\r\n        return adress;\r\n    }\r\n\r\n    public int getMemberNumber() {\r\n        return memberNumber;\r\n    }\r\n\r\n    public String getPassiveOrActive() {\r\n        return passiveOrActive;\r\n    }\r\n\r\n    public String getMemberType() {\r\n        return memberType;\r\n    }\r\n\r\n    public String getMotionist() {\r\n        return motionist;\r\n    }\r\n\r\n\r\n    //setters\r\n\r\n    public void setName(String name) {\r\n        this.name = name;\r\n    }\r\n\r\n    public void setDateOfBirth(LocalDate dateOfBirth) {\r\n        this.dateOfBirth = dateOfBirth;\r\n    }\r\n\r\n    public void setGender(String gender) {\r\n        this.gender = gender;\r\n    }\r\n\r\n    public void setPhonenumber(int phonenumber) {\r\n        this.phonenumber = phonenumber;\r\n    }\r\n\r\n    public void setAdress(String adress) {\r\n        this.adress = adress;\r\n    }\r\n\r\n    public void setMemberNumber(int memberNumber) {\r\n        this.memberNumber = memberNumber;\r\n    }\r\n\r\n    public void setPassiveOrActive(String passiveOrActive) {\r\n        this.passiveOrActive = passiveOrActive;\r\n    }\r\n\r\n    public void setMemberType(String Membertype) {\r\n        this.memberType = Membertype;\r\n    }\r\n\r\n    public void setMotionist(String motionist) {\r\n        this.motionist = motionist;\r\n    }\r\n\r\n\r\n    @Override\r\n    public String toString() {\r\n        return \"\\n\" +\r\n                \"navn:\" + \" \" + name + \"\\n\" +\r\n                \"Fødselsår:\" + \" \" + dateOfBirth + \"\\n\" +\r\n                \"køn:\" + \" \" + gender + \"\\n\" +\r\n                \"telefon:\" + \" \" + phonenumber + \"\\n\" +\r\n                \"Adresse:\" + \" \" + adress + \"\\n\" +\r\n                \"Medlemsnummer:\" + \" \" + memberNumber + \"\\n\" +\r\n                \"Medlemsstatus:\" + \" \" + passiveOrActive + \"\\n\" +\r\n                \"Medlemstype:\" + \" \" + memberType + \"\\n\" +\r\n                \"Motionist:\" + \" \" + motionist + \"\\n\";\r\n    }\r\n}\r\n\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/Member.java b/src/main/java/Member.java
+--- a/src/main/java/Member.java	(revision d54732d80184b472298eabead3d08dca5de1ad51)
++++ b/src/main/java/Member.java	(date 1701641846818)
+@@ -1,5 +1,6 @@
+ import java.time.Duration;
+ import java.time.LocalDate;
++import java.time.LocalTime;
+ import java.time.format.DateTimeFormatter;
+ import java.util.Random;
+ import java.util.ArrayList;
+@@ -33,15 +34,10 @@
+         this.motionist = motionist;
+     }
+ 
+-    public Member() {
+-    }
+-
+-    public Member(String name, LocalDate dateOfBirth, String gender, int phonenumber, String adress, int memberNumber, String passiveOrActive, String memberType, String motionist, Duration swimTime, LocalDate dateOfSwim, String swimmingDiscipline) {
++    public Member(String name, LocalDate dateOfBirth, int phonenumber, int memberNumber, String memberType, Duration swimTime, LocalDate dateOfSwim, SwimmingDiscipline swimmingDiscipline, String eventName, String eventPlacement, Duration eventSwimTime) {
+     }
+ 
+-    public Member(String name, LocalDate dateOfBirth, int phonenumber, int memberNumber, String memberType, Duration swimTime, LocalDate dateOfSwim, String swimmingDiscipline) {
+ 
+-    }
+ 
+     public int generateMemberNumber() {
+         Random random = new Random();
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"c8e94393-bee2-45ff-a00f-fe84b417e598\" name=\"Changes\" comment=\"Version Motionis eller konkurence check\">\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/MedlemsListe.csv\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/MedlemsListe.csv\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/CompetitiveMember.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/CompetitiveMember.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/Controller.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/Controller.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/Database.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/Database.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/FileHandler.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/FileHandler.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/Member.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/Member.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/Userinterface.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/Userinterface.java\" afterDir=\"false\" />\r\n    </list>\r\n    <list id=\"2a237768-9de4-4a09-b015-05cf8b104204\" name=\"Changes by frede\" comment=\"\" />\r\n    <list id=\"dbbd2cfc-9f72-46d4-9a64-d19b2a1cca5b\" name=\"Changes by pauls\" comment=\"\">\r\n      <change beforePath=\"$PROJECT_DIR$/MedlemsListe.csv\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/MedlemsListe.csv\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/Member.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/Member.java\" afterDir=\"false\" />\r\n    </list>\r\n    <list id=\"94e2b45a-2e0d-411e-b7d4-5750d824dc2d\" name=\"Changes by paulsebastiankrus\" comment=\"\" />\r\n    <list id=\"67793032-fb6c-4540-abf8-3a33fa1e9568\" name=\"Changes by Severius\" comment=\"\" />\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Class\" />\r\n        <option value=\"Enum\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_BRANCH_BY_REPOSITORY\">\r\n      <map>\r\n        <entry key=\"$PROJECT_DIR$\" value=\"prøverAtGøreNogleTingFærdige\" />\r\n      </map>\r\n    </option>\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"HighlightingSettingsPerFile\">\r\n    <setting file=\"jar:///Library/Java/JavaVirtualMachines/jdk-20.jdk/Contents/Home/lib/src.zip!/java.base/java/lang/Integer.java\" root0=\"SKIP_INSPECTION\" />\r\n  </component>\r\n  <component name=\"LineStatusTrackerManager\">\r\n    <file path=\"$PROJECT_DIR$/MedlemsListe.csv\">\r\n      <ranges>\r\n        <range start1=\"1\" end1=\"2\" start2=\"1\" end2=\"1\" changelist=\"dbbd2cfc-9f72-46d4-9a64-d19b2a1cca5b\" />\r\n        <range start1=\"4\" end1=\"4\" start2=\"3\" end2=\"4\" changelist=\"c8e94393-bee2-45ff-a00f-fe84b417e598\" />\r\n      </ranges>\r\n    </file>\r\n    <file path=\"$PROJECT_DIR$/src/main/java/Member.java\">\r\n      <ranges>\r\n        <range start1=\"4\" end1=\"4\" start2=\"4\" end2=\"6\" changelist=\"dbbd2cfc-9f72-46d4-9a64-d19b2a1cca5b\" />\r\n        <range start1=\"16\" end1=\"16\" start2=\"18\" end2=\"20\" changelist=\"dbbd2cfc-9f72-46d4-9a64-d19b2a1cca5b\" />\r\n        <range start1=\"32\" end1=\"33\" start2=\"36\" end2=\"36\" changelist=\"c8e94393-bee2-45ff-a00f-fe84b417e598\" />\r\n        <range start1=\"37\" end1=\"37\" start2=\"40\" end2=\"44\" changelist=\"c8e94393-bee2-45ff-a00f-fe84b417e598\" />\r\n        <range start1=\"39\" end1=\"40\" start2=\"46\" end2=\"46\" changelist=\"dbbd2cfc-9f72-46d4-9a64-d19b2a1cca5b\" />\r\n        <range start1=\"41\" end1=\"42\" start2=\"47\" end2=\"56\" changelist=\"dbbd2cfc-9f72-46d4-9a64-d19b2a1cca5b\" />\r\n        <range start1=\"44\" end1=\"44\" start2=\"58\" end2=\"71\" changelist=\"dbbd2cfc-9f72-46d4-9a64-d19b2a1cca5b\" />\r\n      </ranges>\r\n    </file>\r\n  </component>\r\n  <component name=\"ProjectColorInfo\">{\r\n  &quot;associatedIndex&quot;: 4\r\n}</component>\r\n  <component name=\"ProjectId\" id=\"2YZW3B8qavazBkYFZwsCDWoo24s\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">{\r\n  &quot;keyToString&quot;: {\r\n    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,\r\n    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,\r\n    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,\r\n    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,\r\n    &quot;git-widget-placeholder&quot;: &quot;master&quot;,\r\n    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,\r\n    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,\r\n    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,\r\n    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,\r\n    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,\r\n    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,\r\n    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,\r\n    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,\r\n    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;\r\n  }\r\n}</component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"MoveFile.RECENT_KEYS\">\r\n      <recent name=\"C:\\Users\\pauls\\Desktop\\INTELLIJ PROJECTER\\Svoemmeklubben-Delfinen-Projekt\\src\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"RunManager\">\r\n    <configuration name=\"Main\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"Main\" />\r\n      <module name=\"Delfinen\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <recent_temporary>\r\n      <list>\r\n        <item itemvalue=\"Application.Main\" />\r\n        <item itemvalue=\"Application.Main\" />\r\n      </list>\r\n    </recent_temporary>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"c8e94393-bee2-45ff-a00f-fe84b417e598\" name=\"Changes\" comment=\"\" />\r\n      <created>1700733382632</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1700733382632</updated>\r\n      <workItem from=\"1700733383725\" duration=\"2934000\" />\r\n      <workItem from=\"1700758495923\" duration=\"6085000\" />\r\n      <workItem from=\"1700811268115\" duration=\"275000\" />\r\n      <workItem from=\"1701093255413\" duration=\"2776000\" />\r\n      <workItem from=\"1701337496163\" duration=\"2700000\" />\r\n      <workItem from=\"1701429245559\" duration=\"2352000\" />\r\n      <workItem from=\"1700826683546\" duration=\"396000\" />\r\n      <workItem from=\"1701118664800\" duration=\"2011000\" />\r\n      <workItem from=\"1701171387000\" duration=\"1329000\" />\r\n      <workItem from=\"1701179245718\" duration=\"521000\" />\r\n      <workItem from=\"1701295369375\" duration=\"732000\" />\r\n      <workItem from=\"1701540863878\" duration=\"25000\" />\r\n      <workItem from=\"1701606526601\" duration=\"16292000\" />\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"Version 2.3 ændret lidt nogle steder som er typefejl.\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1701343545483</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1701343545483</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00004\" summary=\"lavet årlig indkomst\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1701389804027</created>\r\n      <option name=\"number\" value=\"00004\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00004\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1701389804027</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00005\" summary=\"autogenereret medlemsnummer og fjernet en sout print for meget på aktiv passiv\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1701430822536</created>\r\n      <option name=\"number\" value=\"00005\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00005\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1701430822536</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"lavet årlig indkomst\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1701388083086</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1701388083086</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00003\" summary=\"lavet årlig indkomst\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1701389516510</created>\r\n      <option name=\"number\" value=\"00003\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1701389516510</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00006\" summary=\"Version Checker om o eller u 18\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1701608324676</created>\r\n      <option name=\"number\" value=\"00006\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00006\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1701608324676</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00007\" summary=\"Version Motionis eller konkurence check\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1701621534624</created>\r\n      <option name=\"number\" value=\"00007\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00007\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1701621534624</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"8\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"Version 2.1\" />\r\n    <MESSAGE value=\"Version 2.2\" />\r\n    <MESSAGE value=\"Version 2.2 mandag yes\" />\r\n    <MESSAGE value=\"Changes by marcusmortensen\" />\r\n    <MESSAGE value=\"Version 2.3\" />\r\n    <MESSAGE value=\"Version 2.3 ændret lidt nogle steder som er typefejl.\" />\r\n    <MESSAGE value=\"lavet årlig indkomst\" />\r\n    <MESSAGE value=\"autogenereret medlemsnummer og fjernet en sout print for meget på aktiv passiv\" />\r\n    <MESSAGE value=\"Version Checker om o eller u 18\" />\r\n    <MESSAGE value=\"Version Motionis eller konkurence check\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"Version Motionis eller konkurence check\" />\r\n  </component>\r\n  <component name=\"XDebuggerManager\">\r\n    <breakpoint-manager>\r\n      <breakpoints>\r\n        <breakpoint enabled=\"true\" type=\"java-exception\">\r\n          <properties class=\"java.util.NoSuchElementException\" package=\"java.util\" />\r\n          <option name=\"timeStamp\" value=\"2\" />\r\n        </breakpoint>\r\n      </breakpoints>\r\n    </breakpoint-manager>\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision d54732d80184b472298eabead3d08dca5de1ad51)
++++ b/.idea/workspace.xml	(date 1701641761705)
+@@ -4,19 +4,18 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="c8e94393-bee2-45ff-a00f-fe84b417e598" name="Changes" comment="Version Motionis eller konkurence check">
++    <list default="true" id="c8e94393-bee2-45ff-a00f-fe84b417e598" name="Changes" comment="Version Register er 100% DONE">
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/MedlemsListe.csv" beforeDir="false" afterPath="$PROJECT_DIR$/MedlemsListe.csv" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/main/java/CompetitiveMember.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/CompetitiveMember.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/main/java/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/main/java/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Database.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/main/java/FileHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/FileHandler.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/main/java/Member.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Member.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/Userinterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Userinterface.java" afterDir="false" />
+     </list>
+     <list id="2a237768-9de4-4a09-b015-05cf8b104204" name="Changes by frede" comment="" />
+     <list id="dbbd2cfc-9f72-46d4-9a64-d19b2a1cca5b" name="Changes by pauls" comment="">
+       <change beforePath="$PROJECT_DIR$/MedlemsListe.csv" beforeDir="false" afterPath="$PROJECT_DIR$/MedlemsListe.csv" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/CompetitiveMember.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/CompetitiveMember.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/main/java/Member.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Member.java" afterDir="false" />
+     </list>
+     <list id="94e2b45a-2e0d-411e-b7d4-5750d824dc2d" name="Changes by paulsebastiankrus" comment="" />
+@@ -46,21 +45,25 @@
+     <setting file="jar:///Library/Java/JavaVirtualMachines/jdk-20.jdk/Contents/Home/lib/src.zip!/java.base/java/lang/Integer.java" root0="SKIP_INSPECTION" />
+   </component>
+   <component name="LineStatusTrackerManager">
+-    <file path="$PROJECT_DIR$/MedlemsListe.csv">
++    <file path="$PROJECT_DIR$/src/main/java/CompetitiveMember.java">
+       <ranges>
+-        <range start1="1" end1="2" start2="1" end2="1" changelist="dbbd2cfc-9f72-46d4-9a64-d19b2a1cca5b" />
+-        <range start1="4" end1="4" start2="3" end2="4" changelist="c8e94393-bee2-45ff-a00f-fe84b417e598" />
++        <range start1="7" end1="8" start2="7" end2="8" changelist="c8e94393-bee2-45ff-a00f-fe84b417e598" />
++        <range start1="14" end1="16" start2="14" end2="16" changelist="dbbd2cfc-9f72-46d4-9a64-d19b2a1cca5b" />
++        <range start1="21" end1="23" start2="21" end2="23" changelist="c8e94393-bee2-45ff-a00f-fe84b417e598" />
++        <range start1="27" end1="28" start2="27" end2="28" changelist="c8e94393-bee2-45ff-a00f-fe84b417e598" />
++        <range start1="35" end1="36" start2="35" end2="36" changelist="dbbd2cfc-9f72-46d4-9a64-d19b2a1cca5b" />
+       </ranges>
+     </file>
+     <file path="$PROJECT_DIR$/src/main/java/Member.java">
+       <ranges>
+         <range start1="4" end1="4" start2="4" end2="6" changelist="dbbd2cfc-9f72-46d4-9a64-d19b2a1cca5b" />
+         <range start1="16" end1="16" start2="18" end2="20" changelist="dbbd2cfc-9f72-46d4-9a64-d19b2a1cca5b" />
+-        <range start1="32" end1="33" start2="36" end2="36" changelist="c8e94393-bee2-45ff-a00f-fe84b417e598" />
+-        <range start1="37" end1="37" start2="40" end2="44" changelist="c8e94393-bee2-45ff-a00f-fe84b417e598" />
+-        <range start1="39" end1="40" start2="46" end2="46" changelist="dbbd2cfc-9f72-46d4-9a64-d19b2a1cca5b" />
+-        <range start1="41" end1="42" start2="47" end2="56" changelist="dbbd2cfc-9f72-46d4-9a64-d19b2a1cca5b" />
+-        <range start1="44" end1="44" start2="58" end2="71" changelist="dbbd2cfc-9f72-46d4-9a64-d19b2a1cca5b" />
++        <range start1="31" end1="32" start2="35" end2="36" changelist="c8e94393-bee2-45ff-a00f-fe84b417e598" />
++        <range start1="33" end1="39" start2="37" end2="38" changelist="c8e94393-bee2-45ff-a00f-fe84b417e598" />
++        <range start1="40" end1="40" start2="39" end2="40" changelist="c8e94393-bee2-45ff-a00f-fe84b417e598" />
++        <range start1="42" end1="43" start2="42" end2="42" changelist="dbbd2cfc-9f72-46d4-9a64-d19b2a1cca5b" />
++        <range start1="44" end1="45" start2="43" end2="52" changelist="dbbd2cfc-9f72-46d4-9a64-d19b2a1cca5b" />
++        <range start1="47" end1="47" start2="54" end2="67" changelist="dbbd2cfc-9f72-46d4-9a64-d19b2a1cca5b" />
+       </ranges>
+     </file>
+   </component>
+@@ -131,7 +134,7 @@
+       <workItem from="1701179245718" duration="521000" />
+       <workItem from="1701295369375" duration="732000" />
+       <workItem from="1701540863878" duration="25000" />
+-      <workItem from="1701606526601" duration="16292000" />
++      <workItem from="1701606526601" duration="17788000" />
+     </task>
+     <task id="LOCAL-00001" summary="Version 2.3 ændret lidt nogle steder som er typefejl.">
+       <option name="closed" value="true" />
+@@ -189,7 +192,15 @@
+       <option name="project" value="LOCAL" />
+       <updated>1701621534624</updated>
+     </task>
+-    <option name="localTasksCounter" value="8" />
++    <task id="LOCAL-00008" summary="Version Register er 100% DONE">
++      <option name="closed" value="true" />
++      <created>1701640545662</created>
++      <option name="number" value="00008" />
++      <option name="presentableId" value="LOCAL-00008" />
++      <option name="project" value="LOCAL" />
++      <updated>1701640545662</updated>
++    </task>
++    <option name="localTasksCounter" value="9" />
+     <servers />
+   </component>
+   <component name="TypeScriptGeneratedFilesManager">
+@@ -217,7 +228,8 @@
+     <MESSAGE value="autogenereret medlemsnummer og fjernet en sout print for meget på aktiv passiv" />
+     <MESSAGE value="Version Checker om o eller u 18" />
+     <MESSAGE value="Version Motionis eller konkurence check" />
+-    <option name="LAST_COMMIT_MESSAGE" value="Version Motionis eller konkurence check" />
++    <MESSAGE value="Version Register er 100% DONE" />
++    <option name="LAST_COMMIT_MESSAGE" value="Version Register er 100% DONE" />
+   </component>
+   <component name="XDebuggerManager">
+     <breakpoint-manager>
