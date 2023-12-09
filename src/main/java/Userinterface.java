@@ -10,14 +10,13 @@ import java.util.List;
 
 // systemet
 public class Userinterface {
-    private final Controller controller;
+
+    Controller controller = new Controller();
 
 
     private Scanner keyboard = new Scanner(System.in);
 
-    public Userinterface(Controller controller) {
-        this.controller = controller;
-    }
+
 
     private final String TrænerAdgangskode = "123";
     private final String formandAdgangskode = "123";
