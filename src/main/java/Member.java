@@ -13,14 +13,13 @@ public class Member {
     private int phonenumber;
     private String adress;
     private int memberNumber;
-    private String passiveOrActive; // TODO Overvej at ændre til boolean
+    private String passiveOrActive;
     private String memberType;
     private String motionist;
     private boolean paidAnnualMembership;
     private List<Integer> usedMemberNumbers = new ArrayList<>();
 
 
-    //TODO Konstruktører
     public Member(String name, String dateOfBirth, String gender, int phonenumber, String adress, int memberNumber, String passiveOrActive, String memberType, String motionist) {
         this.name = name;
         this.dateOfBirth = LocalDate.parse(dateOfBirth, DateTimeFormatter.ofPattern("dd-MM-yyyy"));
@@ -37,8 +36,6 @@ public class Member {
     public Member(int memberNumber, Duration swimTime, LocalDate dateOfSwim, SwimmingDiscipline swimmingDiscipline, String eventName, String eventPlacement) {
     }
 
-    public Member(int memberNumber) {
-    }
 
     public Member(int memberNumber, Boolean paidOrNot) {
     }
@@ -49,20 +46,9 @@ public class Member {
     public Member() {
     }
 
-
-    //___________
-    public void setPaidAnnualMembership(boolean paidAnnualMembership) {
-        this.paidAnnualMembership = paidAnnualMembership;
-    }
-
-    public boolean hasPaidAnnualmembership() {
-        return paidAnnualMembership;
-    }
-
     public void setAnnualMembershipPaymentStatus(boolean paid) {
         this.paidAnnualMembership = paid;
     }
-    //_____________
 
     public int generateMemberNumber() {
         Random random = new Random();
@@ -87,7 +73,6 @@ public class Member {
     public int calculateAge(LocalDate date) {
         this.dateOfBirth = date;
         LocalDate today = LocalDate.now();
-        //System.out.println(today.getYear() - dateOfBirth.getYear());
         return today.getYear() - dateOfBirth.getYear();
     }
 
@@ -117,7 +102,6 @@ public class Member {
     }
 
 
-// TODO Getters
     public String getName() {
         return name;
     }
@@ -155,7 +139,6 @@ public class Member {
     }
 
 
-    //TODO Setters
 
     public void setMemberNumber(int memberNumber) {
         this.memberNumber = memberNumber;
@@ -172,7 +155,6 @@ public class Member {
     public void editDateOfBirth(String newDateOfBirth) {
         this.dateOfBirth = LocalDate.parse(newDateOfBirth, DateTimeFormatter.ofPattern("dd-MM-yyyy"));
     }
-//TODO Edits
     public void editGender(String newGender) {
         this.gender = newGender;
     }

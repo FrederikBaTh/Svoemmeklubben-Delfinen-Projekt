@@ -226,13 +226,9 @@ public class FileHandler {
                     int memberNumber = Integer.parseInt(parts[0].trim());
                     boolean isPaid = Boolean.parseBoolean(parts[1].trim());
 
-                    // Assuming MembershipStatus has a constructor that takes memberNumber and paid status
                     MembershipStatus status = new MembershipStatus(memberNumber, isPaid);
 
-                    // Add the MembershipStatus object to the list
-                    //paidOrNot.add(status);
                 } else {
-                    // Handle invalid data in the file
                     System.out.println("Invalid data in the file: " + line);
                 }
             }

@@ -40,7 +40,6 @@ public class Controller {
         database.registerEventTime(memberNumber, swimTime, dateOfSwim, swimmingDiscipline, eventName, eventPlacement);
     }
 
-//TODO Getters
     public ArrayList<Member> getMembers() {
     return database.getMembersList();
 }
@@ -92,7 +91,6 @@ public class Controller {
 
 
 
-    //TODO Update
     public void updateMember(Member updatedMember) {
         database.updateMember(updatedMember);
     }

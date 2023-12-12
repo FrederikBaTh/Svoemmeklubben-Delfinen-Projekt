@@ -277,7 +277,6 @@ public class Userinterface {
         }
     }
     public void showTopFiveMembersSortedBySwimmingstyle() {
-        // Assuming there are four swimming styles: Butterfly, Backstroke, Breaststroke, and Freestyle
         SwimmingDiscipline[] swimmingStyles = SwimmingDiscipline.values();
 
         for (SwimmingDiscipline style : swimmingStyles) {
@@ -295,7 +294,7 @@ public class Userinterface {
                 }
             }
 
-            System.out.println();  // Add a newline between styles
+            System.out.println();
         }
     }
 
@@ -883,7 +882,6 @@ public class Userinterface {
         }
     }
 
-    //______________ Renewal membership
     public void showMembershipRenewalMenu() {
         boolean exit = false;
         while (!exit) {
@@ -949,13 +947,12 @@ public class Userinterface {
                     System.out.println("Updated annual membership payment status for member " + member.getName() +
                             " to " + (newStatus ? "Paid" : "Not paid"));
 
-                    // Pass the correct member number to the controller method
                     controller.registretPaidOrNot(memberNumber, newStatus);
                 } else {
                     System.out.println("No changes made.");
                 }
 
-                break; // Exit the loop since the member has been found
+                break;
             }
         }
 
@@ -1048,7 +1045,6 @@ public class Userinterface {
 
 
     public static LocalDate parseDate(String dateString) {
-        // Assuming the format is "yyyy-MM-dd"
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
         return LocalDate.parse(dateString, formatter);
     }

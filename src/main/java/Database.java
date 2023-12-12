@@ -29,15 +29,6 @@ public class Database {
         }
     }
 
-   /* public void registrerPaidOrNot(int memberNumber, boolean paid) {
-        try {
-            MembershipStatus membershipStatus = new MembershipStatus(memberNumber, paid);
-            statusPayment.add(membershipStatus);
-            fileHandler.saveListOfPaidOrNot("KontingentOversigt.csv", statusPayment);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }*/
 
     public void registerPaidOrNot(int memberNumber, boolean paid) {
         try {
@@ -45,7 +36,6 @@ public class Database {
             statusPayment.add(membershipStatus);
             fileHandler.saveListOfPaidOrNot("KontingentOversigt.csv", statusPayment);
 
-            // Update the payment status for the member in the members list
             Member member = getMemberByNumber(memberNumber);
             if (member != null) {
                 member.setAnnualMembershipPaymentStatus(paid);
@@ -64,37 +54,6 @@ public class Database {
         }
 
         return yearlyIncome;
-    }
-
-    private void renewMembershipForSelectedMember(Member selectedMember) {
-        // Implement logic to renew membership, e.g., update membership status
-        // You may need to modify this based on your actual data structure and logic
-        selectedMember.setPaidAnnualMembership(true);
-    }
-
-    public void renewMembership() {
-        ArrayList<Member> members = getMembersList();
-
-        System.out.println("List of Members:");
-        for (Member member : members) {
-            System.out.println("Member Number: " + member.getMemberNumber() + ", Name: " + member.getName() + ", Membership Status: " + (member.hasPaidAnnualMembership() ? "Paid" : "Not Paid"));
-        }
-
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("Enter the Member Number to renew membership: ");
-        int selectedMemberNumber = scanner.nextInt();
-
-        Member selectedMember = getMemberByNumber(selectedMemberNumber);
-        if (selectedMember != null) {
-            if (member.hasPaidAnnualMembership()) {
-                System.out.println("Membership is already paid for this member.");
-            } else {
-                renewMembershipForSelectedMember(selectedMember);
-                System.out.println("Membership renewed successfully!");
-            }
-        } else {
-            System.out.println("Member not found.");
-        }
     }
 
 
@@ -158,9 +117,6 @@ public class Database {
     public void sortTrainingMembersBySwimTime() {
         compMeembersTræning.sort(Comparator.comparing(CompetitiveMember::getSwimTime));
     }
-    public void sortEventMembersBySwimTime() {
-        compMeembersEvent.sort(Comparator.comparing(CompetitiveMember ::getSwimTime ));
-    }
 
     public boolean isCompetitiveUnder18(Member member) {
         return "aktivt".equalsIgnoreCase(member.getPassiveOrActive()) && "ungdomssvømmer u18".equalsIgnoreCase(member.getMemberType()) && member.calculateAgeList() < 18;
@@ -221,7 +177,6 @@ public ArrayList<CompetitiveMember> getCompMembersTraining() {
 public void registerTrainingTime(int memberNumber, Duration swimTime, LocalDate dateOfSwim, SwimmingDiscipline swimmingDiscipline) {
     try {
 
-        //Member member = new Member(memberNumber, svimTime, dateOfSwim, swimmingDiscipline);
         CompetitiveMember competitiveMember = new CompetitiveMember(memberNumber, swimTime, dateOfSwim, swimmingDiscipline);
         compMeembersTræning.add(competitiveMember);
         fileHandler.saveListOfTrainingtimeToFile("TræningsTid.csv", compMeembersTræning);

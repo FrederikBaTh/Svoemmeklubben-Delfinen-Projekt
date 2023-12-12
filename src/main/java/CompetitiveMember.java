@@ -12,7 +12,6 @@ public class CompetitiveMember extends Member {
     private Duration eventSwimTime;
 
 
-    //TODO Training Initializer
     public CompetitiveMember(int memberNumber, Duration swimTime, LocalDate dateOfSwim, SwimmingDiscipline swimmingDiscipline) {
         super(memberNumber, swimTime, dateOfSwim, swimmingDiscipline);
 
@@ -20,7 +19,6 @@ public class CompetitiveMember extends Member {
     }
 
 
-    //TODO Event Initializer
     public CompetitiveMember(int memberNumber, Duration swimTime, LocalDate dateOfSwim, SwimmingDiscipline swimmingDiscipline, String eventName, String eventPlacement) {
         super(memberNumber, swimTime, dateOfSwim, swimmingDiscipline, eventName, eventPlacement);
 
@@ -28,13 +26,8 @@ public class CompetitiveMember extends Member {
     }
 
 
-//TODO IDK WHAT TO DO MÅSKE SLET IDK
-   // public CompetitiveMember(int memberNumber, LocalTime swimTime, LocalDate dateOfSwim, SwimmingDiscipline swimmingDiscipline) {
-     //   super(memberNumber, swimTime, dateOfSwim, swimmingDiscipline);
-    //}
 
 
-//TODO Getters
     public Duration getSwimTime() {
         return swimTime;
     }
@@ -51,7 +44,7 @@ public class CompetitiveMember extends Member {
         return eventPlacement;
     }
 
-    //
+
     private void initializeEventDetailsEvent(int memberNumber, Duration swimTime, LocalDate dateOfSwim, SwimmingDiscipline swimmingDiscipline, String eventName, String eventPlacement, Duration eventSwimTime) {
         this.setMemberNumber(memberNumber);
         this.swimTime = swimTime;
